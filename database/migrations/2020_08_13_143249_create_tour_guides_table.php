@@ -21,8 +21,6 @@ class CreateTourGuidesTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->text('description');
-            $table->unsignedBigInteger('area_id'); // foreign key -> references to 'id' on areas migration
-            $table->foreign('area_id')->references('id')->on('areas');
             $table->string('thumbnail');
             $table->boolean('card'); // có thẻ HDV hay không
             $table->boolean('mc_gala_dinner'); // có làm MC gala dinner hay ko?
