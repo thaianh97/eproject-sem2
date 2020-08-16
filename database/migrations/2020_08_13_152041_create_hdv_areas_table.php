@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTourGuideAreasTable extends Migration
+class CreateHdvAreasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateTourGuideAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tour_guide_areas', function (Blueprint $table) {
+        Schema::create('hdv_areas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('area_id'); // foreign key -> references to 'id' on areas migration
             $table->foreign('area_id')->references('id')->on('areas');
-            $table->unsignedBigInteger('guide_id'); // foreign key -> references to 'id' on tour_guides migration
-            $table->foreign('guide_id')->references('id')->on('tour_guides');
+            $table->unsignedBigInteger('guide_id'); // foreign key -> references to 'id' on hdv migration
+            $table->foreign('guide_id')->references('id')->on('hdv');
             $table->timestamps();
         });
     }

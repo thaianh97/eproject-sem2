@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3340cbcc-e9d5-4ff2-bd12-9bd9d2cb1794" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CustomerAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_143249_create_tour_guides_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_143249_create_hdv_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_152023_create_tour_guide_areas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_152041_create_hdv_areas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_152040_create_customer_accounts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_152040_create_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_152045_create_transactions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_152045_create_transactions_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,21 +179,35 @@
       <workItem from="1597374991046" duration="1702000" />
       <workItem from="1597378465680" duration="930000" />
       <workItem from="1597402833675" duration="1646000" />
+      <workItem from="1597500048841" duration="2112000" />
+      <workItem from="1597586544646" duration="8351000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="770" y="399" key="#Composer" timestamp="1597230614703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="770" y="399" key="#Composer/0.0.1920.1040@0.0.1920.1040" timestamp="1597230614703" />
-    <state x="745" y="284" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597332348539">
+    <state x="745" y="284" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597590635448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="745" y="284" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597332348539" />
+    <state x="745" y="284" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597590635448" />
     <state x="540" y="255" key="IDE.errors.dialog" timestamp="1597230625785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

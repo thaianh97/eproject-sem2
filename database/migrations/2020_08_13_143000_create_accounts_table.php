@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomerAccountsTable extends Migration
+class CreateAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateCustomerAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_accounts', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('address');
             $table->string('username');
             $table->string('password_hash');
             $table->string('salt');
-            $table->integer('status'); // 1. Active | 2. Inactive | 3. Deleted
+            $table->integer('role');
+            $table->integer('status');
             $table->timestamps();
         });
     }
