@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3340cbcc-e9d5-4ff2-bd12-9bd9d2cb1794" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CustomerAccount.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_143249_create_tour_guides_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_143249_create_hdv_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_152023_create_tour_guide_areas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_152041_create_hdv_areas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_152040_create_customer_accounts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_152040_create_customers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_152045_create_transactions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_152045_create_transactions_table.php" afterDir="false" />
-    </list>
+    <list default="true" id="3340cbcc-e9d5-4ff2-bd12-9bd9d2cb1794" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +173,7 @@
       <workItem from="1597378465680" duration="930000" />
       <workItem from="1597402833675" duration="1646000" />
       <workItem from="1597500048841" duration="2112000" />
-      <workItem from="1597586544646" duration="8351000" />
+      <workItem from="1597586544646" duration="8850000" />
     </task>
     <servers />
   </component>

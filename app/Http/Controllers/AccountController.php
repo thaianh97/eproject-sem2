@@ -113,9 +113,9 @@ class AccountController extends Controller
     {
         $account = new Account();
         $account->username = $request->get('username');
-//        $account->password = $request->get('password');
-        $account->passwordHash = md5($account->password . $account->salt);
+        $account->password = $request->get('password');
         $account->salt = $this->generateRandomString(6);
+        $account->passwordHash = md5($account->password . $account->salt);
         $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->status = 1;
         $account->save();
@@ -124,7 +124,7 @@ class AccountController extends Controller
         $customer->email = $request->get('email');
         $customer->phone = $request->get('phone');
         $customer->fullName = $request->get('full_name');
-        $customer->accountId = $account->get('id');
+        $customer->accountId = $request->get('account_id');
         $customer->save();
     }
 
