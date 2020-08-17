@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3340cbcc-e9d5-4ff2-bd12-9bd9d2cb1794" name="Default Changelist" comment="" />
+    <list default="true" id="3340cbcc-e9d5-4ff2-bd12-9bd9d2cb1794" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,7 +151,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -158,6 +160,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Hi\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3340cbcc-e9d5-4ff2-bd12-9bd9d2cb1794" name="Default Changelist" comment="" />
@@ -175,7 +180,7 @@
       <workItem from="1597500048841" duration="2112000" />
       <workItem from="1597586544646" duration="8850000" />
       <workItem from="1597631887487" duration="646000" />
-      <workItem from="1597649418187" duration="856000" />
+      <workItem from="1597649418187" duration="1542000" />
     </task>
     <servers />
   </component>
@@ -207,9 +212,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="255" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597230625785" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1597230587219">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1597650882808">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597230587219" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597650882808" />
   </component>
 </project>
