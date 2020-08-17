@@ -15,9 +15,8 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('guide_name');
             $table->unsignedBigInteger('guide_id'); // foreign key -> references to 'id' on tour_guides migration
-            $table->foreign('guide_id')->references('id')->on('hdv');
+            $table->foreign('guide_id')->references('id')->on('tour_guides');
             $table->unsignedBigInteger('customer_id'); // foreign key -> references to 'id' on customer_accounts migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->string('customer_name');
