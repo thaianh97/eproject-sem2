@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3340cbcc-e9d5-4ff2-bd12-9bd9d2cb1794" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_140000_create_areas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_140000_create_areas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_143000_create_accounts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_143000_create_accounts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/AreasSeeding.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AreasSeeding.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,6 +185,8 @@
       <workItem from="1597500048841" duration="2112000" />
       <workItem from="1597586544646" duration="8850000" />
       <workItem from="1597634690248" duration="1135000" />
+      <workItem from="1597664777350" duration="5281000" />
+      <workItem from="1597759387523" duration="645000" />
     </task>
     <servers />
   </component>

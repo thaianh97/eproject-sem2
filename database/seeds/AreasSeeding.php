@@ -463,5 +463,6 @@ class AreasSeeding extends Seeder
                 'updated_at'=>Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
             ]);
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

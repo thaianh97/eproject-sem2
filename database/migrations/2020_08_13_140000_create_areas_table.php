@@ -16,7 +16,7 @@ class CreateAreasTable extends Migration
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
             $table->string('province');
-            $table->string(''); // Bắc, Trung, Nam
+            $table->string('region'); // Bắc, Trung, Nam
             $table->timestamps();
         });
     }

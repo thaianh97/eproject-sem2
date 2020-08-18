@@ -18,8 +18,8 @@ class CreateAccountsTable extends Migration
             $table->string('username');
             $table->string('password_hash');
             $table->string('salt');
-            $table->integer('role');
-            $table->integer('status');
+            $table->integer('role');//1-admin;2-hdv;3-user
+            $table->integer('status');//1-active;2-inactive
             $table->timestamps();
         });
     }
