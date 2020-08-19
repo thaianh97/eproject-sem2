@@ -91,6 +91,7 @@ class AccountController extends Controller
 
     public function processLogin(Request $request) // hàm đăng nhập của khách
     {
+        // validate tài khoản đăng nhập của người dùng
         $account = Account::query();
         $username = $request->get('username');
         $password = $request->get('password');
@@ -98,6 +99,7 @@ class AccountController extends Controller
             ->where('status', '=', 1)->first();
         $currentAccount = $exist_account[0]->get();
 
+        // kiểm tra id của người dùng
         $customer = Customer::query();
         $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
         $currentCustomer = $stuff[0]->get();
