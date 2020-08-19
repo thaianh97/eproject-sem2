@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHdvTable extends Migration
+class CreateTourGuidesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHdvTable extends Migration
      */
     public function up()
     {
-        Schema::create('hdv', function (Blueprint $table) {
+        Schema::create('tour_guides', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('account_id'); // foreign key -> references to 'id' on table 'accounts'
             $table->foreign('account_id')->references('id')->on('accounts');
