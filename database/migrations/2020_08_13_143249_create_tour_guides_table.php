@@ -23,7 +23,7 @@ class CreateTourGuidesTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->text('description');
-            $table->string('thumbnail');
+            $table->string('avatar'); // ảnh đại diện
             $table->boolean('card'); // có thẻ HDV hay không
             $table->boolean('mc_gala_dinner'); // có làm MC gala dinner hay ko?
             $table->boolean('team_building'); // có tổ chức chơi team-building hay ko?
