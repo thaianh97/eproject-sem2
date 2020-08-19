@@ -67,7 +67,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 6,
-                'username' => '',
+                'username' => 'phamtruong97',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -77,7 +77,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 7,
-                'username' => '',
+                'username' => 'ChinhDang97',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -87,7 +87,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 8,
-                'username' => '',
+                'username' => 'NhungNguyen94',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -97,7 +97,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 9,
-                'username' => '',
+                'username' => 'HoaPham82',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -107,7 +107,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 10,
-                'username' => '',
+                'username' => 'VianNg_96',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -117,7 +117,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 11,
-                'username' => '',
+                'username' => '95',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -127,7 +127,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 12,
-                'username' => '',
+                'username' => 'Phambuffalo',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -137,7 +137,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 13,
-                'username' => '',
+                'username' => 'QingVan_98',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -147,7 +147,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 14,
-                'username' => '',
+                'username' => 'TienDung201',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -157,7 +157,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 15,
-                'username' => '',
+                'username' => 'Tieneastern',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -167,7 +167,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 16,
-                'username' => '',
+                'username' => 'HungPham96',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -177,7 +177,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 17,
-                'username' => '',
+                'username' => 'HungDo85',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -187,7 +187,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 18,
-                'username' => '',
+                'username' => 'ThaiHoang93',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -197,7 +197,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 19,
-                'username' => '',
+                'username' => 'HungMai92',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -207,7 +207,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 20,
-                'username' => '',
+                'username' => 'ChingDang97',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -217,7 +217,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 21,
-                'username' => '',
+                'username' => 'nht_99',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -227,7 +227,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 22,
-                'username' => '',
+                'username' => 'MXDung202',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -237,7 +237,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 23,
-                'username' => '',
+                'username' => 'HangPhung98',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -247,7 +247,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 24,
-                'username' => '',
+                'username' => 'TranHH_94',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -257,7 +257,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 25,
-                'username' => '',
+                'username' => 'PhongLe97',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -267,7 +267,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 26,
-                'username' => '',
+                'username' => 'HoangSon96',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -277,7 +277,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 27,
-                'username' => '',
+                'username' => 'ThanhLuyen96',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -287,7 +287,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 28,
-                'username' => '',
+                'username' => 'KhanhLuu97',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -297,7 +297,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 29,
-                'username' => '',
+                'username' => 'LyHoang97',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -307,7 +307,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 30,
-                'username' => '',
+                'username' => 'VanTien_92',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -317,7 +317,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 31,
-                'username' => '',
+                'username' => 'PhongStorm',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -327,7 +327,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 32,
-                'username' => '',
+                'username' => 'HuyenKH91',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -337,7 +337,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 33,
-                'username' => '',
+                'username' => 'Mixigaming',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -347,7 +347,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 34,
-                'username' => '',
+                'username' => 'TienHa91',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -357,7 +357,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 35,
-                'username' => '',
+                'username' => 'Ninhpretty95',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -367,7 +367,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 36,
-                'username' => '',
+                'username' => 'HuyQuangLe99',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -377,7 +377,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 37,
-                'username' => '',
+                'username' => 'HaiTT_87',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -387,7 +387,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 38,
-                'username' => '',
+                'username' => 'HuongPearl98',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -397,7 +397,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 39,
-                'username' => '',
+                'username' => 'MaiDuc97',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -407,7 +407,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 40,
-                'username' => '',
+                'username' => 'QuangDuong98',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -417,7 +417,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 41,
-                'username' => '',
+                'username' => 'HunggoldenMac89',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -427,7 +427,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 42,
-                'username' => '',
+                'username' => 'CuongPham93',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -437,7 +437,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 43,
-                'username' => '',
+                'username' => 'MyLinh99',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -447,7 +447,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 44,
-                'username' => '',
+                'username' => 'VietAnhTall',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -457,7 +457,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 45,
-                'username' => '',
+                'username' => 'TranTuan2k',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
@@ -467,7 +467,7 @@ class AccountSeeder extends Seeder
             ],
             [
                 'id' => 46,
-                'username' => '',
+                'username' => 'DuongTH95',
                 'password_hash' => 'Fpt_Aptech123',
                 'salt' => '',
                 'role' => 2,
