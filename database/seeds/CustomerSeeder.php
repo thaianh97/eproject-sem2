@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class CustomerSeeder extends Seeder
 {
@@ -13,8 +14,8 @@ class CustomerSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('admins')->truncate();
-        DB::table('admins')->insert([
+        DB::table('customers')->truncate();
+        DB::table('customers')->insert([
             [
                 'id' => 1,
                 'account_id' => 77,
