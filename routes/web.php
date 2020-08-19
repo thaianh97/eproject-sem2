@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/test', function (){
    return view(('layout.admin-layout'));
 });
+
+// admin route
+Route::get('/admin/customers','ControllerByAdmin@listCustomers');

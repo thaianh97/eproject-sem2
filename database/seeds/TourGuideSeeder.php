@@ -209,7 +209,7 @@ class TourGuideSeeder extends Seeder
             [
                 'id' => 11,
                 'account_id' => 15,
-                'full_name' => 'Đặng Tiến ',
+                'full_name' => 'Đặng Tiến Đông',
                 'age' => '22',
                 'price' => 12000000,
                 'phone' => '09125561440',
