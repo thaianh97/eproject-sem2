@@ -22,4 +22,5 @@ Route::get('/test', function (){
 });
 
 // admin route
+Route::get('/admin','ControllerByAdmin@adminHome');
 Route::get('/admin/customers','ControllerByAdmin@listCustomers');

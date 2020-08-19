@@ -97,58 +97,37 @@
                             <i class="icon nalika-home icon-wrap"></i>
                             <span class="mini-click-non">Products</span>
                         </a>
-                        <ul class="submenu-angle" aria-expanded="true">
+                        <ul class="submenu-angle" aria-expanded="false">
 
                             <li><a title="Dashboard v.3" href="/admin"><span
                                             class="mini-sub-pro">Dashboard v.3</span></a></li>
                             <li><a title="Cameras List " href="/admin/products-list"><span
                                             class="mini-sub-pro">Cameras List</span></a></li>
-                            <li><a title="Accessories list " href="/admin/"><span
-                                            class="mini-sub-pro">Camera edit  </span></a></li>
-                            <li><a title="Cameras edit " href="/admin/products-edit"><span
-                                            class="mini-sub-pro">Accessories  list</span></a></li>
-                            <li><a title="Product Detail" href="product-detail.html"><span class="mini-sub-pro">Product Detail</span></a>
-                            </li>
-                            <li><a title="Product Cart" href="product-cart.html"><span
-                                            class="mini-sub-pro">Product Cart</span></a></li>
-                            <li><a title="Product Payment" href="product-payment.html"><span class="mini-sub-pro">Product Payment</span></a>
-                            </li>
-                            <li><a title="Analytics" href="analytics.html"><span
-                                            class="mini-sub-pro">Analytics</span></a></li>
-                            <li><a title="Widgets" href="widgets.html"><span class="mini-sub-pro">Widgets</span></a>
-                            </li>
+
                         </ul>
                     </li>
                     <li>
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                    class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Mailbox</span></a>
+                                    class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Customers </span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Inbox" href="mailbox.html"><span class="mini-sub-pro">Inbox</span></a></li>
+                            <li><a title="customers-list" href="mailbox.html"><span class="mini-sub-pro">Customers</span></a></li>
                             <li><a title="View Mail" href="mailbox-view.html"><span
-                                            class="mini-sub-pro">View Mail</span></a></li>
-                            <li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Compose Mail</span></a>
+                                            class="mini-sub-pro">Add Customer </span></a></li>
+                            <li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Edit Customer</span></a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
                                     class="icon nalika-diamond icon-wrap"></i> <span
-                                    class="mini-click-non">Interface</span></a>
+                                    class="mini-click-non">TourGuides</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="Google Map" href="google-map.html"><span
-                                            class="mini-sub-pro">Google Map</span></a></li>
+                                            class="mini-sub-pro">List</span></a></li>
                             <li><a title="Data Maps" href="data-maps.html"><span
-                                            class="mini-sub-pro">Data Maps</span></a></li>
+                                            class="mini-sub-pro">Add</span></a></li>
                             <li><a title="Pdf Viewer" href="pdf-viewer.html"><span
-                                            class="mini-sub-pro">Pdf Viewer</span></a></li>
-                            <li><a title="X-Editable" href="x-editable.html"><span
-                                            class="mini-sub-pro">X-Editable</span></a></li>
-                            <li><a title="Code Editor" href="code-editor.html"><span
-                                            class="mini-sub-pro">Code Editor</span></a></li>
-                            <li><a title="Tree View" href="tree-view.html"><span
-                                            class="mini-sub-pro">Tree View</span></a></li>
-                            <li><a title="Preloader" href="preloader.html"><span
-                                            class="mini-sub-pro">Preloader</span></a></li>
+                                            class="mini-sub-pro"> Edit</span></a></li>
                             <li><a title="Images Cropper" href="images-cropper.html"><span class="mini-sub-pro">Images Cropper</span></a>
                             </li>
                         </ul>
@@ -1174,9 +1153,8 @@
         ============================================ -->
     <script src="{{asset('js/main.js')}}"></script>
 
-    <script>
         @yield('script')
-    </script>
+
 </body>
 </html>
 

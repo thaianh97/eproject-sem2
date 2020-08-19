@@ -7,7 +7,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/admin/products-list" method="get" id="product_form">
+                            <form action="/admin" method="get" id="product_form">
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
@@ -29,10 +29,10 @@
                                                 <label for="exampleFormControlSelect1"><h2 style="color:white; ">Product type</h2></label>
                                                 <select name="product_types" class="form-control" id="categorySelect" onchange='this.form.submit()'>
 
-{{--                                                    @foreach($product_types as $type)--}}
-{{--                                                        <option--}}
-{{--                                                            value="{{$type->id}}"   >{{$type->name}}</option>--}}
-{{--                                                    @endforeach--}}
+                                                    {{--                                                    @foreach($product_types as $type)--}}
+                                                    {{--                                                        <option--}}
+                                                    {{--                                                            value="{{$type->id}}"   >{{$type->name}}</option>--}}
+                                                    {{--                                                    @endforeach--}}
                                                     {{--                                                        {{$type->id == $camera_types_id? 'selected':''}}--}}
 
                                                 </select>
@@ -86,7 +86,7 @@
                     <div class="product-status-wrap">
                         <h4>Products List</h4>
                         <div class="add-product">
-                            <a href="/admin/add-product">Add Product</a>
+                            <a href="/admin">Add Product</a>
                         </div>
                         <table data-check-all-container >
                             <tr>
@@ -97,11 +97,18 @@
 
                                 </th>
                                 <th>ID</th>
+                                <th>ACCOUNT_ID</th>
                                 <th>Full_name</th>
-                                <th>Account_id</th>
+                                <th>Age</th>
+                                <th>Price</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Address</th>
+                                <th>Description</th>
+                                <th>Thumbnail</th>
+                                <th>Card</th>
+                                <th>Gala_dinner_mc</th>
+                                <th>Team_building</th>
+                                <th>Card</th>
                                 <th>Status</th>
                                 <th>Created_at</th>
                                 <th>Update_at</th>
@@ -112,14 +119,21 @@
                                         <input type="checkbox" id="{{$item->id}}" >
                                     </td>
                                     <td>{{$item->id}}</td>
-                                    <td>{{$item->full_name}}</td>
                                     <td>{{$item->account_id}}</td>
+                                    <td>{{$item->full_name}}</td>
+                                    <td>{{$item->age}}</td>
+                                    <td>{{$item->price}}></td>
                                     <td>{{$item->phone}}</td>
-                                    <td>{{$item->email}}></td>
-                                    <td>{{$item->address}}</td>
-                                    <td>{{$item->status}}</td>
+                                    <td>{{$item->email}}</td>
+                                    <td>{{$item->description}}</td>
+                                    <td>{{$item->thumbnail}}</td>
+                                    <td>{{$item->card}}</td>
+                                    <td>{{$item->mc_gala_dinner}}</td>
+                                    <td>{{$item->team_building}}</td>
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
+
+                                    <td>{{$item->status}}</td>
                                     <td>
                                         <a href="/admin/edit-product/{{$item->id}}">  <button   data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i  class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
                                         <a href="">  <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
@@ -144,14 +158,15 @@
 @endsection
 
 @section('script')
- <script>
-     checkAll(document.querySelector('[data-check-all-container]')){
-     <style>
-         .breadcome-area{
-            color:white;
-         }
-     </style>
-     }
- </script>
+    <script>
+        checkAll(document.querySelector('[data-check-all-container]')){
+        <style>
+        .breadcome-area{
+                color:white;
+            }
+        </style>
+        }
+    </script>
 @endsection
+
 

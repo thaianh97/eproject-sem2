@@ -27,8 +27,6 @@ class CreateTourGuidesTable extends Migration
             $table->boolean('card'); // có thẻ HDV hay không
             $table->boolean('mc_gala_dinner'); // có làm MC gala dinner hay ko?
             $table->boolean('team_building'); // có tổ chức chơi team-building hay ko?
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
             $table->integer('status'); // 1. Open | 2. Occupied | 3. Stop working
             $table->timestamps();
         });
