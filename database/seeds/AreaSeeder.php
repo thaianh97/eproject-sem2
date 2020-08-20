@@ -158,7 +158,7 @@ class AreaSeeder extends Seeder
             ],
             [
                 'id' => 21,
-                'province' => 'Bắc Cạn',
+                'province' => 'Bắc Kạn',
                 'region' => 'Bắc',
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
@@ -305,7 +305,7 @@ class AreaSeeder extends Seeder
             ],
             [
                 'id' => 42,
-                'province' => 'KonTum',
+                'province' => 'Kon Tum',
                 'region' => 'Trung',
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
