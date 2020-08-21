@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+c#!/usr/bin/env php
+=======
 #!/usr/bin/env php
+>>>>>>> 53b609bca0b43d0a99ee6a03f82d00cb3e32d65b
 <?php
 
 define('LARAVEL_START', microtime(true));

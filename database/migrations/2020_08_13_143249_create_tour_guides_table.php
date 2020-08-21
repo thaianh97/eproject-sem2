@@ -18,7 +18,7 @@ class CreateTourGuidesTable extends Migration
             $table->unsignedBigInteger('account_id'); // foreign key -> references to 'id' on table 'accounts'
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('full_name');
-            $table->integer('age');
+            $table->integer('year_of_birth');
             $table->double('price');
             $table->string('phone');
             $table->string('email');
