@@ -33,8 +33,13 @@ Route::get('/admin/customers','ControllerByAdmin@listCustomers');
 Route::get('/admin/tourGuides','ControllerByAdmin@listTourGuides');
 
 
+
 //route to navigate the web site
 Route::get("/", "CustomerPageController@index");
 Route::get("/about", "CustomerPageController@about");
+
+
+//tset mail
+Route::get('/test','ControllerByAdmin@sendMail');
 
 
