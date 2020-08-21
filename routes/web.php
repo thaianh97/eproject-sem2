@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+
+
 
 Route::get('/test', function (){
    return view(('layout.admin-layout'));
@@ -24,6 +28,8 @@ Route::get('/test', function (){
 // admin route
 Route::get('/admin','ControllerByAdmin@adminHome');
 Route::get('/admin/customers','ControllerByAdmin@listCustomers');
+
 //route to navigate the web site
 Route::get("/", "CustomerPageController@index");
 Route::get("/about", "CustomerPageController@about");
+
