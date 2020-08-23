@@ -7,6 +7,7 @@
     <title>Dashboard V.3 | Nalika - Material Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- favicon
 		============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
@@ -110,7 +111,7 @@
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
                                     class="icon nalika-mail icon-wrap"></i> <span class="mini-click-non">Customers </span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="customers-list" href="mailbox.html"><span class="mini-sub-pro">Customers</span></a></li>
+                            <li><a title="customers-list" href="/admin/customers"><span class="mini-sub-pro">Customers</span></a></li>
                             <li><a title="View Mail" href="mailbox-view.html"><span
                                             class="mini-sub-pro">Add Customer </span></a></li>
                             <li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Edit Customer</span></a>
@@ -122,7 +123,7 @@
                                     class="icon nalika-diamond icon-wrap"></i> <span
                                     class="mini-click-non">TourGuides</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Google Map" href="google-map.html"><span
+                            <li><a title="Google Map" href="/admin/tourGuides"><span
                                             class="mini-sub-pro">List</span></a></li>
                             <li><a title="Data Maps" href="data-maps.html"><span
                                             class="mini-sub-pro">Add</span></a></li>

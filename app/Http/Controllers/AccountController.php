@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Admin;
 use App\Customer;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -86,7 +87,7 @@ class AccountController extends Controller
 
     public function login()
     {
-        return view('login');
+        return view('test.login');
     }
 
     public function processLogin(Request $request) // hàm đăng nhập của khách
@@ -108,26 +109,30 @@ class AccountController extends Controller
 
     public function register()
     {
-        return view('register');
+        return view('test.register');
     }
 
     public function processRegister(Request $request)
     {
         $account = new Account();
         $account->username = $request->get('username');
-        $account->password = $request->get('password');
+        $password = $request->get('password');
         $account->salt = $this->generateRandomString(6);
-        $account->passwordHash = md5($account->password . $account->salt);
+        $account->password_hash = md5($password . $account->salt);
         $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->status = 1;
         $account->save();
-
-        $customer = new Customer();
-        $customer->email = $request->get('email');
-        $customer->phone = $request->get('phone');
-        $customer->fullName = $request->get('full_name');
-        $customer->accountId = $request->get('account_id');
-        $customer->save();
+        if($request->role = 1){
+            $customer = new Customer();
+            $customer->email = $request->get('email');
+            $customer->phone = $request->get('phone');
+            $customer->full_name = $request->get('full_name');
+            $customer->account_id = $request->get('account_id');
+            $customer->save();
+        }
+        if($request->role = 2){
+            echo 'tour guide register';
+        }
     }
 
     function generateRandomString($length = 10)
