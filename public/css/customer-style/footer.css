@@ -1,0 +1,45 @@
+div.footer {
+    width: 100%;
+    min-height: 500px;
+    /* background with overlay */
+    background: url("/img/background/footer-bg3.jpg") rgba(0,0,0, .6);
+    background-size: 100% 100%;
+    background-blend-mode: multiply;
+    padding-top: 100px;
+    font-size: 16px;
+}
+
+div.footer .footer-info {
+    /*background: red;*/
+    padding-top: 10px;
+    color: white;
+    /*margin-top: 100px;*/
+}
+.footer .footer-social-link {
+   padding-top: 10px;
+}
+a.social-link {
+    margin: 0 20px;
+    color: white;
+
+}
+a.social-link i.fa {
+    transition: .5s;
+}
+a.social-link:hover i.fa {
+    transform: scale(1.5);
+    color: #C03637;
+}
+.footer .footer-copy-right {
+    padding-top: 10px;
+}
+
+.footer-link {
+    color: #C03637;
+}
+
+.footer-link:hover {
+    color: yellow;
+    text-decoration: none;
+}
+

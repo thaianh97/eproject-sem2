@@ -1,4 +1,6 @@
 @extends("layout.customer-layout")
 @section("content")
-    <p>this is index</p>
+    <div class="content">
+        this is index content
+    </div>
 @endsection
