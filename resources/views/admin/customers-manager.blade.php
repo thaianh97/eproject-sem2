@@ -1,4 +1,11 @@
 @extends('layout.admin-layout')
+
+@section('title')
+
+    <h2>Customer manager</h2>
+    <p>Welcome <span class="bread-ntd">Admin</span></p>
+
+@endsection
 @section('content')
 
     <div class="breadcome-area">
@@ -129,11 +136,9 @@
                         </table>
                         <div class="custom-pagination">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                <li class="page-item">
+                                    {{ $list->appends(['sort' => 'votes'])->links() }}
+                                </li>
                             </ul>
                         </div>
                     </div>

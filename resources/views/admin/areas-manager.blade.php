@@ -1,5 +1,13 @@
 @extends('layout.admin-layout')
+
+@section('title')
+
+    <h2>Area manager</h2>
+    <p>Welcome <span class="bread-ntd">Admin</span></p>
+
+@endsection
 @section('content')
+
 
     <div class="single-product-tab-area mg-b-30">
         <!-- Single pro tab review Start-->
@@ -43,7 +51,6 @@
                                                                             </th>
                                                                             <th>ID</th>
                                                                             <th>Province</th>
-                                                                            <th>Region</th>
                                                                             <th>Status</th>
                                                                             <th>Created_at</th>
                                                                             <th>Update_at</th>
@@ -56,7 +63,6 @@
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
-                                                                                <td>{{$item->region}}</td>
                                                                                 <td>1</td>
                                                                                 <td>{{$item->created_at}}</td>
                                                                                 <td>{{$item->updated_at}}</td>
@@ -81,22 +87,7 @@
                                                                             </tr>
                                                                         @endforeach
                                                                     </table>
-                                                                    <div class="custom-pagination">
-                                                                        <ul class="pagination">
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">Previous</a>
-                                                                            </li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">1</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">2</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">3</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">Next</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -169,22 +160,7 @@
                                                                             </tr>
                                                                         @endforeach
                                                                     </table>
-                                                                    <div class="custom-pagination">
-                                                                        <ul class="pagination">
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">Previous</a>
-                                                                            </li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">1</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">2</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">3</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">Next</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -257,22 +233,7 @@
                                                                             </tr>
                                                                         @endforeach
                                                                     </table>
-                                                                    <div class="custom-pagination">
-                                                                        <ul class="pagination">
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">Previous</a>
-                                                                            </li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">1</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">2</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">3</a></li>
-                                                                            <li class="page-item"><a class="page-link"
-                                                                                                     href="#">Next</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>

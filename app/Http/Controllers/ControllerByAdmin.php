@@ -24,7 +24,7 @@ class ControllerByAdmin extends Controller
         $data = array();
         $customers_list = Customer::query();
 
-        $data['list'] = $customers_list->get();
+        $data['list'] = $customers_list->paginate(10);
         return view('admin.customers-manager')
             ->with($data);
     }
@@ -59,7 +59,7 @@ class ControllerByAdmin extends Controller
     }
 
 
-    public function listTourGuides(Request $request)
+    public function listTourGuides(Request $request )
     {
 
         $data = array();
@@ -77,19 +77,19 @@ class ControllerByAdmin extends Controller
 
 
             foreach ($list_an_area as $item) {
-                $tourGuide_list = $tourGuide_list->where('id', '!=', $item->guide_id)->paginate(15);
+                $tourGuide_list = $tourGuide_list->where('id', '!=', $item->guide_id);
             }
         }
 
         if ($request->has('keyword') && strlen($request->get('keyword')) > 0) {
             $data['keyword'] = $request->get('keyword');
-            $tourGuide_list = $tourGuide_list->where('full_name', 'like', '%' . $request->get('keyword') . '%')->paginate(15);
+            $tourGuide_list = $tourGuide_list->where('full_name', 'like', '%' . $request->get('keyword') . '%');
 //            $tourGuide_list = $tourGuide_list->where('id', 'like', '%' . $request->get('keyword') . '%');
 //            $tourGuide_list = $tourGuide_list->where('phone', 'like', '%' . $request->get('keyword') . '%');
 //            $tourGuide_list = $tourGuide_list->where('email', 'like', '%' . $request->get('keyword') . '%');
         }
 
-        $data['list'] = $tourGuide_list->get();
+        $data['list'] = $tourGuide_list->paginate(10);
         $data['areas'] = $areas;
         return view('admin.tourGuides-manager')
             ->with($data);

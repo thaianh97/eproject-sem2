@@ -1,11 +1,14 @@
 @extends('layout.admin-layout')
 
-@section('styles')
-    <style>
+@section('title')
 
-    </style>
+    <h2>TourGuides manager</h2>
+    <p>Welcome <span class="bread-ntd">Admin</span></p>
+
 @endsection
 @section('content')
+
+
 
     <div class="breadcome-area">
         <div class="container-fluid">
@@ -18,27 +21,26 @@
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="form-group mb-4">
-                                            <label for="exampleFormControlSelect1"><h2 style="color:white; ">
-                                                    Area</h2></label>
-                                            <select name="chosen_area_id" class="form-control" id="chosen_area_id">
-                                                <option value="0">All</option>
-                                                @foreach($areas as $area)
-                                                    <option
-                                                        value="{{$area->id}}" {{$area->id == $chosen_area ? 'selected':''}}>{{$area->province}}</option>
-                                            @endforeach
+                                        <label for="exampleFormControlSelect1"><h2 style="color:white; ">
+                                                Area</h2></label>
+                                        <select name="chosen_area_id" class="form-control" id="chosen_area_id">
+                                            <option value="0">All</option>
+                                            @foreach($areas as $area)
+                                                <option
+                                                    value="{{$area->id}}" {{$area->id == $chosen_area ? 'selected':''}}>{{$area->province}}</option>
+                                        @endforeach
 
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="form-group mb-4">
-                                            <h3>Search</h3>
-                                            <label for="exampleFormControlSelect1">Search by keyword</label>
-                                            <input value="" type="text" name="keyword" class="form-control"
-                                                   placeholder="Search by keyword">
-                                        </div>
+                                        <a href=""><i class="fa fa-search"></i></a>
+
+
+                                        <input value="" type="text" name="keyword" class="form-control"
+                                               placeholder="Search by keyword">
+
+
                                     </div>
                                     <div class="col-md-4">
                                         {{--                                            <div class="form-group">--}}
@@ -72,7 +74,7 @@
                         <div class="add-product">
                             <a href="/admin">Add TourGuide</a>
                         </div>
-                        <table >
+                        <table>
                             <tr>
                                 {{--                                <th>--}}
 
@@ -110,17 +112,29 @@
                                     </td>
 
                                     @if($item->card == 1)
-                                        <td>Active</td>
+                                        <td>
+                                            <button class="pd-setting">Co card</button>
+                                        </td>
                                     @elseif($item->card == 2)
-                                        <td>DeActice</td>
+                                        <td>
+                                            <button class="pd-setting">Ko card</button>
+                                        </td>
                                     @elseif($item->card == 3)
-                                        <td>selfDeactive</td>
+                                        <td>
+                                            <button class="pd-setting">null</button>
+                                        </td>
                                     @else
                                         <td>null</td>
                                     @endif
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
-                                    <td>{{$item->status}}</td>
+                                    <td>
+                                        <select name="status" class="form-control" >
+                                            <option value="1" {{$item->status == 1 ?? 'selected' | ''}}>Active</option>
+                                            <option value="2" {{$item->status == 2 ?? 'selected' | ''}}>DeActive</option>
+                                            <option value="3" {{$item->status == 3 ?? 'selected' | ''}}>SelfDeActive</option>
+                                        </select>
+                                    </td>
 
 
                                     <td>
@@ -192,11 +206,10 @@
                         <div class="custom-pagination">
                             {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                <li class="page-item">
+                                    {{ $list->appends(['sort' => 'votes'])->links() }}
+                                </li>
+
                             </ul>
                         </div>
                     </div>
