@@ -1059,6 +1059,7 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
             "version": "1.1.3",
             "source": {
                 "type": "git",
@@ -1069,6 +1070,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/9be3b16c877d477357c015cec057548cf9b2a14a",
                 "reference": "9be3b16c877d477357c015cec057548cf9b2a14a",
+=======
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "63cd8c14708b9544d3f61d3c15b747fda1c95c6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/63cd8c14708b9544d3f61d3c15b747fda1c95c6e",
+                "reference": "63cd8c14708b9544d3f61d3c15b747fda1c95c6e",
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 "shasum": ""
             },
             "require": {
@@ -1146,7 +1159,11 @@
                     "type": "other"
                 }
             ],
+<<<<<<< HEAD
             "time": "2020-08-23T07:39:11+00:00"
+=======
+            "time": "2020-08-18T10:57:55+00:00"
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
         },
         {
             "name": "league/mime-type-detection",

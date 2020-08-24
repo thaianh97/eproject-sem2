@@ -7,7 +7,21 @@
     <title>Dashboard V.3 | Nalika - Material Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+=======
+
+
+{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
     <!-- favicon
 		============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
@@ -63,6 +77,10 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
+<<<<<<< HEAD
+=======
+    @yield('styles')
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 </head>
 
 <body>
@@ -96,14 +114,24 @@
                     <li class="active">
                         <a class="has-arrow" href="/admin">
                             <i class="icon nalika-home icon-wrap"></i>
+<<<<<<< HEAD
                             <span class="mini-click-non">Products</span>
+=======
+                            <span class="mini-click-non">Manager</span>
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                         </a>
                         <ul class="submenu-angle" aria-expanded="false">
 
                             <li><a title="Dashboard v.3" href="/admin"><span
+<<<<<<< HEAD
                                             class="mini-sub-pro">Dashboard v.3</span></a></li>
                             <li><a title="Cameras List " href="/admin/products-list"><span
                                             class="mini-sub-pro">Cameras List</span></a></li>
+=======
+                                            class="mini-sub-pro">Money</span></a></li>
+                            <li><a title="Area " href="/admin/areas"><span
+                                            class="mini-sub-pro">Areas</span></a></li>
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 
                         </ul>
                     </li>
@@ -1080,6 +1108,37 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+        <div class="breadcome-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcomb-wp">
+                                        <div class="breadcomb-icon">
+                                            <i class="icon nalika-home"></i>
+                                        </div>
+                                        <div class="breadcomb-ctn">
+                                           @yield('title')
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcomb-report">
+                                        <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="icon nalika-download"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
         <!-- Mobile Menu end -->
         @yield('content')
         <div class="footer-copyright-area">

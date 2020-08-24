@@ -1,5 +1,6 @@
 @extends("layout.customer-layout")
 @section("content")
+<<<<<<< HEAD
     <section class="section-about">
     <div class="container">
         <div class="row">
@@ -165,4 +166,7 @@
             </div>
         </div>
     </section>
+=======
+    <p>this is about page</p>
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 @endsection
