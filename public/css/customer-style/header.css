@@ -1,4 +1,118 @@
-section#banner{
-    width: 100vw;
-    height: 100vh;
+/* RESPONSIVE SLIDE SHOW BANNER */
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+div.header {
+    width: 100%;
+    max-height: 100vh;
+    position: relative;
+}
+
+div#banner-slide {
+    width: 100%;
+    height: 100%;
+}
+
+div.carousel-inner {
+    width: 100%;
+    max-height: 100vh;
+}
+
+
+/*style header-top */
+div.header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 120px;
+    background: rgba(0,0,0, .8);
+}
+
+div.header-top {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+div.header-top-left{
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 30px;
+    /*style element inside */
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    font-size: 15px;
+    color: white;
+}
+div.header-top-right{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    height: 30px;
+    /*style element inside */
+    display: flex;
+    width: 30%;
+    font-size: 15px;
+    color: white;
+}
+a.header-link {
+    color: white;
+    display: inline-block;
+    height: 100%;
+    width: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 30px;
+}
+a.header-link:hover {
+    text-decoration: none;
+    background: white;
+    color: black;
+}
+/*header menu */
+
+div.header-menu{
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, .9);
+}
+
+ul.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+li.menu-item{
+    list-style: none;
+    display: inline-block;
+    width: 200px;
+
+}
+a.menu-item-link {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+a.menu-item-link:hover{
+    color: green;
+    text-decoration: none;
 }

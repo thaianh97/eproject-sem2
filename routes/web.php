@@ -29,8 +29,9 @@ Route::get('/test', function (){
 Route::get('/admin','ControllerByAdmin@adminHome');
 Route::get('/admin/customers','ControllerByAdmin@listCustomers');
 
-
 Route::get('/admin/tourGuides','ControllerByAdmin@listTourGuides');
+
+Route::get('/admin/areas','ControllerByAdmin@listAreas');
 
 
 

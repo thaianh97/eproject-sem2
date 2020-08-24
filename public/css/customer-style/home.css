@@ -1,0 +1,357 @@
+div.content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+div.date-form{
+    width: 100%;
+    height: 200px;
+}
+
+form#travel-date-form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.date-form-group {
+    margin: 0 30px;
+    width: 30vw;
+}
+input.date-input {
+    display: inline-block;
+    height: 40px;
+    width: 80%;
+    margin-left: 20px;
+    padding: 0 20px;
+    background-color: transparent;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    outline: none;
+    transition: .5s;
+}
+input.date-input:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+}
+
+input[type="submit"] {
+    border: none;
+    background-color: #6c5ce7;
+    color: #fff;
+    font-size: 1.2em;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, .7);
+    transition: .5s;
+}
+
+input[type="submit"]:hover {
+    background-color: #d63031;
+    transform: translateY(-5px);
+}
+
+.section-header {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 400;
+}
+
+div.outline {
+    background: url("/img/icon/icon-our.png") no-repeat center center;
+    height: 25px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+div#tourguide-container {
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+    overflow: auto;
+    min-height: 800px;
+}
+
+/*div#tourguides {*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+/*overlay effect */
+div.box {
+    width: 300px;
+    height: 300px;
+    margin: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .8);
+    background-color: black;
+    padding: 0;
+}
+
+
+.box::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transition: .5s;
+    transform: scaleX(0);
+    opacity: 0;
+    z-index: 1;
+}
+
+.box:hover::before {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.box::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    transition: .5s;
+    transform: scaleY(0);
+    opacity: 0;
+    z-index: 1;
+}
+
+.box:hover::after {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.box .box-img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.box .box-img img {
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+}
+
+.box:hover .box-img img {
+    opacity: .4;
+    transform: scale(1.2);
+}
+
+.box .box-content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+.box .box-content a.tourguide-btn {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    padding: 10px 30px;
+    box-shadow:  0 5px 10px rgba(0, 0, 0, .8);
+    top: 70px;
+    background-color: red;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    transition: .3s;
+}
+.box .box-content a.tourguide-btn:hover {
+    background-color: yellow;
+    color: black;
+}
+.box-content h1 {
+    margin-bottom: 20px;
+    padding: 0;
+    color: #fff;
+    transform: translateY(-50px);
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.box .box-content>p {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    transition: .5s;
+    transform: translateY(50px);
+    opacity: 0;
+    visibility: hidden;
+}
+.box .box-content>a {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    transition: .5s;
+    transform: translateY(50px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.box:hover .box-content>h1 {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+.box:hover .box-content>p {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.box:hover .box-content>a.tourguide-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    text-decoration: none;
+}
+.box .box-content {
+    font-size: 16px;
+}
+.box .box-content a.tourguide-btn {
+    top: 10px;
+    font-size: 14px;
+}
+.box .box-content h1 {
+    font-size: 20px;
+}
+/* about us */
+div#about-us{
+    margin-top: 50px;
+    width: 100%;
+}
+
+div.about-us-content {
+    font-size: 18px;
+    color: #333;
+    font-weight: 300;
+    padding-right: 50px;
+    line-height: 1.6;
+    width: 80%;
+    margin: 0 auto;
+}
+div.about-us-content p {
+    margin-bottom: 30px;
+}
+div.line {
+    width: 100px;
+    background: #8e7037;
+    height: 2px;
+    margin: 40px auto;
+}
+/* about us image */
+div.about-us-image-container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    height: 425px;
+}
+
+div.about-us-image-left{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+div.about-us-image-right{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+div.about-us-image-center {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* hide left and right about us image when scrren <= 992 px */
+@media only screen and (max-width: 992px) {
+    div.about-us-image-left{
+        display: none;
+    }
+    div.about-us-image-right{
+        display: none;
+    }
+}
+
+/* events */
+div#events {
+    width: 100%;
+    margin-top: 50px;
+}
+
+div.events-images-container {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    height: 900px;
+
+}
+div.events-image-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 670px;
+    height: 900px;
+    overflow: hidden;
+}
+
+div.events-images-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 670px;
+    height: 900px;
+}
+
+div.events-images-top {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+
+div.events-images-top>img {
+    height: 420px;
+    width: 600px;
+}
+
+div.events-images-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 44px;
+    width: 100%;
+}
+div.events-images-bottom>img {
+    height: 420px;
+    width: 600px;
+}
+
+div#location {
+    width: 100%;
+    margin-top:  50px;
+
+}
+div#location iframe {
+    width: 100%;
+}
