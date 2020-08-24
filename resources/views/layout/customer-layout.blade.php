@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Datedropper jquery plugin -->
+    <script src="/js/datedropper/datedropper.pro.min.js"></script>
+    <!-- owl.carousel CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.transitions.css')}}">
+
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -20,6 +28,8 @@
     <link rel="stylesheet" href="{{asset("css/customer-style/header.css")}}">
     <!-- STYLE FOR FOOTER-->
     <link rel="stylesheet" href="{{asset("css/customer-style/footer.css")}}">
+    <!-- STYLE FOR HOME PAGE -->
+    <link rel="stylesheet" href="{{asset("css/customer-style/home.css")}}">
     <title>{{config('app.name', 'tour guide')}}</title>
 </head>
 <body>
@@ -31,6 +41,9 @@
 
 
 
+<!-- owl.carousel JS
+        ============================================ -->
+<script src="{{asset('js/owl.carousel.min.js')}}"></script>
 
 <!-- HEADER SCRIPTS -->
 <script src ="{{asset("js/header.js")}}"></script>
