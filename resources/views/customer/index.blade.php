@@ -1,5 +1,8 @@
 @extends("layout.customer-layout")
 @section("content")
+<<<<<<< HEAD
+    <p>this is index</p>
+=======
     <div class="content">
         <div class="date-form">
             <form action="#" method="get" id="travel-date-form">
@@ -157,4 +160,5 @@
         </script>
 
     </div>
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 @endsection

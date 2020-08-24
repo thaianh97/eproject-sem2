@@ -17,7 +17,10 @@ class CreateAreasTable extends Migration
             $table->id();
             $table->string('province');
             $table->string('region'); // Bắc, Trung, Nam
+<<<<<<< HEAD
+=======
             $table->integer('status'); // 1. Active | 2. Deactive
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
             $table->timestamps();
         });
     }
