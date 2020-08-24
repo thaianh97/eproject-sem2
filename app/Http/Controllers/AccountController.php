@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Admin;
 use App\Customer;
+<<<<<<< HEAD
+=======
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -89,6 +92,26 @@ class AccountController extends Controller
 
     public function login()
     {
+<<<<<<< HEAD
+        return view('test.login');
+    }
+
+    public function processLogin(Request $request) // hàm đăng nhập của khách
+    {
+        // validate tài khoản đăng nhập của người dùng
+        $account = Account::query();
+        $username = $request->get('username');
+        $password = $request->get('password');
+        $exist_account = $account->where('username', '=', $username)->where('password', '=', $password)
+            ->where('status', '=', 1)->first();
+        $currentAccount = $exist_account[0]->get();
+
+        // kiểm tra id của người dùng
+        $customer = Customer::query();
+        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
+        $currentCustomer = $stuff[0]->get();
+        return view('login success!')->with($currentCustomer);
+=======
         return view('customer.login');
     }
 
@@ -115,10 +138,18 @@ class AccountController extends Controller
 //        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
 //        $currentCustomer = $stuff[0]->get();
 //        return view('login success!')->with($currentCustomer);
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
     }
 
     public function register()
     {
+<<<<<<< HEAD
+        return view('test.register');
+    }
+
+    public function processRegister(Request $request)
+    {
+=======
         return view('customer.register');
     }
 
@@ -128,12 +159,29 @@ class AccountController extends Controller
         $data['username'] = '';
         $data['password'] = '';
         $request->validated();
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
         $account = new Account();
         $account->username = $request->get('username');
         $account->email = $request->get('email');
         $password = $request->get('password');
         $account->salt = $this->generateRandomString(6);
         $account->password_hash = md5($password . $account->salt);
+<<<<<<< HEAD
+        $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
+        $account->status = 1;
+        $account->save();
+        if($request->role = 1){
+            $customer = new Customer();
+            $customer->email = $request->get('email');
+            $customer->phone = $request->get('phone');
+            $customer->full_name = $request->get('full_name');
+            $customer->account_id = $request->get('account_id');
+            $customer->save();
+        }
+        if($request->role = 2){
+            echo 'tour guide register';
+        }
+=======
 //        $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->role = 1;
         $account->status = 1;
@@ -152,6 +200,7 @@ class AccountController extends Controller
 //        if($request->role = 2){
 //            echo 'tour guide register';
 //        }
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
     }
 
     function generateRandomString($length = 10)

@@ -20,7 +20,10 @@ class AreaSeeder extends Seeder
                 'id' => 1,
                 'province' => 'Hà Nội',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -28,7 +31,10 @@ class AreaSeeder extends Seeder
                 'id' => 2,
                 'province' => 'Hà Tây',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -36,7 +42,10 @@ class AreaSeeder extends Seeder
                 'id' => 3,
                 'province' => 'Vĩnh Phúc',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -44,7 +53,10 @@ class AreaSeeder extends Seeder
                 'id' => 4,
                 'province' => 'Bắc Ninh',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -52,7 +64,10 @@ class AreaSeeder extends Seeder
                 'id' => 5,
                 'province' => 'Hưng yên',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -60,7 +75,10 @@ class AreaSeeder extends Seeder
                 'id' => 6,
                 'province' => 'Hà Nam',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -68,7 +86,10 @@ class AreaSeeder extends Seeder
                 'id' => 7,
                 'province' => 'Hải Dương',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -76,7 +97,10 @@ class AreaSeeder extends Seeder
                 'id' => 8,
                 'province' => 'Hải Phòng',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -84,7 +108,10 @@ class AreaSeeder extends Seeder
                 'id' => 9,
                 'province' => 'Thái Bình',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -92,7 +119,10 @@ class AreaSeeder extends Seeder
                 'id' => 10,
                 'province' => 'Nam Định',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -100,7 +130,10 @@ class AreaSeeder extends Seeder
                 'id' => 11,
                 'province' => 'Ninh Bình',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -108,7 +141,10 @@ class AreaSeeder extends Seeder
                 'id' => 12,
                 'province' => 'Lai Châu',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -116,7 +152,10 @@ class AreaSeeder extends Seeder
                 'id' => 13,
                 'province' => 'Lào Cai',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -124,7 +163,10 @@ class AreaSeeder extends Seeder
                 'id' => 14,
                 'province' => 'Yên Bái',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -132,7 +174,10 @@ class AreaSeeder extends Seeder
                 'id' => 15,
                 'province' => 'Điện Biên',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -140,7 +185,10 @@ class AreaSeeder extends Seeder
                 'id' => 16,
                 'province' => 'Sơn La',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -148,7 +196,10 @@ class AreaSeeder extends Seeder
                 'id' => 17,
                 'province' => 'Hoà Bình',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -156,7 +207,10 @@ class AreaSeeder extends Seeder
                 'id' => 18,
                 'province' => 'Hà Giang',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -164,7 +218,10 @@ class AreaSeeder extends Seeder
                 'id' => 19,
                 'province' => 'Cao Bằng',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -172,7 +229,10 @@ class AreaSeeder extends Seeder
                 'id' => 20,
                 'province' => 'Tuyên Quang',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -180,7 +240,10 @@ class AreaSeeder extends Seeder
                 'id' => 21,
                 'province' => 'Bắc Kạn',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -188,7 +251,10 @@ class AreaSeeder extends Seeder
                 'id' => 22,
                 'province' => 'Lạng Sơn',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -196,7 +262,10 @@ class AreaSeeder extends Seeder
                 'id' => 23,
                 'province' => 'Thái Nguyên',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -204,7 +273,10 @@ class AreaSeeder extends Seeder
                 'id' => 24,
                 'province' => 'Bắc Giang',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -212,7 +284,10 @@ class AreaSeeder extends Seeder
                 'id' => 25,
                 'province' => 'Quảng Ninh',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -220,7 +295,10 @@ class AreaSeeder extends Seeder
                 'id' => 26,
                 'province' => 'Phú Thọ',
                 'region' => 'Bắc',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -228,7 +306,10 @@ class AreaSeeder extends Seeder
                 'id' => 27,
                 'province' => 'Thanh Hoá',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -236,7 +317,10 @@ class AreaSeeder extends Seeder
                 'id' => 28,
                 'province' => 'Nghệ An',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -244,7 +328,10 @@ class AreaSeeder extends Seeder
                 'id' => 29,
                 'province' => 'Hà Tĩnh',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -252,7 +339,10 @@ class AreaSeeder extends Seeder
                 'id' => 30,
                 'province' => 'Quảng Bình',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -260,7 +350,10 @@ class AreaSeeder extends Seeder
                 'id' => 31,
                 'province' => 'Quảng Trị',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -268,7 +361,10 @@ class AreaSeeder extends Seeder
                 'id' => 32,
                 'province' => 'Thừa Thiên Huế',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -276,7 +372,10 @@ class AreaSeeder extends Seeder
                 'id' => 33,
                 'province' => 'Đà Nẵng',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -284,7 +383,10 @@ class AreaSeeder extends Seeder
                 'id' => 34,
                 'province' => 'Quảng Nam',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -292,7 +394,10 @@ class AreaSeeder extends Seeder
                 'id' => 35,
                 'province' => 'Quảng Ngãi',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -300,7 +405,10 @@ class AreaSeeder extends Seeder
                 'id' => 36,
                 'province' => 'Bình Định',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -308,7 +416,10 @@ class AreaSeeder extends Seeder
                 'id' => 37,
                 'province' => 'Phú Yên',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -316,7 +427,10 @@ class AreaSeeder extends Seeder
                 'id' => 38,
                 'province' => 'Khánh Hoà',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -324,7 +438,10 @@ class AreaSeeder extends Seeder
                 'id' => 39,
                 'province' => 'Ninh Thuận',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -332,7 +449,10 @@ class AreaSeeder extends Seeder
                 'id' => 40,
                 'province' => 'Bình Thuận',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -340,7 +460,10 @@ class AreaSeeder extends Seeder
                 'id' => 41,
                 'province' => 'Gia Lai',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -348,7 +471,10 @@ class AreaSeeder extends Seeder
                 'id' => 42,
                 'province' => 'Kon Tum',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -356,7 +482,10 @@ class AreaSeeder extends Seeder
                 'id' => 43,
                 'province' => 'Đắk Lắk',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -364,7 +493,10 @@ class AreaSeeder extends Seeder
                 'id' => 44,
                 'province' => 'Đắk Nông',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -372,7 +504,10 @@ class AreaSeeder extends Seeder
                 'id' => 45,
                 'province' => 'Lâm Đồng',
                 'region' => 'Trung',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -380,7 +515,10 @@ class AreaSeeder extends Seeder
                 'id' => 46,
                 'province' => 'Hồ Chí Minh',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -388,7 +526,10 @@ class AreaSeeder extends Seeder
                 'id' => 47,
                 'province' => 'Bình Dương',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -396,7 +537,10 @@ class AreaSeeder extends Seeder
                 'id' => 48,
                 'province' => 'Bình Phước',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -404,7 +548,10 @@ class AreaSeeder extends Seeder
                 'id' => 49,
                 'province' => 'Tây Ninh',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -412,7 +559,10 @@ class AreaSeeder extends Seeder
                 'id' => 50,
                 'province' => 'Đồng Nai',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -420,7 +570,10 @@ class AreaSeeder extends Seeder
                 'id' => 51,
                 'province' => 'Bà Rịa Vũng Tàu',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -428,7 +581,10 @@ class AreaSeeder extends Seeder
                 'id' => 52,
                 'province' => 'Long An',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -436,7 +592,10 @@ class AreaSeeder extends Seeder
                 'id' => 53,
                 'province' => 'Đồng Tháp',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -444,7 +603,10 @@ class AreaSeeder extends Seeder
                 'id' => 54,
                 'province' => 'Tiền Giang',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -452,7 +614,10 @@ class AreaSeeder extends Seeder
                 'id' => 55,
                 'province' => 'Bến Tre',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -460,7 +625,10 @@ class AreaSeeder extends Seeder
                 'id' => 56,
                 'province' => 'An Giang',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -468,7 +636,10 @@ class AreaSeeder extends Seeder
                 'id' => 57,
                 'province' => 'Cần Thơ',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -476,7 +647,10 @@ class AreaSeeder extends Seeder
                 'id' => 58,
                 'province' => 'Vĩnh Long',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -484,7 +658,10 @@ class AreaSeeder extends Seeder
                 'id' => 59,
                 'province' => 'Trà Vinh',
                 'region' => '',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -492,7 +669,10 @@ class AreaSeeder extends Seeder
                 'id' => 60,
                 'province' => 'Kiên Giang',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -500,7 +680,10 @@ class AreaSeeder extends Seeder
                 'id' => 61,
                 'province' => 'Hậu Giang',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -508,7 +691,10 @@ class AreaSeeder extends Seeder
                 'id' => 62,
                 'province' => 'Sóc Trăng',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -516,7 +702,10 @@ class AreaSeeder extends Seeder
                 'id' => 63,
                 'province' => 'Bạc Liêu',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
@@ -524,7 +713,10 @@ class AreaSeeder extends Seeder
                 'id' => 64,
                 'province' => 'Cà Mau',
                 'region' => 'Nam',
+<<<<<<< HEAD
+=======
                 'status' => 1,
+>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],

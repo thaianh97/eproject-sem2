@@ -1,3 +1,4 @@
+
 <div class="header">
     <div class="header-container">
         <!--HEADER TOP-->
@@ -16,7 +17,7 @@
                 <a href="" class="header-link">
                     <span><i class="fa fa-instagram" aria-hidden="true"></i></span>
                 </a>
-                <a href="#" class="header-link">Login</a>
+                <a href="/login" class="header-link">Login</a>
                 <a href="#" class="header-link">Register</a>
             </div>
         </div> <!-- END HEADER TOP-->

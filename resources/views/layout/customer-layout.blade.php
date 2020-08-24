@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- general style -->
-    <link rel="stylesheet" href="css/customer-style/general.css">
+    <link rel="stylesheet" href="/css/customer-style/general.css">
     <!--  CSS for header
     ============================================ -->
     <link rel="stylesheet" href="{{asset("css/customer-style/header.css")}}">
@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="{{asset("css/customer-style/footer.css")}}">
     <!-- STYLE FOR HOME PAGE -->
     <link rel="stylesheet" href="{{asset("css/customer-style/home.css")}}">
-    <title>{{config('app.name', 'tour guide')}}</title>
 </head>
 <body>
 
@@ -38,8 +37,6 @@
 @include("inc/header")
 @yield("content")
 @include("inc/footer")
-
-
 
 <!-- owl.carousel JS
         ============================================ -->
