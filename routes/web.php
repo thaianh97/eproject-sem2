@@ -29,16 +29,15 @@ Route::get('/test', function (){
 Route::get('/admin','ControllerByAdmin@adminHome');
 Route::get('/admin/customers','ControllerByAdmin@listCustomers');
 
-<<<<<<< HEAD
+
 
 Route::get('/admin/tourGuides','ControllerByAdmin@listTourGuides');
 
-=======
 Route::get('/admin/tourGuides','ControllerByAdmin@listTourGuides');
 
 Route::get('/admin/areas','ControllerByAdmin@listAreas');
 
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
 
 
 //route to navigate the web site
@@ -49,12 +48,10 @@ Route::get("/login", "CustomerPageController@login");
 //tset mail
 Route::get('/test','ControllerByAdmin@sendMail');
 
-<<<<<<< HEAD
 
-=======
 // Login & register
-Route::get('/login', 'AccountController@login');
-Route::post('/login', 'AccountController@processLogin');
-Route::get('/register', 'AccountController@register');
-Route::post('/register', 'AccountController@processRegister');
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+//Route::get('/login', 'AccountController@login');
+//Route::post('/login', 'AccountController@processLogin');
+//Route::get('/register', 'AccountController@register');
+//Route::post('/register', 'AccountController@processRegister');
+

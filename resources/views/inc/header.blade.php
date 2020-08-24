@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-<p>this is header</p>
-=======
+
 <div class="header">
     <div class="header-container">
         <!--HEADER TOP-->
@@ -88,4 +86,3 @@
 
 
 
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f

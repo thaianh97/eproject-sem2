@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-section#banner{
+
+section#banner {
     width: 100vw;
     height: 100vh;
-=======
+}
 /* RESPONSIVE SLIDE SHOW BANNER */
 body{
     margin: 0;
@@ -120,5 +120,5 @@ a.menu-item-link {
 a.menu-item-link:hover{
     color: green;
     text-decoration: none;
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
 }
