@@ -130,6 +130,7 @@ class AccountController extends Controller
         $request->validated();
         $account = new Account();
         $account->username = $request->get('username');
+        $account->email = $request->get('email');
         $password = $request->get('password');
         $account->salt = $this->generateRandomString(6);
         $account->password_hash = md5($password . $account->salt);
