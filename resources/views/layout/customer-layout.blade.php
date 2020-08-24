@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="{{asset("css/customer-style/footer.css")}}">
     <!-- STYLE FOR HOME PAGE -->
     <link rel="stylesheet" href="{{asset("css/customer-style/home.css")}}">
-    <title>{{config('app.name', 'tour guide')}}</title>
 </head>
 <body>
 

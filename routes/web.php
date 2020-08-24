@@ -38,7 +38,7 @@ Route::get('/admin/areas','ControllerByAdmin@listAreas');
 //route to navigate the web site
 Route::get("/", "CustomerPageController@index");
 Route::get("/about", "CustomerPageController@about");
-
+Route::get("/login", "CustomerPageController@login");
 
 //tset mail
 Route::get('/test','ControllerByAdmin@sendMail');

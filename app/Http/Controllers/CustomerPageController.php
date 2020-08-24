@@ -15,4 +15,8 @@ class CustomerPageController extends Controller
     public function about() {
         return view("customer/about");
     }
+
+    public function login() {
+        return view("auth/login");
+    }
 }
