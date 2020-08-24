@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
 use App\Customer;
 use App\Http\Controllers\Controller;
 use App\TourGuide;
@@ -28,6 +29,20 @@ class ControllerByAdmin extends Controller
             ->with($data);
     }
 
+    public function listAreas()
+    {
+        $data = array();
+
+        $data['listTrung'] = Area::query()->where('region', '=', 'Trung')->get();
+
+        $data['listBac'] = Area::query()->where('region', '=', 'Bắc')->get();
+
+        $data['listNam'] = Area::query()->where('region', '=', 'Nam')->get();
+        return view('admin.areas-manager')
+            ->with($data);
+    }
+
+
     public function sendMail()
     {
         $data = array(
@@ -53,6 +68,7 @@ class ControllerByAdmin extends Controller
         $areas = DB::table('areas')->get();
         $tourGuide_list = TourGuide::query();
 
+
         // lọc theo areas
         if ($request->has('chosen_area_id') && $request->get('chosen_area_id') != 0) {
             $data['chosen_area'] = $request->get('chosen_area_id');
@@ -60,14 +76,14 @@ class ControllerByAdmin extends Controller
             $list_an_area = $tourGuide_areas->where('area_id', '!=', $request->get('chosen_area_id'))->get();
 
 
-            foreach($list_an_area as $item){
-                $tourGuide_list = $tourGuide_list->where('id', '!=', $item->guide_id);
+            foreach ($list_an_area as $item) {
+                $tourGuide_list = $tourGuide_list->where('id', '!=', $item->guide_id)->paginate(15);
             }
         }
 
-        if ($request->has('keyword') && strlen($request->get('keyword')) > 0 ) {
+        if ($request->has('keyword') && strlen($request->get('keyword')) > 0) {
             $data['keyword'] = $request->get('keyword');
-            $tourGuide_list = $tourGuide_list->where('full_name', 'like', '%' . $request->get('keyword') . '%');
+            $tourGuide_list = $tourGuide_list->where('full_name', 'like', '%' . $request->get('keyword') . '%')->paginate(15);
 //            $tourGuide_list = $tourGuide_list->where('id', 'like', '%' . $request->get('keyword') . '%');
 //            $tourGuide_list = $tourGuide_list->where('phone', 'like', '%' . $request->get('keyword') . '%');
 //            $tourGuide_list = $tourGuide_list->where('email', 'like', '%' . $request->get('keyword') . '%');
