@@ -89,7 +89,7 @@ class AccountController extends Controller
 
     public function login()
     {
-        return view('test.login');
+        return view('auth.login');
     }
 
     public function processLogin(Request $request) // hàm đăng nhập của khách
@@ -112,7 +112,7 @@ class AccountController extends Controller
 
     public function register()
     {
-        return view('test.register');
+        return view('auth.register');
     }
 
     public function processRegister(RegisterRequest $request)

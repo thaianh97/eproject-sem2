@@ -50,8 +50,8 @@ Route::get('/test','ControllerByAdmin@sendMail');
 
 
 // Login & register
-Route::get('/login', 'AccountController@login');
-Route::post('/login', 'AccountController@processLogin');
-Route::get('/register', 'AccountController@register');
-Route::post('/register', 'AccountController@processRegister');
+//Route::get('/login', 'AccountController@login');
+//Route::post('/login', 'AccountController@processLogin');
+//Route::get('/register', 'AccountController@register');
+//Route::post('/register', 'AccountController@processRegister');
 
