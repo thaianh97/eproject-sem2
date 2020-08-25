@@ -45,13 +45,13 @@ Route::get("/", "CustomerPageController@index");
 Route::get("/about", "CustomerPageController@about");
 Route::get("/login", "CustomerPageController@login");
 
-//tset mail
+//test mail
 Route::get('/test','ControllerByAdmin@sendMail');
 
 
 // Login & register
-//Route::get('/login', 'AccountController@login');
-//Route::post('/login', 'AccountController@processLogin');
-//Route::get('/register', 'AccountController@register');
-//Route::post('/register', 'AccountController@processRegister');
+Route::get('/login', 'AccountController@login');
+Route::post('/login', 'AccountController@processLogin');
+Route::get('/register', 'AccountController@register');
+Route::post('/register', 'AccountController@processRegister');
 
