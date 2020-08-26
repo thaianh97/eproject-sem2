@@ -139,7 +139,6 @@ class AccountController extends Controller
 ////        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
 ////        $currentCustomer = $stuff[0]->get();
 ////        return view('login success!')->with($currentCustomer);
-//>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 //    }
 
 
