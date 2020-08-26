@@ -44,6 +44,8 @@ Route::get('/admin/areas','ControllerByAdmin@listAreas');
 Route::get("/", "CustomerPageController@index");
 Route::get("/about", "CustomerPageController@about");
 Route::get("/login", "CustomerPageController@login");
+Route::get("/register", "CustomerPageController@register");
+Route::get("/contact", "CustomerPageController@contact");
 
 //tset mail
 Route::get('/test','ControllerByAdmin@sendMail');

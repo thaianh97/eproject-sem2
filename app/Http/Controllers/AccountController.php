@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Admin;
 use App\Customer;
-<<<<<<< HEAD
-=======
+
+
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -92,7 +92,7 @@ class AccountController extends Controller
 
     public function login()
     {
-<<<<<<< HEAD
+
         return view('test.login');
     }
 
@@ -111,47 +111,42 @@ class AccountController extends Controller
         $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
         $currentCustomer = $stuff[0]->get();
         return view('login success!')->with($currentCustomer);
-=======
         return view('customer.login');
     }
 
-    public function processLogin(LoginRequest $request) // hàm đăng nhập của khách
-    {
-        // validate tài khoản đăng nhập của người dùng
-        $username = $request->get('username');
-        $password = $request->get('password');
-        $exist_account = Account::where('username', '=', $username)->where('status', '=', 1)->first();
-//        $exist_account = $accounts[0]->get();
-//        dd($exist_account);
-        if ($exist_account == null || $exist_account->status == 0) {
-            return 'invalid account';
-        }
-        if ($exist_account->password_hash == md5($password . $exist_account->salt)) {
-            // kiểm tra trong db.
-            $session = $request->session();
-            $session->put('username', $exist_account->username);
-            return 'Okie!';
-        }
-
-//        // kiểm tra id của người dùng
-//        $customer = Customer::query();
-//        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
-//        $currentCustomer = $stuff[0]->get();
-//        return view('login success!')->with($currentCustomer);
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
-    }
+//    public function processLogin(LoginRequest $request) // hàm đăng nhập của khách
+//    {
+//        // validate tài khoản đăng nhập của người dùng
+//        $username = $request->get('username');
+//        $password = $request->get('password');
+//        $exist_account = Account::where('username', '=', $username)->where('status', '=', 1)->first();
+////        $exist_account = $accounts[0]->get();
+////        dd($exist_account);
+//        if ($exist_account == null || $exist_account->status == 0) {
+//            return 'invalid account';
+//        }
+//        if ($exist_account->password_hash == md5($password . $exist_account->salt)) {
+//            // kiểm tra trong db.
+//            $session = $request->session();
+//            $session->put('username', $exist_account->username);
+//            return 'Okie!';
+//        }
+//
+////        // kiểm tra id của người dùng
+////        $customer = Customer::query();
+////        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
+////        $currentCustomer = $stuff[0]->get();
+////        return view('login success!')->with($currentCustomer);
+//>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+//    }
 
     public function register()
     {
-<<<<<<< HEAD
+
         return view('test.register');
     }
 
-    public function processRegister(Request $request)
-    {
-=======
-        return view('customer.register');
-    }
+
 
     public function processRegister(RegisterRequest $request)
     {
@@ -159,13 +154,13 @@ class AccountController extends Controller
         $data['username'] = '';
         $data['password'] = '';
         $request->validated();
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
         $account = new Account();
         $account->username = $request->get('username');
         $password = $request->get('password');
         $account->salt = $this->generateRandomString(6);
         $account->password_hash = md5($password . $account->salt);
-<<<<<<< HEAD
+
         $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->status = 1;
         $account->save();
@@ -180,7 +175,7 @@ class AccountController extends Controller
         if($request->role = 2){
             echo 'tour guide register';
         }
-=======
+
 //        $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->role = 1;
         $account->status = 1;
@@ -199,7 +194,7 @@ class AccountController extends Controller
 //        if($request->role = 2){
 //            echo 'tour guide register';
 //        }
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
     }
 
     function generateRandomString($length = 10)
