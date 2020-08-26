@@ -25,6 +25,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'username' => 'bail|required|min:6',
+            'email' => 'bail|required',
             'password' => 'bail|required|min:8',
             'confirm_password' => 'bail|required|same:password',
         ];
@@ -35,6 +36,7 @@ class RegisterRequest extends FormRequest
         return [
             'username.required' => 'Please insert your username!',
             'username.min' => 'Username too short!',
+            'email.required' => 'Please insert your email!',
             'password.required' => 'Please insert your password!',
             'password.min' => 'Password too short!',
             'confirm_password.same' => 'Password does not match!',

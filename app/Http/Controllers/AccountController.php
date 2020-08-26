@@ -7,6 +7,7 @@ use App\Admin;
 use App\Customer;
 
 
+
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 
@@ -93,7 +94,8 @@ class AccountController extends Controller
     public function login()
     {
 
-        return view('test.login');
+        return view('auth.login');
+
     }
 
     public function processLogin(Request $request) // hàm đăng nhập của khách
@@ -111,7 +113,7 @@ class AccountController extends Controller
         $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
         $currentCustomer = $stuff[0]->get();
         return view('login success!')->with($currentCustomer);
-        return view('customer.login');
+
     }
 
 //    public function processLogin(LoginRequest $request) // hàm đăng nhập của khách
@@ -140,12 +142,15 @@ class AccountController extends Controller
 //>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 //    }
 
+
+
+
+
+
     public function register()
     {
-
-        return view('test.register');
+        return view('auth.register');
     }
-
 
 
     public function processRegister(RegisterRequest $request)
@@ -155,8 +160,11 @@ class AccountController extends Controller
         $data['password'] = '';
         $request->validated();
 
+
+
         $account = new Account();
         $account->username = $request->get('username');
+        $account->email = $request->get('email');
         $password = $request->get('password');
         $account->salt = $this->generateRandomString(6);
         $account->password_hash = md5($password . $account->salt);
@@ -164,17 +172,19 @@ class AccountController extends Controller
         $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->status = 1;
         $account->save();
-        if($request->role = 1){
+        if ($request->role = 1) {
             $customer = new Customer();
             $customer->email = $request->get('email');
             $customer->phone = $request->get('phone');
             $customer->full_name = $request->get('full_name');
             $customer->account_id = $request->get('account_id');
             $customer->save();
+            return redirect('/login')->with($data);
         }
-        if($request->role = 2){
+        if ($request->role = 2) {
             echo 'tour guide register';
         }
+
 
 //        $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->role = 1;
@@ -194,6 +204,7 @@ class AccountController extends Controller
 //        if($request->role = 2){
 //            echo 'tour guide register';
 //        }
+
 
     }
 

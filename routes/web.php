@@ -47,7 +47,7 @@ Route::get("/login", "CustomerPageController@login");
 Route::get("/register", "CustomerPageController@register");
 Route::get("/contact", "CustomerPageController@contact");
 
-//tset mail
+//test mail
 Route::get('/test','ControllerByAdmin@sendMail');
 
 
