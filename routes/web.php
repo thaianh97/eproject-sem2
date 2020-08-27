@@ -18,26 +18,25 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
-
-Route::get('/test', function (){
-   return view(('layout.admin-layout'));
+Route::get('/test', function () {
+    return view(('layout.admin-layout'));
 });
 
 // admin route
-Route::get('/admin','ControllerByAdmin@adminHome');
-Route::get('/admin/customers','ControllerByAdmin@listCustomers');
+Route::get('/admin', 'ControllerByAdmin@adminHome');
+Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
 
+Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
 
-Route::get('/admin/tourGuides','ControllerByAdmin@listTourGuides');
+Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
 
-Route::get('/admin/tourGuides','ControllerByAdmin@listTourGuides');
-
-Route::get('/admin/areas','ControllerByAdmin@listAreas');
-
-
+Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 
 
 //route to navigate the web site
@@ -48,7 +47,7 @@ Route::get("/register", "CustomerPageController@register");
 Route::get("/contact", "CustomerPageController@contact");
 
 //test mail
-Route::get('/test','ControllerByAdmin@sendMail');
+Route::get('/test', 'ControllerByAdmin@sendMail');
 
 
 // Login & register

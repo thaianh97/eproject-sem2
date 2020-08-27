@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Area;
-
 use App\Customer;
 use App\Http\Controllers\Controller;
 use App\TourGuide;
@@ -30,7 +28,6 @@ class ControllerByAdmin extends Controller
             ->with($data);
     }
 
-
     public function listAreas()
     {
         $data = array();
@@ -41,7 +38,6 @@ class ControllerByAdmin extends Controller
             ->with($data);
     }
 
-
     public function listTourGuides(Request $request)
     {
         $data = array();
@@ -49,18 +45,12 @@ class ControllerByAdmin extends Controller
         $data['keyword'] = '';
         $areas = DB::table('areas')->get();
         $tourGuide_list = TourGuide::query();
-
-
         // lọc theo areas
         if ($request->has('chosen_area_id') && $request->get('chosen_area_id') != 0) {
             $data['chosen_area'] = $request->get('chosen_area_id');
             $tourGuide_areas = TourGuideArea::query();
             $list_an_area = $tourGuide_areas->where('area_id', '!=', $request->get('chosen_area_id'))->get();
-
-
             foreach ($list_an_area as $item) {
-
-
                 $tourGuide_list = $tourGuide_list->where('id', '!=', $item->guide_id);
             }
             if ($request->has('keyword') && strlen($request->get('keyword')) > 0) {
@@ -76,7 +66,6 @@ class ControllerByAdmin extends Controller
             return view('admin.tourGuides-manager')->with($data);
         }
 
-
         if ($request->has('keyword') && strlen($request->get('keyword')) > 0) {
 
             $data['keyword'] = $request->get('keyword');
@@ -86,9 +75,7 @@ class ControllerByAdmin extends Controller
 //            $tourGuide_list = $tourGuide_list->where('email', 'like', '%' . $request->get('keyword') . '%');
         }
 
-
         $data['list'] = $tourGuide_list->paginate(10);
-
         $data['areas'] = $areas;
         return view('admin.tourGuides-manager')
             ->with($data);
