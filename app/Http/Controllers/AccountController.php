@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Admin;
 use App\Customer;
-
-
-
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 
@@ -93,9 +90,7 @@ class AccountController extends Controller
 
     public function login()
     {
-
         return view('auth.login');
-
     }
 
     public function processLogin(Request $request) // hàm đăng nhập của khách
@@ -139,19 +134,12 @@ class AccountController extends Controller
 ////        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
 ////        $currentCustomer = $stuff[0]->get();
 ////        return view('login success!')->with($currentCustomer);
-//>>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
 //    }
-
-
-
-
-
 
     public function register()
     {
         return view('auth.register');
     }
-
 
     public function processRegister(RegisterRequest $request)
     {
@@ -159,16 +147,12 @@ class AccountController extends Controller
         $data['username'] = '';
         $data['password'] = '';
         $request->validated();
-
-
-
         $account = new Account();
         $account->username = $request->get('username');
         $account->email = $request->get('email');
         $password = $request->get('password');
         $account->salt = $this->generateRandomString(6);
         $account->password_hash = md5($password . $account->salt);
-
         $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->status = 1;
         $account->save();
@@ -184,7 +168,6 @@ class AccountController extends Controller
         if ($request->role = 2) {
             echo 'tour guide register';
         }
-
 
 //        $account->role = $request->get('role'); // hidden input tab với name = role, value = 1.
         $account->role = 1;
@@ -204,8 +187,6 @@ class AccountController extends Controller
 //        if($request->role = 2){
 //            echo 'tour guide register';
 //        }
-
-
     }
 
     function generateRandomString($length = 10)
