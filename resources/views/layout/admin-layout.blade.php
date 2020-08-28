@@ -1108,8 +1108,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
 
         <div class="breadcome-area">
             <div class="container-fluid">
@@ -1138,7 +1136,7 @@
                 </div>
             </div>
         </div>
->>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
         <!-- Mobile Menu end -->
         @yield('content')
         <div class="footer-copyright-area">
