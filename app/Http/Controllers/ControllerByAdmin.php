@@ -82,4 +82,16 @@ class ControllerByAdmin extends Controller
 
 
     }
+
+    public function deActiveTourGuide($id){
+        
+    }
+
+
+    function tourGuidesDetail($id)
+    {
+        $data = array();
+        $tourGuide = DB::table('tourGuides')->where('id', '=', $id)->first();
+
+    }
 }

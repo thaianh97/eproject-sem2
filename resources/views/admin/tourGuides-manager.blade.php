@@ -1,8 +1,8 @@
 @extends('layout.admin-layout')
-<<<<<<< HEAD
+
 @section('content')
 
-    =======
+
 
 @section('title')
 
@@ -90,7 +90,6 @@
                                 {{--                                    <span data-check-all-count>0</span>--}}
 
                                 {{--                                </th>--}}
-                                =======
                                 <h4>TourGuide List</h4>
                                 <div class="add-product">
                                     <a href="/admin">Add TourGuide</a>
@@ -156,33 +155,13 @@
                                                     <button type="button"
                                                             class="btn btn-info ">{{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
                                                 </a>
-                                                {{--                                        <select name="status" class="form-control" class="custom-select-sm">--}}
-                                                {{--                                            <option value="1" {{$item->status == 1 ?? 'selected' | ''}}><a--}}
-                                                {{--                                                    class="Primary mg-b-10" data-toggle="modal"--}}
-                                                {{--                                                    data-target="comfirmModal">  <button type="button" class="btn btn-info " data-toggle="modal"--}}
-                                                {{--                                                                                         data-target="#comfirmModal">Active</button></a>--}}
-                                                {{--                                            </option>--}}
-                                                {{--                                            <option value="2" {{$item->status == 2 ?? 'selected' | ''}}><a--}}
-                                                {{--                                                    class="Primary mg-b-10" data-toggle="modal"--}}
-                                                {{--                                                    data-target="comfirmModal"> <button type="button" class="btn btn-info " data-toggle="modal"--}}
-                                                {{--                                                                                        data-target="#comfirmModal">DeActive</button></a>--}}
-                                                {{--                                            </option>--}}
-                                                {{--                                            <option value="3" {{$item->status == 3 ?? 'selected' | ''}}><a--}}
-                                                {{--                                                    class="Primary mg-b-10" data-toggle="modal"--}}
-                                                {{--                                                    data-target="comfirmModal"><button type="button" class="btn btn-info " data-toggle="modal"--}}
-                                                {{--                                                                                       data-target="#comfirmModal">SelfDeActive</button></a>--}}
-                                                {{--                                            </option>--}}
-                                                {{--                                        </select>--}}
-
-
                                             </td>
 
 
                                             <td>
 
-                                                <a>
-                                                    <button type="button" class="btn btn-info " data-toggle="modal"
-                                                            data-target="#detailModal"><i
+                                                <a >
+                                                    <button type="button" class="btn btn-info "><i
                                                             class="fa fa-info" aria-hidden="true"></i></button>
                                                 </a>
 
@@ -313,27 +292,15 @@
 
 @section('script')
     <script>
-        <<<<<<<
-        HEAD
-        checkAll(document.querySelector('[data-check-all-container]'))
-        {
-        <
-            style >
-        .
-            breadcome - area
-            {
-                color:white;
-            }
-        <
-            /style>
-        }
 
 
-        $('#detailModal').on('shown.bs.modal', function () {
+
+        $('#detailModal').on('shown.bs.modal', 'showDetail')
+       function showDetail(){
             var title = document.getElementById('title-name');
 
             title.textContent = "hay"
-        })
+        }
 
         $('#comfirmModal').on('shown.bs.modal', function () {
 
