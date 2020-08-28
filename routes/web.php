@@ -18,19 +18,16 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-<<<<<<< HEAD
-Route::get('/test', function (){
-   return view(('admin.business'));
-=======
+
 Route::get('/test', function () {
-    return view(('layout.admin-layout'));
->>>>>>> 9fcefc60d6a618e3e30b298fb6cf18c4495b7de6
+    return view(('admin.business'));
 });
+
 
 // admin route
 Route::get('/admin', 'ControllerByAdmin@adminHome');

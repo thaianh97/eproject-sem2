@@ -179,7 +179,6 @@
                                         {{--                                    <span data-check-all-count>0</span>--}}
 
                                         {{--                                </th>--}}
-                                        >>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                                         <th>ID</th>
                                         <th>ACCOUNT_ID</th>
                                         <th>Full_name</th>
@@ -195,15 +194,10 @@
                                     </tr>
                                     @foreach($list as $item)
                                         <tr>
-                                            <<<<<<< HEAD
+
                                             {{--                                    <td class="checkbox-toggle">--}}
                                             {{--                                        <span><input type="checkbox" id="{{$item->id}}"></span>--}}
                                             {{--                                    </td>--}}
-                                            =======
-                                            {{--                                    <td class="checkbox-toggle">--}}
-                                            {{--                                        <span><input type="checkbox" id="{{$item->id}}"></span>--}}
-                                            {{--                                    </td>--}}
-                                            >>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->account_id}}</td>
                                             <td>{{$item->full_name}}</td>
@@ -211,17 +205,7 @@
                                             <td>{{$item->price}} Vnd/giờ</td>
                                             <td>{{$item->phone}}</td>
                                             <td>{{$item->email}}</td>
-                                            <<<<<<< HEAD
-                                            <td><img
-                                                    src="https://tinmoimedia.com/upload/camnhung/2020/08/17/131531-ngoc-trinh-lo-da-nhan-nheo-tm4.jpg">
-                                            </td>
-                                            <td>{{$item->card}}</td>
-                                            <td>{{$item->created_at}}</td>
-                                            <td>{{$item->updated_at}}</td>
 
-                                            <td>{{$item->status}}</td>
-                                            <td>
-                                                =======
                                             <td><img
                                                     src="https://tinmoimedia.com/upload/camnhung/2020/08/17/131531-ngoc-trinh-lo-da-nhan-nheo-tm4.jpg">
                                             </td>
@@ -277,7 +261,6 @@
                                                             data-target="#detailModal"><i
                                                             class="fa fa-info" aria-hidden="true"></i></button>
                                                 </a>
-                                                <<<<<<< HEAD
 
 
                                                 <a>
@@ -285,52 +268,17 @@
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </button>
                                                 </a>
-                                                <a>
-                                                    <button data-toggle="modal"
-                                                            data-target="#comfirmModal" title="DeActive"
-                                                            class="pd-setting-ed">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                                    =======
-                                                    >>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
-                                                    <a href="">
-                                                        <button data-toggle="tooltip" title="Edit"
-                                                                class="pd-setting-ed"><i
-                                                                class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                        </button>
-                                                    </a>
-                                                    <a href="">
-                                                        <<<<<<< HEAD
-                                                        <button data-toggle="tooltip" title="Trash"
-                                                                class="pd-setting-ed"><i
-                                                            =======
-                                                            <button data-toggle="tooltip" title="DeActive"
-                                                                    class="pd-setting-ed"><i
-                                                                >>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
-                                                                    class="fa fa-trash-o" aria-hidden="true"></i>
-                                                            </button>
-                                                            >>>>>>> 9fcefc60d6a618e3e30b298fb6cf18c4495b7de6
-                                                    </a>
+                                                <button data-toggle="modal"
+                                                        data-target="#comfirmModal" title="DeActive"
+                                                        class="pd-setting-ed">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
 
                                             </td>
                                         </tr>
-                                        <<<<<<< HEAD
+
                                     @endforeach
                                 </table>
-
-                                <div class="custom-pagination">
-                                    {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                        =======
-
-
-                            @endforeach
-                        </table>
 
                         {{--//more detail--}}
                         <div class="breadcome-area">
@@ -422,7 +370,7 @@
                                     {{ $list->appends(['sort' => 'votes'])->links() }}
                                 </li>
 
-                                >>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
                             </ul>
                         </div>
                     </div>
@@ -430,14 +378,13 @@
             </div>
         </div>
     </div>
-    <<<<<<< HEAD
-    =======
 
 
 
 
 
-    >>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
+
 @endsection
 
 @section('script')
@@ -456,23 +403,18 @@
         <
             /style>
         }
-        ======
-        =
 
 
-            $('#detailModal').on('shown.bs.modal', function () {
-                var title = document.getElementById('title-name');
+        $('#detailModal').on('shown.bs.modal', function () {
+            var title = document.getElementById('title-name');
 
-                title.textContent = "hay"
-            })
+            title.textContent = "hay"
+        })
 
         $('#comfirmModal').on('shown.bs.modal', function () {
 
         })
 
-
-        >>> >>> > 5e9
-        b928c9133babe410b3e79d3fe52647911109f
     </script>
 @endsection
 
