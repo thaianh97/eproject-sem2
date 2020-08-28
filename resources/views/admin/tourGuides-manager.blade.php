@@ -129,11 +129,29 @@
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
                                     <td>
-                                        <select name="status" class="form-control" >
-                                            <option value="1" {{$item->status == 1 ?? 'selected' | ''}}>Active</option>
-                                            <option value="2" {{$item->status == 2 ?? 'selected' | ''}}>DeActive</option>
-                                            <option value="3" {{$item->status == 3 ?? 'selected' | ''}}>SelfDeActive</option>
-                                        </select>
+                                        <a>
+                                            <button type="button"
+                                                    class="btn btn-info ">{{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
+                                        </a>
+                                        {{--                                        <select name="status" class="form-control" class="custom-select-sm">--}}
+                                        {{--                                            <option value="1" {{$item->status == 1 ?? 'selected' | ''}}><a--}}
+                                        {{--                                                    class="Primary mg-b-10" data-toggle="modal"--}}
+                                        {{--                                                    data-target="comfirmModal">  <button type="button" class="btn btn-info " data-toggle="modal"--}}
+                                        {{--                                                                                         data-target="#comfirmModal">Active</button></a>--}}
+                                        {{--                                            </option>--}}
+                                        {{--                                            <option value="2" {{$item->status == 2 ?? 'selected' | ''}}><a--}}
+                                        {{--                                                    class="Primary mg-b-10" data-toggle="modal"--}}
+                                        {{--                                                    data-target="comfirmModal"> <button type="button" class="btn btn-info " data-toggle="modal"--}}
+                                        {{--                                                                                        data-target="#comfirmModal">DeActive</button></a>--}}
+                                        {{--                                            </option>--}}
+                                        {{--                                            <option value="3" {{$item->status == 3 ?? 'selected' | ''}}><a--}}
+                                        {{--                                                    class="Primary mg-b-10" data-toggle="modal"--}}
+                                        {{--                                                    data-target="comfirmModal"><button type="button" class="btn btn-info " data-toggle="modal"--}}
+                                        {{--                                                                                       data-target="#comfirmModal">SelfDeActive</button></a>--}}
+                                        {{--                                            </option>--}}
+                                        {{--                                        </select>--}}
+
+
                                     </td>
 
 
@@ -141,17 +159,22 @@
 
                                         <a>
                                             <button type="button" class="btn btn-info " data-toggle="modal"
-                                                    data-target="#myModal"><i
+                                                    data-target="#detailModal"><i
                                                     class="fa fa-info" aria-hidden="true"></i></button>
                                         </a>
-                                        <a href="">
+
+
+                                        <a>
                                             <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                         </a>
-                                        <a href="">
-                                            <button data-toggle="tooltip" title="DeActive" class="pd-setting-ed"><i
-                                                    class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                        <a>
+                                            <button data-toggle="modal"
+                                                    data-target="#comfirmModal" title="DeActive" class="pd-setting-ed">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </a>
+
+
                                     </td>
                                 </tr>
 
@@ -161,21 +184,21 @@
 
                         {{--//more detail--}}
                         <div class="breadcome-area">
-                            <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal fade" id="detailModal" role="dialog">
                                 <div class="container">
                                     <div class="modal-dialog modal-dialog-scrollable">
 
                                         <!-- Modal content-->
-                                        <div class="modal-content">
+                                        <div class="product-status-wrap" class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;
                                                 </button>
-                                                <h4 class="modal-title">Modal Header</h4>
+                                                <h4 class="modal-title" id="title-name">  TourGuide
+                                                    detail</h4>
                                             </div>
                                             <div class="product-status-wrap">
+
                                                 <div class="modal-body">
-
-
                                                     <table>
                                                         <tr>
 
@@ -192,7 +215,7 @@
                                                     </table>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
                                                         Close
                                                     </button>
                                                 </div>
@@ -203,6 +226,45 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        {{--                        deactive comfirm--}}
+                        <div class="breadcome-area">
+                            <div class="modal fade" id="comfirmModal" role="dialog">
+                                <div class="container">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+
+                                        <!-- Modal content-->
+                                        <div class="product-status-wrap" class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;
+                                                </button>
+                                                <h4 class="modal-title">TourGuide DeActive comfirm</h4>
+                                            </div>
+                                            <div class="product-status-wrap">
+
+                                                <div class="modal-body">
+                                                    <h2 class="text-warning">DeActive this tourGuide?</h2>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button  type="submit" class="btn btn-danger" data-dismiss="modal"
+                                                            id="do-deactive">
+                                                        DeActive
+                                                    </button>
+                                                    <button type="button" class="btn btn-close btn-primary"
+                                                            data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="custom-pagination">
                             {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
                             <ul class="pagination">
@@ -227,11 +289,17 @@
 @section('script')
     <script>
 
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
+
+        $('#detailModal').on('shown.bs.modal', function () {
+            var title = document.getElementById('title-name');
+
+            title.textContent = "hay"
         })
 
-        // document.querySelector("#gridSystemModal")
+        $('#comfirmModal').on('shown.bs.modal', function () {
+
+        })
+
 
     </script>
 @endsection

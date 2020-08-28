@@ -58,12 +58,12 @@
                                                                         @foreach($listBac as $item)
                                                                             <tr>
                                                                                 <td class="checkbox-toggle">
-                                                                                    <input type="checkbox"
-                                                                                           id="{{$item->id}}">
+                                                                                    <button data-toggle="modal" data-target="#myModal"><input  type="checkbox"
+                                                                                                                                               id="{{$item->id}}"></button>
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
-                                                                                <td>1</td>
+                                                                                <td>{{$item->status}}</td>
                                                                                 <td>{{$item->created_at}}</td>
                                                                                 <td>{{$item->updated_at}}</td>
                                                                                 <td>
@@ -115,14 +115,12 @@
                                                                             <th>
 
                                                                                 <label>Check all: <input type="checkbox"
-                                                                                                         type="checkbox"
                                                                                                          name="select-all-trung"
                                                                                                          id="select-all-trung"></label>
 
                                                                             </th>
                                                                             <th>ID</th>
                                                                             <th>Province</th>
-                                                                            <th>Region</th>
                                                                             <th>Status</th>
                                                                             <th>Created_at</th>
                                                                             <th>Update_at</th>
@@ -130,13 +128,12 @@
                                                                         @foreach($listTrung as $item)
                                                                             <tr>
                                                                                 <td class="checkbox-toggle">
-                                                                                    <input type="checkbox"
-                                                                                           id="{{$item->id}}">
+                                                                                    <button data-toggle="modal" data-target="#myModal"><input  type="checkbox"
+                                                                                                                                               id="{{$item->id}}"></button>
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
-                                                                                <td>{{$item->region}}</td>
-                                                                                <td>1</td>
+                                                                                <td>{{$item->status}}</td>
                                                                                 <td>{{$item->created_at}}</td>
                                                                                 <td>{{$item->updated_at}}</td>
                                                                                 <td>
@@ -195,21 +192,19 @@
                                                                             </th>
                                                                             <th>ID</th>
                                                                             <th>Province</th>
-                                                                            <th>Region</th>
                                                                             <th>Status</th>
                                                                             <th>Created_at</th>
                                                                             <th>Update_at</th>
                                                                         </tr>
                                                                         @foreach($listNam as $item)
                                                                             <tr>
-                                                                                <td class="checkbox-toggle">
-                                                                                    <input type="checkbox"
-                                                                                           id="{{$item->id}}">
+                                                                                <td class="checkbox-toggle" >
+                                                                                    <button data-toggle="modal" data-target="#myModal"><input  type="checkbox"
+                                                                                                                                               id="{{$item->id}}"></button>
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
-                                                                                <td>{{$item->region}}</td>
-                                                                                <td>1</td>
+                                                                                <td>{{$item->status}}</td>
                                                                                 <td>{{$item->created_at}}</td>
                                                                                 <td>{{$item->updated_at}}</td>
                                                                                 <td>
@@ -251,6 +246,25 @@
         </div>
     </div>
 
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 @endsection
 
 @section('script')

@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/test', function (){
-   return view(('layout.admin-layout'));
+   return view(('admin.business'));
 });
 
 // admin route

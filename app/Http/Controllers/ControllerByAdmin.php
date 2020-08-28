@@ -16,7 +16,7 @@ class ControllerByAdmin extends Controller
 
     public function adminHome()
     {
-        return view('layout.admin-layout');
+        return view('admin.business');
     }
 
     public function listCustomers()
