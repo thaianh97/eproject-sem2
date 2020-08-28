@@ -24,7 +24,9 @@ div.navbar-top-left span {
 }
 .navbar-top-right {
     text-align: right;
+    float: right;
 }
+
 .navbar-top-right a.navbar-top-link{
     display: inline-block;
     color: white;
@@ -40,12 +42,37 @@ div.navbar-top-left span {
     color: yellow;
     transform: scale(1.2);
 }
+/*style drop down user */
+.navbar-top-right a.navbar-top-link:link {
+    text-decoration: none;
+}
+ul.dropdown-menu {
+    border-radius: 0;
+    padding: 0;
+    min-width: 70px;
+}
+
+ul.dropdown-menu li {
+    width: 100%;
+    height: 100%;
+}
+
+ul.dropdown-menu li:hover {
+    background: #8E7037;
+}
 
 @media only screen and (max-width: 992px) {
     .navbar-top-left, .navbar-top-right {
         text-align: center;
+        margin: 0 auto;
+        float: none;
     }
 
+    ul.dropdown-menu {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .navbar-top-right{
         margin-top: 10px;
     }
