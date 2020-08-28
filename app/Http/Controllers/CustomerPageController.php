@@ -26,4 +26,8 @@ class CustomerPageController extends Controller
         return view("customer.contactus");
     }
 
+    public function findTourGuide() {
+        return view("customer.find-tourguide");
+    }
+
 }

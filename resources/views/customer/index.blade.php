@@ -42,17 +42,18 @@
     <div class="content">
         <div class="date-form">
             <h1 class="date-form-header">Tìm Hướng Dẫn Viên</h1>
-            <form action="#" method="get" id="travel-date-form">
+            <form action="/find" method="get" id="travel-date-form">
+                @csrf
                 <div class="row">
                     <div class="date-form-group col-md-5 col-lg-5 col-sm-12 col-xs-12">
                         <label for="start">Start Day</label>
                         <input type="text" id="start" name="start" class="date-input"
-                               placeholder="click to pick up date...">
+                               placeholder="click to pick up date..."required>
                     </div>
                     <div class="date-form-group col-md-5 col-lg-5 col-sm-12 col-xs-12">
                         <label for="end">End Day</label>
                         <input type="text" id="end" name="end" class="date-input"
-                               placeholder="click to pick up date...">
+                               placeholder="click to pick up date..." required>
                     </div>
 
                     <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 btn-submit-wrapper">

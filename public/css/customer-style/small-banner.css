@@ -1,0 +1,26 @@
+.small-banner {
+    width: 100%;
+    padding-top: 160px;
+    padding-bottom: 40px;
+    background-image: url("/img/background/Slider-2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.banner-content {
+    font-family: 'Poppins', sans-serif;
+}
+.banner-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+}
+
+.banner-content p {
+    font-size: 16px;
+    color: white;
+    font-weight: 300;
+}

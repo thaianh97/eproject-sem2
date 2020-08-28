@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 //Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 
 
@@ -49,6 +49,7 @@ Route::get("/about", "CustomerPageController@about");
 Route::get("/login", "CustomerPageController@login");
 Route::get("/register", "CustomerPageController@register");
 Route::get("/contact", "CustomerPageController@contact");
+Route::get("/find", "TourGuideController@filter");
 
 //test mail
 Route::get('/test', 'ControllerByAdmin@sendMail');
@@ -60,6 +61,7 @@ Route::get('/test', 'ControllerByAdmin@sendMail');
 //Route::get('/register', 'AccountController@register');
 //Route::post('/register', 'AccountController@processRegister');
 
+
 //tourguide route
 Route::get('/testV', function () {
     return view(('tourGuides.edit-info'));
@@ -67,3 +69,9 @@ Route::get('/testV', function () {
 Route::get('/tourGuide/info', function () {
     return view(('tourGuides.edit-info'));
 });
+
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

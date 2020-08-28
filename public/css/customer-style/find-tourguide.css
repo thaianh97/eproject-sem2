@@ -1,0 +1,252 @@
+.sidebar-left {
+    margin-bottom: 50px;
+}
+
+.selected-filter {
+    background: #F2F2F2;
+    width: 100%;
+}
+
+.sidebar-left .selected-filter-title {
+    font-size: 16px;
+    color: #333333;
+    margin-top: 0px;
+    line-height: 30px;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 0;
+}
+
+.selected-filter-item {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: left;
+    padding-left: 24px;
+    line-height: 70px;
+}
+
+.selected-filter-item .selected-filter-name {
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    color: #8E7037;
+}
+
+.selected-filter-item .selected-filter-name::before {
+    content: '\f0da';
+    font-family: 'FontAwesome';
+    left: -12px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.filter-form-container {
+    margin-top: 30px;
+    width: 100%;
+    background: #F2F2F2;
+    padding-bottom: 10px;
+}
+
+form.filter-form {
+    width: 100%;
+
+}
+
+.filter-form-input-wrapper {
+    width: 100%;
+
+}
+
+.filter-form-input-title {
+    padding-left: 24px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    color: #8E7037;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.filter-form-input-title::before {
+    content: '\f0da';
+    font-family: 'FontAwesome';
+    left: 12px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.filter-form-label {
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #333333;
+    text-transform: uppercase;
+    width: 100%;
+    padding-left: 12px;
+}
+
+.filter-form-date-input {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    height: 30px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+#province-select {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: none;
+    padding-left: 10px;
+}
+
+/*#province-select option {*/
+/*    width: 100%;*/
+/*    height: 30%;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    display: block;*/
+/*    margin-bottom: 1px;*/
+/*    margin-bottom: ;*/
+/*}*/
+/*#province-select option:hover{*/
+/*    background-color: #8E7037;*/
+/*    color: #fff;*/
+/*}*/
+
+.filter-form-submit-btn {
+
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+    outline: none;
+    border: none;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    background: #8E7037;
+    color: #F2F2F2;
+    font-weight: bold;
+    font-size: 14px;
+    transition: .5s;
+}
+
+.filter-form-submit-btn:hover {
+    color: #8E7037;
+    border: 2px solid #8E7037;
+    background-color: #fff;
+}
+
+.main-contain {
+    padding: 0;
+}
+
+.tour-guide-container {
+    width: 100%;
+}
+
+.tour-guide-item {
+    background-color: #F2F2F2;
+    width: 100%;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+
+h2.tour-guide-item-name {
+    padding-top: 20px;
+    padding-left: 24px;
+    text-transform: uppercase;
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.tour-guide-item-img img {
+    width: 200px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+}
+
+.tour-guide-item-description {
+    padding-left: 24px;
+    text-align: left;
+    color: #333;
+}
+
+.tour-guide-item-description p {
+    font-size: 14px;
+    margin: 10px 0;
+    padding-right: 12px;
+}
+
+ul.list-option {
+    padding-left: 24px;
+}
+
+ul.list-option li {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+a.tourguide-detail-link {
+    display: block;
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 25px;
+    text-decoration: underline;
+    color: #333;
+    font-style: italic;
+}
+
+span.price {
+    display: inline-block;
+    font-weight: bold;
+    color: #333333;
+    font-size: 30px;
+}
+
+.book-btn {
+    height: 35px;
+    width: 124px;
+    font-weight: 700;
+    color: #333;
+    display: inline-block;
+    border: 2px solid black;
+    line-height: 35px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 100px;
+}
+
+.book-btn:hover {
+    text-decoration: none;
+    background-color: #8E7037;
+    color: white;
+}
+
+

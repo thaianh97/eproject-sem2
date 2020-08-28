@@ -9,3 +9,24 @@
 h1,h2,h3,h4,h5,h6 {
     margin: 0 auto;
 }
+
+.section-header {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 400;
+    padding-top: 70px;
+}
+
+div.outline {
+    background: url("/img/icon/icon-our.png") no-repeat center center;
+    height: 25px;
+    width: 100%;
+    margin: 0 auto;
+}
+div.line {
+    width: 100px;
+    background: #8e7037;
+    height: 2px;
+    margin: 40px auto;
+}
