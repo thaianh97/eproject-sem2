@@ -1,0 +1,119 @@
+.navbar {
+    position: fixed;
+    width: 100vw;
+    min-height: 100px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+div.navbar-top {
+    height: auto;
+    font-size: 12px;
+    color: white;
+    background: transparent;
+    padding: 20px;
+    border-bottom: 1px solid white;
+}
+.navbar-top-left {
+    text-align: left;
+}
+
+div.navbar-top-left span {
+    display: inline-block;
+    margin:0 10px;
+}
+.navbar-top-right {
+    text-align: right;
+}
+.navbar-top-right a.navbar-top-link{
+    display: inline-block;
+    color: white;
+    margin: 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.navbar-top-right a.navbar-top-link:hover {
+    text-decoration: none;
+    color: yellow;
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar-top-left, .navbar-top-right {
+        text-align: center;
+    }
+
+    .navbar-top-right{
+        margin-top: 10px;
+    }
+}
+/*style navbar */
+
+.navbar-menu {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    /*background: rgba(0,0,0, .8);*/
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+.navbar-menu .brand {
+    width: 12vw;
+}
+div.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.menu .menu-item{
+    display: inline-block;
+    width: 12vw;
+    text-align: center;
+
+}
+.menu-item .menu-link{
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    font-weight: 600;
+}
+
+.menu-item .menu-link:hover{
+    text-decoration: none;
+    color: #877142;
+
+}
+/*** RESPONSIVE NAVBAR *****/
+/*@media only screen and (max-width: 768px) {*/
+/*    .navbar-menu {*/
+/*        height: auto;*/
+/*        display: block;*/
+/*        height: auto;*/
+/*        !*max-height: 70px;*!*/
+/*        !*overflow: hidden;*!*/
+/*    }*/
+/*    div.menu {*/
+/*        width: 100%;*/
+/*        display: block;*/
+/*    }*/
+/*    div.menu .menu-item {*/
+/*        width: 100%;*/
+/*    }*/
+/*    div.menu .menu-item a.menu-link{*/
+/*        text-align: left;*/
+/*        padding-left: 20px;*/
+/*        font-size: 12px;*/
+/*        display: block;*/
+/*        width: 100%;*/
+/*        height: 60px;*/
+/*        line-height: 60px;*/
+/*    }*/
+/*}*/
+
