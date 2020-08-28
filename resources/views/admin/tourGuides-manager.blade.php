@@ -14,89 +14,13 @@
 
 
 
-    >>>>>>> 5e9b928c9133babe410b3e79d3fe52647911109f
+
     <div class="breadcome-area">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <<<<<<< HEAD
-                    <div>
-                        <div>
-                            <form action="/admin/tourGuides" method="get" id="product_form">
-                                @csrf
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group mb-4">
-                                                {{--                                                <label for="exampleFormControlSelect1">Product</label>--}}
-                                                {{--                                                <select name="product" class="form-control" id="categorySelect"--}}
-                                                {{--                                                        onchange='this.form.submit()'>--}}
-                                                {{--                                                    <option href="//admin/products-list/cameras" value="cameras"--}}
-                                                {{--                                                            name="Cameras">--}}
-                                                {{--                                                        Cameras--}}
-                                                {{--                                                    </option>--}}
-                                                {{--                                                    <option href="/admin/products-list/accessories" value="accessories"--}}
-                                                {{--                                                            name="Accessories">--}}
-                                                {{--                                                        Accessories--}}
-                                                {{--                                                    </option>--}}
-                                                {{--                                                    @foreach($categories as $cate)--}}
-                                                {{--                                                        <option--}}
-                                                {{--                                                            value="{{$cate->id}}" {{$cate->id == $category_id ? 'selected':''}}>{{$cate->name}}</option>--}}
-                                                {{--                                                    @endforeach--}}
-
-                                                {{--                                                                                                </select>--}}
-                                                <label for="exampleFormControlSelect1"><h2 style="color:white; ">
-                                                        Area</h2></label>
-                                                <select name="chosen_area_id" class="form-control" id="chosen_area_id">
-                                                    <option value="0">All</option>
-                                                    @foreach($areas as $area)
-                                                        <option
-                                                            value="{{$area->id}}" {{$area->id == $chosen_area ? 'selected':''}}>{{$area->province}}</option>
-                                                @endforeach
 
 
-                                                {{--                                                </select>--}}
-                                                {{--                                                <label for="exampleFormControlSelect1">Category</label>--}}
-                                                {{--                                                <select name="category_id" class="form-control" id="categorySelect">--}}
-                                                {{--                                                    <option href="/admin" value="1">Cameras--}}
-                                                {{--                                                    </option>--}}
-                                                {{--                                                    <option href="/admin" value="2">--}}
-                                                {{--                                                        Accessories--}}
-                                                {{--                                                    </option>--}}
-                                                {{--                                                    --}}{{--                                            @foreach($categories as $cate)--}}
-                                                {{--                                                    --}}{{--                                                <option value="{{$cate->id}}" {{$cate->id == $category_id ? 'selected':''}}>{{$cate->name}}</option>--}}
-                                                {{--                                                    --}}{{--                                            @endforeach--}}
-
-                                                {{--                                                </select>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Search by keyword</label>
-                                                <input value="" type="text" name="keyword" class="form-control"
-                                                       placeholder="Search by keyword">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            {{--                                            <div class="form-group">--}}
-                                            {{--                                                <div class="bread-ntd"><label for="exampleFormControlSelect1">Search by--}}
-                                            {{--                                                        time</label></div>--}}
-                                            {{--                                                <input type="text" name="dates" class="form-control">--}}
-                                            {{--                                                <input type="hidden" name="start">--}}
-                                            {{--                                                <input type="hidden" name="end">--}}
-                                            {{--                                            </div>--}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <input class="btn btn-large btn-success" type="submit" value="Lọc">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    =======
 
                     <div class="product-status-wrap">
                         <form action="/admin/tourGuides" method="get" id="product_form">
