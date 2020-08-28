@@ -100,12 +100,6 @@
                         </div>
                         <table data-check-all-container >
                             <tr>
-                                <th>
-
-                                    <label  >Check all: <input type="checkbox"  data-check-all></label>
-                                    <span data-check-all-count>0</span>
-
-                                </th>
                                 <th>ID</th>
                                 <th>Full_name</th>
                                 <th>Account_id</th>
@@ -118,9 +112,6 @@
                             </tr>
                             @foreach($list as $item)
                                 <tr >
-                                    <td class="checkbox-toggle">
-                                        <input type="checkbox" id="{{$item->id}}" >
-                                    </td>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->full_name}}</td>
                                     <td>{{$item->account_id}}</td>
