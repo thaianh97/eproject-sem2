@@ -110,12 +110,16 @@
                                     @foreach($list as $item)
                                         <tr>
 
-                                            <td class="checkbox-toggle">
-                                                <input type="checkbox" name="{{$item->id}}">
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-primary" onclick="save()" value="{{$item->id}}">Duyệt</button>
-                                            </td>
+                                            <form action ="/admin/new-tourGuide" method="post" >
+                                                @method('PUT')
+                                                @csrf
+                                                <td >
+                                                    <input type="checkbox" value="{{$item->id}}" name="id">
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-primary" type="submit">Duyệt</button>
+                                                </td>
+                                            </form>
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->account_id}}</td>
                                             <td>{{$item->full_name}}</td>
@@ -145,31 +149,25 @@
                                             @endif
                                             <td>{{$item->created_at}}</td>
                                             <td>{{$item->updated_at}}</td>
-                                            <td>
-                                                <a>
-                                                    <button type="button"
-                                                            class="btn btn-info ">{{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
-                                                </a>
-                                            </td>
 
-
-                                            <td>
-
-                                                <a>
-                                                    <button type="button" class="btn btn-info "><i
-                                                            class="fa fa-info" aria-hidden="true"></i></button>
-                                                </a>
-
-
-                                                <a>
-                                                    <button data-toggle="tooltip" title="contact" class="pd-setting-ed">
-                                                        <i
-                                                            class="fa fa-envelope" aria-hidden="true"></i>
-                                                    </button>
-                                                </a>
-
-
-                                            </td>
+                                                <td>
+                                                    <a>
+                                                        <button type="button" class="btn btn-info ">
+                                                            {{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
+                                                    </a>
+                                                </td>
+                                            <form>
+                                                <td>
+                                                    <a>
+                                                        <button type="button" class="btn btn-info "><i
+                                                                class="fa fa-info" aria-hidden="true"></i></button>
+                                                    </a>
+                                                    <a>
+                                                        <button data-toggle="tooltip" title="contact" class="pd-setting-ed">
+                                                            <i class="fa fa-envelope" aria-hidden="true"></i></button>
+                                                    </a>
+                                                </td>
+                                            </form>
                                         </tr>
 
                                     @endforeach

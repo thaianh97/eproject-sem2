@@ -36,9 +36,9 @@ Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
 Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
 Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
-Route::post('/admin/new-tourGuide', 'ControllerByAdmin@acceptNewTourGuides');
+Route::put('/admin/new-tourGuide', 'ControllerByAdmin@acceptNewTourGuide');
 
-Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
+//Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
 
 
 

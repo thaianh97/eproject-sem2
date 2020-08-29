@@ -63,6 +63,22 @@ class NewTourGuideResgister extends Seeder
                 'status' => 1,
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
+            ],
+            [
+                'id'=> 4,
+                'userName'=> 'truongprond96',
+                'full_name' => 'Đặng Quang Chính',
+                'year_of_birth' => 1996,
+                'phone' => '0912511440',
+                'email' => 'chinhdangquang777@gmail.com',
+                'description' => 'Năng nổ, hiểu biết nhiều về ẩm thực',
+                'avatar' => '',
+                'card' => true,
+                'mc_gala_dinner' => true,
+                'team_building' => true,
+                'status' => 0,
+                'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ]
         ]);
 
