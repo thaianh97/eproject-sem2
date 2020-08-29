@@ -118,18 +118,16 @@
                         <a class="has-arrow" href="/admin">
                             <i class="icon nalika-home icon-wrap"></i>
 
-                            <span class="mini-click-non">Products</span>
+                            <span class="mini-click-non">Home</span>
 
 
                         </a>
                         <ul class="submenu-angle" aria-expanded="false">
 
-                            <li><a title="Dashboard v.3" href="/admin"><span
+                            <li><a title="Dashboard v.3" href=#"><span
                                         class="mini-sub-pro">Money</span></a></li>
-                            <li><a title="Area " href="/admin/areas"><span
-                                        class="mini-sub-pro">Areas</span></a></li>
-                            <li><a title="Area " href="/admin/new-tourGuide"><span
-                                        class="mini-sub-pro">Duyệt hdv mới</span></a></li>
+                            <li><a title="Area " href="/tourGuide/edit-info"><span
+                                        class="mini-sub-pro">Update info</span></a></li>
                         </ul>
                     </li>
                     <li>

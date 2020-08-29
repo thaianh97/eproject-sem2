@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('/test', function () {
-    return view(('admin.business'));
+    return view(('admin.tourGuides-detail'));
 });
 
 
@@ -35,8 +35,12 @@ Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
 
 Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
+Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+Route::put('/admin/new-tourGuide', 'ControllerByAdmin@acceptNewTourGuide');
 
-Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
+//Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
+
+
 
 Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 
@@ -60,9 +64,22 @@ Route::get('/test', 'ControllerByAdmin@sendMail');
 //Route::post('/register', 'AccountController@processRegister');
 
 
-Auth::routes();
+//tourguide route
+    Route::get('/tourGuide', function () {
+    return view(('layout.tourGuide-layout'));
+});
+Route::get('/tourGuide/edit-info', function () {
+    return view(('tourGuides.edit-info'));
+});
+Route::get('/tourGuide/edit-info', "TourGuideController@info");
+Route::post('/tourGuide/edit-info', "TourGuideController@editInfo");
+
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 //tourguide route
 Route::get("/tourguide/register", "TourGuideController@getRegister");
+
+

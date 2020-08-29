@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Area;
 use App\Customer;
 use App\Http\Controllers\Controller;
+use App\NewTourGuideRegister;
 use App\TourGuide;
 use App\TourGuideArea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -81,5 +84,87 @@ class ControllerByAdmin extends Controller
             ->with($data);
 
 
+    }
+
+    function newTourGuides(){
+        $data = array();
+        $tourGuide_list = NewTourGuideRegister::query() ;
+        $tourGuide_list = $tourGuide_list->where('status', '=', 1);
+        $data['list'] = $tourGuide_list->paginate(10);
+
+        return view('admin.new-tourGuide')
+            ->with($data);
+    }
+
+    function acceptNewTourGuide(Request $request){
+
+        $data = array();
+        $id = $request->get('id');
+        $newInfoTourGuides_list= NewTourGuideRegister::query();
+        $newInfoTourGuide = $newInfoTourGuides_list->where('id','=',$id)->first();
+        $newInfoTourGuide->status= 0;
+        $newInfoTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+        $newInfoTourGuide->update();
+
+        $newAccount =  new Account();
+        $newAccount->username = $newInfoTourGuide->get('userName');
+        $salt = $this->generateRandomString(6);
+        $ramdomPassword = $this->generateRandomString(6);
+        $newAccount->password_hash = md5($ramdomPassword.$salt);
+        $newAccount->role = 2;
+        $newAccount->status = 1;
+        $newAccount->created_at = Carbon::now()->format('Y-m-d H:i:s');
+        $newAccount->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+        $newAccount->save();
+
+        $account = Account::query()->where('username','=',$newAccount->username)->first();
+        $newTourGuide = new TourGuide;
+        $newTourGuide->account_id = $account->get('id');
+        $newTourGuide->full_name = $newInfoTourGuide->get('fullName');
+        $newTourGuide->year_of_birth = $newInfoTourGuide->get('year_of_birth');
+        $newTourGuide->phone = $newInfoTourGuide->get('phone');
+        $newTourGuide->email = $newInfoTourGuide->get('email');
+        $newTourGuide->description = $newInfoTourGuide->get('description');
+        $newTourGuide->avatar = $newInfoTourGuide->get('avatar');
+        $newTourGuide->card = $newInfoTourGuide->get('card');
+        $newTourGuide->mc_gala_dinner = $newInfoTourGuide->get('mc_gala_dinner');
+        $newTourGuide->team_building = $newInfoTourGuide->get('team_building');
+        $newTourGuide->status = 2;
+        $newTourGuide->created_at = Carbon::now()->format('Y-m-d H:i:s');
+        $newTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+        $newTourGuide->save();
+
+        // to do send email to tourGuide
+
+        $tourGuide_list = NewTourGuideRegister::query() ;
+        $tourGuide_list = $tourGuide_list->where('status', '=', 1);
+        $data['list'] = $tourGuide_list->paginate(10);
+
+        return view('admin.new-tourGuide')
+            ->with($data);
+    }
+
+
+    public function deActiveTourGuide($id){
+
+    }
+
+
+    function tourGuidesDetail($id)
+    {
+        $data = array();
+        $tourGuide = DB::table('tourGuides')->where('id', '=', $id)->first();
+
+    }
+
+    function generateRandomString($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }
