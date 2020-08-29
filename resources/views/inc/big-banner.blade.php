@@ -35,7 +35,9 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
+    <div class="join-btn-container">
+        <a href="/tourguide/register" class="join-btn">Trở Thành Hướng Dẫn Viên Của Chúng Tôi</a>
+    </div>
 </div>
 
 

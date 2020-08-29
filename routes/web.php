@@ -63,3 +63,6 @@ Route::get('/test', 'ControllerByAdmin@sendMail');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//tourguide route
+Route::get("/tourguide/register", "TourGuideController@getRegister");
