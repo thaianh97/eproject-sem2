@@ -128,6 +128,8 @@
                                         class="mini-sub-pro">Money</span></a></li>
                             <li><a title="Area " href="/admin/areas"><span
                                         class="mini-sub-pro">Areas</span></a></li>
+                            <li><a title="Area " href="/admin/new-tourGuide"><span
+                                        class="mini-sub-pro">Duyệt hdv mới</span></a></li>
                         </ul>
                     </li>
                     <li>

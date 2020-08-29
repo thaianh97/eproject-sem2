@@ -124,9 +124,9 @@
                         </a>
                         <ul class="submenu-angle" aria-expanded="false">
 
-                            <li><a title="Dashboard v.3" href="/admin"><span
+                            <li><a title="Dashboard v.3" href=#"><span
                                         class="mini-sub-pro">Money</span></a></li>
-                            <li><a title="Area " href="/tourGuide/info"><span
+                            <li><a title="Area " href="/tourGuide/edit-info"><span
                                         class="mini-sub-pro">Update info</span></a></li>
                         </ul>
                     </li>

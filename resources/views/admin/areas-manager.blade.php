@@ -44,9 +44,9 @@
                                                                             <th>
 
                                                                                 <label>Check all: <input type="checkbox"
-                                                                                                         type="checkbox"
                                                                                                          name="select-all-bac"
-                                                                                                         id="select-all-bac"></label>
+                                                                                                         id="select-all-bac"
+                                                                                    ></label>
 
                                                                             </th>
                                                                             <th>ID</th>
@@ -59,7 +59,7 @@
                                                                             <tr>
                                                                                 <td class="checkbox-toggle">
                                                                                     <button data-toggle="modal" data-target="#myModal"><input  type="checkbox"
-                                                                                                                                               id="{{$item->id}}"></button>
+                                                                                                                                               id="{{$item->id}}" ></button>
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>

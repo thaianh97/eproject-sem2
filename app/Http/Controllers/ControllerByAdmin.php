@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\TourGuide;
 use App\TourGuideArea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -83,8 +84,29 @@ class ControllerByAdmin extends Controller
 
     }
 
+    function newTourGuides(){
+        $data = array();
+        $tourGuide_list = TourGuide::query();
+        $tourGuide_list = $tourGuide_list->where('status', '=', 1);
+        $data['list'] = $tourGuide_list->paginate(10);
+
+        return view('admin.new-tourGuide')
+            ->with($data);
+    }
+
+    function acceptNewTourGuides($id){
+        $tourGuide_list = TourGuide::query();
+        $tourGuide = $tourGuide_list->find($id,'id');
+        $tourGuide->status = 2;
+        $tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+        $tourGuide->update();
+
+        $this->newTourGuides();
+    }
+
+
     public function deActiveTourGuide($id){
-        
+
     }
 
 
