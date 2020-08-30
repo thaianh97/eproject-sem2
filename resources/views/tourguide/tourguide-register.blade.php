@@ -26,6 +26,7 @@
     <div class="register-container container">
         <h1 class="form-title">Đăng Ký Làm Hướng Dẫn Viên</h1>
         <form method="post" action="">
+            @csrf
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="username">User Name</label>
