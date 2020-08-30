@@ -36,12 +36,12 @@ Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
 Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
 Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
-Route::put('/admin/new-tourGuide', 'ControllerByAdmin@acceptNewTourGuide');
+
 
 //Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
 
 
-
+Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
 Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 
 
@@ -57,11 +57,11 @@ Route::get("/find", "TourGuideController@filter");
 Route::get('/test', 'ControllerByAdmin@sendMail');
 
 
-// Login & register
-//Route::get('/login', 'AccountController@login');
-//Route::post('/login', 'AccountController@processLogin');
-//Route::get('/register', 'AccountController@register');
-//Route::post('/register', 'AccountController@processRegister');
+ //Login & register for user
+Route::get('/login', 'AccountController@login');
+Route::post('/login', 'AccountController@processLogin');
+Route::get('/register', 'AccountController@register');
+Route::post('/register', 'AccountController@processRegister');
 
 
 //tourguide route
@@ -74,12 +74,15 @@ Route::get('/tourGuide/edit-info', function () {
 Route::get('/tourGuide/edit-info', "TourGuideController@info");
 Route::post('/tourGuide/edit-info', "TourGuideController@editInfo");
 
-//Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 //tourguide route
-Route::get("/tourguide/register", "TourGuideController@getRegister");
+Route::get("/tourguide/register", "PendingTourGuideController@create");
+Route::post("/tourguide/register", "PendingTourGuideController@store");
+
+
 
 

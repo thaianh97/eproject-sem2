@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class TourGuideController extends Controller
 {
-    public function  getRegister() {
-        return view("tourguide.tourguide-register");
-    }
+
     public function filter(Request $request)
     {
         // tạo biến data là một mảng chứa dữ liệu trả về.

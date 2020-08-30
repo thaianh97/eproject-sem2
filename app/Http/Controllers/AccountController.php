@@ -99,42 +99,24 @@ class AccountController extends Controller
         $account = Account::query();
         $username = $request->get('username');
         $password = $request->get('password');
-        $exist_account = $account->where('username', '=', $username)->where('password', '=', $password)
-            ->where('status', '=', 1)->first();
-        $currentAccount = $exist_account[0]->get();
+        $exist_account = $account->where('username', '=', $username)
+            ->where('status', '=', 1)->first();  //todo: status = 1 for what ?
+        //todo: check thằng exist_account == null
 
-        // kiểm tra id của người dùng
-        $customer = Customer::query();
-        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
-        $currentCustomer = $stuff[0]->get();
-        return view('login success!')->with($currentCustomer);
+        // kiểm tra mat khau của người dùng
+        //lay ra salt
+        $accountSalt = $exist_account->salt;
+        // hash(pwd+sald) == pwd hash
+        $accountHashPassWord = md5($password . $accountSalt);
+        if($accountHashPassWord == $exist_account->password_hash) {
+            return view("customer.index")->with("obj", $exist_account);
+        } else {
+            return "mật khẩu không đúng";
+        }
 
     }
 
-//    public function processLogin(LoginRequest $request) // hàm đăng nhập của khách
-//    {
-//        // validate tài khoản đăng nhập của người dùng
-//        $username = $request->get('username');
-//        $password = $request->get('password');
-//        $exist_account = Account::where('username', '=', $username)->where('status', '=', 1)->first();
-////        $exist_account = $accounts[0]->get();
-////        dd($exist_account);
-//        if ($exist_account == null || $exist_account->status == 0) {
-//            return 'invalid account';
-//        }
-//        if ($exist_account->password_hash == md5($password . $exist_account->salt)) {
-//            // kiểm tra trong db.
-//            $session = $request->session();
-//            $session->put('username', $exist_account->username);
-//            return 'Okie!';
-//        }
-//
-////        // kiểm tra id của người dùng
-////        $customer = Customer::query();
-////        $stuff = $customer->where('account_id', '=', $currentAccount->get('id'));
-////        $currentCustomer = $stuff[0]->get();
-////        return view('login success!')->with($currentCustomer);
-//    }
+
 
     public function register()
     {
