@@ -86,66 +86,85 @@ class ControllerByAdmin extends Controller
 
     }
 
-    function newTourGuides(){
+    function newTourGuides()
+    {
         $data = array();
-        $tourGuide_list = NewTourGuideRegister::query() ;
-        $tourGuide_list = $tourGuide_list->where('status', '=', 1);
+        $tourGuide_list = NewTourGuideRegister::query();
+        $tourGuide_list = $tourGuide_list->where('status', '=', 0);
         $data['list'] = $tourGuide_list->paginate(10);
 
         return view('admin.new-tourGuide')
             ->with($data);
     }
 
-    function acceptNewTourGuide(Request $request){
+    function acceptNewTourGuide(Request $request, $id)
+    {
+        // tạo mảng chứa dữ liệu
+        //lấy ra pending dc duệy
+        $acceptTourGuide = NewTourGuideRegister::find($id);
+        //update pending tourguid trong db
+        $acceptTourGuide->status = 1;
+        $acceptTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
-        $data = array();
-        $id = $request->get('id');
-        $newInfoTourGuides_list= NewTourGuideRegister::query();
-        $newInfoTourGuide = $newInfoTourGuides_list->where('id','=',$id)->first();
-        $newInfoTourGuide->status= 0;
-        $newInfoTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
-        $newInfoTourGuide->update();
+        //tạo tk mới cho hdv
+        $newAccount = new Account();
+        $newAccount->username = $acceptTourGuide->userName;
 
-        $newAccount =  new Account();
-        $newAccount->username = $newInfoTourGuide->get('userName');
         $salt = $this->generateRandomString(6);
-        $ramdomPassword = $this->generateRandomString(6);
-        $newAccount->password_hash = md5($ramdomPassword.$salt);
-        $newAccount->role = 2;
-        $newAccount->status = 1;
+
+        //get OTP pwd
+        $ramdomPassword = $this->generateRandomString(6); //todo: lưu vào db
+
+        $newAccount->salt = $salt;
+        $newAccount->password_hash = md5($ramdomPassword . $salt);
+        $newAccount->role = 2; // 2 là hướng dẫn viên
+        $newAccount->status = 1; // status = 1 ?
         $newAccount->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $newAccount->updated_at = Carbon::now()->format('Y-m-d H:i:s');
-        $newAccount->save();
+        $newAccount->save(); // có 1 tài khoản trong bảng account
 
-        $account = Account::query()->where('username','=',$newAccount->username)->first();
+        //từ tài khoản vừa tạp update thông tin trong bảng tourguide
+        $account = Account::where('username', '=', $acceptTourGuide->userName)->first();
+
+
         $newTourGuide = new TourGuide;
-        $newTourGuide->account_id = $account->get('id');
-        $newTourGuide->full_name = $newInfoTourGuide->get('fullName');
-        $newTourGuide->year_of_birth = $newInfoTourGuide->get('year_of_birth');
-        $newTourGuide->phone = $newInfoTourGuide->get('phone');
-        $newTourGuide->email = $newInfoTourGuide->get('email');
-        $newTourGuide->description = $newInfoTourGuide->get('description');
-        $newTourGuide->avatar = $newInfoTourGuide->get('avatar');
-        $newTourGuide->card = $newInfoTourGuide->get('card');
-        $newTourGuide->mc_gala_dinner = $newInfoTourGuide->get('mc_gala_dinner');
-        $newTourGuide->team_building = $newInfoTourGuide->get('team_building');
+        $newTourGuide->account_id = $account->id;
+        $newTourGuide->full_name = $acceptTourGuide->full_name;
+        $newTourGuide->year_of_birth = $acceptTourGuide->year_of_birth;
+        $newTourGuide->phone = $acceptTourGuide->phone;
+        $newTourGuide->email = $acceptTourGuide->email;
+        $newTourGuide->description = $acceptTourGuide->description;
+        $newTourGuide->avatar = $acceptTourGuide->avatar;
+        $newTourGuide->card = $acceptTourGuide->card;
+        $newTourGuide->mc_gala_dinner = $acceptTourGuide->mc_gala_dinner;
+        $newTourGuide->team_building = $acceptTourGuide->team_building;
         $newTourGuide->status = 2;
         $newTourGuide->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $newTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+        $newTourGuide->price = 0;
         $newTourGuide->save();
 
-        // to do send email to tourGuide
+        // send email to tourGuide
+        $data = array(
+            'username' => $acceptTourGuide->userName,
+            "otp" => $ramdomPassword,
+            "name" => $acceptTourGuide->full_name,
+            "to" => $acceptTourGuide->email
+        );
+        Mail::send('mail.email', $data, function ($message ) use ($acceptTourGuide) {
 
-        $tourGuide_list = NewTourGuideRegister::query() ;
-        $tourGuide_list = $tourGuide_list->where('status', '=', 1);
-        $data['list'] = $tourGuide_list->paginate(10);
+            $message->to($acceptTourGuide->email, $acceptTourGuide->name)->subject('Hồ sơ đã được duyệt');
+            $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
 
-        return view('admin.new-tourGuide')
-            ->with($data);
+        });
+        //update status của pending tourguide
+        $acceptTourGuide->update();
+        return redirect("admin/new-tourGuide");
     }
 
 
-    public function deActiveTourGuide($id){
+    public function deActiveTourGuide($id)
+    {
 
     }
 

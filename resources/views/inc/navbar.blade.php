@@ -12,31 +12,31 @@
             </div>
             <!-- nav bar top right info -->
             <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 navbar-top-right">
-                @if(Auth::check())
 
-                    <div class="dropdown navbar-top-right">
-                        <a href ="#"  class="navbar-top-link dropdown-toggle" type="button"
-                           data-toggle="dropdown">{{Auth::user()->name}}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                @else
+{{--                    <div class="dropdown navbar-top-right">--}}
+{{--                        <a href ="#"  class="navbar-top-link dropdown-toggle" type="button"--}}
+{{--                           data-toggle="dropdown"> {{$obj->username}}--}}
+{{--                        </a>--}}
+{{--                        <ul class="dropdown-menu">--}}
+{{--                            <li>--}}
+{{--                                <a class="dropdown-item" href=""--}}
+{{--                                   onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                                    {{ __('Logout') }}--}}
+{{--                                </a>--}}
+
+{{--                                <form id="logout-form" action="" method="POST" class="d-none">--}}
+{{--                                    @csrf--}}
+{{--                                </form>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+
                     {{--if user is guess--}}
                     <a href="/login" class="navbar-top-link">login</a>
                     <a href="/register" class="navbar-top-link">register</a>
-                @endif
+
             </div>
         </div>
     </div>
