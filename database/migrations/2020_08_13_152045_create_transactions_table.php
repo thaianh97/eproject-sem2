@@ -15,13 +15,12 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('guide_id'); // foreign key -> references to 'id' on tour_guides migration
-            $table->foreign('guide_id')->references('id')->on('tour_guides');
+//            $table->unsignedBigInteger('guide_id'); // foreign key -> references to 'id' on tour_guides migration
+//            $table->foreign('guide_id')->references('id')->on('tour_guides');
             $table->unsignedBigInteger('customer_id'); // foreign key -> references to 'id' on customer_accounts migration
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->string('customer_name');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->unsignedBigInteger('province_id');
+            $table->foreign('province_id')->references('id')->on('areas');
             $table->dateTime('created_time'); // ngày tạo ra transaction
             $table->integer('status'); // 1. Sent | 2. Confirm | 3. Cancel
             $table->timestamps();

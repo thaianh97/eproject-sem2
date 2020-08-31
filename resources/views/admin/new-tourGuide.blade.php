@@ -98,7 +98,6 @@
                                 <th>ACC_ID</th>
                                 <th>Full_name</th>
                                 <th>Year_of_birth</th>
-                                <th>Price</th>
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Avatar</th>
@@ -123,7 +122,6 @@
                                     <td>{{$item->account_id}}</td>
                                     <td>{{$item->full_name}}</td>
                                     <td>{{$item->year_of_birth}}</td>
-                                    <td>{{$item->price}} Vnd/giờ</td>
                                     <td>{{$item->phone}}</td>
                                     <td>{{$item->email}}</td>
 
