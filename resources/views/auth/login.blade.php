@@ -21,25 +21,79 @@
 @endsection
 
 @section('content')
+
     <div id="login-container">
+        @if (session('msg'))
+            <div class="alert alert-info status-box">
+                {{session('msg')}}
+                <span class="close-btn" id="status-btn">x</span>
+            </div>
+        @endif
 
         <form method="POST" action="/login">
             @csrf
             <h1>LOGIN</h1>
             <div class="textbox">
-
-                <input type="text" name="username" placeholder="username">
-
+                <input type="text" name="username" placeholder="username" required>
             </div>
+            @error('username')
+            <span class="error-message" id="user-msg">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            @if (session('usernameError'))
+                <div class="alert alert-danger error-box">
+                    {{session('usernameError')}}
+                    <span class="close-btn">x</span>
+                </div>
+            @endif
 
             <div class="textbox">
-                <input type="password" placeholder="password" name="password">
+                <input type="password" placeholder="password" name="password" required>
             </div>
 
-            <input type="submit" value="Login" />
+            @error('password')
+                <span class="error-message" id="pwd-msg">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
+            @if (session('passwordError'))
+                <div class="alert alert-danger error-box">
+                    {{session('passwordError')}}
+                    <span class="close-btn">x</span>
+                </div>
+            @endif
+
+            <input type="submit" value="Login"/>
 
         </form>
 
     </div>
     </div>
+@endsection
+@section("footer")
+    @include("inc.footer")
+@endsection
+
+@section("scripts")
+    <script src="{{asset("js/header.js")}}"></script>
+    <script>
+        //show error when focus on a inout or click on close btn
+        $(".close-btn").on("click", function () {
+            $(".alert").slideUp("fast");
+        })
+        $("input").on("focus", function (){
+            $(".alert").slideUp("fast");
+        })
+        $('input[name="username"]').on("focus", function () {
+            $("#user-msg").slideUp("fast");
+        })
+
+        $('input[name="password"]').on("focus", function () {
+            $("#pwd-msg").slideUp("fast");
+        })
+
+    </script>
 @endsection

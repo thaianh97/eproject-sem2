@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\NewTourGuideRegister;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -18,16 +19,27 @@ class PendingTourGuideController extends Controller
     {
         //lấy dữ liệu từ form -> lưu db
         //lấy thống tin từ request
+        //TODO: ar sex field
         $pendingTourGuide = new NewTourGuideRegister();
-        $pendingTourGuide->username = $request->get("username");
+
+        $username = $request->username;
+        //check if username is existed
+        $existedAccount = Account::query()->where("username", "=", $username)
+            ->where("status", "!=", 3)->first();
+
+        if($existedAccount != null) {
+            return redirect("/register/tourGuide"); //todo: show error msg
+        }
+        //assign username
+        $pendingTourGuide->username = $username;
         $pendingTourGuide->full_name = $request->get("firstName") . " " .$request->get("lastName");
         $pendingTourGuide->year_of_birth = $request->get("year_of_birth");
         $pendingTourGuide->phone = $request->get("phone");
         $pendingTourGuide->email = $request->get("email");
         $pendingTourGuide->description = $request->get("description");
-//
+        //get avatar
         $thumbnails = $request->get('thumbnails');
-        //neu hdv k gui anh
+        //if user doesnt sent img
         if($thumbnails == null || count($thumbnails) == 0) {
             $pendingTourGuide->avatar = "man-default-ava_vrtd6j";
         } else {
@@ -40,11 +52,10 @@ class PendingTourGuideController extends Controller
         if($card == null) {
             $card = 0;
         }
+
         $mc_gala_dinner = $request->get("mc_gala_dinner");
         if($mc_gala_dinner == null) {
             $mc_gala_dinner = 0;
-        } else {
-
         }
 
         $team_building = $request->get("teamBuilding");

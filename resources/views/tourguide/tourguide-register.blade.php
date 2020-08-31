@@ -16,7 +16,7 @@
     </style>
 @endsection
 
-@section("title") Register @endsection
+@section("title") Đăng Ký-Hướng Dẫn Viên @endsection
 
 @section("header")
     @include("inc.navbar")
@@ -24,8 +24,8 @@
 @section('content')
 <div class="content">
     <div class="register-container container">
-        <h1 class="form-title">Đăng Ký Làm Hướng Dẫn Viên</h1>
-        <form method="post" action="/tourguide/register" id ="tourguide-register">
+        <h1 class="form-title">Đăng Ký Thông Tin Hướng Dẫn Viên</h1>
+        <form method="post" action="/register/tourGuide" id ="tourguide-register">
             @csrf
             <div class="row">
                 <div class="form-group col-md-6">

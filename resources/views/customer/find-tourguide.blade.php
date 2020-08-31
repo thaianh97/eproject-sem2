@@ -212,6 +212,7 @@
 @section("footer")
     @include("inc.footer")
 @endsection
+
 @section("scripts")
     <script src="{{asset("js/header.js")}}"></script>
 
@@ -221,14 +222,14 @@
             theme: "leaf",
             format: "d/m/Y",
             large: true,
-            largeDefault: true,
+            largeDefault: false,
         });
 
         $('#end').dateDropper({
             theme: "leaf",
             format: "d/m/Y",
             large: true,
-            largeDefault: true,
+            largeDefault: false,
         });
     </script>
 @endsection
