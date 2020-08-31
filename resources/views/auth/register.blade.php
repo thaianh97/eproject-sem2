@@ -22,7 +22,7 @@
 @section('content')
     <div id="login-container">
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="">
             @csrf
             <h1>REGISTER</h1>
             <div class="textbox">

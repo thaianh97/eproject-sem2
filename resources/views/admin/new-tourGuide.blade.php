@@ -78,163 +78,156 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
 
-                                <h4>TourGuide List</h4>
-                                <div class="add-product">
-                                    <a href="#">Add TourGuide</a>
-                                </div>
-                                <table>
-                                    <tr>
-                                        <th>
+                        <h4>TourGuide List</h4>
+                        <div class="add-product">
+                            <a href="#">Add TourGuide</a>
+                        </div>
+                        <table>
+                            <tr>
+                                <th>
 
-                                            <label>Check all: <input type="checkbox"
-                                                                     name="select-all"
-                                                                     id="select-all"></label>
-                                        </th>
-                                        <th>
-                                            <button class="btn btn-primary" >Duyệt</button>
+                                    <label>Check all: <input type="checkbox"
+                                                             name="select-all"
+                                                             id="select-all"></label>
+                                </th>
+                                <th>
+                                    <button class="btn btn-primary">Duyệt</button>
 
-                                        </th>
-                                        <th>ID</th>
-                                        <th>ACC_ID</th>
-                                        <th>Full_name</th>
-                                        <th>Year_of_birth</th>
-                                        <th>Price</th>
-                                        <th>Phone</th>
-                                        <th>Email</th>
-                                        <th>Avatar</th>
-                                        <th>Card</th>
-                                        <th>Created_at</th>
-                                        <th>Update_at</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    @foreach($list as $item)
-                                        <tr>
+                                </th>
+                                <th>ID</th>
+                                <th>ACC_ID</th>
+                                <th>Full_name</th>
+                                <th>Year_of_birth</th>
+                                <th>Price</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Avatar</th>
+                                <th>Card</th>
+                                <th>Created_at</th>
+                                <th>Update_at</th>
+                                <th>Status</th>
+                            </tr>
+                            @foreach($list as $item)
+                                <tr>
 
-                                            <form action ="/admin/new-tourGuide" method="post" >
-                                                @method('PUT')
-                                                @csrf
-                                                <td >
-                                                    <input type="checkbox" value="{{$item->id}}" name="id">
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-primary" type="submit">Duyệt</button>
-                                                </td>
-                                            </form>
-                                            <td>{{$item->id}}</td>
-                                            <td>{{$item->account_id}}</td>
-                                            <td>{{$item->full_name}}</td>
-                                            <td>{{$item->year_of_birth}}</td>
-                                            <td>{{$item->price}} Vnd/giờ</td>
-                                            <td>{{$item->phone}}</td>
-                                            <td>{{$item->email}}</td>
+                                    <td colspan="2">
+                                        <form action="/admin/accept/{{$item->id}}" method="post">
+                                            @csrf
 
-                                            <td><img
-                                                    src="https://tinmoimedia.com/upload/camnhung/2020/08/17/131531-ngoc-trinh-lo-da-nhan-nheo-tm4.jpg">
-                                            </td>
+                                            <input type="submit" class="btn btn-primary" value="Duyệt">
+                                        </form>
+                                    </td>
 
-                                            @if($item->card == 1)
-                                                <td>
-                                                    <button class="pd-setting">Co card</button>
-                                                </td>
-                                            @elseif($item->card == 2)
-                                                <td>
-                                                    <button class="pd-setting">Ko card</button>
-                                                </td>
-                                            @elseif($item->card == 3)
-                                                <td>
-                                                    <button class="pd-setting">null</button>
-                                                </td>
-                                            @else
-                                                <td>null</td>
-                                            @endif
-                                            <td>{{$item->created_at}}</td>
-                                            <td>{{$item->updated_at}}</td>
 
-                                                <td>
-                                                    <a>
-                                                        <button type="button" class="btn btn-info ">
-                                                            {{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
-                                                    </a>
-                                                </td>
-                                            <form>
-                                                <td>
-                                                    <a>
-                                                        <button type="button" class="btn btn-info "><i
-                                                                class="fa fa-info" aria-hidden="true"></i></button>
-                                                    </a>
-                                                    <a>
-                                                        <button data-toggle="tooltip" title="contact" class="pd-setting-ed">
-                                                            <i class="fa fa-envelope" aria-hidden="true"></i></button>
-                                                    </a>
-                                                </td>
-                                            </form>
-                                        </tr>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->account_id}}</td>
+                                    <td>{{$item->full_name}}</td>
+                                    <td>{{$item->year_of_birth}}</td>
+                                    <td>{{$item->price}} Vnd/giờ</td>
+                                    <td>{{$item->phone}}</td>
+                                    <td>{{$item->email}}</td>
 
-                                    @endforeach
-                                </table>
+                                    <td>
+                                        <img src="{{$item->small_photo}}">
+                                    </td>
 
-                                {{--//more detail--}}
-                                <div class="breadcome-area">
-                                    <div class="modal fade" id="detailModal" role="dialog">
-                                        <div class="container">
-                                            <div class="modal-dialog modal-dialog-scrollable">
+                                    @if($item->card == 1)
+                                        <td>
+                                            Có
+                                        </td>
+                                    @elseif($item->card == 0)
+                                        <td>
+                                            Không
+                                        </td>
+                                    @endif
+                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->updated_at}}</td>
 
-                                                <!-- Modal content-->
+                                    <td>
 
-                                            </div>
-                                        </div>
+
+                                        {{$item->status == 1 ? 'Đã duyệt' : 'Chưa duyệt' }}
+
+                                    </td>
+                                    <form>
+                                        <td>
+                                            <a>
+                                                <button type="button" class="btn btn-info "><i
+                                                        class="fa fa-info" aria-hidden="true"></i></button>
+                                            </a>
+                                            <a>
+                                                <button data-toggle="tooltip" title="contact" class="pd-setting-ed">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i></button>
+                                            </a>
+                                        </td>
+                                    </form>
+                                </tr>
+
+                            @endforeach
+                        </table>
+
+                        {{--//more detail--}}
+                        <div class="breadcome-area">
+                            <div class="modal fade" id="detailModal" role="dialog">
+                                <div class="container">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+
+                                        <!-- Modal content-->
+
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
 
-                                {{--                        deactive comfirm--}}
-                                <div class="breadcome-area">
-                                    <div class="modal fade" id="comfirmModal" role="dialog">
-                                        <div class="container">
-                                            <div class="modal-dialog modal-dialog-scrollable">
+                        {{--                        deactive comfirm--}}
+                        <div class="breadcome-area">
+                            <div class="modal fade" id="comfirmModal" role="dialog">
+                                <div class="container">
+                                    <div class="modal-dialog modal-dialog-scrollable">
 
-                                                <!-- Modal content-->
-                                                <div class="product-status-wrap" class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;
-                                                        </button>
-                                                        <h4 class="modal-title">TourGuide DeActive comfirm</h4>
-                                                    </div>
-                                                    <div class="product-status-wrap">
+                                        <!-- Modal content-->
+                                        <div class="product-status-wrap" class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;
+                                                </button>
+                                                <h4 class="modal-title">TourGuide DeActive comfirm</h4>
+                                            </div>
+                                            <div class="product-status-wrap">
 
-                                                        <div class="modal-body">
-                                                            <h2 class="text-warning">DeActive this tourGuide?</h2>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-danger"
-                                                                    data-dismiss="modal"
-                                                                    id="do-deactive">
-                                                                DeActive
-                                                            </button>
-                                                            <button type="button" class="btn btn-close btn-primary"
-                                                                    data-dismiss="modal">
-                                                                Close
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                                <div class="modal-body">
+                                                    <h2 class="text-warning">DeActive this tourGuide?</h2>
                                                 </div>
-
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-danger"
+                                                            data-dismiss="modal"
+                                                            id="do-deactive">
+                                                        DeActive
+                                                    </button>
+                                                    <button type="button" class="btn btn-close btn-primary"
+                                                            data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
 
-                                <div class="custom-pagination">
-                                    {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            {{ $list->appends(['sort' => 'votes'])->links() }}
-                                        </li>
+                        <div class="custom-pagination">
+                            {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    {{ $list->appends(['sort' => 'votes'])->links() }}
+                                </li>
 
 
-                                    </ul>
-                                </div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
