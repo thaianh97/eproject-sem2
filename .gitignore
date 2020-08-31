@@ -10,22 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/storage
-/bootstrap
-/tests
-.DS_Store
-.editorconfig
-.gitattributes
-.styleci.yml
-artisan
-composer.json
-composer.lock
-package-lock.json
-package.json
-php
-phpunit.xml
-server.php
-webpack.mix.js
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/phpstorm
 # Edit at https://www.toptal.com/developers/gitignore?templates=phpstorm
