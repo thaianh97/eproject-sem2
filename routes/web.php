@@ -28,7 +28,10 @@ Route::get('/admin', 'ControllerByAdmin@adminHome');
 Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
 Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
+Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
+
 Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
 
 Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
 Route::get('/admin/areas', 'ControllerByAdmin@listAreas');

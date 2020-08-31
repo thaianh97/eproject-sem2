@@ -169,10 +169,11 @@ class ControllerByAdmin extends Controller
     }
 
 
-    function tourGuidesDetail($id)
+    function showTourGuideDetail($id)
     {
         $data = array();
-        $tourGuide = DB::table('tourGuides')->where('id', '=', $id)->first();
+        $tourGuide = TourGuide::find($id);
+        return view('admin.tourGuides-detail')->with($tourGuide);
 
     }
 
@@ -185,5 +186,9 @@ class ControllerByAdmin extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    function listTransactions(){
+        return view('admin.transactions-manager');
     }
 }
