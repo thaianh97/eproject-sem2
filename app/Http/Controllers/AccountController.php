@@ -108,15 +108,12 @@ class AccountController extends Controller
         $accountSalt = $exist_account->salt;
         // hash(pwd+sald) == pwd hash
         $accountHashPassWord = md5($password . $accountSalt);
-        if($accountHashPassWord == $exist_account->password_hash) {
+        if ($accountHashPassWord == $exist_account->password_hash) {
             return view("customer.index")->with("obj", $exist_account);
         } else {
             return "mật khẩu không đúng";
         }
-
     }
-
-
 
     public function register()
     {
