@@ -20,6 +20,9 @@ class CreateTransactionDetailsTable extends Migration
             $table->unsignedBigInteger('guide_id'); // foreign key -> references 'id' on tour_guides migration
             $table->foreign('guide_id')->references('id')->on('tour_guides');
             $table->string('guide_name');
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->string('status');// 0 chưa thanh toán // 1 đã thanh toán// -1 hủy
             $table->timestamps();
         });
     }

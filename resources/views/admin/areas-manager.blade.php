@@ -17,12 +17,12 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="review-tab-pro-inner">
                             <ul id="myTab3" class="tab-review-design">
-                                <li class="active"><a href="#description"><i class="icon nalika-edit"
+                                <li class="active"><a href="#description"><i class=""
                                                                              aria-hidden="true"></i> Bắc</a>
                                 </li>
-                                <li><a href="#reviews"><i class="icon nalika-picture" aria-hidden="true"></i>
+                                <li><a href="#reviews"><i class="" aria-hidden="true"></i>
                                         Trung</a></li>
-                                <li><a href="#INFORMATION"><i class="icon nalika-chat" aria-hidden="true"></i>
+                                <li><a href="#INFORMATION"><i class="" aria-hidden="true"></i>
                                         Nam</a></li>
                             </ul>
                             <div id="myTabContent" class="tab-content custom-product-edit">
@@ -58,8 +58,7 @@
                                                                         @foreach($listBac as $item)
                                                                             <tr>
                                                                                 <td class="checkbox-toggle">
-                                                                                    <button data-toggle="modal" data-target="#myModal"><input  type="checkbox"
-                                                                                                                                               id="{{$item->id}}" ></button>
+                                                                                   <input  type="checkbox" id="{{$item->id}}" >
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
@@ -128,8 +127,7 @@
                                                                         @foreach($listTrung as $item)
                                                                             <tr>
                                                                                 <td class="checkbox-toggle">
-                                                                                    <button data-toggle="modal" data-target="#myModal"><input  type="checkbox"
-                                                                                                                                               id="{{$item->id}}"></button>
+                                                                                    <input  type="checkbox" id="{{$item->id}}">
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
@@ -198,9 +196,8 @@
                                                                         </tr>
                                                                         @foreach($listNam as $item)
                                                                             <tr>
-                                                                                <td class="checkbox-toggle" >
-                                                                                    <button data-toggle="modal" data-target="#myModal"><input  type="checkbox"
-                                                                                                                                               id="{{$item->id}}"></button>
+                                                                                <td class="checkbox-toggle">
+                                                                                    <input  type="checkbox" id="{{$item->id}}">
                                                                                 </td>
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
