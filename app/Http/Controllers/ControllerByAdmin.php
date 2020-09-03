@@ -97,6 +97,16 @@ class ControllerByAdmin extends Controller
             ->with($data);
     }
 
+    function showNewTourGuideDetail($id){
+        $new_tourGuides= NewTourGuideRegister::find($id);
+        return view('admin.new-tourGuide-info')->with('item',$new_tourGuides);
+    }
+
+    function sendMailToNewTourGuide($id){
+
+        return view('admin.send-mail')->with('id',$id);
+    }
+
     function acceptNewTourGuide(Request $request, $id)
     {
         // tạo mảng chứa dữ liệu
@@ -165,16 +175,19 @@ class ControllerByAdmin extends Controller
 
     public function deActiveTourGuide($id)
     {
-
+        $tourGuide = TourGuide::find($id);
+        dd($tourGuide);
+        $tourGuide->status = 0;
+        $tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+        $tourGuide->update();
+        return redirect('/admin/tourGuides');
     }
 
 
     function showTourGuideDetail($id)
     {
-        $data = array();
         $tourGuide = TourGuide::find($id);
-        return view('admin.tourGuides-detail')->with($tourGuide);
-
+        return view('admin.tourGuides-detail')->with('item',$tourGuide);
     }
 
     function generateRandomString($length = 10)

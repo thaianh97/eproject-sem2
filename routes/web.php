@@ -36,8 +36,12 @@ Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
 Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
 Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
+Route::post("/admin/deActive-tourGuides/{id}", "ControllerByAdmin@deActiveTourGuide");
 
 Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+Route::post("/admin/new-tourGuide/{id}", "ControllerByAdmin@showNewTourGuideDetail");
+Route::post("/admin/new-tourGuide-contact/{id}", "ControllerByAdmin@sendMailToNewTourGuide");
+
 Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
 
 
@@ -75,6 +79,7 @@ Route::get('/tourGuide/edit-info', function () {
     return view(('tourGuides.edit-info'));
 });
 Route::get('/tourGuide/edit-info', "TourGuideController@info");
+Route::get('/tourGuide', "TourGuideController@calender");
 Route::post('/tourGuide/edit-info', "TourGuideController@editInfo");
 
 

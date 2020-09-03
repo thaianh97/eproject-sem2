@@ -73,4 +73,8 @@ class TourGuideController extends Controller
 
 //        return redirect('');
     }
+
+    function calender(){
+        return view('tourguide.tourGuide-home');
+    }
 }

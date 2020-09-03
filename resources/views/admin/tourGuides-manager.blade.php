@@ -21,7 +21,6 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 
-
                     <div class="product-status-wrap">
                         <form action="/admin/tourGuides" method="get" id="product_form">
                             @csrf
@@ -130,7 +129,7 @@
                                             <td>{{$item->email}}</td>
 
                                             <td><img
-                                                    src="https://tinmoimedia.com/upload/camnhung/2020/08/17/131531-ngoc-trinh-lo-da-nhan-nheo-tm4.jpg">
+                                                    src="{{$item->small_photo}}">
                                             </td>
 
                                             @if($item->card == 1)
@@ -160,125 +159,84 @@
 
                                             <td>
 
-                                             <form  action="/admin/tourGuides/{{$item->id}}" method="post">
-                                                 @csrf
-                                                 <a>
-                                                     <button type="submit" class="btn btn-info "  id="{{$item->id}}"> <i
-                                                             class="fa fa-info" aria-hidden="true"></i></button>
-                                                 </a>
-                                             </form>
-
+                                                <form action="/admin/tourGuides/{{$item->id}}" method="post">
+                                                    @csrf
+                                                    <a>
+                                                        <button data-toggle="tooltip" title="More Info"
+                                                                class="pd-setting-ed" type="submit"><i
+                                                                class="fa fa-info-circle" aria-hidden="true"></i>
+                                                        </button>
+                                                    </a>
+                                                </form>
 
                                                 <a>
                                                     <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                            class="fa fa-pencil" aria-hidden="true"></i>
                                                     </button>
                                                 </a>
                                                 <button data-toggle="modal"
                                                         data-target="#comfirmModal" title="DeActive"
                                                         class="pd-setting-ed">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i></button>
-
+                                                    <i class="fa fa-trash " aria-hidden="true"></i></button>
 
                                             </td>
                                         </tr>
 
                                     @endforeach
                                 </table>
+                                
 
-                        {{--//more detail--}}
-                        <div class="breadcome-area">
-                            <div class="modal fade" id="detailModal" role="dialog">
-                                <div class="container">
-                                    <div class="modal-dialog modal-dialog-scrollable">
 
-                                        <!-- Modal content-->
-                                        <div class="product-status-wrap" class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;
-                                                </button>
-                                                <h4 class="modal-title" id="title-name"> TourGuide
-                                                    detail</h4>
-                                            </div>
-                                            <div class="product-status-wrap">
+                                {{--                        deactive comfirm--}}
+                                <div class="breadcome-area">
+                                    <div class="modal fade" id="comfirmModal" role="dialog">
+                                        <div class="container">
+                                            <div class="modal-dialog modal-dialog-scrollable">
 
-                                                <div class="modal-body">
-                                                    <table>
-                                                        <tr>
+                                                <!-- Modal content-->
+                                                <div class="product-status-wrap" class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;
+                                                        </button>
+                                                        <h4 class="modal-title">TourGuide DeActive comfirm</h4>
+                                                    </div>
+                                                    <div class="product-status-wrap">
 
-                                                            <th>MC_gala_dinner</th>
-                                                            <th>Team building</th>
-                                                            <th>Description</th>
-                                                        </tr>
-                                                        <tr>
+                                                        <div class="modal-body">
+                                                            <h2 class="text-warning">DeActive this tourGuide?</h2>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form action="/admin/deActive-tourGuides/{{$item->id}}" method="post">
+                                                                @csrf
+                                                                    <button class="btn btn-close btn-primary  " type="submit">
+                                                                        Yes
+                                                                    </button>
+                                                                <button type="button" class="btn btn-close btn-primary"
+                                                                        data-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                            </form>
 
-                                                            <td>{{$item->mc_gala_dinner}}</td>
-                                                            <td>{{$item->team_building}}</td>
-                                                            <td>{{$item->description}}</td>
-                                                        </tr>
-                                                    </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        {{--                        deactive comfirm--}}
-                        <div class="breadcome-area">
-                            <div class="modal fade" id="comfirmModal" role="dialog">
-                                <div class="container">
-                                    <div class="modal-dialog modal-dialog-scrollable">
-
-                                        <!-- Modal content-->
-                                        <div class="product-status-wrap" class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;
-                                                </button>
-                                                <h4 class="modal-title">TourGuide DeActive comfirm</h4>
-                                            </div>
-                                            <div class="product-status-wrap">
-
-                                                <div class="modal-body">
-                                                    <h2 class="text-warning">DeActive this tourGuide?</h2>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-danger" data-dismiss="modal"
-                                                            id="do-deactive">
-                                                        DeActive
-                                                    </button>
-                                                    <button type="button" class="btn btn-close btn-primary"
-                                                            data-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
 
-                        <div class="custom-pagination">
-                            {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    {{ $list->appends(['sort' => 'votes'])->links() }}
-                                </li>
+                                <div class="custom-pagination">
+                                    {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            {{ $list->appends(['sort' => 'votes'])->links() }}
+                                        </li>
 
 
-                            </ul>
-                        </div>
+                                    </ul>
+                                </div>
                     </div>
                 </div>
             </div>
@@ -297,9 +255,9 @@
     <script>
 
 
-
         $('#detailModal').on('shown.bs.modal', 'showDetail')
-       function showDetail(){
+
+        function showDetail() {
             var title = document.getElementById('title-name');
 
             title.textContent = "hay"
