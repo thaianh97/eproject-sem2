@@ -95,7 +95,7 @@
                         <div class="add-product">
                             <a href="/admin/add-product">Add Product</a>
                         </div>
-                        <table data-check-all-container >
+                        <table>
                             <tr>
                                 <th>ID</th>
                                 <th>Full_name</th>

@@ -21,7 +21,10 @@ class CreateTransactionsTable extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->unsignedBigInteger('province_id');
             $table->foreign('province_id')->references('id')->on('areas');
-            $table->dateTime('created_time'); // ngày tạo ra transaction
+            $table->integer('party_number');
+            $table->dateTime('start');
+            $table->dateTime('end');
+            $table->double('total_cost');
             $table->integer('status'); // 1. Sent | 2. Confirm | 3. Cancel
             $table->timestamps();
         });

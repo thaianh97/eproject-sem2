@@ -36,6 +36,8 @@ Route::post("/admin/new-tourGuide/{id}", "ControllerByAdmin@showNewTourGuideDeta
 Route::post("/admin/new-tourGuide-contact/{id}", "ControllerByAdmin@sendMailToNewTourGuide");
 
 Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+Route::post("/admin/transactions/{id}", "ControllerByAdmin@showTransactionDetail");
+
 
 Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
 Route::get('/admin/areas', 'ControllerByAdmin@listAreas');

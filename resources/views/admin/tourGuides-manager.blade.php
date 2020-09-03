@@ -81,14 +81,6 @@
                         <div class="add-product">
                             <a href="/admin">Add Product</a>
                         </div>
-                        <table data-check-all-container>
-                            <tr>
-                                {{--                                <th>--}}
-
-                                {{--                                    <label>Check all: <input type="checkbox" data-check-all></label>--}}
-                                {{--                                    <span data-check-all-count>0</span>--}}
-
-                                {{--                                </th>--}}
                                 <h4>TourGuide List</h4>
                                 <div class="add-product">
                                     <a href="/admin">Add TourGuide</a>
@@ -184,7 +176,7 @@
 
                                     @endforeach
                                 </table>
-                                
+
 
 
                                 {{--                        deactive comfirm--}}

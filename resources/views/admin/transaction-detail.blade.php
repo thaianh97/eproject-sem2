@@ -22,27 +22,27 @@
 
 
                     <div class="product-status-wrap">
-                        <form action="/admin/tourGuides" method="get" id="product_form">
-                            @csrf
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="exampleFormControlSelect1"><h2 style="color:white; ">
-                                                Area</h2></label>
-                                        <select name="chosen_area_id" class="form-control" id="chosen_area_id">
-                                            <option value="0">All</option>
-                                            @foreach($areas as $area)
-                                                <option
-                                                    value="{{$area->id}}" {{$area->id == $chosen_area ? 'selected':''}}>{{$area->province}}</option>
-                                        @endforeach
+{{--                        <form action="/admin/tourGuides" method="get" id="product_form">--}}
+{{--                            @csrf--}}
+{{--                            <div class="form-body">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-4">--}}
+{{--                                        <label for="exampleFormControlSelect1"><h2 style="color:white; ">--}}
+{{--                                                Area</h2></label>--}}
+{{--                                        <select name="chosen_area_id" class="form-control" id="chosen_area_id">--}}
+{{--                                            <option value="0">All</option>--}}
+{{--                                            @foreach($areas as $area)--}}
+{{--                                                <option--}}
+{{--                                                    value="{{$area->id}}" {{$area->id == $chosen_area ? 'selected':''}}>{{$area->province}}</option>--}}
+{{--                                        @endforeach--}}
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <input class="btn btn-large btn-success" type="submit" value="Lọc">
-                            </div>
-                        </form>
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div>--}}
+{{--                                <input class="btn btn-large btn-success" type="submit" value="Lọc">--}}
+{{--                            </div>--}}
+{{--                        </form>--}}
                     </div>
 
 
@@ -57,20 +57,19 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <h4>Products List</h4>
-                        <div class="add-product">
-                            <a href="/admin">Add Product</a>
-                        </div>
-                                <h4>Transactions List</h4>
+
+                                <h4>Transactions detail</h4>
                                 <table>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Cus_ID</th>
-                                        <th>Province_id</th>
-                                        <th>Party_number</th>
+                                        <th>Trans_id</th>
+                                        <th>Guide_id</th>
+                                        <th>Guide_name</th>
                                         <th>Start</th>
                                         <th>End</th>
-                                        <th>Total_cost</th>
+                                        <th>Rate</th>
+                                        <th>Review</th>
+                                        <th>Cost</th>
                                         <th>Created_at</th>
                                         <th>Update_at</th>
                                         <th>Status</th>
@@ -78,12 +77,14 @@
                                     @foreach($list as $item)
                                         <tr>
                                             <td>{{$item->id}}</td>
-                                            <td>{{$item->customer_id}}</td>
-                                            <td>{{$item->province_id}}</td>
-                                            <td>{{$item->party_number}}</td>
+                                            <td>{{$item->transaction_id}}</td>
+                                            <td>{{$item->guide_id}}</td>
+                                            <td>{{$item->guide_name}}</td>
                                             <td>{{$item->start}} Vnd/giờ</td>
                                             <td>{{$item->end}}</td>
-                                            <td>{{$item->email}}</td>
+                                            <td>{{$item->rate_stars}}</td>
+                                            <td>{{$item->review }}</td>
+                                            <td>{{$item->cost }}</td>
                                             <td>{{$item->created_at}}</td>
                                             <td>{{$item->updated_at}}</td>
                                             <td>
@@ -96,11 +97,12 @@
 
                                             <td>
 
-                                                <form action="/admin/transactions/{{$item->id}}" method="post">
+                                                <form action="" method="post">
                                                     @csrf
                                                     <a>
-                                                        <button type="submit" class="btn btn-info " id="{{$item->id}}">
-                                                            <i class="fa fa-info" aria-hidden="true"></i></button>
+                                                        <button type="submit" class="btn btn-info " id="{{$item->transaction_id}}">
+                                                            <i
+                                                                class="fa fa-info" aria-hidden="true"></i></button>
                                                     </a>
                                                 </form>
 
@@ -116,6 +118,7 @@
 
                                     @endforeach
                                 </table>
+
 
 
                                 <div class="custom-pagination">
@@ -160,5 +163,6 @@
 
     </script>
 @endsection
+
 
 

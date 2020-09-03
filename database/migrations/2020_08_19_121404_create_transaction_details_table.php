@@ -15,13 +15,16 @@ class CreateTransactionDetailsTable extends Migration
     {
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('transaction_detail_id'); // foreign key -> references 'id' on transactions migration
-            $table->foreign('transaction_detail_id')->references('id')->on('transactions');
+            $table->unsignedBigInteger('transaction_id'); // foreign key -> references 'id' on transactions migration
+            $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->unsignedBigInteger('guide_id'); // foreign key -> references 'id' on tour_guides migration
             $table->foreign('guide_id')->references('id')->on('tour_guides');
             $table->string('guide_name');
             $table->dateTime('start');
             $table->dateTime('end');
+            $table->integer('rate_stars');
+            $table->string('review');
+            $table->double('cost');
             $table->string('status');// 0 chưa thanh toán // 1 đã thanh toán// -1 hủy
             $table->timestamps();
         });
