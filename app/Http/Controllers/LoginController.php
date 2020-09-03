@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Account;
+use App\Customer;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
+
+class LoginController extends Controller
+{
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function processLogin(LoginRequest $request) // hàm đăng nhập của khách
+    {
+        //TODO: validate tài khoản đăng nhập của người
+        $request->validated();
+        //get user input
+        $username = $request->get('username');
+        $password = $request->get('password');
+        //get account with user's input username
+        $inDbAccounts = Account::query();
+        $loginAccount = $inDbAccounts->where("username", "=", $username)
+            ->where("status", "!=", 3)->first();
+        //check if user input account is not exist
+        if(!$loginAccount) {
+            $request->session()->flash("usernameError", "Tên tài khoản không tồn tại");
+            return redirect("/login");
+        }
+        // check user's input password
+        //get salt
+        $accountSalt = $loginAccount->salt;
+        //hash
+        $loginAccountHashPassWord = md5($password . $accountSalt);
+        if ($loginAccountHashPassWord != $loginAccount->password_hash) {
+            $request->session()->flash("passwordError", "Mật khẩu vừa nhập không đúng");
+            return redirect("/login");
+        }
+
+        //save login session
+        $request->getSession()->put("username", $loginAccount->username);
+        $request->getSession()->put("role", $loginAccount->role);
+
+        //return view by role: role = 3 for customer| role = 2 for tour Guide | role = 1 for admin
+        if($loginAccount->role == 1) {
+            return redirect("/admin");
+        } else if($loginAccount->role == 2) {
+            return redirect("/tourGuide");
+        } else {
+            return redirect("/");
+        }
+    }
+
+    public function logoutAdmin() {
+       \Illuminate\Support\Facades\Session::remove("username");
+        \Illuminate\Support\Facades\Session::remove("role");
+        return redirect("/");
+    }
+
+    public function logoutCustomer() {
+        \Illuminate\Support\Facades\Session::remove("username");
+        \Illuminate\Support\Facades\Session::remove("role");
+        return redirect("/");
+    }
+
+    public function logoutTourGuide() {
+        \Illuminate\Support\Facades\Session::remove("username");
+        \Illuminate\Support\Facades\Session::remove("role");
+        return redirect("/");
+    }
+
+}

@@ -13,30 +13,31 @@
             <!-- nav bar top right info -->
             <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 navbar-top-right">
 
-
-{{--                    <div class="dropdown navbar-top-right">--}}
-{{--                        <a href ="#"  class="navbar-top-link dropdown-toggle" type="button"--}}
-{{--                           data-toggle="dropdown"> {{$obj->username}}--}}
-{{--                        </a>--}}
-{{--                        <ul class="dropdown-menu">--}}
-{{--                            <li>--}}
-{{--                                <a class="dropdown-item" href=""--}}
-{{--                                   onclick="event.preventDefault();--}}
-{{--                                                     document.getElementById('logout-form').submit();">--}}
-{{--                                    {{ __('Logout') }}--}}
-{{--                                </a>--}}
-
-{{--                                <form id="logout-form" action="" method="POST" class="d-none">--}}
-{{--                                    @csrf--}}
-{{--                                </form>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
+                @if(session("username") == null | !session("username"))
 
                     {{--if user is guess--}}
                     <a href="/login" class="navbar-top-link">login</a>
                     <a href="/register" class="navbar-top-link">register</a>
+                @else
+                    <div class="dropdown navbar-top-right">
+                        <a href="#" class="navbar-top-link dropdown-toggle" type="button"
+                           data-toggle="dropdown" style="text-transform: none"> {{session("username")}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href=""
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
 
+                                <form id="logout-form" action="/logout" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -49,7 +50,7 @@
         </div>
         <div class="menu">
             <div class="menu-item"><a href="/" class="menu-link">Home</a></div>
-            <div class="menu-item"><a href="#" class="menu-link">Tour guides</a></div>
+            <div class="menu-item"><a href="/list" class="menu-link">Tour guides</a></div>
             <div class="menu-item"><a href="#" class="menu-link">Gallery</a></div>
             <div class="menu-item"><a href="/about" class="menu-link">About</a></div>
             <div class="menu-item"><a href="/contact" class="menu-link">Contact</a></div>

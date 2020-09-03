@@ -24,18 +24,18 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'bail|required|same:username',
-            'password' => 'bail|required|same:password',
+            'username' => 'min:6|required',
+            'password'=> 'min:6|required'
         ];
     }
 
     public function messages()
     {
         return [
-            'username.required' => 'Please insert your username!',
-            'username.same' => 'Username does not match!',
-            'password.required' => 'Please insert your password!',
-            'password.same' => 'Password does not match!',
+            'username.required' => 'Hãy nhập tên đăng nhập',
+            'username.min' => 'Tên đăng nhập phải có ít 6 ký tự',
+            'password.required' => 'Hãy nhập mật khẩu',
+            'password.min' => 'Mật khẩu phải có 6 ký tự',
         ];
     }
 }

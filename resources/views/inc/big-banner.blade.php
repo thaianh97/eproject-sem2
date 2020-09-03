@@ -36,7 +36,7 @@
         </a>
     </div>
     <div class="join-btn-container">
-        <a href="/tourguide/register" class="join-btn">Trở Thành Hướng Dẫn Viên Của Chúng Tôi</a>
+        <a href="/register/tourGuide" class="join-btn">Trở Thành Hướng Dẫn Viên Của Chúng Tôi</a>
     </div>
 </div>
 

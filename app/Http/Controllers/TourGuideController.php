@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 
 class TourGuideController extends Controller
 {
+    public function getTourGuideLayout() {
+        return view(('layout.tourGuide-layout'));
+    }
 
     public function filter(Request $request)
     {
@@ -49,13 +52,14 @@ class TourGuideController extends Controller
             ->with($data);
     }
 
-    function info( $id){
-        $this_tourGuide = DB::table('tourGuides')->where('id' ,'=',1)->first();
+    function edit( $id){
+
+        $this_tourGuide = DB::table('tourGuides')->where('id' ,'=',$id)->first();
 
         return view('tourGuides.edit-info');
     }
 
-    function editInfo(Request $request){
+    function update(Request $request){
 
         $this_tourGuide = DB::table('tourGuides')->where('id' ,'=',1)->first();
         $this_tourGuide->full_name = $request->get('full_name');
@@ -74,7 +78,18 @@ class TourGuideController extends Controller
 //        return redirect('');
     }
 
+
     function calender(){
         return view('tourguide.tourGuide-home');
     }
+    public function index() {
+        // lấy hết các hdv theo thứ tứ mới nhất + phân trang
+        $listTourGuides = TourGuide::query();
+        $activeTourGuides = $listTourGuides->where("status", "!=", 0)->orderBy("created_at", "desc")->paginate(6);
+        //trả về view
+        return view("customer.list-tourguides")->with("list", $activeTourGuides);
+
+    }
+
+
 }

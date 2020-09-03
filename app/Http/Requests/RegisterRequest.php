@@ -24,22 +24,18 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'bail|required|min:6',
-            'email' => 'bail|required',
-            'password' => 'bail|required|min:8',
-            'confirm_password' => 'bail|required|same:password',
+            'username' => 'min:6|required',
+            'password'=> 'min:6|required',
         ];
     }
 
     public function messages()
     {
         return [
-            'username.required' => 'Please insert your username!',
-            'username.min' => 'Username too short!',
-            'email.required' => 'Please insert your email!',
-            'password.required' => 'Please insert your password!',
-            'password.min' => 'Password too short!',
-            'confirm_password.same' => 'Password does not match!',
+            'username.required' => 'Hãy nhập tên đăng nhập',
+            'username.min' => 'Tên đăng nhập phải có ít 6 ký tự',
+            'password.required' => 'Hãy nhập mật khẩu',
+            'password.min' => 'Mật khẩu phải có 6 ký tự',
         ];
     }
 }

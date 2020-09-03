@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class NewTourGuideResgister extends Seeder
+class NewTourGuideResgisterSeeder extends Seeder
 {
     /**
      * Run the database seeds.

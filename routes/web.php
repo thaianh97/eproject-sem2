@@ -14,25 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//Route::get('/', function () {
-//    return view('welcome');
+//Route::get('/test', function () {
+//    return view(('admin.tourGuides-detail'));
 //});
 
-//Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+// admin route use admin.middleware
 
-
-
-Route::get('/test', function () {
-    return view(('admin.tourGuides-detail'));
+Route::middleware(['admin.middleware'])->group(function () {
+    //todo: put admins routes here when seed some valid admin account
 });
-
-
-// admin route
 Route::get('/admin', 'ControllerByAdmin@adminHome');
 Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
-
 
 Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
 Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
@@ -44,12 +37,15 @@ Route::post("/admin/new-tourGuide-contact/{id}", "ControllerByAdmin@sendMailToNe
 
 Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
 
+Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
+Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
+
+
 
 //Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
 
 
-Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
-Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
+
 
 
 //route to navigate the web site
@@ -60,36 +56,36 @@ Route::get("/register", "CustomerPageController@register");
 Route::get("/contact", "CustomerPageController@contact");
 Route::get("/find", "TourGuideController@filter");
 
-//test mail
-Route::get('/test', 'ControllerByAdmin@sendMail');
 
 
- //Login & register for user
-Route::get('/login', 'AccountController@login');
-Route::post('/login', 'AccountController@processLogin');
-Route::get('/register', 'AccountController@register');
-Route::post('/register', 'AccountController@processRegister');
 
+ //Login & register logout for user
+Route::get('/login', 'LoginController@login');
+Route::post('/login', 'LoginController@processLogin');
+Route::get('/register', 'RegisterController@register');
+Route::post('/register', 'RegisterController@processRegister');
+Route::post("/logout", "LoginController@logoutCustomer");
+//register for new tour guide
+Route::get("/register/tourGuide", "PendingTourGuideController@create");
+Route::post("/register/tourGuide", "PendingTourGuideController@store");
 
-//tourguide route
-    Route::get('/tourGuide', function () {
-    return view(('layout.tourGuide-layout'));
+//tour guide route use tourGuide.middleware
+Route::middleware(["tourGuide.middleware"])->group(function (){
+    Route::get('/tourGuide', "TourGuideController@getTourGuideLayout");
+
+    Route::get('/tourGuide/edit/{id}', "TourGuideController@edit");
+    Route::post('/tourGuide/update/{id}', "TourGuideController@update");
 });
-Route::get('/tourGuide/edit-info', function () {
-    return view(('tourGuides.edit-info'));
-});
+
 Route::get('/tourGuide/edit-info', "TourGuideController@info");
 Route::get('/tourGuide', "TourGuideController@calender");
 Route::post('/tourGuide/edit-info', "TourGuideController@editInfo");
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get("/list", "TourGuideController@index");
 
-//tourguide route
-Route::get("/tourguide/register", "PendingTourGuideController@create");
-Route::post("/tourguide/register", "PendingTourGuideController@store");
 
 
 

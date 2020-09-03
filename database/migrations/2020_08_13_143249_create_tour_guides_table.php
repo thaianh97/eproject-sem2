@@ -19,6 +19,7 @@ class CreateTourGuidesTable extends Migration
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('full_name');
             $table->integer('year_of_birth');
+            $table->integer('gender'); // 1. Nam | 2. Nữ |3. Khác
             $table->double('price');
             $table->string('phone');
             $table->string('email');
