@@ -22,26 +22,21 @@ use Illuminate\Support\Facades\Route;
 // admin route use admin.middleware
 
 Route::middleware(['admin.middleware'])->group(function () {
-    //todo: put admins routes here when seed some valid admin account
+    Route::get('/admin', 'ControllerByAdmin@adminHome');
+    Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
+
+    Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
+    Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
+
+    Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+    Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+
+    Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
+    Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 });
-Route::get('/admin', 'ControllerByAdmin@adminHome');
-Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
-
-Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
-Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
-
-Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
-Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
-
-Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
-Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
-
 
 
 //Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
-
-
-
 
 
 //route to navigate the web site
@@ -53,9 +48,7 @@ Route::get("/contact", "CustomerPageController@contact");
 Route::get("/find", "TourGuideController@filter");
 
 
-
-
- //Login & register logout for user
+//Login & register logout for user
 Route::get('/login', 'LoginController@login');
 Route::post('/login', 'LoginController@processLogin');
 Route::get('/register', 'RegisterController@register');
@@ -66,7 +59,7 @@ Route::get("/register/tourGuide", "PendingTourGuideController@create");
 Route::post("/register/tourGuide", "PendingTourGuideController@store");
 
 //tour guide route use tourGuide.middleware
-Route::middleware(["tourGuide.middleware"])->group(function (){
+Route::middleware(["tourGuide.middleware"])->group(function () {
     Route::get('/tourGuide', "TourGuideController@getTourGuideLayout");
 
     Route::get('/tourGuide/edit/{id}', "TourGuideController@edit");
@@ -74,11 +67,9 @@ Route::middleware(["tourGuide.middleware"])->group(function (){
 });
 
 
-
-
-
 Route::get("/list", "TourGuideController@index");
 
+Route::get("/show/tourGuide/{id}", "TourGuideController@show");
 
 
 

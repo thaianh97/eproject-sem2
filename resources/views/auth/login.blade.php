@@ -67,7 +67,7 @@
             @endif
 
             <input type="submit" value="Login"/>
-
+            <a href="/register" class="register-link">Không có tài khoản? Đăng ký một tài khoản ngay.</a>
         </form>
 
     </div>

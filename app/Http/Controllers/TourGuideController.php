@@ -87,5 +87,11 @@ class TourGuideController extends Controller
 
     }
 
+    public function show($id) {
+        $tourGuide = TourGuide::find($id);
+
+        return view("customer.tourGuide-detail")->with("obj", $tourGuide);
+    }
+
 
 }

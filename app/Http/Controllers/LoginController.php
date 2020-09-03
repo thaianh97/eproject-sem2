@@ -13,6 +13,15 @@ class LoginController extends Controller
 {
     public function login()
     {
+        //check if a session still existed -> then remove
+        if(\Illuminate\Support\Facades\Session::has("username")){
+            \Illuminate\Support\Facades\Session::remove("username");
+        }
+
+        if(\Illuminate\Support\Facades\Session::has("role")){
+            \Illuminate\Support\Facades\Session::remove("role");
+        }
+
         return view('auth.login');
     }
 
@@ -42,7 +51,8 @@ class LoginController extends Controller
             return redirect("/login");
         }
 
-        //save login session
+
+        //save new login session
         $request->getSession()->put("username", $loginAccount->username);
         $request->getSession()->put("role", $loginAccount->role);
 
@@ -57,8 +67,8 @@ class LoginController extends Controller
     }
 
     public function logoutAdmin() {
-       \Illuminate\Support\Facades\Session::remove("username");
-        \Illuminate\Support\Facades\Session::remove("role");
+           \Illuminate\Support\Facades\Session::remove("username");
+            \Illuminate\Support\Facades\Session::remove("role");
         return redirect("/");
     }
 

@@ -24,6 +24,13 @@
                            data-toggle="dropdown" style="text-transform: none"> {{session("username")}}
                         </a>
                         <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="#" class="dropdown-item">Chỉnh sửa thông tin</a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-item">Trạng Thái giao dịch</a>
+                            </li>
                             <li>
                                 <a class="dropdown-item" href=""
                                    onclick="event.preventDefault();

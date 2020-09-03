@@ -13,6 +13,7 @@
     @yield("style-sheets")
     <title>@yield("title")</title>
 </head>
+
 <body>
 @yield("header")
 @yield("content")
