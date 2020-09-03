@@ -242,7 +242,7 @@ class ControllerByAdmin extends Controller
         $trans_id = $id;
         $details_list = TransactionDetail::query();
         $details_list =$details_list->where('transaction_id','=',$trans_id);
-        $data['list'] = $details_list->paginate(10);
+        $data['list'] = $details_list->get();
         return view('admin.transaction-detail')->with($data);
 
     }

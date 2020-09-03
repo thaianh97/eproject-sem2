@@ -121,16 +121,6 @@
 
 
 
-                                <div class="custom-pagination">
-                                    {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            {{ $list->appends(['sort' => 'votes'])->links() }}
-                                        </li>
-
-
-                                    </ul>
-                                </div>
                     </div>
                 </div>
             </div>

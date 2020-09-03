@@ -128,6 +128,8 @@
                                         class="mini-sub-pro">Money</span></a></li>
                             <li><a title="Area " href="/tourGuide/edit-info"><span
                                         class="mini-sub-pro">Update info</span></a></li>
+                            <li><a title="Area " href="/tourGuide/new-orders"><span
+                                        class="mini-sub-pro">New orders</span></a></li>
                         </ul>
                     </li>
                     <li>

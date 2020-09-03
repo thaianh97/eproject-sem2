@@ -91,5 +91,8 @@ class TourGuideController extends Controller
 
     }
 
+    function showNewOrders(){
 
+        return view('tourguide.new-orders');
+    }
 }
