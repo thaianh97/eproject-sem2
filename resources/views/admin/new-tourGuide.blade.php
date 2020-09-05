@@ -147,18 +147,26 @@
                                         {{$item->status == 1 ? 'Đã duyệt' : 'Chưa duyệt' }}
 
                                     </td>
-                                    <form>
                                         <td>
-                                            <a>
-                                                <button type="button" class="btn btn-info "><i
-                                                        class="fa fa-info" aria-hidden="true"></i></button>
-                                            </a>
-                                            <a>
-                                                <button data-toggle="tooltip" title="contact" class="pd-setting-ed">
-                                                    <i class="fa fa-envelope" aria-hidden="true"></i></button>
-                                            </a>
+                                            <form action="/admin/new-tourGuide/{{$item->id}}" method="post">
+                                                @csrf
+                                                <a>
+                                                    <button data-toggle="tooltip" title="More Info"
+                                                            class="pd-setting-ed" type="submit"><i
+                                                            class="fa fa-info-circle" aria-hidden="true"></i>
+                                                    </button>
+                                                </a>
+                                            </form>
+                                            <form action="/admin/new-tourGuide-contact/{{$item->id}}" method="post">
+                                                @csrf
+                                                <a>
+                                                    <button data-toggle="tooltip" title="contact"
+                                                            class="pd-setting-ed" type="submit"><i
+                                                            class="fa fa-envelope" aria-hidden="true"></i>
+                                                    </button>
+                                                </a>
+                                            </form>
                                         </td>
-                                    </form>
                                 </tr>
 
                             @endforeach

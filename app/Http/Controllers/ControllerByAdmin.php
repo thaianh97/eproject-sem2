@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\NewTourGuideRegister;
 use App\TourGuide;
 use App\TourGuideArea;
+use App\Transaction;
+use App\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -97,6 +99,18 @@ class ControllerByAdmin extends Controller
             ->with($data);
     }
 
+    function showNewTourGuideDetail($id)
+    {
+        $new_tourGuides = NewTourGuideRegister::find($id);
+        return view('admin.new-tourGuide-info')->with('item', $new_tourGuides);
+    }
+
+    function sendMailToNewTourGuide($id)
+    {
+
+        return view('admin.send-mail')->with('id', $id);
+    }
+
     function acceptNewTourGuide(Request $request, $id)
     {
         // tạo mảng chứa dữ liệu
@@ -151,7 +165,7 @@ class ControllerByAdmin extends Controller
             "name" => $acceptTourGuide->full_name,
             "to" => $acceptTourGuide->email
         );
-        Mail::send('mail.email', $data, function ($message ) use ($acceptTourGuide) {
+        Mail::send('mail.email', $data, function ($message) use ($acceptTourGuide) {
 
             $message->to($acceptTourGuide->email, $acceptTourGuide->name)->subject('Hồ sơ đã được duyệt');
             $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
@@ -165,16 +179,19 @@ class ControllerByAdmin extends Controller
 
     public function deActiveTourGuide($id)
     {
-
+        $tourGuide = TourGuide::find($id);
+        dd($tourGuide);
+        $tourGuide->status = 0;
+        $tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+        $tourGuide->update();
+        return redirect('/admin/tourGuides');
     }
 
 
     function showTourGuideDetail($id)
     {
-        $data = array();
         $tourGuide = TourGuide::find($id);
-        return view('admin.tourGuides-detail')->with($tourGuide);
-
+        return view('admin.tourGuides-detail')->with('item', $tourGuide);
     }
 
     function generateRandomString($length = 10)
@@ -188,7 +205,45 @@ class ControllerByAdmin extends Controller
         return $randomString;
     }
 
-    function listTransactions(){
-        return view('admin.transactions-manager');
+    function listTransactions(Request $request)
+    {
+
+        $data = array();
+        $data['chosen_area'] = 0;
+        $data['order_by'] = '';
+        $areas = DB::table('areas')->get();
+        $transactions_list = Transaction::query();
+        // lọc theo areas
+        if ($request->has('chosen_area_id') && $request->get('chosen_area_id') != 0) {
+            $data['chosen_area'] = $request->get('chosen_area_id');
+
+            $transactions_list = $transactions_list->where('province_id', '=', $request->get('chosen_area_id'));
+
+        }
+
+        if ($request->has('order_by') && strlen($request->get('order_by')) > 0) {
+
+            $data['order_by'] = $request->get('order_by');
+            $transactions_list = $transactions_list->orderBy('created_at');
+
+        }
+
+        $data['list'] = $transactions_list->paginate(10);
+        $data['areas'] = $areas;
+        return view('admin.transactions-manager')
+            ->with($data);
+
+
+    }
+
+    function showTransactionDetail($id)
+    {
+        $data = array();
+        $trans_id = $id;
+        $details_list = TransactionDetail::query();
+        $details_list =$details_list->where('transaction_id','=',$trans_id);
+        $data['list'] = $details_list->get();
+        return view('admin.transaction-detail')->with($data);
+
     }
 }

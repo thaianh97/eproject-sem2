@@ -1,5 +1,5 @@
 @extends("layout.customer-layout")
-@extends("inc.small-banner")
+
 @section("vendor")
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,6 +28,7 @@
 
 
 @section("header")
+    @include("inc.small-banner")
     @include("inc.navbar")
 @endsection
 
@@ -54,7 +55,7 @@
                             <p><span class="selected-filter-name">Thời gian:</span> {{$start}} - {{$end}}</p>
                         </div>
                         <div class="selected-filter-item">
-                            <p><span class="selected-filter-name">Địa Điểm:</span> Đà Nẵng</p>
+                            <p><span class="selected-filter-name">Địa Điểm:</span> {{$chosen_area->province}}</p>
                         </div>
                     </div>
 
@@ -66,18 +67,19 @@
                                 <h3 class="filter-form-input-title">Thời Gian</h3>
                                 <label for="start" class="filter-form-label">khởi hành</label>
                                 <input type="text" class="filter-form-date-input" id="start"
-                                       placeholder="Ấn để chọn ngày" name = "start">
+                                       placeholder="Ấn để chọn ngày" name = "start" value="{{$start}}">
 
                                 <label for="end" class="filter-form-label">kết thúc</label>
                                 <input type="text" class="filter-form-date-input" id="end"
-                                       placeholder="Ấn để chọn ngày" name ="end">
+                                       placeholder="Ấn để chọn ngày" name ="end" value="{{$end}}">
                             </div>
 
                             <div class="filter-form-input-wrapper">
                                 <h3 class="filter-form-input-title">Địa Điểm</h3>
                                 <select name="province" id="province-select">
-                                    <option value="thai nguyen">Thái Nguyên</option>
-                                    <option value="Hà Nội">Hà Nội</option>
+                                    @foreach(\App\Area::all() as $item)
+                                        <option value="{{$item->id}}"    @if($item->id == $chosen_area->id) selected @endif">{{$item->province}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="filter-form-input-wrapper">
@@ -91,116 +93,115 @@
                 <!-- CONTENt -->
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 main-contain">
                     <div class="tour-guide-container">
-
+                        @foreach($list as $obj)
                         <div class="tour-guide-item">
-                            <h2 class="tour-guide-item-name">Lưu Huy</h2>
+                            <h2 class="tour-guide-item-name">{{$obj->full_name}}</h2>
                             <div class="row">
                                 <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">
+                                    <img src="{{$obj->large_photo}}" alt="" class="img-responsive">
                                 </div>
                                 <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur
-                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis
-                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>
+                                    <p>{{$obj->description}}</p>
                                     <ul class="list-option">
                                         <li>Lorem ipsum dolor.</li>
                                         <li>Lorem ipsum dolor sit.</li>
                                         <li>Lorem ipsum dolor sit amet.</li>
                                     </ul>
                                     <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>
-                                    <span class="price">1.200 000 VNĐ</span>
-                                    <a href="#" class="book-btn">Đặt Ngay</a>
+                                    <span class="price">{{$obj->price}} VNĐ</span>
+                                    <a href="#" class="book-btn">Chọn Hướng Dẫn Viên</a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="tour-guide-item">
-                            <h2 class="tour-guide-item-name">Lưu Huy</h2>
-                            <div class="row">
-                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">
-                                </div>
-                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur
-                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis
-                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>
-                                    <ul class="list-option">
-                                        <li>Lorem ipsum dolor.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>
-                                    <span class="price">1.200 000 VNĐ</span>
-                                    <a href="#" class="book-btn">Đặt Ngay</a>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="tour-guide-item">--}}
+{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
+{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
+{{--                                </div>--}}
+{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
+{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
+{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
+{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
+{{--                                    <ul class="list-option">--}}
+{{--                                        <li>Lorem ipsum dolor.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
+{{--                                    </ul>--}}
+{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
+{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
+{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="tour-guide-item">
-                            <h2 class="tour-guide-item-name">Lưu Huy</h2>
-                            <div class="row">
-                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">
-                                </div>
-                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur
-                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis
-                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>
-                                    <ul class="list-option">
-                                        <li>Lorem ipsum dolor.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>
-                                    <span class="price">1.200 000 VNĐ</span>
-                                    <a href="#" class="book-btn">Đặt Ngay</a>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="tour-guide-item">--}}
+{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
+{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
+{{--                                </div>--}}
+{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
+{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
+{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
+{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
+{{--                                    <ul class="list-option">--}}
+{{--                                        <li>Lorem ipsum dolor.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
+{{--                                    </ul>--}}
+{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
+{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
+{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="tour-guide-item">
-                            <h2 class="tour-guide-item-name">Lưu Huy</h2>
-                            <div class="row">
-                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">
-                                </div>
-                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur
-                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis
-                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>
-                                    <ul class="list-option">
-                                        <li>Lorem ipsum dolor.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>
-                                    <span class="price">1.200 000 VNĐ</span>
-                                    <a href="#" class="book-btn">Đặt Ngay</a>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="tour-guide-item">--}}
+{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
+{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
+{{--                                </div>--}}
+{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
+{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
+{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
+{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
+{{--                                    <ul class="list-option">--}}
+{{--                                        <li>Lorem ipsum dolor.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
+{{--                                    </ul>--}}
+{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
+{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
+{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="tour-guide-item">
-                            <h2 class="tour-guide-item-name">Lưu Huy</h2>
-                            <div class="row">
-                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">
-                                </div>
-                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur
-                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis
-                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>
-                                    <ul class="list-option">
-                                        <li>Lorem ipsum dolor.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>
-                                    <span class="price">1.200 000 VNĐ</span>
-                                    <a href="#" class="book-btn">Đặt Ngay</a>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="tour-guide-item">--}}
+{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
+{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
+{{--                                </div>--}}
+{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
+{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
+{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
+{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
+{{--                                    <ul class="list-option">--}}
+{{--                                        <li>Lorem ipsum dolor.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
+{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
+{{--                                    </ul>--}}
+{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
+{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
+{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <!-- END CONTENT -->

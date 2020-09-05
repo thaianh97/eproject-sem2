@@ -22,19 +22,35 @@ use Illuminate\Support\Facades\Route;
 // admin route use admin.middleware
 
 Route::middleware(['admin.middleware'])->group(function () {
-    Route::get('/admin', 'ControllerByAdmin@adminHome');
-    Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
-    Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
-    Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
 
-    Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
-    Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
-
-    Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
-    Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 });
 
+//todo: put admins routes here when seed some valid admin account
+Route::get('/admin', 'ControllerByAdmin@adminHome');
+Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
+
+Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
+Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
+
+
+
+
+Route::post("/admin/deActive-tourGuides/{id}", "ControllerByAdmin@deActiveTourGuide");
+
+Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+Route::post("/admin/new-tourGuide/{id}", "ControllerByAdmin@showNewTourGuideDetail");
+Route::post("/admin/new-tourGuide-contact/{id}", "ControllerByAdmin@sendMailToNewTourGuide");
+
+Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+Route::post("/admin/transactions/{id}", "ControllerByAdmin@showTransactionDetail");
+
+
+Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+
+Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
+Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 
 //Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
 
@@ -66,11 +82,17 @@ Route::middleware(["tourGuide.middleware"])->group(function () {
     Route::post('/tourGuide/update/{id}', "TourGuideController@update");
 });
 
+Route::get('/tourGuide/edit-info', "TourGuideController@info");
+Route::get('/tourGuide', "TourGuideController@calender");
+Route::post('/tourGuide/edit-info', "TourGuideController@editInfo");
+Route::get('/tourGuide/new-orders', "TourGuideController@showNewOrders");
+
 
 Route::get("/list", "TourGuideController@index");
 
 Route::get("/show/tourGuide/{id}", "TourGuideController@show");
 
+Route::get("/order", "OrderController@orderStatus");
 
 
 

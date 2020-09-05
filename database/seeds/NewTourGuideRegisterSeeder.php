@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class NewTourGuideResgister extends Seeder
+class NewTourGuideRegisterSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,6 +21,7 @@ class NewTourGuideResgister extends Seeder
                 'userName'=> 'truongprond97',
                 'full_name' => 'Mai Quang Hiếu',
                 'year_of_birth' => 1998,
+                "gender" => 1,
                 'phone' => '0979691998',
                 'email' => 'maiquanghieu6998@gmail.com',
                 'description' => 'Tự tin, thân thiện, vui vẻ. Có thể dẫn tour bằng tiếng Anh',
@@ -37,6 +38,7 @@ class NewTourGuideResgister extends Seeder
                 'userName'=> 'truongprond98',
                 'full_name' => 'Phạm Quang Trường',
                 'year_of_birth' => 1996,
+                "gender" => 1,
                 'phone' => '0912577620',
                 'email' => 'truongpham97@gmail.com',
                 'description' => 'trầm lắng, thích đọc sách và tìm hiểu nhiều nền văn hoá cũng như lịch sử',
@@ -53,6 +55,7 @@ class NewTourGuideResgister extends Seeder
                 'userName'=> 'truongprond99',
                 'full_name' => 'Đặng Quang Chính',
                 'year_of_birth' => 1996,
+                "gender" => 1,
                 'phone' => '0912511440',
                 'email' => 'chinhdangquang777@gmail.com',
                 'description' => 'Năng nổ, hiểu biết nhiều về ẩm thực',
@@ -69,6 +72,7 @@ class NewTourGuideResgister extends Seeder
                 'userName'=> 'truongprond96',
                 'full_name' => 'Đặng Quang Chính',
                 'year_of_birth' => 1996,
+                "gender" => 1,
                 'phone' => '0912511440',
                 'email' => 'chinhdangquang777@gmail.com',
                 'description' => 'Năng nổ, hiểu biết nhiều về ẩm thực',

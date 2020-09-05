@@ -53,6 +53,7 @@
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                 <div class="single-product-details res-pro-tb">
                                     <h1>{{$item->full_name}}</h1>
+
                                     <span class="single-pro-star">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -60,10 +61,10 @@
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 										</span>
-                                    <div class="single-pro-price">
-                                        <span class="single-regular">{{$item->price}} VND/ngay</span><span
-                                            class="single-old"><del>$20.00</del></span>
-                                    </div>
+{{--                                    <div class="single-pro-price">--}}
+{{--                                        <span class="single-regular">{{$item->price}} VND/ngay</span><span--}}
+{{--                                            class="single-old"><del>$20.00</del></span>--}}
+{{--                                    </div>--}}
                                     <div class="single-pro-size">
                                         <h6>Giới tính</h6>
                                         <span>Nam</span> <span>Nữ</span> <span>Khác</span>
@@ -83,6 +84,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="clear"></div>
                                         <div class="single-pro-button">
                                             <div class="pro-button">
@@ -103,12 +105,15 @@
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-linkedin"></i></a>
                                         </div>
+
+
                                     </div>
                                     <div class="single-pro-cn">
                                         <h3>OVERVIEW</h3>
                                         <p>{{$item->description}}</p>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -286,3 +291,4 @@
         </div>
     </div>
 @endsection
+

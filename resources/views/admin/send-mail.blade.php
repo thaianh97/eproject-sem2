@@ -1,269 +1,21 @@
-<!doctype html>
-<html class="no-js" lang="en">
+@extends('layout.admin-layout')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard V.3 | Nalika - Material Admin Template</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+@section('content')
 
 
-    {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+@section('title')
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <h2>Send mail</h2>
+    <p>Welcome <span class="bread-ntd">Admin</span></p>
 
-    <!-- favicon
-		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/favicon.ico')}}">
-    <!-- Google Fonts
-		============================================ -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-    <!-- Bootstrap CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <!-- Bootstrap CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <!-- nalika Icon CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{asset('css/nalika-icon.css')}}">
-    <!-- owl.carousel CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.theme.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.transitions.css')}}">
-    <!-- animate CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
-    <!-- normalize CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
-    <!-- meanmenu icon CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/meanmenu.min.css')}}">
-    <!-- main CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    <!-- morrisjs CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/morrisjs/morris.css')}}">
-    <!-- mCustomScrollbar CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/scrollbar/jquery.mCustomScrollbar.min.css')}}">
-    <!-- metisMenu CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/metisMenu/metisMenu.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/metisMenu/metisMenu-vertical.css')}}">
-    <!-- calendar CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/calendar/fullcalendar.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/calendar/fullcalendar.print.min.css')}}">
-    <!-- style CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('style.css')}}">
-    <!-- responsive CSS
-		============================================ -->
-    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-    <!-- modernizr JS
-		============================================ -->
-    <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
-
-    @yield('styles')
-
-</head>
-
-<body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-
-<div class="left-sidebar-pro">
-    <nav id="sidebar" class="">
-        <div class="sidebar-header">
-            <a href="/admin"><img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt=""/></a>
-            <strong><img src="{{asset('img/logo/logosn.png')}}" alt=""/></strong>
-        </div>
-        <div class="nalika-profile">
-            <div class="profile-dtl">
-                <a href="#"><img src="{{asset('img/notification/4.jpg')}}" alt=""/></a>
-                <h2>Lakian <span class="min-dtn">Das</span></h2>
-            </div>
-            <div class="profile-social-dtl">
-                <ul class="dtl-social">
-                    <li><a href="#"><i class="icon nalika-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon nalika-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon nalika-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="left-custom-menu-adp-wrap comment-scrollbar">
-            <nav class="sidebar-nav left-sidebar-menu-pro">
-                <ul class="metismenu" id="menu1">
-                    <li class="active">
-                        <a class="has-arrow" href="/admin">
-                            <i class="icon nalika-home icon-wrap"></i>
-
-                            <span class="mini-click-non">Home</span>
-
-
-                        </a>
-                        <ul class="submenu-angle" aria-expanded="false">
-
-                            <li><a title="Dashboard v.3" href=#"><span
-                                        class="mini-sub-pro">Money</span></a></li>
-                            <li><a title="Area " href="/tourGuide/edit-info"><span
-                                        class="mini-sub-pro">Update info</span></a></li>
-                            <li><a title="Area " href="/tourGuide/new-orders"><span
-                                        class="mini-sub-pro">New orders</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="icon nalika-mail icon-wrap"></i> <span
-                                class="mini-click-non">Customers </span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="customers-list" href="/admin/customers"><span
-                                        class="mini-sub-pro">Customers</span></a></li>
-                            <li><a title="View Mail" href="mailbox-view.html"><span
-                                        class="mini-sub-pro">Add Customer </span></a></li>
-                            <li><a title="Compose Mail" href="mailbox-compose.html"><span class="mini-sub-pro">Edit Customer</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="icon nalika-diamond icon-wrap"></i> <span
-                                class="mini-click-non">TourGuides</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Google Map" href="/admin/tourGuides"><span
-                                        class="mini-sub-pro">List</span></a></li>
-                            <li><a title="Data Maps" href="data-maps.html"><span
-                                        class="mini-sub-pro">Add</span></a></li>
-                            <li><a title="Pdf Viewer" href="pdf-viewer.html"><span
-                                        class="mini-sub-pro"> Edit</span></a></li>
-                            <li><a title="Images Cropper" href="images-cropper.html"><span class="mini-sub-pro">Images Cropper</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="icon nalika-pie-chart icon-wrap"></i> <span
-                                class="mini-click-non">Miscellaneous</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="File Manager" href="file-manager.html"><span
-                                        class="mini-sub-pro">File Manager</span></a></li>
-                            <li><a title="Blog" href="blog.html"><span class="mini-sub-pro">Blog</span></a></li>
-                            <li><a title="Blog Details" href="blog-details.html"><span
-                                        class="mini-sub-pro">Blog Details</span></a></li>
-                            <li><a title="404 Page" href="404.html"><span class="mini-sub-pro">404 Page</span></a></li>
-                            <li><a title="500 Page" href="500.html"><span class="mini-sub-pro">500 Page</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="icon nalika-bar-chart icon-wrap"></i> <span
-                                class="mini-click-non">Charts</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Bar Charts" href="bar-charts.html"><span
-                                        class="mini-sub-pro">Bar Charts</span></a></li>
-                            <li><a title="Line Charts" href="line-charts.html"><span
-                                        class="mini-sub-pro">Line Charts</span></a></li>
-                            <li><a title="Area Charts" href="area-charts.html"><span
-                                        class="mini-sub-pro">Area Charts</span></a></li>
-                            <li><a title="Rounded Charts" href="rounded-chart.html"><span class="mini-sub-pro">Rounded Charts</span></a>
-                            </li>
-                            <li><a title="C3 Charts" href="c3.html"><span class="mini-sub-pro">C3 Charts</span></a></li>
-                            <li><a title="Sparkline Charts" href="sparkline.html"><span class="mini-sub-pro">Sparkline Charts</span></a>
-                            </li>
-                            <li><a title="Peity Charts" href="peity.html"><span class="mini-sub-pro">Peity Charts</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="icon nalika-table icon-wrap"></i> <span
-                                class="mini-click-non">Data Tables</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Peity Charts" href="static-table.html"><span
-                                        class="mini-sub-pro">Static Table</span></a></li>
-                            <li><a title="Data Table" href="data-table.html"><span
-                                        class="mini-sub-pro">Data Table</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="icon nalika-forms icon-wrap"></i> <span
-                                class="mini-click-non">Forms Elements</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Basic Form Elements" href="basic-form-element.html"><span
-                                        class="mini-sub-pro">Bc Form Elements</span></a></li>
-                            <li><a title="Advance Form Elements" href="advance-form-element.html"><span
-                                        class="mini-sub-pro">Ad Form Elements</span></a></li>
-                            <li><a title="Password Meter" href="password-meter.html"><span class="mini-sub-pro">Password Meter</span></a>
-                            </li>
-                            <li><a title="Multi Upload" href="multi-upload.html"><span
-                                        class="mini-sub-pro">Multi Upload</span></a></li>
-                            <li><a title="Text Editor" href="tinymc.html"><span class="mini-sub-pro">Text Editor</span></a>
-                            </li>
-                            <li><a title="Dual List Box" href="dual-list-box.html"><span class="mini-sub-pro">Dual List Box</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
-                                class="icon nalika-smartphone-call icon-wrap"></i> <span class="mini-click-non">App views</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Notifications" href="notifications.html"><span class="mini-sub-pro">Notifications</span></a>
-                            </li>
-                            <li><a title="Alerts" href="alerts.html"><span class="mini-sub-pro">Alerts</span></a></li>
-                            <li><a title="Modals" href="modals.html"><span class="mini-sub-pro">Modals</span></a></li>
-                            <li><a title="Buttons" href="buttons.html"><span class="mini-sub-pro">Buttons</span></a>
-                            </li>
-                            <li><a title="Tabs" href="tabs.html"><span class="mini-sub-pro">Tabs</span></a></li>
-                            <li><a title="Accordion" href="accordion.html"><span
-                                        class="mini-sub-pro">Accordion</span></a></li>
-                        </ul>
-                    </li>
-                    <li id="removable">
-                        <a class="has-arrow" href="#" aria-expanded="false"><i
-                                class="icon nalika-new-file icon-wrap"></i> <span
-                                class="mini-click-non">Pages</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a title="Login" href="login.html"><span class="mini-sub-pro">Login</span></a></li>
-                            <li><a title="Register" href="register.html"><span class="mini-sub-pro">Register</span></a>
-                            </li>
-                            <li><a title="Lock" href="lock.html"><span class="mini-sub-pro">Lock</span></a></li>
-                            <li><a title="Password Recovery" href="password-recovery.html"><span class="mini-sub-pro">Password Recovery</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </nav>
-</div>
-<!-- Start Welcome area -->
-<div class="all-content-wrapper">
+@endsection
+@section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="logo-pro">
-                    <a href="index.html"><img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt=""/></a>
+                    <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -277,36 +29,31 @@
                             <div class="row">
                                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
                                     <div class="menu-switcher-pro">
-                                        <button type="button" id="sidebarCollapse"
-                                                class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-                                            <i class="icon nalika-menu-task"></i>
+                                        <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="fa fa-bars"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                     <div class="header-top-menu tabl-d-n">
-                                        <div>
-                                            @yield('topBar')
-                                        </div>
-                                        {{--                                        <div class="breadcome-heading">--}}
-                                        {{--                                            <form role="search" class="">--}}
-                                        {{--                                                <input type="text" placeholder="Search..." class="form-control">--}}
-                                        {{--                                                <a href=""><i class="fa fa-search"></i></a>--}}
-                                        {{--                                            </form>--}}
-                                        {{--                                        </div>--}}
+                                        <ul class="nav navbar-nav mai-top-nav">
+                                            <li class="nav-item"><a href="#" class="nav-link">Home</a>
+                                            </li>
+                                            <li class="nav-item"><a href="#" class="nav-link">About</a>
+                                            </li>
+                                            <li class="nav-item"><a href="#" class="nav-link">Services</a>
+                                            </li>
+                                            <li class="nav-item"><a href="#" class="nav-link">Support</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                     <div class="header-right-info">
                                         <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                             <li class="nav-item dropdown">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                                                   class="nav-link dropdown-toggle"><i
-                                                        class="icon nalika-mail nalika-chat-pro"
-                                                        aria-hidden="true"></i><span
-                                                        class="indicator-ms"></span></a>
-                                                <div role="menu"
-                                                     class="author-message-top dropdown-menu animated zoomIn">
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-envelope-o adminpro-chat-pro" aria-hidden="true"></i><span class="indicator-ms"></span></a>
+                                                <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
                                                     <div class="message-single-top">
                                                         <h1>Message</h1>
                                                     </div>
@@ -314,7 +61,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="message-img">
-                                                                    <img src="{{asset('img/contact/1.jpg')}}" alt="">
+                                                                    <img src="img/contact/1.jpg" alt="">
                                                                 </div>
                                                                 <div class="message-content">
                                                                     <span class="message-date">16 Sept</span>
@@ -326,7 +73,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="message-img">
-                                                                    <img src="{{asset('img/contact/4.jpg')}}" alt="">
+                                                                    <img src="img/contact/4.jpg" alt="">
                                                                 </div>
                                                                 <div class="message-content">
                                                                     <span class="message-date">16 Sept</span>
@@ -338,7 +85,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="message-img">
-                                                                    <img src="{{asset('img/contact/3.jpg')}}" alt="">
+                                                                    <img src="img/contact/3.jpg" alt="">
                                                                 </div>
                                                                 <div class="message-content">
                                                                     <span class="message-date">16 Sept</span>
@@ -350,7 +97,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="message-img">
-                                                                    <img src="{{asset('img/contact/2.jpg')}}" alt="">
+                                                                    <img src="img/contact/2.jpg" alt="">
                                                                 </div>
                                                                 <div class="message-content">
                                                                     <span class="message-date">16 Sept</span>
@@ -365,13 +112,8 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button"
-                                                                    aria-expanded="false"
-                                                                    class="nav-link dropdown-toggle"><i
-                                                        class="icon nalika-alarm" aria-hidden="true"></i><span
-                                                        class="indicator-nt"></span></a>
-                                                <div role="menu"
-                                                     class="notification-author dropdown-menu animated zoomIn">
+                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="indicator-nt"></span></a>
+                                                <div role="menu" class="notification-author dropdown-menu animated zoomIn">
                                                     <div class="notification-single-top">
                                                         <h1>Notifications</h1>
                                                     </div>
@@ -379,7 +121,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="notification-icon">
-                                                                    <i class="icon nalika-tick" aria-hidden="true"></i>
+                                                                    <i class="fa fa-check adminpro-checked-pro admin-check-pro" aria-hidden="true"></i>
                                                                 </div>
                                                                 <div class="notification-content">
                                                                     <span class="notification-date">16 Sept</span>
@@ -391,7 +133,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="notification-icon">
-                                                                    <i class="icon nalika-cloud" aria-hidden="true"></i>
+                                                                    <i class="fa fa-cloud adminpro-cloud-computing-down" aria-hidden="true"></i>
                                                                 </div>
                                                                 <div class="notification-content">
                                                                     <span class="notification-date">16 Sept</span>
@@ -403,8 +145,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="notification-icon">
-                                                                    <i class="icon nalika-folder"
-                                                                       aria-hidden="true"></i>
+                                                                    <i class="fa fa-eraser adminpro-shield" aria-hidden="true"></i>
                                                                 </div>
                                                                 <div class="notification-content">
                                                                     <span class="notification-date">16 Sept</span>
@@ -416,8 +157,7 @@
                                                         <li>
                                                             <a href="#">
                                                                 <div class="notification-icon">
-                                                                    <i class="icon nalika-bar-chart"
-                                                                       aria-hidden="true"></i>
+                                                                    <i class="fa fa-line-chart adminpro-analytics-arrow" aria-hidden="true"></i>
                                                                 </div>
                                                                 <div class="notification-content">
                                                                     <span class="notification-date">16 Sept</span>
@@ -433,44 +173,27 @@
                                                 </div>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                                                   class="nav-link dropdown-toggle">
-                                                    <i class="icon nalika-user nalika-user-rounded header-riht-inf"
-                                                       aria-hidden="true"></i>
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <i class="fa fa-user adminpro-user-rounded header-riht-inf" aria-hidden="true"></i>
                                                     <span class="admin-name">Advanda Cro</span>
-                                                    <i class="icon nalika-down-arrow nalika-angle-dw nalika-icon"></i>
+                                                    <i class="fa fa-angle-down adminpro-icon adminpro-down-arrow"></i>
                                                 </a>
-                                                <ul role="menu"
-                                                    class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                    <li><a href="register.html"><span
-                                                                class="icon nalika-home author-log-ic"></span>
-                                                            Register</a>
+                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                    <li><a href="register.html"><span class="fa fa-home author-log-ic"></span>Register</a>
                                                     </li>
-                                                    <li><a href="#"><span class="icon nalika-user author-log-ic"></span>
-                                                            My Profile</a>
+                                                    <li><a href="#"><span class="fa fa-user author-log-ic"></span>My Profile</a>
                                                     </li>
-                                                    <li><a href="lock.html"><span
-                                                                class="icon nalika-diamond author-log-ic"></span>
-                                                            Lock</a>
+                                                    <li><a href="lock.html"><span class="fa fa-diamond author-log-ic"></span> Lock</a>
                                                     </li>
-                                                    <li><a href="#"><span
-                                                                class="icon nalika-settings author-log-ic"></span>
-                                                            Settings</a>
+                                                    <li><a href="#"><span class="fa fa-cog author-log-ic"></span>Settings</a>
                                                     </li>
-                                                    <li><a href="login.html"><span
-                                                                class="icon nalika-unlocked author-log-ic"></span>
-                                                            Log
-                                                            Out</a>
+                                                    <li><a href="login.html"><span class="fa fa-lock author-log-ic"></span>Log Out</a>
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown"
-                                                                                     role="button" aria-expanded="false"
-                                                                                     class="nav-link dropdown-toggle"><i
-                                                        class="icon nalika-menu-task"></i></a>
+                                            <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-tasks"></i></a>
 
-                                                <div role="menu"
-                                                     class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
+                                                <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
                                                     <ul class="nav nav-tabs custon-set-tab">
                                                         <li class="active"><a data-toggle="tab" href="#Notes">News</a>
                                                         </li>
@@ -484,8 +207,7 @@
                                                         <div id="Notes" class="tab-pane fade in active">
                                                             <div class="notes-area-wrap">
                                                                 <div class="note-heading-indicate">
-                                                                    <h2><i class="icon nalika-chat"></i> Latest News
-                                                                    </h2>
+                                                                    <h2><i class="fa fa-comments-o"></i> Latest News</h2>
                                                                     <p>You have 10 New News.</p>
                                                                 </div>
                                                                 <div class="notes-list-area notes-menu-scrollbar">
@@ -494,14 +216,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="  {{asset('img/contact/4.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/4.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -511,14 +229,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/1.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/1.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -528,14 +242,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/2.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/2.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -545,14 +255,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/3.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/3.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -562,14 +268,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/4.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/4.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -579,14 +281,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/1.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/1.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -596,14 +294,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/2.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/2.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -613,14 +307,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/1.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/1.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -630,14 +320,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/2.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/2.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -647,14 +333,10 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img
-                                                                                            src="{{asset('img/contact/3.jpg')}}"
-                                                                                            alt=""/>
+                                                                                        <img src="img/contact/3.jpg" alt="" />
                                                                                     </div>
                                                                                     <div class="notes-content">
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a
-                                                                                            more-or-less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more-or-less normal.</p>
                                                                                         <span>Yesterday 2:45 pm</span>
                                                                                     </div>
                                                                                 </div>
@@ -667,21 +349,17 @@
                                                         <div id="Projects" class="tab-pane fade">
                                                             <div class="projects-settings-wrap">
                                                                 <div class="note-heading-indicate">
-                                                                    <h2><i class="icon nalika-happiness"></i> Recent
-                                                                        Activity</h2>
+                                                                    <h2><i class="fa fa-cube"></i> Recent Activity</h2>
                                                                     <p> You have 20 Recent Activity.</p>
                                                                 </div>
-                                                                <div
-                                                                    class="project-st-list-area project-st-menu-scrollbar">
+                                                                <div class="project-st-list-area project-st-menu-scrollbar">
                                                                     <ul class="projects-st-menu-list">
                                                                         <li>
                                                                             <a href="#">
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New User Registered</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">1 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -692,9 +370,7 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New Order Received</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">2 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -705,9 +381,7 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New Order Received</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">3 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -718,9 +392,7 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New Order Received</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">4 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -731,9 +403,7 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New User Registered</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">5 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -744,9 +414,7 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New Order</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">6 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -757,9 +425,7 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New User</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">7 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -770,9 +436,7 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>New Order</h2>
-                                                                                        <p> The point of using Lorem
-                                                                                            Ipsum is that it has a more
-                                                                                            or less normal.</p>
+                                                                                        <p> The point of using Lorem Ipsum is that it has a more or less normal.</p>
                                                                                         <span class="project-st-time">9 hours ago</span>
                                                                                     </div>
                                                                                 </div>
@@ -785,8 +449,7 @@
                                                         <div id="Settings" class="tab-pane fade">
                                                             <div class="setting-panel-area">
                                                                 <div class="note-heading-indicate">
-                                                                    <h2><i class="icon nalika-gear"></i> Settings Panel
-                                                                    </h2>
+                                                                    <h2><i class="fa fa-gears"></i> Settings Panel</h2>
                                                                     <p> You have 20 Settings. 5 not completed.</p>
                                                                 </div>
                                                                 <ul class="setting-panel-list">
@@ -796,16 +459,10 @@
                                                                                 <h2>Show notifications</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example">
-                                                                                            <span
-                                                                                                class="onoffswitch-inner"></span>
-                                                                                            <span
-                                                                                                class="onoffswitch-switch"></span>
+                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example">
+                                                                                        <label class="onoffswitch-label" for="example">
+                                                                                            <span class="onoffswitch-inner"></span>
+                                                                                            <span class="onoffswitch-switch"></span>
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
@@ -818,16 +475,10 @@
                                                                                 <h2>Disable Chat</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example3">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example3">
-                                                                                            <span
-                                                                                                class="onoffswitch-inner"></span>
-                                                                                            <span
-                                                                                                class="onoffswitch-switch"></span>
+                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example3">
+                                                                                        <label class="onoffswitch-label" for="example3">
+                                                                                            <span class="onoffswitch-inner"></span>
+                                                                                            <span class="onoffswitch-switch"></span>
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
@@ -840,16 +491,10 @@
                                                                                 <h2>Enable history</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example4">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example4">
-                                                                                            <span
-                                                                                                class="onoffswitch-inner"></span>
-                                                                                            <span
-                                                                                                class="onoffswitch-switch"></span>
+                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example4">
+                                                                                        <label class="onoffswitch-label" for="example4">
+                                                                                            <span class="onoffswitch-inner"></span>
+                                                                                            <span class="onoffswitch-switch"></span>
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
@@ -862,16 +507,10 @@
                                                                                 <h2>Show charts</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example7">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example7">
-                                                                                            <span
-                                                                                                class="onoffswitch-inner"></span>
-                                                                                            <span
-                                                                                                class="onoffswitch-switch"></span>
+                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example7">
+                                                                                        <label class="onoffswitch-label" for="example7">
+                                                                                            <span class="onoffswitch-inner"></span>
+                                                                                            <span class="onoffswitch-switch"></span>
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
@@ -884,17 +523,10 @@
                                                                                 <h2>Update everyday</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               checked=""
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example2">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example2">
-                                                                                            <span
-                                                                                                class="onoffswitch-inner"></span>
-                                                                                            <span
-                                                                                                class="onoffswitch-switch"></span>
+                                                                                        <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example2">
+                                                                                        <label class="onoffswitch-label" for="example2">
+                                                                                            <span class="onoffswitch-inner"></span>
+                                                                                            <span class="onoffswitch-switch"></span>
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
@@ -907,17 +539,10 @@
                                                                                 <h2>Global search</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               checked=""
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example6">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example6">
-                                                                                            <span
-                                                                                                class="onoffswitch-inner"></span>
-                                                                                            <span
-                                                                                                class="onoffswitch-switch"></span>
+                                                                                        <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example6">
+                                                                                        <label class="onoffswitch-label" for="example6">
+                                                                                            <span class="onoffswitch-inner"></span>
+                                                                                            <span class="onoffswitch-switch"></span>
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
@@ -930,17 +555,10 @@
                                                                                 <h2>Offline users</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               checked=""
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example5">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example5">
-                                                                                            <span
-                                                                                                class="onoffswitch-inner"></span>
-                                                                                            <span
-                                                                                                class="onoffswitch-switch"></span>
+                                                                                        <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example5">
+                                                                                        <label class="onoffswitch-label" for="example5">
+                                                                                            <span class="onoffswitch-inner"></span>
+                                                                                            <span class="onoffswitch-switch"></span>
                                                                                         </label>
                                                                                     </div>
                                                                                 </div>
@@ -971,17 +589,21 @@
                         <div class="mobile-menu">
                             <nav id="dropdown">
                                 <ul class="mobile-menu-nav">
-                                    <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul class="collapse dropdown-header-top">
+                                            <li><a href="index.html">Dashboard v.1</a></li>
+                                            <li><a href="index-1.html">Dashboard v.2</a></li>
                                             <li><a href="index-3.html">Dashboard v.3</a></li>
-                                            <li><a href="/admin/list">Product List</a></li>
+                                            <li><a href="product-list.html">Product List</a></li>
+                                            <li><a href="product-edit.html">Product Edit</a></li>
                                             <li><a href="product-detail.html">Product Detail</a></li>
                                             <li><a href="product-cart.html">Product Cart</a></li>
+                                            <li><a href="product-payment.html">Product Payment</a></li>
+                                            <li><a href="analytics.html">Analytics</a></li>
+                                            <li><a href="widgets.html">Widgets</a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="demo" class="collapse dropdown-header-top">
                                             <li><a href="mailbox.html">Inbox</a>
                                             </li>
@@ -991,8 +613,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#others" href="#">Miscellaneous <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#others" href="#">Miscellaneous <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="others" class="collapse dropdown-header-top">
                                             <li><a href="file-manager.html">File Manager</a></li>
                                             <li><a href="contacts.html">Contacts Client</a></li>
@@ -1004,8 +625,7 @@
                                             <li><a href="500.html">500 Page</a></li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface
-                                            <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
                                             <li><a href="google-map.html">Google Map</a>
                                             </li>
@@ -1025,8 +645,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="Chartsmob" class="collapse dropdown-header-top">
                                             <li><a href="bar-charts.html">Bar Charts</a>
                                             </li>
@@ -1044,8 +663,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="Tablesmob" class="collapse dropdown-header-top">
                                             <li><a href="static-table.html">Static Table</a>
                                             </li>
@@ -1053,8 +671,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="formsmob" class="collapse dropdown-header-top">
                                             <li><a href="basic-form-element.html">Basic Form Elements</a>
                                             </li>
@@ -1070,8 +687,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="Appviewsmob" class="collapse dropdown-header-top">
                                             <li><a href="basic-form-element.html">Basic Form Elements</a>
                                             </li>
@@ -1087,8 +703,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span
-                                                class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
                                         <ul id="Pagemob" class="collapse dropdown-header-top">
                                             <li><a href="login.html">Login</a>
                                             </li>
@@ -1107,27 +722,28 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="breadcome-area">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="breadcome-list">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="icon nalika-home"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        @yield('title')
+        <!-- Mobile Menu end -->
+        <div class="breadcome-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list single-page-breadcome">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcome-heading">
+                                        <form role="search" class="">
+                                            <input type="text" placeholder="Search..." class="form-control">
+                                            <a href=""><i class="fa fa-search"></i></a>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="breadcomb-report">
-                                    <button data-toggle="tooltip" data-placement="left" title="Download Report"
-                                            class="btn"><i class="icon nalika-download"></i></button>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <ul class="breadcome-menu">
+                                        <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                        </li>
+                                        <li><span class="bread-blod">Compose Mail</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -1136,83 +752,123 @@
             </div>
         </div>
     </div>
-
-    <!-- Mobile Menu end -->
-    @yield('content')
-    <div class="footer-copyright-area">
+    <div class="mailbox-compose-area mg-tb-15">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-copy-right">
-                        <p>Copyright © 2018 <a href="https://colorlib.com/wp/templates/">Colorlib</a> All rights
-                            reserved.</p>
+                <div class="col-md-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="hpanel responsive-mg-b-30">
+                        <div class="panel-body">
+                            <a href="mailbox_compose.html" class="btn btn-success compose-btn btn-block m-b-md">Compose</a>
+                            <ul class="mailbox-list">
+                                <li>
+                                    <a href="#">
+                                        <span class="pull-right">12</span>
+                                        <i class="fa fa-envelope"></i> Inbox
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-paper-plane"></i> Sent</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-pencil"></i> Draft</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-trash"></i> Trash</a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="mailbox-list">
+                                <li>
+                                    <a href="#"><i class="fa fa-plane text-danger"></i> Travel</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-bar-chart text-warning"></i> Finance</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-users text-info"></i> Social</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-tag text-success"></i> Promos</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-flag text-primary"></i> Updates</a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <ul class="mailbox-list">
+                                <li>
+                                    <a href="#"><i class="fa fa-gears"></i> Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-info-circle"></i> Support</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-md-9 col-sm-9 col-xs-12">
+                    <div class="hpanel email-compose mg-b-15">
+                        <div class="panel-heading hbuilt">
+                            <div class="p-xs h4">
+                                New message
+                            </div>
+                        </div>
+                        <div class="panel-heading hbuilt">
+                            <div class="p-xs">
+                                <form method="get" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label text-left">To:</label>
+                                        <div class="col-sm-11">
+                                            <input type="text" class="form-control input-sm" placeholder="example@email.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label text-left">Cc:</label>
+                                        <div class="col-sm-11">
+                                            <input type="text" class="form-control input-sm">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label text-left">Subject:</label>
+                                        <div class="col-sm-11">
+                                            <input type="text" class="form-control input-sm" placeholder="Enter Email subject">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel-body no-padding">
+                            <div class="summernote6">
+                                <h5>Hello Jonathan! </h5>
+                                <p>Dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the dustrys</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                                    a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    containing Lorem Ipsum passages, and more
+                                    <br/>
+                                    <br/>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+                                    a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. recently with.</p>
+                                <p>Mark Smith
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button class="btn btn-default"><i class="fa fa-edit"></i> Save</button>
+                                    <button class="btn btn-default"><i class="fa fa-trash"></i> Discard</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary ft-compse">Send email</button>
+                            <div class="btn-group">
+                                <button class="btn btn-default"><i class="fa fa-paperclip"></i> </button>
+                                <button class="btn btn-default"><i class="fa fa-image"></i> </button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-</div>
-
-<!-- jquery
-    ============================================ -->
-<script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
-<!-- bootstrap JS
-    ============================================ -->
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<!-- wow JS
-    ============================================ -->
-<script src="{{asset('js/wow.min.js')}}"></script>
-<!-- price-slider JS
-    ============================================ -->
-<script src="{{asset('js/jquery-price-slider.js')}}"></script>
-<!-- meanmenu JS
-    ============================================ -->
-<script src="{{asset('js/jquery.meanmenu.js')}}"></script>
-<!-- owl.carousel JS
-    ============================================ -->
-<script src="{{asset('js/owl.carousel.min.js')}}"></script>
-<!-- sticky JS
-    ============================================ -->
-<script src="{{asset('js/jquery.sticky.js')}}"></script>
-<!-- scrollUp JS
-    ============================================ -->
-<script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
-<!-- mCustomScrollbar JS
-    ============================================ -->
-<script src="{{asset('js/scrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-<script src="{{asset('js/scrollbar/mCustomScrollbar-active.js')}}"></script>
-<!-- metisMenu JS
-    ============================================ -->
-<script src="{{asset('js/metisMenu/metisMenu.min.js')}}"></script>
-<script src="{{asset('js/metisMenu/metisMenu-active.js')}}"></script>
-<!-- morrisjs JS
-    ============================================ -->
-<script src="{{asset('js/sparkline/jquery.sparkline.min.js')}}"></script>
-<script src="{{asset('js/sparkline/jquery.charts-sparkline.js')}}"></script>
-<!-- calendar JS
-    ============================================ -->
-<script src="{{asset('js/calendar/moment.min.js')}}"></script>
-<script src="{{asset('js/calendar/fullcalendar.min.js')}}"></script>
-<script src="{{asset('js/calendar/fullcalendar-active.js')}}"></script>
-<!-- float JS
-    ============================================ -->
-<script src="{{asset('js/flot/jquery.flot.js')}}"></script>
-<script src="{{asset('js/flot/jquery.flot.resize.js')}}"></script>
-<script src="{{asset('js/flot/jquery.flot.pie.js')}}"></script>
-<script src="{{asset('js/flot/jquery.flot.tooltip.min.js')}}"></script>
-<script src="{{asset('js/flot/jquery.flot.orderBars.js')}}"></script>
-<script src="{{asset('js/flot/curvedLines.js')}}"></script>
-<script src="{{asset('js/flot/flot-active.js')}}"></script>
-<!-- plugins JS
-    ============================================ -->
-<script src="{{asset('js/plugins.js')}}"></script>
-<!-- main JS
-    ============================================ -->
-<script src="{{asset('js/main.js')}}"></script>
-
-@yield('script')
-
-</body>
-</html>
+@endsection
 

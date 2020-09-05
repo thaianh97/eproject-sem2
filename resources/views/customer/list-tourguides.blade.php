@@ -1,5 +1,5 @@
 @extends("layout.customer-layout")
-@extends("inc.small-banner")
+
 @section("vendor")
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,16 +25,10 @@
 
 
 @section("header")
+    @include("inc.small-banner")
     @include("inc.navbar")
 @endsection
 
-@section("banner-title")
-    Danh Sách Hướng dân viên
-@endsection
-
-@section("banner-description")
-    Lorem ipsum dolor sit amet, consectetur adipisicing.
-@endsection
 
 @section("content")
     <h1 class="section-header">Hướng Dẫn Viên của chúng tôi</h1>

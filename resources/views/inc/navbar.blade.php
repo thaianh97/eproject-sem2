@@ -26,10 +26,10 @@
                         <ul class="dropdown-menu">
 
                             <li>
-                                <a href="#" class="dropdown-item">Chỉnh sửa thông tin</a>
+                                <a href="/user/edit/{{session("id")}}" class="dropdown-item">Chỉnh sửa thông tin</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown-item">Trạng Thái giao dịch</a>
+                                <a href="/order" class="dropdown-item">Trạng Thái giao dịch</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href=""
