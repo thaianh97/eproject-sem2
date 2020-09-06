@@ -25,7 +25,7 @@ class CreateTransactionsTable extends Migration
             $table->dateTime('start');
             $table->dateTime('end');
             $table->double('total_cost');
-            $table->integer('status'); // 1. Sent | 2. Confirm | 3. Cancel
+            $table->integer('status'); // 0. Chưa thanh toán | 1. Đã thanh toán | -1. Hủy
             $table->timestamps();
         });
     }
