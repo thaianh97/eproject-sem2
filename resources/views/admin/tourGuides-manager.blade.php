@@ -180,43 +180,7 @@
 
 
                                 {{--                        deactive comfirm--}}
-                                <div class="breadcome-area">
-                                    <div class="modal fade" id="comfirmModal" role="dialog">
-                                        <div class="container">
-                                            <div class="modal-dialog modal-dialog-scrollable">
 
-                                                <!-- Modal content-->
-                                                <div class="product-status-wrap" class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;
-                                                        </button>
-                                                        <h4 class="modal-title">TourGuide DeActive comfirm</h4>
-                                                    </div>
-                                                    <div class="product-status-wrap">
-
-                                                        <div class="modal-body">
-                                                            <h2 class="text-warning">DeActive this tourGuide?</h2>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <form action="/admin/deActive-tourGuides/{{$item->id}}" method="post">
-                                                                @csrf
-                                                                    <button class="btn btn-close btn-primary  " type="submit">
-                                                                        Yes
-                                                                    </button>
-                                                                <button type="button" class="btn btn-close btn-primary"
-                                                                        data-dismiss="modal">
-                                                                    Close
-                                                                </button>
-                                                            </form>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
 
                                 <div class="custom-pagination">
@@ -247,13 +211,6 @@
     <script>
 
 
-        $('#detailModal').on('shown.bs.modal', 'showDetail')
-
-        function showDetail() {
-            var title = document.getElementById('title-name');
-
-            title.textContent = "hay"
-        }
 
         $('#comfirmModal').on('shown.bs.modal', function () {
 

@@ -181,7 +181,6 @@ class ControllerByAdmin extends Controller
     public function deActiveTourGuide($id)
     {
         $tourGuide = TourGuide::find($id);
-        dd($tourGuide);
         $tourGuide->status = 0;
         $tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
         $tourGuide->update();

@@ -56,12 +56,19 @@ class TourGuideController extends Controller
             ->with($data);
     }
 
-    function edit($id)
-    {
 
-        $this_tourGuide = DB::table('tourGuides')->where('id', '=', $id)->first();
+    function editInfo(){
+        $acc_id = session('id');
+        $tourGuide = DB::table('tour_guides')->where('account_id','=',$acc_id)->first();
+        return view('tourGuide.edit-info')->with('tourGuide',$tourGuide);
+    }
 
-        return view('tourGuides.edit-info');
+    function submitNewInfo(Request $request){
+        $acc_id = session('id');
+        $tourGuide = DB::table('tourGuides')->where('account_id','=',$acc_id)->first();
+
+
+        return redirect('/tourGuide');
     }
 
     function update(Request $request)
@@ -113,7 +120,7 @@ class TourGuideController extends Controller
         //get logged in tourguide
         $currentAccount = Account::query()->where("username", session("username"))->first();
         $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
-   
+
         //get list transaction details of this tour guide
         $listTransactionDetails = $currentTourGuide->transactionDetails->where("status" ,"=", 1);
 
