@@ -23,7 +23,7 @@ class CustomerPageController extends Controller
         return view("auth.register");
     }
     public function contact() {
-        return view("customer.contactus");
+        return view("customer.contact-us");
     }
 
     public function findTourGuide() {

@@ -67,7 +67,12 @@
                             <input type="number" id="duration" name="duration"  required
                                    class="date-input"/>
                         </div>
-
+                        <div class="input-wrapper">
+                            <label for="province">Tỉnh đi: </label>
+                            <select name="province_id" id="province-select">
+                                <option value="1">Hà Nội</option>
+                            </select>
+                        </div>
                         <div class="input-wrapper">
                             <label for="party-number">Số người đi tour: </label>
                             <input type="number" id="party_number" name="party_number" required>

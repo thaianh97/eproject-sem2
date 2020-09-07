@@ -63,7 +63,7 @@
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
-    height: calc((400px - 20px * 4) / 4);
+    height: calc((400px - 20px * 4) / 6);
     border-bottom: 1px solid #E4E4E4;
 }
 
@@ -221,5 +221,15 @@ a.detail-tab-link-item:hover, a.detail-tab-link-item:visited, a.detail-tab-link-
     width: 100%;
     text-align: center;
 }
-
+select {
+    display: inline-block;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    width: 250px;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 300;
+}
 

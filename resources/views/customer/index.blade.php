@@ -56,7 +56,7 @@
                                placeholder="click to pick up date..." required>
                     </div>
                     <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                        <label for="destination">Select list:</label>
+                        <label for="destination">Số người đi:</label>
                         <select class="form-control" id="destination" name="area_id">
                                 <option value="0">All</option>
                             @foreach(\App\Area::all() as $obj)
@@ -250,14 +250,14 @@
             theme: "leaf",
             format: "d/m/Y",
             large: true,
-            largeDefault: true,
+            largeDefault: false,
         });
 
         $('#end').dateDropper({
             theme: "leaf",
             format: "d/m/Y",
             large: true,
-            largeDefault: true,
+            largeDefault: false,
         });
     </script>
     <!-- init slider -->

@@ -48,7 +48,16 @@ class TourGuideController extends Controller
             $data['end'] = $request->get('end');
             $from = TimeFormatHelper::formatStringToSqlDate($data["start"]);
             $to = TimeFormatHelper::formatStringToSqlDate($data["end"]);
-            $tourGuide_list = $tourGuide_list->whereBetween('created_at', [$from, $to]);
+            $tourGuide_list = $tourGuide_list->whereNotIn('id', TransactionDetail::select('guide_id')
+                ->where(function ($query) use ($from, $to) {
+                    $query->where([
+                        ['start', '<', $from],
+                        ['end', '<', $to]
+                    ])->orWhere([
+                        ['start', '>', $from],
+                        ['end', '>', $to]
+                    ]);
+                }));
         }
         $data['list'] = $tourGuide_list->get();
         $data['areas'] = $areas;
@@ -111,6 +120,7 @@ class TourGuideController extends Controller
     public function show($id)
     {
         $tourGuide = TourGuide::find($id);
+
         return view("customer.tourGuide-detail")->with("obj", $tourGuide);
     }
 
