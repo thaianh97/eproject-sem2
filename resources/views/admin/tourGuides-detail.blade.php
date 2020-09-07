@@ -1,6 +1,5 @@
 @extends('layout.admin-layout')
 
-@section('content')
 
 
 
@@ -16,7 +15,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="single-product-pr">
-                        <div class="row">
+                           <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <div id="myTabContent1" class="tab-content">
                                     <div class="product-tab-list tab-pane fade active in" id="single-tab1">
@@ -85,6 +84,10 @@
                                         </div>
                                         <div class="clear"></div>
                                         <div class="single-pro-button">
+
+
+
+
                                             <div class="pro-button">
                                                 <a href="#">Lịch trình  </a>
                                             </div>
@@ -110,6 +113,11 @@
                                     </div>
                                 </div>
                             </div>
+                               <button data-toggle="modal"
+                                       data-target="#comfirmModal"
+                                       class="pd-setting-ed">
+                                   Khóa HDV
+                               </button>
                         </div>
                     </div>
                 </div>
@@ -117,6 +125,46 @@
         </div>
     </div>
     <!-- Single pro tab End-->
+
+    <!-- Comfirm deactive-->
+    <div class="breadcome-area">
+        <div class="modal fade" id="comfirmModal" role="dialog">
+            <div class="container">
+                <div class="modal-dialog modal-dialog-scrollable">
+
+                    <!-- Modal content-->
+                    <div class="product-status-wrap" class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;
+                            </button>
+                            <h4 class="modal-title">TourGuide DeActive comfirm</h4>
+                        </div>
+                        <div class="product-status-wrap">
+
+                            <div class="modal-body">
+                                <h2 class="text-warning">DeActive this tourGuide?</h2>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="/admin/deActive-tourGuides/{{$item->id}}" method="post">
+                                    @csrf
+                                    <button class="btn btn-close btn-primary  " type="submit">
+                                        Yes
+                                    </button>
+                                    <button type="button" class="btn btn-close btn-primary"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Single pro tab review Start-->
     <div class="single-pro-review-area mt-t-30 mg-b-30">
         <div class="container-fluid">
@@ -285,4 +333,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+
+
+
+        $('#comfirmModal').on('shown.bs.modal', function () {
+
+        })
+
+    </script>
 @endsection

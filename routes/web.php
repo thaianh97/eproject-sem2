@@ -81,7 +81,7 @@ Route::middleware(["tourGuide.middleware"])->group(function (){
 
 Route::get('/tourGuide/edit-info', "TourGuideController@info");
 Route::get('/tourGuide', "TourGuideController@calender");
-Route::post('/tourGuide/edit-info', "TourGuideController@editInfo");
+Route::get('/tourGuide/edit-info', "TourGuideController@editInfo");
 Route::get('/tourGuide/new-orders', "TourGuideController@showNewOrders");
 
 

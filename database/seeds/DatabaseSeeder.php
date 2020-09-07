@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(NewTourGuideResgisterSeeder::class);
         $this->call(TransactionsSeeder::class);
         $this->call(TransactionDetailSeeder::class);
+        $this->call(TransactionDetalStatusSeeder::class);
     }
 }

@@ -52,11 +52,17 @@ class TourGuideController extends Controller
             ->with($data);
     }
 
-    function edit( $id){
+    function editInfo(){
+        $acc_id = session('id');
+        $tourGuide = DB::table('tour_guides')->where('account_id','=',$acc_id)->first();
+        return view('tourGuide.edit-info')->with('tourGuide',$tourGuide);
+    }
 
-        $this_tourGuide = DB::table('tourGuides')->where('id' ,'=',$id)->first();
+    function submitNewInfo(Request $request){
+        $acc_id = session('id');
+        $tourGuide = DB::table('tourGuides')->where('account_id','=',$acc_id)->first();
 
-        return view('tourGuides.edit-info');
+        return redirect('/tourGuide');
     }
 
     function update(Request $request){
