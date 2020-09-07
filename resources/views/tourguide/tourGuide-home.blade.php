@@ -3,7 +3,7 @@
 @section('title')
 
     <h2>Home</h2>
-    <p>Welcome <span class="bread-ntd">tourGuide</span></p>
+    <p>Welcome <span class="bread-ntd">{{session("username")}}</span></p>
 
 @endsection
 @section('content')

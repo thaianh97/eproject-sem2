@@ -3,7 +3,7 @@
 @section('title')
 
     <h2>New order</h2>
-    <p>Welcome <span class="bread-ntd">tourGuide</span></p>
+    <p>Welcome <span class="bread-ntd">{{session("username")}}</span></p>
 
 @endsection
 @section('content')
@@ -38,43 +38,46 @@
                                 <th>Sô lượng</th>
                                 <th>Tg gửi yêu cầu</th>
                             </tr>
-                            <tr>
+                            @foreach($listTransaction as $item)
+                                <tr>
 
-                                <td></td>
-                                <td>
-                                    <form action="" method="post">
-                                        @csrf
+                                    <td></td>
+                                    <td>
+                                        <form action="/tourGuide/new-orders/accept/{{$item->id}}" method="post">
+                                            @csrf
 
-                                        <input type="submit" class="btn btn-primary" value="Duyệt">
-                                    </form>
-                                </td>
-                                <td>123</td>
-                                <td>12/9</td>
-                                <td>14/9</td>
-                                <td>Đà nẵng</td>
-                                <td>15 người</td>
-                                <td>4/9</td>
-                                <td>
-                                    <form action="" method="post">
-                                        @csrf
-                                        <a>
-                                            <button data-toggle="tooltip" title="More Info"
-                                                    class="pd-setting-ed" type="submit"><i
-                                                    class="fa fa-info-circle" aria-hidden="true"></i>
-                                            </button>
-                                        </a>
-                                    </form>
-                                    <form action="" method="post">
-                                        @csrf
-                                        <a>
-                                            <button data-toggle="tooltip" title="contact"
-                                                    class="pd-setting-ed" type="submit"><i
-                                                    class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </button>
-                                        </a>
-                                    </form>
-                                </td>
-                            </tr>
+                                            <input type="submit" class="btn btn-primary" value="Duyệt">
+                                        </form>
+                                    </td>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->start}}</td>
+                                    <td>{{$item->end}}</td>
+                                    <td>{{\App\Area::find($item->transaction->province_id)->province}}</td>
+                                    <td>{{$item->transaction->party_number}}</td>
+                                    <td>{{$item->transaction->created_at}}</td>
+                                    <td>
+                                        <form action="" method="post">
+                                            @csrf
+                                            <a>
+                                                <button data-toggle="tooltip" title="More Info"
+                                                        class="pd-setting-ed" type="submit"><i
+                                                        class="fa fa-info-circle" aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </form>
+                                        <form action="" method="post">
+                                            @csrf
+                                            <a>
+                                                <button data-toggle="tooltip" title="contact"
+                                                        class="pd-setting-ed" type="submit"><i
+                                                        class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+
 
                         </table>
 

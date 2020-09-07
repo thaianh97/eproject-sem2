@@ -44,7 +44,7 @@
   <div class="content">
       <h1 class="section-header">Trạng Thái Đơn Hàng</h1>
       <div class="booking-status-container">
-          <ul class="step-bar" data-step ="0">
+          <ul class="step-bar" data-step ="{{$step}}">
               <li class="step-item">
                  <i class="fa fa-times step-status-icon"></i>
                   <p class="step-name">Chọn hdv</p>
@@ -52,17 +52,22 @@
 
               <li class="step-item">
                   <i class="fa fa-times step-status-icon"></i>
-                  <p class="step-name">Chọn hdv</p>
+                  <p class="step-name">hdv xác nhận</p>
               </li>
 
               <li class="step-item">
                   <i class="fa fa-times step-status-icon "></i>
-                  <p class="step-name">Chọn hdv</p>
+                  <p class="step-name">Thanh toán</p>
               </li>
 
               <li class="step-item">
                   <i class="fa fa-times step-status-icon "></i>
-                  <p class="step-name">Chọn hdv</p>
+                  <p class="step-name">đi tour</p>
+              </li>
+
+              <li class="step-item">
+                  <i class="fa fa-times step-status-icon "></i>
+                  <p class="step-name">feed back</p>
               </li>
 
           </ul>

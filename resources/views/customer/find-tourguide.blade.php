@@ -107,9 +107,8 @@
                                         <li>Lorem ipsum dolor sit.</li>
                                         <li>Lorem ipsum dolor sit amet.</li>
                                     </ul>
-                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>
                                     <span class="price">{{$obj->price}} VNĐ</span>
-                                    <a href="#" class="book-btn">Chọn Hướng Dẫn Viên</a>
+                                    <a href="/show/tourGuide/{{$obj->id}}" class="book-btn">Chọn Hướng Dẫn Viên</a>
                                 </div>
                             </div>
                         </div>

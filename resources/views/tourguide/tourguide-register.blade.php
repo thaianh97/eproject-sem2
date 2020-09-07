@@ -55,12 +55,12 @@
 
             </div>
 
-            <div class="row">
-                <div class="form-group col-md-6">
+            <div class="row" >
+                <div class="form-group col-md-5">
                     <label for="phone">Phone number: </label>
                     <input type="text" class="form-control" id="phone" placeholder="Phone number" name="phone" required>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-2">
                     <label for="avatar">Avatar</label>
                     <div class="field item form-group">
 
@@ -72,6 +72,29 @@
                         <div class="col-md-6 col-sm-6 mt-2 thumbnails">
 
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-5 gender-container">
+                    <span>Giới tính: </span>
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" name="gender" id="male" value="1" checked>
+                            nam
+                        </label>
+                    </div>
+
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" name="gender" id="female" value="0">
+                            nữ
+                        </label>
+                    </div>
+
+                    <div class="radio-inline">
+                        <label>
+                            <input type="radio" name="gender" id="male" value="3">
+                            khác
+                        </label>
                     </div>
                 </div>
             </div>

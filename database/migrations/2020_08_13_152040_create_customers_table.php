@@ -19,6 +19,7 @@ class CreateCustomersTable extends Migration
             $table->unsignedBigInteger('account_id'); // foreign key -> references to 'id' on table 'accounts'
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('phone');
+            $table->integer('year_of_birth');
             $table->string('email');
             $table->string('address');
             $table->integer('status'); // 1. Active | 2. Inactive | 3. Deleted

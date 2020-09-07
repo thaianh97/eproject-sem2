@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("/img/background/Slider-2.jpg") rgba(0,0,0, .4);
+    background: url("/img/background/Slider-2.jpg") rgba(0, 0, 0, .4);
     background-blend-mode: multiply;
 }
 
@@ -33,4 +33,11 @@ h1.form-title {
     font-weight: bold;
     font-size: 20px;
     height: 50px;
+}
+
+.gender-container {
+    color: white;
+    margin-top: 30px;
+    text-align: center;
+    padding-right: 50px;
 }

@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class TourGuide extends Model
 {
     //
+    public function tourGuideAreas() {
+        return $this->hasMany("App\TourGuideArea", "", "id");
+    }
+    public function transactionDetails() {
+        return $this->hasMany("App\TransactionDetail", "guide_id", "id");
+    }
     private static $cloudinary_link = 'https://res.cloudinary.com/dnby4zyda/image/upload/';
     private static $cloudinary_version = "v1598774970/";
 

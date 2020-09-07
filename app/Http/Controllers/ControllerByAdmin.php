@@ -147,6 +147,7 @@ class ControllerByAdmin extends Controller
         $newTourGuide->year_of_birth = $acceptTourGuide->year_of_birth;
         $newTourGuide->phone = $acceptTourGuide->phone;
         $newTourGuide->email = $acceptTourGuide->email;
+        $newTourGuide->gender = $acceptTourGuide->gender;
         $newTourGuide->description = $acceptTourGuide->description;
         $newTourGuide->avatar = $acceptTourGuide->avatar;
         $newTourGuide->card = $acceptTourGuide->card;

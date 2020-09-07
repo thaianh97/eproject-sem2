@@ -15,7 +15,7 @@ ul.step-bar {
 ul.step-bar li.step-item {
     display: inline-block;
     list-style: none;
-    width: 20%;
+    width: 10%;
     position: relative;
 }
 

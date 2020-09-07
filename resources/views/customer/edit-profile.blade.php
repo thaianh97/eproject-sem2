@@ -24,87 +24,51 @@
 @section('content')
     <div class="content">
         <div class="register-container container">
-            <h1 class="form-title">Cập nhật thông tin</h1>
-            <form method="post" action="#" id ="tourguide-register">
+            @if($obj != null)
+                <h1 class="form-title">Xác Nhận Thông Tin</h1>
+            @else
+                <h1 class="form-title">Cập nhật thông tin</h1>
+            @endif
+            <form method="post" action="/user/update/{{session("id")}}" id="tourguide-register">
                 @csrf
                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
-                    </div>
-                </div>
 
+                    <div class="form-group col-md-4">
+                        <label for="fullName">Họ và tên</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Last Name" name="fullName"
+                               required @if($obj != null) value="{{$obj->full_name}}" @endif>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" name="email" required
+                               @if($obj != null) value="{{$obj->email}}" @endif>
+                    </div>
+
+
+                </div>
                 <div class="row">
                     <div class="form-group col-md-4">
-                        <label for="firstName">Họ</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="lastName">Tên</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" required>
+                        <label for="phone">Số Điện Thoại: </label>
+                        <input type="text" class="form-control" id="phone" placeholder="Số điện thoại"
+                               name="phone" required @if($obj != null) value="{{$obj->phone}}" @endif>
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="year_of_birth">Năm Sinh: </label>
-                        <input type="text" class="form-control" id="year_of_birth" placeholder="Năm Sinh" name="year_of_birth" required>
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="phone">Phone number: </label>
-                        <input type="text" class="form-control" id="phone" placeholder="Phone number" name="phone" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="avatar">Avatar</label>
-                        <div class="field item form-group">
-
-                            <div>
-                                <button type="button" id="upload_widget" class="btn btn-secondary" style="margin-left: 10px ">Click
-                                    to upload
-                                </button>
-                            </div>
-                            <div class="col-md-6 col-sm-6 mt-2 thumbnails">
-
-                            </div>
-                        </div>
+                        <input type="text" class="form-control" id="year_of_birth" placeholder="Năm Sinh"
+                               name="year_of_birth" required @if($obj != null) value="{{$obj->year_of_birth}}" @endif>
                     </div>
                 </div>
 
                 <div class="row">
-                    <label >Description:</label>
-                    <textarea class="form-control" rows="4" name="description"></textarea>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 checkbox-container">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="1" name ="mc_gala_dinner" >
-                                Bạn có thể làm MC, Gala
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="1" name ="teamBuilding">
-                                Bạn Có thể làm TeamBuilDing
-                            </label>
-                        </div>
-
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" value="1" name = "card">
-                                Bạn Có thẻ Hướng dẫn viên
-                            </label>
-                        </div>
-
-                    </div>
+                    <label>Địa chỉ:</label>
+                    <textarea class="form-control" rows="2" name="address">@if($obj != null) {{$obj->address}} @endif</textarea>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="submit" class="btn btn-primary submit-btn" value="ĐĂNG KÝ">
+                        <input type="submit" class="btn btn-primary submit-btn" value="Lưu">
                     </div>
                 </div>
             </form>
@@ -140,7 +104,6 @@
             document.getElementById("upload_widget").addEventListener("click", function () {
                 myWidget.open();
             }, false);
-
 
 
             $('body').on('click', '.cloudinary-delete', function () {

@@ -54,7 +54,8 @@
                     <div class="price-container">
                         <p>Total: <span class="price">320</span> &dollar;</p>
                     </div>
-                    <form action="" class="book-form">
+                    <form action="/book/{{$obj->id}}" class="book-form" method="post">
+                        @csrf
                         <div class="input-wrapper">
                             <label for="start">Ngày khởi hành: </label>
                             <input type="text" id="start" name="start" placeholder="ấn để chon ngày" required
@@ -62,14 +63,14 @@
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="start">Ngày Kết thúc: </label>
-                            <input type="text" id="end" name="end" placeholder="ấn để chon ngày" required
+                            <label for="duration">Số ngày đi: </label>
+                            <input type="number" id="duration" name="duration"  required
                                    class="date-input"/>
                         </div>
 
                         <div class="input-wrapper">
-                            <label for="customer-number">Số người đi tour: </label>
-                            <input type="number" id="customer-number" name="customer-number" required>
+                            <label for="party-number">Số người đi tour: </label>
+                            <input type="number" id="party_number" name="party_number" required>
                         </div>
                         <div class="input-wrapper">
                             <input type="submit" value="Đặt Hướng Dẫn Viên" class="book-btn">
@@ -220,12 +221,7 @@
             largeDefault: false,
         });
 
-        $('#end').dateDropper({
-            theme: "leaf",
-            format: "d/m/Y",
-            large: true,
-            largeDefault: false,
-        });
+
         //script for html tab
         $(".detail-tab-link-item").on("click", function (e) {
             //hide all

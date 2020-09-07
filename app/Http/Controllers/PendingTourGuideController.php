@@ -19,7 +19,7 @@ class PendingTourGuideController extends Controller
     {
         //lấy dữ liệu từ form -> lưu db
         //lấy thống tin từ request
-        //TODO: ar sex field
+
         $pendingTourGuide = new NewTourGuideRegister();
 
         $username = $request->username;
@@ -37,6 +37,7 @@ class PendingTourGuideController extends Controller
         $pendingTourGuide->phone = $request->get("phone");
         $pendingTourGuide->email = $request->get("email");
         $pendingTourGuide->description = $request->get("description");
+        $pendingTourGuide->gender = $request->get("gender");
         //get avatar
         $thumbnails = $request->get('thumbnails');
         //if user doesnt sent img

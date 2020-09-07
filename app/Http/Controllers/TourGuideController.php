@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Area;
+use App\Customer;
+use App\TimeFormatHelper;
 use App\TourGuide;
 use App\TourGuideArea;
+use App\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class TourGuideController extends Controller
 {
-    public function getTourGuideLayout() {
+    public function getTourGuideLayout()
+    {
         return view(('layout.tourGuide-layout'));
     }
 
@@ -36,15 +42,12 @@ class TourGuideController extends Controller
             }
         }
 
-        if ($request->has('keyword') && strlen($request->get('keyword')) > 0) {
-            $data['keyword'] = $request->get('keyword');
-            $tourGuide_list = $tourGuide_list->where('full_name', 'like', '%' . $request->get('keyword') . '%');
-        }
+
         if ($request->has('start') && strlen($request->get('start')) > 0 && $request->has('end') && strlen($request->get('end')) > 0) {
             $data['start'] = $request->get('start');
             $data['end'] = $request->get('end');
-            $from = date($request->get('start') . ' 00:00:00')->t;
-            $to = date($request->get('end') . ' 23:59:00');
+            $from = TimeFormatHelper::formatStringToSqlDate($data["start"]);
+            $to = TimeFormatHelper::formatStringToSqlDate($data["end"]);
             $tourGuide_list = $tourGuide_list->whereBetween('created_at', [$from, $to]);
         }
         $data['list'] = $tourGuide_list->get();
@@ -53,16 +56,18 @@ class TourGuideController extends Controller
             ->with($data);
     }
 
-    function edit( $id){
+    function edit($id)
+    {
 
-        $this_tourGuide = DB::table('tourGuides')->where('id' ,'=',$id)->first();
+        $this_tourGuide = DB::table('tourGuides')->where('id', '=', $id)->first();
 
         return view('tourGuides.edit-info');
     }
 
-    function update(Request $request){
+    function update(Request $request)
+    {
 
-        $this_tourGuide = DB::table('tourGuides')->where('id' ,'=',1)->first();
+        $this_tourGuide = DB::table('tourGuides')->where('id', '=', 1)->first();
         $this_tourGuide->full_name = $request->get('full_name');
         $this_tourGuide->price = $request->get('price');
         $this_tourGuide->year_of_birth = $request->get('year_of_birth');
@@ -80,10 +85,13 @@ class TourGuideController extends Controller
     }
 
 
-    function calender(){
+    function calender()
+    {
         return view('tourguide.tourGuide-home');
     }
-    public function index() {
+
+    public function index()
+    {
         // lấy hết các hdv theo thứ tứ mới nhất + phân trang
         $listTourGuides = TourGuide::query();
         $activeTourGuides = $listTourGuides->where("status", "!=", 0)->orderBy("created_at", "desc")->paginate(6);
@@ -93,14 +101,48 @@ class TourGuideController extends Controller
     }
 
 
-    public function show($id) {
+    public function show($id)
+    {
         $tourGuide = TourGuide::find($id);
         return view("customer.tourGuide-detail")->with("obj", $tourGuide);
     }
 
 
-    function showNewOrders(){
+    public function showNewOrders()
+    {
+        //get logged in tourguide
+        $currentAccount = Account::query()->where("username", session("username"))->first();
+        $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
+   
+        //get list transaction details of this tour guide
+        $listTransactionDetails = $currentTourGuide->transactionDetails->where("status" ,"=", 1);
 
-        return view('tourguide.new-orders');
+
+        return view('tourguide.new-orders')->with("listTransaction", $listTransactionDetails);
+    }
+
+    public function acceptOrder($id)
+    {
+        //get accepted order
+        $acceptOrder = TransactionDetail::find($id);
+        //get current tourGuide
+        $currentAccount = Account::query()->where("username", session("username"))->first();
+        $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
+        //getUser
+        $customer = Customer::find($acceptOrder->transaction->customer_id);
+
+        //todo: check exprired time and status
+        //chuyển trạng thái order
+        $acceptOrder->status = 2; // chờ thanh toán
+        $acceptOrder->save();
+        //send mail to user
+        $data = array();
+        $data["tourGuide"] = $currentTourGuide;
+        Mail::send('mail.order-accepted', $data, function ($message) use ($acceptOrder, $customer){
+            $message->to($customer->email,
+                'Tutorials Point')->subject('Yêu cầu số ' . $acceptOrder->id ." đã được hdv chấp nhận");
+            $message->from('huongdanvien247@gmail.com', 'TConnect');
+        });
+        return redirect("/tourGuide/new-orders");
     }
 }

@@ -94,5 +94,32 @@ Route::get("/show/tourGuide/{id}", "TourGuideController@show");
 
 Route::get("/order", "OrderController@orderStatus");
 
+Route::get("/user/edit/{id}", "CustomerController@edit");
+Route::post("/user/update/{id}", "CustomerController@update");
+
+//Route::get("/test", function () {
+////    $areas = \App\TourGuideArea::query();
+////    $firstAreas = $areas->where("area_id", "=", "1")->get();
+////    $listTourGuide = array();
+////
+////    foreach ($firstAreas as $area) {
+////        $tourGuides = $area->tourGuides;
+////        array_push($listTourGuide,$tourGuides);
+////    }
+////    dd($listTourGuide);
+////   $tourGuide74 = \App\TourGuide::find(74);
+////   $listTransactionDetails = $tourGuide74->transactionDetails;
+////   dd($listTransactionDetails);
+//
+////    $transactionDetail6 = \App\TransactionDetail::find(6);
+////    $transaction = $transactionDetail6->transaction;
+////    dd($transaction);
+//
+//});
+
+Route::post("/book/{id}", "OrderController@book");
+
+Route::post("/tourGuide/new-orders/accept/{id}", "TourGuideController@acceptOrder");
+
 
 
