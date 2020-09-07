@@ -18,6 +18,7 @@ class CreateNewTourGuideRegistersTable extends Migration
             $table->string('userName');
             $table->string('full_name');
             $table->integer('year_of_birth');
+            $table->integer('gender'); // 1. Nam | 2. Nữ |3. Khác
             $table->string('phone');
             $table->string('email');
             $table->text('description');

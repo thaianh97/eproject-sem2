@@ -12,7 +12,9 @@
     <!-- EXTENDS NEEDED STYLE SHEETS FOR EACH PAGES -->
     @yield("style-sheets")
     <title>@yield("title")</title>
+
 </head>
+
 <body>
 @yield("header")
 @yield("content")

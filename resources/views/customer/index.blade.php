@@ -45,18 +45,28 @@
             <form action="/find" method="get" id="travel-date-form">
                 @csrf
                 <div class="row">
-                    <div class="date-form-group col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                    <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <label for="start">Start Day</label>
                         <input type="text" id="start" name="start" class="date-input"
                                placeholder="click to pick up date..."required>
                     </div>
-                    <div class="date-form-group col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                    <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <label for="end">End Day</label>
                         <input type="text" id="end" name="end" class="date-input"
                                placeholder="click to pick up date..." required>
                     </div>
+                    <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                        <label for="destination">Select list:</label>
+                        <select class="form-control" id="destination" name="area_id">
+                                <option value="0">All</option>
+                            @foreach(\App\Area::all() as $obj)
+                                <option value="{{$obj->id}}">{{$obj->province}}</option>
+                            @endforeach
 
-                    <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 btn-submit-wrapper">
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 col-lg-2 col-sm-12 col-xs-12 btn-submit-wrapper">
                         <input type="submit" class="btn chek-availability-btn" value="check availability">
                     </div>
                 </div>

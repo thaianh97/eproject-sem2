@@ -13,6 +13,15 @@ class LoginController extends Controller
 {
     public function login()
     {
+        //check if a session still existed -> then remove
+        if (\Illuminate\Support\Facades\Session::has("username")) {
+            \Illuminate\Support\Facades\Session::remove("username");
+        }
+
+        if (\Illuminate\Support\Facades\Session::has("role")) {
+            \Illuminate\Support\Facades\Session::remove("role");
+        }
+
         return view('auth.login');
     }
 
@@ -28,7 +37,7 @@ class LoginController extends Controller
         $loginAccount = $inDbAccounts->where("username", "=", $username)
             ->where("status", "!=", 3)->first();
         //check if user input account is not exist
-        if(!$loginAccount) {
+        if (!$loginAccount) {
             $request->session()->flash("usernameError", "Tên tài khoản không tồn tại");
             return redirect("/login");
         }
@@ -42,35 +51,43 @@ class LoginController extends Controller
             return redirect("/login");
         }
 
-        //save login session
+
+        //save new login session
         $request->getSession()->put("username", $loginAccount->username);
         $request->getSession()->put("role", $loginAccount->role);
-
+        //save id to session
+        $request->getSession()->put("id", $loginAccount->id);
         //return view by role: role = 3 for customer| role = 2 for tour Guide | role = 1 for admin
-        if($loginAccount->role == 1) {
+        if ($loginAccount->role == 1) {
             return redirect("/admin");
-        } else if($loginAccount->role == 2) {
+        } else if ($loginAccount->role == 2) {
             return redirect("/tourGuide");
         } else {
             return redirect("/");
         }
     }
 
-    public function logoutAdmin() {
-       \Illuminate\Support\Facades\Session::remove("username");
+    public function logoutAdmin()
+    {
+        \Illuminate\Support\Facades\Session::remove("username");
         \Illuminate\Support\Facades\Session::remove("role");
+        \Illuminate\Support\Facades\Session::remove("id");
         return redirect("/");
     }
 
-    public function logoutCustomer() {
+    public function logoutCustomer()
+    {
         \Illuminate\Support\Facades\Session::remove("username");
         \Illuminate\Support\Facades\Session::remove("role");
+        \Illuminate\Support\Facades\Session::remove("id");
         return redirect("/");
     }
 
-    public function logoutTourGuide() {
+    public function logoutTourGuide()
+    {
         \Illuminate\Support\Facades\Session::remove("username");
         \Illuminate\Support\Facades\Session::remove("role");
+        \Illuminate\Support\Facades\Session::remove("id");
         return redirect("/");
     }
 

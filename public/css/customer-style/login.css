@@ -131,3 +131,17 @@ span.close-btn {
     color: red;
     text-align: center;
 }
+a.register-link {
+    color: #fff;
+    font-style: italic;
+    text-decoration: underline;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+a.register-link:hover {
+    color: #0B792F;
+}
+

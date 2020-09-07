@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TourGuideAreaSeeder::class);
         $this->call(TourGuideImageSeeder::class);
         $this->call(TourGuideSeeder::class);
-        $this->call(NewTourGuideResgisterSeeder::class);
+        $this->call(NewTourGuideRegisterSeeder::class);
         $this->call(TransactionsSeeder::class);
         $this->call(TransactionDetailSeeder::class);
         $this->call(TransactionDetalStatusSeeder::class);
