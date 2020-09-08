@@ -26,7 +26,7 @@ class TourGuideController extends Controller
         // tạo biến data là một mảng chứa dữ liệu trả về.
         $data = array();
         $data['area_id'] = 0;
-
+        $data['chosen_area'] = null;
         $areas = DB::table('areas')->get();
         $tourGuide_list = TourGuide::query();
 
@@ -41,6 +41,7 @@ class TourGuideController extends Controller
                 $tourGuide_list = $tourGuide_list->where('id', '!=', $item->guide_id);
             }
         }
+
 
 
         if ($request->has('start') && strlen($request->get('start')) > 0 && $request->has('end') && strlen($request->get('end')) > 0) {

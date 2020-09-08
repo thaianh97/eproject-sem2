@@ -25,66 +25,53 @@
 
 
 @section("header")
-    @include("inc.small-banner")
+    <div class="small-banner text-center">
+        <div class="banner-content">
+            <h2>Hướng Dẫn viên của chúng tôi</h2>
+            <p>tất cả các hường dẫn viên đã đăng ký với công ty của chúng tôi</p>
+        </div>
+    </div>
     @include("inc.navbar")
 @endsection
 
 
 @section("content")
-    <h1 class="section-header">Hướng Dẫn Viên của chúng tôi</h1>
-    <div class="content">
 
-        <div class="container">
-            <div class="row">
-                @foreach($list as $obj)
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        <div class="box">
-                            <h1 class="box-title">{{$obj->full_name}}</h1>
-                            <div class="box-img">
-                                <img src="{{$obj->large_photo}}" alt="" class="img-responsive">
-                            </div>
-                            <div class="box-content">
-                                <p>{{$obj->description}}</p>
-                                <ul>
-                                    <li>
-                                        <span class="bold">Có thể làm MC: </span>
-                                        @if($obj->mc_gala_dinner == 0)
-                                            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
-                                        @else
-                                            <span class="icon"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <span class="bold">Tổ chức team building: </span>
-                                        @if($obj->team_building == 0)
-                                            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
-                                        @else
-                                            <span class="icon"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                        @endif
-                                    </li>
-                                    <li>
-                                        <span class="bold">Có thẻ hướng dẫn viên: </span>
-                                        @if($obj->card == 0)
-                                            <span class="icon"><i class="fa fa-times" aria-hidden="true"></i></span>
-                                        @else
-                                            <span class="icon"><i class="fa fa-check" aria-hidden="true"></i></span>
-                                        @endif
-                                    </li>
+      <div class="content">
+          <div class="container">
+              <div class="row">
+                  @foreach($list as $obj)
+                      <div class="col-md-6">
+                          <h2 class="box-title">{{$obj->full_name}}</h2>
+                          <div class="box">
+                              <div class="box-img">
+                                  <img src="{{$obj->large_photo}}" alt="" class="img-responsive">
+                              </div>
+                              <div class="box-content">
+                                  <p class="description">{{$obj->description}}</p>
+                                  <ul>
+                                      <li>Có thể tổ chức gala:  @if($obj->gala_mc_dinner == 1) <i class="fa fa-check"></i> @endif <i class="fa fa-times"></i></li>
+                                      <li>Có thể tổ chức các trò chơi team building:  @if($obj->team_building == 1) <i class="fa fa-check"></i> @else <i class="fa fa-times"></i> @endif</li>
+                                      <li>Có thể hướng dẫn viên:  @if($obj->card == 1) <i class="fa fa-check"></i> @else <i class="fa fa-times"></i> @endif</li>
+                                  </ul>
+                              </div>
+                              <div class="box-bottom">
+                                  <div class="price-box col-md-6 col-xs-6 col-sm-6">
+                                      <p><span class="price">giá ban đầu: </span><span class="amount">{{$obj->price}}đ</span><span class="price">/ ngày</span></p>
+                                  </div>
+                                  <div class="detail-btn-box col-md-6 col-xs-6 col-sm-6">
+                                      <a href="" class="detail-btn">Xem chi tiết</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
 
-                                </ul>
-                            </div>
-                            <div class="box-bottom">
-                                {{--<span class="price">Starting <span class="amout">$260</span></span>--}}
-                                <a href="/show/tourGuide/{{$obj->id}}" class="detail-btn">Xem Thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+              </div><!-- end row 1 -->
+              {{ $list->links() }}
+          </div><!-- end container -->
+      </div>
 
-            </div><!-- end row 1 -->
-            {{ $list->links() }}
-        </div><!-- end container -->
-    </div>
 @endsection
 
 @section("footer")

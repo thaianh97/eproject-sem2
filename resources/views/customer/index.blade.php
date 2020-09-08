@@ -46,19 +46,19 @@
                 @csrf
                 <div class="row">
                     <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                        <label for="start">Start Day</label>
+                        <label for="start">Ngày khởi hành: </label>
                         <input type="text" id="start" name="start" class="date-input"
                                placeholder="click to pick up date..."required>
                     </div>
                     <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                        <label for="end">End Day</label>
+                        <label for="end">Ngày kết thúc: </label>
                         <input type="text" id="end" name="end" class="date-input"
                                placeholder="click to pick up date..." required>
                     </div>
                     <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                        <label for="destination">Số người đi:</label>
+                        <label for="destination">Địa điểm:</label>
                         <select class="form-control" id="destination" name="area_id">
-                                <option value="0">All</option>
+                                <option value="0">Chọn địa điểm...</option>
                             @foreach(\App\Area::all() as $obj)
                                 <option value="{{$obj->id}}">{{$obj->province}}</option>
                             @endforeach
