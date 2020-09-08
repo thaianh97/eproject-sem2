@@ -22,12 +22,12 @@
 
 
                     <div class="product-status-wrap">
-                        <form action="/admin/tourGuides" method="get" id="product_form">
+                        <form action="/admin/tourGuides" method="post" id="product_form">
                             @csrf
                             <div class="form-body">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="exampleFormControlSelect1"><h2 style="color:white; ">
+                                    <div class="col-md-3">
+                                        <label for=""><h2 style="color:white;">
                                                 Area</h2></label>
                                         <select name="chosen_area_id" class="form-control" id="chosen_area_id">
                                             <option value="0">All</option>
@@ -37,31 +37,33 @@
                                         @endforeach
 
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for=""><h2 style="color:white;">
+                                                    Tìm kiếm </h2></label>
+                                            <a href=""><i class="fa fa-search"></i></a>
+
+                                            <input value="" type="text" name="keyword" class="form-control"
+                                                   placeholder="Search by keyword">
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{--                                            <div class="form-group">--}}
+                                            {{--                                                <div class="bread-ntd"><label for="exampleFormControlSelect1">Search by--}}
+                                            {{--                                                        time</label></div>--}}
+                                            {{--                                                <input type="text" name="dates" class="form-control">--}}
+                                            {{--                                                <input type="hidden" name="start">--}}
+                                            {{--                                                <input type="hidden" name="end">--}}
+                                            {{--                                            </div>--}}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <a href=""><i class="fa fa-search"></i></a>
 
-
-                                        <input value="" type="text" name="keyword" class="form-control"
-                                               placeholder="Search by keyword">
-
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        {{--                                            <div class="form-group">--}}
-                                        {{--                                                <div class="bread-ntd"><label for="exampleFormControlSelect1">Search by--}}
-                                        {{--                                                        time</label></div>--}}
-                                        {{--                                                <input type="text" name="dates" class="form-control">--}}
-                                        {{--                                                <input type="hidden" name="start">--}}
-                                        {{--                                                <input type="hidden" name="end">--}}
-                                        {{--                                            </div>--}}
-                                    </div>
+                                <div>
+                                    <input class="btn btn-large btn-success" type="submit" value="Lọc">
                                 </div>
                             </div>
-                            <div>
-                                <input class="btn btn-large btn-success" type="submit" value="Lọc">
-                            </div>
+
                         </form>
                     </div>
 
@@ -144,7 +146,7 @@
                                             <td>
                                                 <a>
                                                     <button type="button"
-                                                            class="btn btn-info ">{{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
+                                                            class="btn btn-info ">{{$item->status == 1 ? 'Hoạt dộng' : 'Ko hoạt dộng hoặc bị khóa' }}</button>
                                                 </a>
                                             </td>
 

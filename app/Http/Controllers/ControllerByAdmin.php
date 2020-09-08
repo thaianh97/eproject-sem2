@@ -80,7 +80,7 @@ class ControllerByAdmin extends Controller
 //            $tourGuide_list = $tourGuide_list->where('email', 'like', '%' . $request->get('keyword') . '%');
         }
 
-        $data['list'] = $tourGuide_list->paginate(10);
+        $data['list'] = $tourGuide_list->orderBy('created_at')->paginate(10);
         $data['areas'] = $areas;
         return view('admin.tourGuides-manager')
             ->with($data);
@@ -181,17 +181,111 @@ class ControllerByAdmin extends Controller
     public function deActiveTourGuide($id)
     {
         $tourGuide = TourGuide::find($id);
-        $tourGuide->status = 0;
-        $tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
-        $tourGuide->update();
+        $tourGuide_status = $tourGuide->status;
+
+        $account = Account::find($tourGuide->account_id);
+        $account_status = $account->status;
+
+
+
+        if($account_status == 1){
+            $account->status = 0;
+            $account->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $account->update();
+          if($tourGuide_status == 1){
+              $tourGuide->status =0;
+              $tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+              $tourGuide->update();
+          }
+            $transDetail_list = DB::table('transaction_details')->where('guide_id' ,'=',$id)->get();
+
+            $transDetail_list = $transDetail_list->where('status','!=',6)
+                ->where('status','!=',5)
+                ->where('status','!=',4);
+            foreach ($transDetail_list as   $transDetail){
+//                $transaction = Transaction::find($transDetail->transaction_id);
+//                $customer = Customer::find($transaction->customer_id);
+//                if($transDetail->status == 1){
+//
+//                    $data = array(
+//                        'username' => $customer->userName,
+//                        "name" => $customer->full_name,
+//                        "to" => $customer->email
+//                    );
+//                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+//
+//                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
+//                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+//
+//                    });
+//                }elseif ($transDetail->status == 2){
+//                    $data = array(
+//                        'username' => $customer->userName,
+//                        "name" => $customer->full_name,
+//                        "to" => $customer->email,
+//                        "guide_name" => $tourGuide->full_name
+//                    );
+//                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+//
+//                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
+//                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+//
+//                    });
+//                    //to do Hoàn tiền hay gì đó
+//                }elseif ($transDetail->status == 3){
+//                    $data = array(
+//                        'username' => $customer->userName,
+//                        "name" => $customer->full_name,
+//                        "to" => $customer->email,
+//                        "guide_name" => $tourGuide->full_name
+//                    );
+//                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+//
+//                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
+//                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+//
+//                    });
+//                }
+
+//update trang thai transaction detail ve huy
+                $transactionUpdate = TransactionDetail::find($transDetail->id);
+                $transactionUpdate->status = 6;
+                $transactionUpdate->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+                $transactionUpdate->update();
+
+            }
+
+
+        }elseif($tourGuide_status == 0 && $account_status == 0){
+            $account->status = 1;
+            $account->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $account->update();
+        }
+
         return redirect('/admin/tourGuides');
+
     }
 
 
     function showTourGuideDetail($id)
     {
+        $data =array();
         $tourGuide = TourGuide::find($id);
-        return view('admin.tourGuides-detail')->with('item', $tourGuide);
+        //get logged in tourguide
+        $currentAccount = Account::find($tourGuide->account_id);
+        //get list transaction details of this tour guide
+        $listTransactionDetails = DB::table('transaction_details')->paginate(5);
+//        dd($listTransactionDetails);
+//        $listTransactionDetails = $listTransactionDetails->where('guide_id','=',$tourGuide->id)
+//                                                         ->where("status" ,"=!", 6);
+
+        $areas = TourGuideArea::query();
+        $areas = $areas->where('guide_id' ,'=',$tourGuide->id);
+        $data['info'] = $tourGuide;
+        $data['acc_status'] = $currentAccount->status;
+        $data['listTransactionDetails'] = $listTransactionDetails;
+        $data['areas'] = $areas->get();
+        return view('admin.tourGuides-detail')->with($data);
     }
 
     function generateRandomString($length = 10)
@@ -244,6 +338,5 @@ class ControllerByAdmin extends Controller
         $details_list =$details_list->where('transaction_id','=',$trans_id);
         $data['list'] = $details_list->get();
         return view('admin.transaction-detail')->with($data);
-
     }
 }

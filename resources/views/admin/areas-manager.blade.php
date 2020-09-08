@@ -41,14 +41,14 @@
                                                                     </div>
                                                                     <table>
                                                                         <tr>
-                                                                            <th>
+{{--                                                                            <th>--}}
 
-                                                                                <label>Check all: <input type="checkbox"
-                                                                                                         name="select-all-bac"
-                                                                                                         id="select-all-bac"
-                                                                                    ></label>
+{{--                                                                                <label>Check all: <input type="checkbox"--}}
+{{--                                                                                                         name="select-all-bac"--}}
+{{--                                                                                                         id="select-all-bac"--}}
+{{--                                                                                    ></label>--}}
 
-                                                                            </th>
+{{--                                                                            </th>--}}
                                                                             <th>ID</th>
                                                                             <th>Province</th>
                                                                             <th>Status</th>
@@ -57,9 +57,9 @@
                                                                         </tr>
                                                                         @foreach($listBac as $item)
                                                                             <tr>
-                                                                                <td class="checkbox-toggle">
-                                                                                   <input  type="checkbox" id="{{$item->id}}" >
-                                                                                </td>
+{{--                                                                                <td class="checkbox-toggle">--}}
+{{--                                                                                   <input  type="checkbox" id="{{$item->id}}" >--}}
+{{--                                                                                </td>--}}
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
                                                                                 <td>{{$item->status}}</td>
@@ -111,13 +111,13 @@
                                                                     </div>
                                                                     <table>
                                                                         <tr>
-                                                                            <th>
+{{--                                                                            <th>--}}
 
-                                                                                <label>Check all: <input type="checkbox"
-                                                                                                         name="select-all-trung"
-                                                                                                         id="select-all-trung"></label>
+{{--                                                                                <label>Check all: <input type="checkbox"--}}
+{{--                                                                                                         name="select-all-trung"--}}
+{{--                                                                                                         id="select-all-trung"></label>--}}
 
-                                                                            </th>
+{{--                                                                            </th>--}}
                                                                             <th>ID</th>
                                                                             <th>Province</th>
                                                                             <th>Status</th>
@@ -126,9 +126,9 @@
                                                                         </tr>
                                                                         @foreach($listTrung as $item)
                                                                             <tr>
-                                                                                <td class="checkbox-toggle">
-                                                                                    <input  type="checkbox" id="{{$item->id}}">
-                                                                                </td>
+{{--                                                                                <td class="checkbox-toggle">--}}
+{{--                                                                                    <input  type="checkbox" id="{{$item->id}}">--}}
+{{--                                                                                </td>--}}
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
                                                                                 <td>{{$item->status}}</td>
@@ -180,14 +180,14 @@
                                                                     </div>
                                                                     <table>
                                                                         <tr>
-                                                                            <th>
+{{--                                                                            <th>--}}
 
-                                                                                <label>Check all: <input type="checkbox"
-                                                                                                         type="checkbox"
-                                                                                                         name="select-all"
-                                                                                                         id="select-all-nam"></label>
+{{--                                                                                <label>Check all: <input type="checkbox"--}}
+{{--                                                                                                         type="checkbox"--}}
+{{--                                                                                                         name="select-all"--}}
+{{--                                                                                                         id="select-all-nam"></label>--}}
 
-                                                                            </th>
+{{--                                                                            </th>--}}
                                                                             <th>ID</th>
                                                                             <th>Province</th>
                                                                             <th>Status</th>
@@ -196,9 +196,9 @@
                                                                         </tr>
                                                                         @foreach($listNam as $item)
                                                                             <tr>
-                                                                                <td class="checkbox-toggle">
-                                                                                    <input  type="checkbox" id="{{$item->id}}">
-                                                                                </td>
+{{--                                                                                <td class="checkbox-toggle">--}}
+{{--                                                                                    <input  type="checkbox" id="{{$item->id}}">--}}
+{{--                                                                                </td>--}}
                                                                                 <td>{{$item->id}}</td>
                                                                                 <td>{{$item->province}}</td>
                                                                                 <td>{{$item->status}}</td>
