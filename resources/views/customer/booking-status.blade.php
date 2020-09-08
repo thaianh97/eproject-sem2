@@ -28,7 +28,12 @@
 
 
 @section("header")
-    @include("inc.small-banner")
+    <div class="small-banner text-center">
+        <div class="banner-content">
+            <h2>Trạng thái giao dịch</h2>
+            <p>Theo dõi giao dịch của bạn</p>
+        </div>
+    </div>
     @include("inc.navbar")
 @endsection
 

@@ -18,11 +18,14 @@ class OrderController extends Controller
         //get status in trasaction detail
         $booking_step = 0;
         //current customer
+        if (session("username") == null) {
+            return redirect("/login");
+        }
         $currentAccount = Account::query()->where("username", "=", session("username"))->first();
         $currentCustomer = Customer::query()->where("account_id", $currentAccount->id)->first();
         //read transaction
         $listTransactions = $currentCustomer->transactions;
-       //fix tạm thg số 9 //todo: tạo view list transaction
+        //fix tạm thg số 9 //todo: tạo view list transaction
         $chosenTransaction = $listTransactions->first();
         //get transaction detail
         $transactionDetail = $chosenTransaction->transactionDetails->first();
@@ -43,12 +46,17 @@ class OrderController extends Controller
         $data['price'] = $tourGuide->price;
         //get current customer
         $customers = Customer::query();
+        if (session("username") == null) {
+            return redirect("/login");
+        }
         $existCustomerQuery = $customers->where("account_id", "=", session("id"));
         $existCustomer = $existCustomerQuery->first();
-      //todo: check exist customer
-        if($existCustomer == null) {
-            return redirect("/user/edit/". session("id"));
+        //todo: check exist customer
+
+        if ($existCustomer == null) {
+            return redirect("/user/edit/" . session("id"));
         }
+
         $data["customer"] = $existCustomer;
 //        $checkTransaction = DB::table('transactions')->where('end', '=', $request->get('end'))
 //            ->where('start', '=', $request->get('start'))

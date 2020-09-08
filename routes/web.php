@@ -116,7 +116,9 @@ Route::post("/user/update/{id}", "CustomerController@update");
 ////    dd($transaction);
 //
 //});
-
+Route::get("/test/list", function () {
+    return view("customer/list-test");
+});
 Route::post("/book/{id}", "OrderController@book");
 
 Route::post("/tourGuide/new-orders/accept/{id}", "TourGuideController@acceptOrder");

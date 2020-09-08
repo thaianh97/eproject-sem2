@@ -8,6 +8,8 @@
     <!-- libraries and framework -->
     @yield("vendor")
     <!-- general style -->
+    <!-- poppins font-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
     <link rel="stylesheet" href="/css/customer-style/general.css">
     <!-- EXTENDS NEEDED STYLE SHEETS FOR EACH PAGES -->
     @yield("style-sheets")

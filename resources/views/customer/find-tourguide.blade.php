@@ -28,7 +28,12 @@
 
 
 @section("header")
-    @include("inc.small-banner")
+    <div class="small-banner text-center">
+        <div class="banner-content">
+            <h2>Tìm Hướng Dẫn viên</h2>
+            <p>Lựa chọn một hướng dẫn viên phù hợp để đồng hành cùng bạn</p>
+        </div>
+    </div>
     @include("inc.navbar")
 @endsection
 
@@ -55,7 +60,7 @@
                             <p><span class="selected-filter-name">Thời gian:</span> {{$start}} - {{$end}}</p>
                         </div>
                         <div class="selected-filter-item">
-                            <p><span class="selected-filter-name">Địa Điểm:</span> {{$chosen_area->province}}</p>
+                            <p><span class="selected-filter-name">Địa Điểm:</span> @if($chosen_area) {{$chosen_area->province}} @endif</p>
                         </div>
                     </div>
 
@@ -77,9 +82,16 @@
                             <div class="filter-form-input-wrapper">
                                 <h3 class="filter-form-input-title">Địa Điểm</h3>
                                 <select name="province" id="province-select">
-                                    @foreach(\App\Area::all() as $item)
-                                        <option value="{{$item->id}}"    @if($item->id == $chosen_area->id) selected @endif">{{$item->province}}</option>
-                                    @endforeach
+                                    @if($chosen_area != null)
+                                        <option value="0">Chọn khu vực...</option>
+                                        @foreach(\App\Area::all() as $item)
+                                            <option value="{{$item->id}}" @if($item->id == $chosen_area->id ) selected @endif>{{$item->province}}</option>
+                                        @endforeach
+                                    @endif
+                                        @foreach(\App\Area::all() as $item)
+                                            <option value="0">Chọn khu vực...</option>
+                                            <option value="{{$item->id}}">{{$item->province}} </option>
+                                        @endforeach
                                 </select>
                             </div>
                             <div class="filter-form-input-wrapper">

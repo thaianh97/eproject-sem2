@@ -26,7 +26,7 @@ class TourGuideController extends Controller
         // tạo biến data là một mảng chứa dữ liệu trả về.
         $data = array();
         $data['area_id'] = 0;
-
+        $data['chosen_area'] = null;
         $areas = DB::table('areas')->get();
         $tourGuide_list = TourGuide::query();
 
@@ -43,12 +43,22 @@ class TourGuideController extends Controller
         }
 
 
+
         if ($request->has('start') && strlen($request->get('start')) > 0 && $request->has('end') && strlen($request->get('end')) > 0) {
             $data['start'] = $request->get('start');
             $data['end'] = $request->get('end');
             $from = TimeFormatHelper::formatStringToSqlDate($data["start"]);
             $to = TimeFormatHelper::formatStringToSqlDate($data["end"]);
-            $tourGuide_list = $tourGuide_list->whereBetween('created_at', [$from, $to]);
+            $tourGuide_list = $tourGuide_list->whereNotIn('id', TransactionDetail::select('guide_id')
+                ->where(function ($query) use ($from, $to) {
+                    $query->where([
+                        ['start', '<', $from],
+                        ['end', '<', $to]
+                    ])->orWhere([
+                        ['start', '>', $from],
+                        ['end', '>', $to]
+                    ]);
+                }));
         }
         $data['list'] = $tourGuide_list->get();
         $data['areas'] = $areas;
@@ -111,6 +121,7 @@ class TourGuideController extends Controller
     public function show($id)
     {
         $tourGuide = TourGuide::find($id);
+
         return view("customer.tourGuide-detail")->with("obj", $tourGuide);
     }
 
