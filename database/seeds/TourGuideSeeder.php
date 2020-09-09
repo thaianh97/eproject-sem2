@@ -196,7 +196,8 @@ class TourGuideSeeder extends Seeder
                 'phone' => '0969121250',
                 'email' => 'dungtt_tg@gmail.com',
                 'avatar' => 'https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/118597577_1927325097408535_6723311621299668550_o.jpg?_nc_cat=103&_nc_sid=0debeb&_nc_ohc=iXpxEF6m9zEAX-mb2F7&_nc_ht=scontent.fsgn2-2.fna&oh=bee0b195992e02119c70b42824518992&oe=5F800F1B',
-                'description' => 'Hướng dẫn viên địa phương. Có thể nói tiếng Anh ',
+                'description' => 'Đến nơi đây nhưng chưa biết phải tìm hiểu những gì ư? Hãy tìm đến tôi, giá cả thật phải chăng! Tôi sẽ đưa bạn thăm quan hết những gì bạn nên biết về địa phương này. Tôi tin rằng thế mạnh của tôi là sự tự tin và cẩn thận, tôi cũng có thể nói tiếng Anh, hãy giới thiệu người bạn nước ngoài của bạn đi cùng, hãy đi cùng tôi, tôi sẽ giơi thiệu Việt Nam cho họ cũng như cho bạn thấy một cái nhìn sâu hơn về quê hương của mình 
+                Câu nói yêu thích:"Nhà ở phía sau lưng, cả thế giới trải dài phía trước',
                 'card' => false,
                 'mc_gala_dinner' => true,
                 'team_building' => true,
