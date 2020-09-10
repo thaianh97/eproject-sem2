@@ -82,10 +82,11 @@ Route::middleware(["tourGuide.middleware"])->group(function () {
     Route::post('/tourGuide/update/{id}', "TourGuideController@update");
 });
 
-Route::get('/tourGuide/edit-info', "TourGuideController@info");
-Route::get('/tourGuide', "TourGuideController@calender");
 Route::get('/tourGuide/edit-info', "TourGuideController@editInfo");
+Route::get('/tourGuide', "TourGuideController@calender");
+Route::put('/tourGuide/edit-info', "TourGuideController@submitNewInfo");
 Route::get('/tourGuide/new-orders', "TourGuideController@showNewOrders");
+Route::get('/tourGuide/tours', "TourGuideController@showTours");
 
 
 Route::get("/list", "TourGuideController@index");

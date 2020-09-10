@@ -15,11 +15,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="single-product-pr">
-                           <div class="row">
+                        <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <div id="myTabContent1" class="tab-content">
                                     <div class="product-tab-list tab-pane fade active in" id="single-tab1">
-                                        <img src="{{$item->large_photo}}" alt=""/>
+                                        <img src="{{$info->large_photo}}" alt=""/>
                                     </div>
                                     <div class="product-tab-list tab-pane fade" id="single-tab2">
                                         <img src="img/product/bg-2.jpg" alt=""/>
@@ -51,7 +51,8 @@
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                 <div class="single-product-details res-pro-tb">
-                                    <h1>{{$item->full_name}}</h1>
+                                    <h1>{{$info->full_name}}</h1>
+                                    <h1> Mã hdv : {{$info->id}}</h1>
                                     <span class="single-pro-star">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -60,40 +61,55 @@
 											<i class="fa fa-star"></i>
 										</span>
                                     <div class="single-pro-price">
-                                        <span class="single-regular">{{$item->price}} VND/ngay</span><span
+                                        <span class="single-regular">{{$info->price}} VND/ngay</span><span
                                             class="single-old"><del>$20.00</del></span>
                                     </div>
                                     <div class="single-pro-size">
                                         <h6>Giới tính</h6>
-                                        <span>Nam</span> <span>Nữ</span> <span>Khác</span>
+                                        @if($info->gender == 1 )
+                                            <span>Nam</span>
+                                        @elseif($info->gender == 2)
+                                            <span>Nữ</span>
+                                        @elseif($info->gender == 3)
+                                            <span>Khác</span>
+                                        @endif
+
+                                    </div>
+                                    <div class="single-pro-size">
+                                        <h6>Các tỉnh thành</h6>
+
+                                        @foreach($areas as $area)
+                                            <div class="single-pro-button">
+                                                <a> {{(\App\Area::find($area->area_id))->province}}</a>&nbsp
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="color-quality-pro">
-                                        <div class="color-quality-details">
-                                            <h5>Color</h5>
-                                            <span class="red"></span> <span class="green"></span> <span
-                                                class="yellow"></span> <span class="black"></span> <span
-                                                class="white"></span>
-                                        </div>
-                                        <div class="color-quality">
-                                            <h4>Quality</h4>
-                                            <div class="quantity">
-                                                <div class="pro-quantity-changer">
-                                                    <input type="text" value="1"/>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="clear"></div>
                                         <div class="single-pro-button">
 
-
-
-
                                             <div class="pro-button">
-                                                <a href="#">Lịch trình  </a>
+
+                                                @if($info->status == 1 && $acc_status == 1)
+                                                    <a class="btn-primary"> Đang hoạt động </a>
+                                                @elseif($info->status == 0 && $acc_status == 1)
+                                                    <a class="btn-warning">Không hoạt động </a>
+                                                @elseif($info->status == 0 && $acc_status == 0)
+                                                    <a class="btn-danger">Đã bị khóa</a>
+                                                @endif
                                             </div>
                                             <div class="pro-viwer">
-                                                <a href="#"><i class="fa fa-heart"></i></a>
-                                                <a href="#"><i class="fa fa-eye"></i></a>
+                                                <button data-toggle="modal"
+                                                        data-target="#comfirmModal"
+                                                        class="btn btn-custon-rounded-three btn-button-warning-ct">
+                                                    @if($info->status == 1 && $acc_status == 1 )
+                                                        Khóa hdv
+                                                    @elseif($info->status == 0 && $acc_status == 1)
+                                                        Khóa hdv
+                                                    @elseif($info->status == 0 && $acc_status == 0)
+                                                        Mở hdv
+                                                    @endif
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="clear"></div>
@@ -102,22 +118,15 @@
                                             <a href="#"><i class="fa fa-phone"></i></a>
                                             <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-google-plus"></i></a>
-                                            <a href="#"><i class="fa fa-feed"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-linkedin"></i></a>
                                         </div>
                                     </div>
                                     <div class="single-pro-cn">
                                         <h3>OVERVIEW</h3>
-                                        <p>{{$item->description}}</p>
+                                        <p>{{$info->description}}</p>
                                     </div>
                                 </div>
                             </div>
-                               <button data-toggle="modal"
-                                       data-target="#comfirmModal"
-                                       class="pd-setting-ed">
-                                   Khóa HDV
-                               </button>
+
                         </div>
                     </div>
                 </div>
@@ -137,15 +146,27 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;
                             </button>
-                            <h4 class="modal-title">TourGuide DeActive comfirm</h4>
+                            <h4 class="modal-title">Xác nhận
+                                @if($info->status == 1 )
+                                    Khóa HDV
+                                @elseif($info->status == 0)
+                                    Mở Hdv
+                                @endif
+                            </h4>
                         </div>
                         <div class="product-status-wrap">
 
                             <div class="modal-body">
-                                <h2 class="text-warning">DeActive this tourGuide?</h2>
+                                <h2 class="text-warning">
+                                    @if($info->status == 1 )
+                                        Khóa HDV
+                                    @elseif($info->status ==  0)
+                                        Mở Hdv
+                                    @endif
+                                    {{$info->full_name}}</h2>
                             </div>
                             <div class="modal-footer">
-                                <form action="/admin/deActive-tourGuides/{{$item->id}}" method="post">
+                                <form action="/admin/deActive-tourGuides/{{$info->id}}" method="post">
                                     @csrf
                                     <button class="btn btn-close btn-primary  " type="submit">
                                         Yes
@@ -178,7 +199,7 @@
                                     <li><a href="#reviews"><span><i class="fa fa-star"></i><i
                                                     class="fa fa-star"></i></span> reviews (1) <span><i
                                                     class="fa fa-star"></i><i class="fa fa-star"></i></span></a></li>
-                                    <li><a href="#INFORMATION">INFORMATION</a></li>
+                                    <li><a href="#INFORMATION">Transactions</a></li>
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
                                     <div class="product-tab-list product-details-ect tab-pane fade active in"
@@ -297,30 +318,69 @@
                                     <div class="product-tab-list tab-pane fade" id="INFORMATION">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <div class="review-content-section">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip
-                                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                        qui officia deserunt
-                                                        mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
-                                                        natus error sit voluptatem accusantium doloremque laudantium,
-                                                        totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
-                                                        et quasi architecto
-                                                        beatae vitae dicta sunt explicabo.</p>
-                                                    <p class="pro-b-0">Lorem ipsum dolor sit amet, consectetur
-                                                        adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                        exercitation ullamco labo nisi ut aliquip ex
-                                                        ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. ut
-                                                        labore et dolore magna aliqua. Ut enim ad , quis nostrud
-                                                        exercitation ullamco
-                                                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                                        dolor in reprehenderit.</p>
+                                                <div class="product-status-wrap">
+                                                    <table>
+                                                        <tr>
+
+                                                            <th>Mã dặt</th>
+                                                            <th>Mã Tranasction</th>
+                                                            <th>Tg Bắt đầu</th>
+                                                            <th>Tg kết thúc</th>
+{{--                                                                                                                        <th>Điểm đến</th>--}}
+{{--                                                                                                                        <th>Sô lượng</th>--}}
+{{--                                                                                                                        <th>Tg gửi yêu cầu</th>--}}
+                                                            <th>Giá</th>
+                                                            <th>Trạng thái</th>
+                                                        </tr>
+                                                        @foreach($listTransactionDetails as $item)
+                                                            <tr>
+                                                                <td>{{$item->id}}</td>
+                                                                <td>{{$item->transaction_id}}</td>
+                                                                <td>{{$item->start}}</td>
+                                                                <td>{{$item->end}}</td>
+{{--                                                                <td>{{\App\Area::find($item->transaction->province_id)->province}}</td>--}}
+{{--                                                                <td>{{$item->transaction->party_number}}</td>--}}
+{{--                                                                <td>{{$item->transaction->created_at}}</td>--}}
+                                                                <td>{{$item->cost}}</td>
+                                                                <td>{{$item->status}}</td>
+                                                                <td>
+                                                                    <form action="" method="post">
+                                                                        @csrf
+                                                                        <a>
+                                                                            <button data-toggle="tooltip"
+                                                                                    title="More Info"
+                                                                                    class="pd-setting-ed" type="submit">
+                                                                                <i
+                                                                                    class="fa fa-info-circle"
+                                                                                    aria-hidden="true"></i>
+                                                                            </button>
+                                                                        </a>
+                                                                    </form>
+                                                                    <form action="" method="post">
+                                                                        @csrf
+                                                                        <a>
+                                                                            <button data-toggle="tooltip"
+                                                                                    title="contact"
+                                                                                    class="pd-setting-ed" type="submit">
+                                                                                <i
+                                                                                    class="fa fa-trash-o"
+                                                                                    aria-hidden="true"></i>
+                                                                            </button>
+                                                                        </a>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+
+
+                                                    </table>
+                                                </div>
+                                                <div class="custom-pagination">
+                                                    <ul class="pagination">
+                                                        <li class="page-item">
+                                                            {{ $listTransactionDetails->appends(['sort' => 'votes'])->links() }}
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
@@ -336,7 +396,6 @@
 @endsection
 @section('script')
     <script>
-
 
 
         $('#comfirmModal').on('shown.bs.modal', function () {

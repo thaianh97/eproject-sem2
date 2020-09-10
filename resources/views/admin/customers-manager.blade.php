@@ -17,66 +17,7 @@
                             <form action="/admin/products-list" method="get" id="product_form">
                                 @csrf
                                 <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group mb-4">
-                                                {{--                                                <label for="exampleFormControlSelect1">Product</label>--}}
-                                                {{--                                                <select name="product" class="form-control" id="categorySelect" onchange='this.form.submit()'>--}}
-                                                {{--                                                    <option href="//admin/products-list/cameras" value="cameras" name = "Cameras">--}}
-                                                {{--                                                        Cameras--}}
-                                                {{--                                                    </option>--}}
-                                                {{--                                                    <option href="/admin/products-list/accessories" value="accessories" name="Accessories" >--}}
-                                                {{--                                                        Accessories--}}
-                                                {{--                                                    </option>--}}
-                                                {{--                                                    --}}{{--                                            @foreach($categories as $cate)--}}
-                                                {{--                                                    --}}{{--                                                <option value="{{$cate->id}}" {{$cate->id == $category_id ? 'selected':''}}>{{$cate->name}}</option>--}}
-                                                {{--                                                    --}}{{--                                            @endforeach--}}
 
-                                                {{--                                                </select>--}}
-                                                <label for="exampleFormControlSelect1"><h2 style="color:white; ">Product type</h2></label>
-                                                <select name="product_types" class="form-control" id="categorySelect" onchange='this.form.submit()'>
-
-{{--                                                    @foreach($product_types as $type)--}}
-{{--                                                        <option--}}
-{{--                                                            value="{{$type->id}}"   >{{$type->name}}</option>--}}
-{{--                                                    @endforeach--}}
-                                                    {{--                                                        {{$type->id == $camera_types_id? 'selected':''}}--}}
-
-                                                </select>
-                                                <label for="exampleFormControlSelect1">Category</label>
-                                                <select name="category_id" class="form-control" id="categorySelect">
-                                                    <option href="/admin" value="1">Cameras
-                                                    </option>
-                                                    <option href="/admin" value="2">
-                                                        Accessories
-                                                    </option>
-                                                    {{--                                            @foreach($categories as $cate)--}}
-                                                    {{--                                                <option value="{{$cate->id}}" {{$cate->id == $category_id ? 'selected':''}}>{{$cate->name}}</option>--}}
-                                                    {{--                                            @endforeach--}}
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Search by keyword</label>
-                                                <input value="keyword" type="text" name="keyword" class="form-control"
-                                                       placeholder="Search by keyword">
-                                                <input type="submit" style="visibility: hidden;"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <div class="bread-ntd"><label for="exampleFormControlSelect1">Search by
-                                                        time</label></div>
-                                                <input type="text" name="dates" class="form-control">
-                                                <input type="hidden" name="start">
-                                                <input type="hidden" name="end">
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -93,7 +34,7 @@
                     <div class="product-status-wrap">
                         <h4>Products List</h4>
                         <div class="add-product">
-                            <a href="/admin/add-product">Add Product</a>
+                            <a href="#">Add Product</a>
                         </div>
                         <table>
                             <tr>
@@ -142,13 +83,7 @@
 
 @section('script')
  <script>
-     checkAll(document.querySelector('[data-check-all-container]')){
-     <style>
-         .breadcome-area{
-            color:white;
-         }
-     </style>
-     }
+
  </script>
 @endsection
 
