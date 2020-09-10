@@ -61,73 +61,73 @@
                         <div class="add-product">
                             <a href="/admin">Add Product</a>
                         </div>
-                                <h4>Transactions List</h4>
-                                <table>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Cus_ID</th>
-                                        <th>Province_id</th>
-                                        <th>Party_number</th>
-                                        <th>Start</th>
-                                        <th>End</th>
-                                        <th>Total_cost</th>
-                                        <th>Created_at</th>
-                                        <th>Update_at</th>
-                                        <th>Status</th>
-                                    </tr>
-                                    @foreach($list as $item)
-                                        <tr>
-                                            <td>{{$item->id}}</td>
-                                            <td>{{$item->customer_id}}</td>
-                                            <td>{{$item->province_id}}</td>
-                                            <td>{{$item->party_number}}</td>
-                                            <td>{{$item->start}} Vnd/giờ</td>
-                                            <td>{{$item->end}}</td>
-                                            <td>{{$item->email}}</td>
-                                            <td>{{$item->created_at}}</td>
-                                            <td>{{$item->updated_at}}</td>
-                                            <td>
-                                                <a>
-                                                    <button type="button"
-                                                            class="btn btn-info ">{{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
-                                                </a>
-                                            </td>
+                        <h4>Transactions List</h4>
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cus_ID</th>
+                                <th>Province_id</th>
+                                <th>Party_number</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Total_cost</th>
+                                <th>Created_at</th>
+                                <th>Update_at</th>
+                                <th>Status</th>
+                            </tr>
+                            @foreach($list as $item)
+                                <tr>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->customer_id}}</td>
+                                    <td>{{$item->province_id}}</td>
+                                    <td>{{$item->party_number}}</td>
+                                    <td>{{$item->start}} Vnd/giờ</td>
+                                    <td>{{$item->end}}</td>
+                                    <td>{{$item->email}}</td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->updated_at}}</td>
+                                    <td>
+                                        <a>
+                                            <button type="button"
+                                                    class="btn btn-info ">{{$item->status == 1 ? 'Active' : 'DeActive' }}</button>
+                                        </a>
+                                    </td>
 
 
-                                            <td>
+                                    <td>
 
-                                                <form action="/admin/transactions/{{$item->id}}" method="post">
-                                                    @csrf
-                                                    <a>
-                                                        <button type="submit" class="btn btn-info " id="{{$item->id}}">
-                                                            <i class="fa fa-info" aria-hidden="true"></i></button>
-                                                    </a>
-                                                </form>
+                                        <form action="/admin/transactions/{{$item->id}}" method="post">
+                                            @csrf
+                                            <a>
+                                                <button type="submit" class="btn btn-info " id="{{$item->id}}">
+                                                    <i class="fa fa-info" aria-hidden="true"></i></button>
+                                            </a>
+                                        </form>
 
-                                                <a>
-                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i
-                                                            class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                    </button>
-                                                </a>
-
-
-                                            </td>
-                                        </tr>
-
-                                    @endforeach
-                                </table>
+                                        <a>
+                                            <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i
+                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
 
 
-                                <div class="custom-pagination">
-                                    {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            {{ $list->appends(['sort' => 'votes'])->links() }}
-                                        </li>
+                                    </td>
+                                </tr>
+
+                            @endforeach
+                        </table>
 
 
-                                    </ul>
-                                </div>
+                        <div class="custom-pagination">
+                            {{--                            {{ $list->appends(['sort' => 'id'])->links() }}--}}
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    {{ $list->appends(['sort' => 'votes'])->links() }}
+                                </li>
+
+
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -192,6 +192,18 @@ class ControllerByAdmin extends Controller
             $account->status = 0;
             $account->updated_at = Carbon::now()->format('Y-m-d H:i:s');
             $account->update();
+            // gửi mail về hdv bao no đã bị khóa mõm
+            $data = array(
+                'username' => $tourGuide->userName,
+                "name" => $tourGuide->full_name,
+                "to" => $tourGuide->email
+            );
+            Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($tourGuide) {
+
+                $message->to($tourGuide->email, $tourGuide->full_name)->subject('Mày đã bị khóa mõm');
+                $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+
+            });
           if($tourGuide_status == 1){
               $tourGuide->status =0;
               $tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
@@ -203,49 +215,48 @@ class ControllerByAdmin extends Controller
                 ->where('status','!=',5)
                 ->where('status','!=',4);
             foreach ($transDetail_list as   $transDetail){
-//                $transaction = Transaction::find($transDetail->transaction_id);
-//                $customer = Customer::find($transaction->customer_id);
-//                if($transDetail->status == 1){
-//
-//                    $data = array(
-//                        'username' => $customer->userName,
-//                        "name" => $customer->full_name,
-//                        "to" => $customer->email
-//                    );
-//                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
-//
-//                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
-//                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
-//
-//                    });
-//                }elseif ($transDetail->status == 2){
-//                    $data = array(
-//                        'username' => $customer->userName,
-//                        "name" => $customer->full_name,
-//                        "to" => $customer->email,
-//                        "guide_name" => $tourGuide->full_name
-//                    );
-//                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
-//
-//                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
-//                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
-//
-//                    });
-//                    //to do Hoàn tiền hay gì đó
-//                }elseif ($transDetail->status == 3){
-//                    $data = array(
-//                        'username' => $customer->userName,
-//                        "name" => $customer->full_name,
-//                        "to" => $customer->email,
-//                        "guide_name" => $tourGuide->full_name
-//                    );
-//                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
-//
-//                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
-//                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
-//
-//                    });
-//                }
+                $transaction = Transaction::find($transDetail->transaction_id);
+                $customer = Customer::find($transaction->customer_id);
+                if($transDetail->status == 1){
+                    $data = array(
+                        'username' => $customer->userName,
+                        "name" => $customer->full_name,
+                        "to" => $customer->email
+                    );
+                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+
+                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
+                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+
+                    });
+                }elseif ($transDetail->status == 2){
+                    $data = array(
+                        'username' => $customer->userName,
+                        "name" => $customer->full_name,
+                        "to" => $customer->email,
+                        "guide_name" => $tourGuide->full_name
+                    );
+                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+
+                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
+                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+
+                    });
+                    //to do Hoàn tiền hay gì đó
+                }elseif ($transDetail->status == 3){
+                    $data = array(
+                        'username' => $customer->userName,
+                        "name" => $customer->full_name,
+                        "to" => $customer->email,
+                        "guide_name" => $tourGuide->full_name
+                    );
+                    Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+
+                        $message->to($customer->email, $customer->full_name)->subject('Hdv '.$tourGuide->full_name.' ko nhận tour '.$transaction->id);
+                        $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+
+                    });
+                }
 
 //update trang thai transaction detail ve huy
                 $transactionUpdate = TransactionDetail::find($transDetail->id);

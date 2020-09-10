@@ -326,9 +326,9 @@
                                                             <th>Mã Tranasction</th>
                                                             <th>Tg Bắt đầu</th>
                                                             <th>Tg kết thúc</th>
-                                                                                                                        <th>Điểm đến</th>
-                                                                                                                        <th>Sô lượng</th>
-                                                                                                                        <th>Tg gửi yêu cầu</th>
+{{--                                                                                                                        <th>Điểm đến</th>--}}
+{{--                                                                                                                        <th>Sô lượng</th>--}}
+{{--                                                                                                                        <th>Tg gửi yêu cầu</th>--}}
                                                             <th>Giá</th>
                                                             <th>Trạng thái</th>
                                                         </tr>
@@ -338,9 +338,9 @@
                                                                 <td>{{$item->transaction_id}}</td>
                                                                 <td>{{$item->start}}</td>
                                                                 <td>{{$item->end}}</td>
-                                                                <td>{{\App\Area::find($item->transaction->province_id)->province}}</td>
-                                                                <td>{{$item->transaction->party_number}}</td>
-                                                                <td>{{$item->transaction->created_at}}</td>
+{{--                                                                <td>{{\App\Area::find($item->transaction->province_id)->province}}</td>--}}
+{{--                                                                <td>{{$item->transaction->party_number}}</td>--}}
+{{--                                                                <td>{{$item->transaction->created_at}}</td>--}}
                                                                 <td>{{$item->cost}}</td>
                                                                 <td>{{$item->status}}</td>
                                                                 <td>
