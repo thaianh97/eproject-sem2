@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Datedropper jquery plugin -->
-    <script src="{{asset("js/datedropper/datedropper.pro.min.js")}}"></script>
+    <!-- Date picker jquery plugin -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- owl.carousel CSS
     ============================================ -->
     <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
@@ -47,18 +48,18 @@
                 <div class="row">
                     <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <label for="start">Ngày khởi hành: </label>
-                        <input type="text" id="start" name="start" class="date-input"
-                               placeholder="click to pick up date..."required>
+                        <input type="text" id="from" name="start" class="date-input"
+                               placeholder="click to pick up date..." required autocomplete="off">
                     </div>
                     <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <label for="end">Ngày kết thúc: </label>
-                        <input type="text" id="end" name="end" class="date-input"
-                               placeholder="click to pick up date..." required>
+                        <input type="text" id="to" name="end" class="date-input"
+                               placeholder="click to pick up date..." required autocomplete="off">
                     </div>
                     <div class="date-form-group col-md-3 col-lg-3 col-sm-12 col-xs-12">
                         <label for="destination">Địa điểm:</label>
                         <select class="form-control" id="destination" name="area_id">
-                                <option value="0">Chọn địa điểm...</option>
+                            <option value="0">Chọn địa điểm...</option>
                             @foreach(\App\Area::all() as $obj)
                                 <option value="{{$obj->id}}">{{$obj->province}}</option>
                             @endforeach
@@ -67,7 +68,7 @@
                     </div>
 
                     <div class="col-md-3 col-lg-2 col-sm-12 col-xs-12 btn-submit-wrapper">
-                        <input type="submit" class="btn chek-availability-btn" value="check availability">
+                        <input type="submit" class="btn chek-availability-btn" value="Tìm hướng dẫn viên">
                     </div>
                 </div>
             </form>
@@ -244,20 +245,39 @@
         ============================================ -->
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 
-    <!-- Date dropper srcipt-->
+    <!-- Date picker script-->
     <script>
-        $('#start').dateDropper({
-            theme: "leaf",
-            format: "d/m/Y",
-            large: true,
-            largeDefault: false,
-        });
+        $(function () {
+            var dateFormat = "mm/dd/yy",
+                from = $("#from")
+                    .datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 1,
+                        minDate: 0
+                    })
+                    .on("change", function () {
+                        to.datepicker("option", "minDate", getDate(this));
+                    }),
+                to = $("#to").datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1
+                })
+                    .on("change", function () {
+                        from.datepicker("option", "maxDate", getDate(this));
+                    });
 
-        $('#end').dateDropper({
-            theme: "leaf",
-            format: "d/m/Y",
-            large: true,
-            largeDefault: false,
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate(dateFormat, element.value);
+                } catch (error) {
+                    date = null;
+                }
+
+                return date;
+            }
         });
     </script>
     <!-- init slider -->

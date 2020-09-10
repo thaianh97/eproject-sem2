@@ -70,6 +70,7 @@ class PendingTourGuideController extends Controller
         $pendingTourGuide->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $pendingTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
         $pendingTourGuide->status = 0; // pending chưa dc duyệt
+        $pendingTourGuide->area_id = $request->get("area_id");
         $pendingTourGuide->save();
         return view("tourguide.confirm")->with("obj", $pendingTourGuide);
     }

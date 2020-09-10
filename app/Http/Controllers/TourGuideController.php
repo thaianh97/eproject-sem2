@@ -21,6 +21,7 @@ class TourGuideController extends Controller
         return view(('layout.tourGuide-layout'));
     }
 
+
     public function filter(Request $request)
     {
         // tạo biến data là một mảng chứa dữ liệu trả về.
@@ -43,12 +44,11 @@ class TourGuideController extends Controller
         }
 
 
-
         if ($request->has('start') && strlen($request->get('start')) > 0 && $request->has('end') && strlen($request->get('end')) > 0) {
             $data['start'] = $request->get('start');
             $data['end'] = $request->get('end');
-            $from = TimeFormatHelper::formatStringToSqlDate($data["start"]);
-            $to = TimeFormatHelper::formatStringToSqlDate($data["end"]);
+            $from = date($request->get('start') . ' 00:00:00');
+            $to = date($request->get('end') . ' 23:59:00');
             $tourGuide_list = $tourGuide_list->whereNotIn('id', TransactionDetail::select('guide_id')
                 ->where(function ($query) use ($from, $to) {
                     $query->where([
@@ -66,16 +66,53 @@ class TourGuideController extends Controller
             ->with($data);
     }
 
+    public function timeFilter(Request $request, $id)
+    {
+        $data = array();
+        $data['result'] = true;// hdv có rảnh trong tg start , end hay không
+        $tourGuide_list = TourGuide::query();
+        if ($request->has('start') && strlen($request->get('start')) > 0 &&
+            $request->has('end') && strlen($request->get('end')) > 0) {
 
-    function editInfo(){
-        $acc_id = session('id');
-        $tourGuide = DB::table('tour_guides')->where('account_id','=',$acc_id)->first();
-        return view('tourGuide.edit-info')->with('tourGuide',$tourGuide);
+            $data['guide_id'] = $id;
+            $data['start'] = $request->get('start');
+            $data['end'] = $request->get('end');
+
+            $from = TimeFormatHelper::formatStringToSqlDate($data["start"]);
+            $to = TimeFormatHelper::formatStringToSqlDate($data["end"]);
+            $tourGuide_list = $tourGuide_list->whereNotIn('id', TransactionDetail::select('guide_id')
+                ->where(function ($query) use ($from, $to) {
+                    $query->where([
+                        ['start', '<', $from],
+                        ['end', '<', $to]
+                    ])->orWhere([
+                        ['start', '>', $from],
+                        ['end', '>', $to]
+                    ]);
+                }));
+            $this_guide = $tourGuide_list->find($id);
+            if ($this_guide != null) {
+                $data['result'] = false;
+                return redirect();
+            }
+        }
+
+        $data['list'] = $tourGuide_list->get();
+        return view('ok')
+            ->with($data);
     }
 
-    function submitNewInfo(Request $request){
+    function editInfo()
+    {
         $acc_id = session('id');
-        $tourGuide = DB::table('tourGuides')->where('account_id','=',$acc_id)->first();
+        $tourGuide = DB::table('tour_guides')->where('account_id', '=', $acc_id)->first();
+        return view('tourGuide.edit-info')->with('tourGuide', $tourGuide);
+    }
+
+    function submitNewInfo(Request $request)
+    {
+        $acc_id = session('id');
+        $tourGuide = DB::table('tourGuides')->where('account_id', '=', $acc_id)->first();
 
 
         return redirect('/tourGuide');
@@ -120,9 +157,24 @@ class TourGuideController extends Controller
 
     public function show($id)
     {
-        $tourGuide = TourGuide::find($id);
 
-        return view("customer.tourGuide-detail")->with("obj", $tourGuide);
+        $tourGuide = TourGuide::find($id);
+        //find related tour Guide
+        $listTourGuideArea = $tourGuide->tourGuideAreas;
+        $listRelatedAreaID = array();
+        foreach ($listTourGuideArea as $tourGuideArea) {
+            array_push($listRelatedAreaID, $tourGuideArea->area_id);
+        }
+        $listRelatedTourGuideId = array();
+        foreach ($listRelatedAreaID as $area_id) {
+            $listRelatedTourGuideArea = TourGuideArea::query()->where("area_id", $area_id)->get();
+            foreach ($listRelatedTourGuideArea as $relatedTourGuideArea) {
+                array_push($listRelatedTourGuideId, $relatedTourGuideArea->guide_id);
+            }
+        }
+
+
+        return view("customer.tourGuide-detail")->with("obj", $tourGuide)->with("relatedTourGuideId", $listRelatedTourGuideId);
     }
 
 
@@ -133,7 +185,7 @@ class TourGuideController extends Controller
         $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
 
         //get list transaction details of this tour guide
-        $listTransactionDetails = $currentTourGuide->transactionDetails->where("status" ,"=", 1);
+        $listTransactionDetails = $currentTourGuide->transactionDetails->where("status", "=", 1);
 
 
         return view('tourguide.new-orders')->with("listTransaction", $listTransactionDetails);
@@ -156,9 +208,9 @@ class TourGuideController extends Controller
         //send mail to user
         $data = array();
         $data["tourGuide"] = $currentTourGuide;
-        Mail::send('mail.order-accepted', $data, function ($message) use ($acceptOrder, $customer){
+        Mail::send('mail.order-accepted', $data, function ($message) use ($acceptOrder, $customer) {
             $message->to($customer->email,
-                'Tutorials Point')->subject('Yêu cầu số ' . $acceptOrder->id ." đã được hdv chấp nhận");
+                'Tutorials Point')->subject('Yêu cầu số ' . $acceptOrder->id . " đã được hdv chấp nhận");
             $message->from('huongdanvien247@gmail.com', 'TConnect');
         });
         return redirect("/tourGuide/new-orders");

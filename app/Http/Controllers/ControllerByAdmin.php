@@ -140,7 +140,7 @@ class ControllerByAdmin extends Controller
         //từ tài khoản vừa tạp update thông tin trong bảng tourguide
         $account = Account::where('username', '=', $acceptTourGuide->userName)->first();
 
-
+        //tao tour guide mới
         $newTourGuide = new TourGuide;
         $newTourGuide->account_id = $account->id;
         $newTourGuide->full_name = $acceptTourGuide->full_name;
@@ -156,9 +156,25 @@ class ControllerByAdmin extends Controller
         $newTourGuide->status = 2;
         $newTourGuide->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $newTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
-        $newTourGuide->price = 0;
-        $newTourGuide->save();
+        //tính giá
+        $price = 200000;
+        if($acceptTourGuide->mc_gala_dinner == 1) {
+            $price += 100000;
+        }
+        if($acceptTourGuide->team_buiding == 1) {
+            $price += 140000;
+        }
+        if($acceptTourGuide->card == 1) {
+            $price += 120000;
+        }
+        $newTourGuide->price = $price;
 
+        $newTourGuide->save();
+        //save area
+        $tourGuideArea = new TourGuideArea();
+        $tourGuideArea->area_id = $acceptTourGuide->area_id;
+        $tourGuideArea->guide_id = $newTourGuide->id;
+        $tourGuideArea->save();
         // send email to tourGuide
         $data = array(
             'username' => $acceptTourGuide->userName,

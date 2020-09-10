@@ -60,7 +60,7 @@
                                       <p><span class="price">giá ban đầu: </span><span class="amount">{{$obj->price}}đ</span><span class="price">/ ngày</span></p>
                                   </div>
                                   <div class="detail-btn-box col-md-6 col-xs-6 col-sm-6">
-                                      <a href="" class="detail-btn">Xem chi tiết</a>
+                                      <a href="/show/tourGuide/{{$obj->id}}" class="detail-btn">Xem chi tiết</a>
                                   </div>
                               </div>
                           </div>

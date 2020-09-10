@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
+    public function index() {
+        return view("customer.list-order");
+    }
+
     public function orderStatus()
     {
         //get status in trasaction detail
@@ -46,16 +50,10 @@ class OrderController extends Controller
         $data['price'] = $tourGuide->price;
         //get current customer
         $customers = Customer::query();
-        if (session("username") == null) {
-            return redirect("/login");
-        }
+
         $existCustomerQuery = $customers->where("account_id", "=", session("id"));
         $existCustomer = $existCustomerQuery->first();
-        //todo: check exist customer
 
-        if ($existCustomer == null) {
-            return redirect("/user/edit/" . session("id"));
-        }
 
         $data["customer"] = $existCustomer;
 //        $checkTransaction = DB::table('transactions')->where('end', '=', $request->get('end'))

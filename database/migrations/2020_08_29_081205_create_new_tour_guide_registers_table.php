@@ -27,6 +27,7 @@ class CreateNewTourGuideRegistersTable extends Migration
             $table->boolean('mc_gala_dinner'); // có làm MC gala dinner hay ko?
             $table->boolean('team_building'); // có tổ chức chơi team-building hay ko?
             $table->integer('status'); // 1. Open | 2. Occupied | 3. Stop working
+            $table->integer('area_id');
             $table->timestamps();
         });
     }

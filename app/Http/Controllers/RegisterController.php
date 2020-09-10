@@ -7,6 +7,7 @@ use App\Customer;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class RegisterController extends Controller
 {
@@ -62,6 +63,51 @@ class RegisterController extends Controller
         $newAccount->save();
         $request->session()->flash("msg", "Đã đăng ký tài khoản thành công Hãy đăng nhập!");
         return redirect("/login");
+    }
+    public function modalRegister(RegisterRequest $request) {
+        $request->validated();
+
+        //get value of all field
+        $username = $request->get("username");
+        $password = $request->get("password");
+        $passwordConfirm = $request->get("password_confirmation");
+        //check if username is existed
+        $inDbAccount = Account::query();
+        $existedAccount = $inDbAccount->where("username", "=", $username)
+            ->where("status", "!=", 3)->first();
+        if($existedAccount != null){
+            $request->session()->flash("msg", "Tên đăng nhập đã tồn tại");
+            return redirect("/register");
+        }
+
+        //check if password confirmation is not match
+        if($passwordConfirm != $password) {
+            $request->session()->flash("msg", "Mật khẩu xác nhận không khớp");
+            return Redirect::back();
+        }
+        //create new account
+        $newAccount = new Account();
+        //store data
+        $newAccount->username = $username;
+        //hash password + salt -> save to db
+        //generate salt and store in db
+        $salt = $this->generateRandomString(6);
+        $newAccount->salt = $salt;
+        //hash pwd and store
+        $passwordHashed = md5($password . $salt);
+        $newAccount->password_hash = $passwordHashed;
+        //SET ROLE = 3 FOR customer
+        $newAccount->role = 3;
+        //set status = 1 active | 0 non-active
+        $newAccount->status = 1;
+        //set timestamp
+        //TODO: check time stamp gmt+7
+        $newAccount->created_at = Carbon::now()->addDay(0)->format('Y-m-d H:i:s');
+        $newAccount->updated_at = Carbon::now()->addDay(0)->format('Y-m-d H:i:s');
+        //save
+        $newAccount->save();
+        $request->session()->flash("msg", "Đã đăng ký tài khoản thành công Hãy đăng nhập!");
+        return Redirect::back();
     }
 
     function generateRandomString($length = 10)

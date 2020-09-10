@@ -92,7 +92,7 @@ Route::get("/list", "TourGuideController@index");
 
 Route::get("/show/tourGuide/{id}", "TourGuideController@show");
 
-Route::get("/order", "OrderController@orderStatus");
+Route::get("/customer/order", "OrderController@index");
 
 Route::get("/user/edit/{id}", "CustomerController@edit");
 Route::post("/user/update/{id}", "CustomerController@update");
@@ -119,9 +119,16 @@ Route::post("/user/update/{id}", "CustomerController@update");
 Route::get("/test/list", function () {
     return view("customer/list-test");
 });
-Route::post("/book/{id}", "OrderController@book");
+
 
 Route::post("/tourGuide/new-orders/accept/{id}", "TourGuideController@acceptOrder");
 
+Route::middleware(["customer.middleware"])->group(function () {
+    Route::post("/book/{id}", "OrderController@book");
+});
+
+Route::post("/modal/login", "LoginController@modalLogin");
+Route::post("/modal/register", "RegisterController@modalRegister");
+Route::put("/modal/update/{id}", "CustomerController@modalUpdate");
 
 

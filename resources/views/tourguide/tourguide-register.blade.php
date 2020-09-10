@@ -56,9 +56,18 @@
             </div>
 
             <div class="row" >
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-3">
                     <label for="phone">Phone number: </label>
                     <input type="text" class="form-control" id="phone" placeholder="Phone number" name="phone" required>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="phone">địa điểm dẫn tour: </label>
+                    <select name="area_id" id="area" class="form-control">
+                        <option value="0">Chọn địa điểm....</option>
+                        @foreach(\App\Area::all() as $area)
+                            <option value="{{$area->id}}">{{$area->province}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="avatar">Avatar</label>
