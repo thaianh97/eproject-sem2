@@ -173,7 +173,7 @@
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a title="" href="/admin/transactions"><span
                                         class="mini-sub-pro">Danh sách </span></a></li>
-{{--                            <li><a title="Blog" href="blog.html"><span class="mini-sub-pro">Blog</span></a></li>--}}
+                            <li><a title="" href="/admin/pay-accept-transactionDetails"><span class="mini-sub-pro">Pay pending</span></a></li>
 {{--                            <li><a title="Blog Details" href="blog-details.html"><span--}}
 {{--                                        class="mini-sub-pro">Blog Details</span></a></li>--}}
 {{--                            <li><a title="404 Page" href="404.html"><span class="mini-sub-pro">404 Page</span></a></li>--}}

@@ -122,11 +122,12 @@ class TourGuideController extends Controller
         $this_tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
         $thumbnails = $request->get('thumbnails');
+        dd($thumbnails);
         foreach ($thumbnails as $thumbnail) {
             $this_tourGuide->avatar .= $thumbnail . ',';
         }
-
         $this_tourGuide->update();
+
         return redirect('/tourGuide');
     }
 

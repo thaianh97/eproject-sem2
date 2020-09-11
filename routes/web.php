@@ -47,9 +47,12 @@ Route::post("/admin/transactions/{id}", "ControllerByAdmin@showTransactionDetail
 
 
 Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
-Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
-
 Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
+
+Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+Route::get('/admin/pay-accept-transactionDetails', 'ControllerByAdmin@listPayPendingTransactions');
+Route::get('/admin/accept-paid-transactionDetail/{id}', 'ControllerByAdmin@acceptPaidTransactiondetail');
+
 Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 
 //Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
