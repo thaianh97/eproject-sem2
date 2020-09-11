@@ -254,4 +254,15 @@ class TourGuideController extends Controller
     }
 
 
+    function checkStatus(){
+       $acc_id = session('id');
+       $account = Account::find($acc_id);
+
+       if($account->status == 0){
+           \Illuminate\Support\Facades\Session::remove("username");
+           \Illuminate\Support\Facades\Session::remove("role");
+           \Illuminate\Support\Facades\Session::remove("id");
+           return redirect("/");
+       }
+    }
 }
