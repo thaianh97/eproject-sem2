@@ -186,7 +186,9 @@ class TourGuideController extends Controller
         foreach ($listRelatedAreaID as $area_id) {
             $listRelatedTourGuideArea = TourGuideArea::query()->where("area_id", $area_id)->get();
             foreach ($listRelatedTourGuideArea as $relatedTourGuideArea) {
-                array_push($listRelatedTourGuideId, $relatedTourGuideArea->guide_id);
+                if($relatedTourGuideArea->guide_id != $id) {
+                    array_push($listRelatedTourGuideId, $relatedTourGuideArea->guide_id);
+                }
             }
         }
 

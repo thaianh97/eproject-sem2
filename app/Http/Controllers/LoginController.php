@@ -58,14 +58,18 @@ class LoginController extends Controller
         $request->getSession()->put("role", $loginAccount->role);
         //save id to session
         $request->getSession()->put("id", $loginAccount->id);
-        //return view by role: role = 3 for customer| role = 2 for tour Guide | role = 1 for admin
-        if ($loginAccount->role == 1) {
-            return redirect("/admin");
-        } else if ($loginAccount->role == 2) {
-            return redirect("/tourGuide");
-        } else {
-            return redirect("/");
+        $previousUrl = $request->get("previous-page");
+        if($previousUrl == "http://127.0.0.1:8000/register" || $previousUrl == "http://127.0.0.1:8000/login") {
+            if ($loginAccount->role == 1) {
+                return redirect("/admin");
+            } else if ($loginAccount->role == 2) {
+                return redirect("/tourGuide");
+            } else {
+                $request->session()->flash("msg", "đã đăng nhập thành công");
+                return \redirect("/");
+            }
         }
+        return redirect($previousUrl);
     }
 
     public function logoutAdmin()
@@ -92,46 +96,6 @@ class LoginController extends Controller
         return redirect("/");
     }
 
-    public function modalLogin(LoginRequest $request) {
 
-        $request->validated();
-        //get user input
-        $username = $request->get('username');
-        $password = $request->get('password');
-        //get account with user's input username
-        $inDbAccounts = Account::query();
-        $loginAccount = $inDbAccounts->where("username", "=", $username)
-            ->where("status", "!=", 3)->first();
-        //check if user input account is not exist
-        if (!$loginAccount) {
-            $request->session()->flash("msg", "tài khoản hoặc mật khẩu không đúng");
-            return Redirect::back();
-        }
-        // check user's input password
-        //get salt
-        $accountSalt = $loginAccount->salt;
-        //hash
-        $loginAccountHashPassWord = md5($password . $accountSalt);
-        if ($loginAccountHashPassWord != $loginAccount->password_hash) {
-            $request->session()->flash("msg", "tài khoản hoặc mật khẩu không đúng");
-            return Redirect::back();
-        }
-
-
-        //save new login session
-        $request->getSession()->put("username", $loginAccount->username);
-        $request->getSession()->put("role", $loginAccount->role);
-        //save id to session
-        $request->getSession()->put("id", $loginAccount->id);
-        //return view by role: role = 3 for customer| role = 2 for tour Guide | role = 1 for admin
-        if ($loginAccount->role == 1) {
-            return redirect("/admin");
-        } else if ($loginAccount->role == 2) {
-            return redirect("/tourGuide");
-        } else {
-            $request->session()->flash("msg", "đã đăng nhập thành công");
-            return Redirect::back();
-        }
-    }
 
 }

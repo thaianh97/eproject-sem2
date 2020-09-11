@@ -46,49 +46,48 @@
 @section("content")
     <div class="content">
 
-       <div class="container">
-           <div class="row">
-               <div class="col-md-2 side-bar">
-                   <div class="side-bar-container">
-                        <div class="profile-container">
+        <div class="container">
+            <div class="row">
 
+                <div class="col-md-12">
+                    <h1 class="header">Quản lý giao dịch</h1>
+                    <table class="table">
+                        <tr class="table-head">
+                            <th>Mã giao dịch</th>
+                            <th>Ngày đặt</th>
+                            <th>Ngày khởi hành</th>
+                            <th>Ngày kết thúc</th>
 
-                        </div>
-                       <ul class="nav-side-bar">
-                           <li class="nav-side-bar-item">Thông tin tài khoản</li>
-                           <li class="nav-side-bar-item active">Quản lý giao dịch</li>
-                       </ul>
-                   </div>
-               </div>
-               <div class="col-md-10">
-                   <h1 class="header">Quản lý giao dịch</h1>
-                   <table class="table">
-                       <tr class="table-head">
-                           <th>Mã giao dịch</th>
-                           <th>Ngày đặt</th>
-                           <th>Ngày khởi hành</th>
-                           <th>Ngày kết thúc</th>
+                            <th>Địa Điểm</th>
+                            <th>Số người</th>
+                            <th>Tổng tiền (đ)</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                        @foreach($listTransaction as $item)
+                            <tr class="table-content">
+                                <td><a href="/customer/order/{{$item->id}}">{{$item->id}}</a></td>
+                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->start}}</td>
+                                <td>{{$item->end}}</td>
+                                <td>{{\App\Area::find($item->province_id)->province}}</td>
+                                <td class="text-right">{{$item->party_number}}</td>
+                                <td class="text-right">{{$item->total_cost}}</td>
+                                <td class="text-right">
+                                    @if($item->status == 0)
+                                        Chưa thanh toán
+                                    @elseif($item->status == 1)
+                                        Đã thanh toán
+                                    @else
+                                        Hủy
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
 
-                           <th>Địa Điểm</th>
-                           <th>Số người</th>
-                           <th>Tổng tiền (đ)</th>
-                           <th>Trạng thái</th>
-                       </tr>
-                       <tr class="table-content">
-                           <td>1</td>
-                           <td>hgkj</td>
-                           <td>10/12/2020</td>
-                           <td>12/12/2020</td>
-                           <td>dsad</td>
-                           <td class="text-right">đá</td>
-                           <td class="text-right">dsa</td>
-                           <td class="text-right">dsadsa</td>
-                       </tr>
-
-                   </table>
-               </div>
-           </div>
-       </div>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 

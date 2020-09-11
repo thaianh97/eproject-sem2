@@ -51,7 +51,7 @@
 
                 <div class="col-lg-3 book-form-container">
                     <div class="price-container">
-                        <p><span class="amount">320&dollar;</span> <span class="price"> /ngày</span></p>
+                        <p><span class="amount"></span> <span class="price"> /ngày</span></p>
                     </div>
                     <form action="/book/{{$obj->id}}" class="book-form" method="post">
                         @csrf
@@ -63,7 +63,7 @@
 
                         <div class="input-wrapper">
                             <label for="start">Ngày kết thúc </label>
-                            <input type="text" id="to" name="start" placeholder="ấn để chon ngày" required
+                            <input type="text" id="to" name="end" placeholder="ấn để chon ngày" required
                                    class="date-input" autocomplete="off"/>
                         </div>
                         <div class="input-wrapper">
@@ -86,70 +86,7 @@
                 </div>
             </div>
         </div>
-        <!-- MODAL CONTENT for login-->
-        <div id="login-register" class="modal fade" role="dialog">
-            <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4>Bạn cần phải có một tài khoản để tiếp tục đặt hướng dẫn viên</h4>
-                        <div class="modal-tab-nav">
-                            <a class="modal-tab-nav-item active" href="#" data-tab="login-tab">Đăng nhập</a>
-                            <a class="modal-tab-nav-item" href="#" data-tab="register-tab">Đăng Ký</a>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-tab-content" id="login-tab">
-                            <form method="post" action="/modal/login">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="username-modal">Tài khoản: </label>
-                                    <input type="text" class="form-control" id="username-modal"
-                                           placeholder="Nhập tài khoản"
-                                           name="username">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="password-modal">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password-modal"
-                                           placeholder="Mật khẩu" name="password">
-                                </div>
-
-                                <button type="submit" class="btn btn-default">Đăng Nhập</button>
-                            </form>
-                        </div>
-                        <div class="modal-tab-content" id="register-tab">
-                            <form>
-                                @csrf
-                                <div class="form-group">
-                                    <label for="username-moldal2">Tài khoản: </label>
-                                    <input type="text" class="form-control" id="username-modal2"
-                                           placeholder="Nhập tài khoản"
-                                           name="username">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password-modal2">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password-modal2"
-                                           placeholder="Mật khẩu" name="password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password-confirm">Xác nhận mật khẩu</label>
-                                    <input type="password" class="form-control" id="password-confirm"
-                                           placeholder="Mật khẩu" name="password_confirmation">
-                                </div>
-                                <button type="submit" class="btn btn-default">Đăng Ký</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
 
         <!-- MODAL CONTENT for update info-->
         <div id="update-profile" class="modal fade" role="dialog">
@@ -340,32 +277,9 @@
             $liEl.addClass("active");
         })
     </script>
-    @if(session("username") == null)
-        <script>
-            $("#book-btn").on("click", function (evt) {
-                evt.preventDefault();
-                $(evt.target).attr({
-                    "data-toggle": "modal",
-                    'data-target': "#login-register",
 
-                })
-            })
-            $(".modal-tab-nav-item").on("click", function (e) {
-                e.preventDefault();
-                //hide all
-                $(".modal-tab-content").fadeOut("fast");
-                //deactive all
-                $("a.modal-tab-nav-item").removeClass("active");
-                //get data
-                let target = e.target;
-                let tabName = target.dataset.tab;
-                //show tab
-                $("#" + tabName + ".modal-tab-content").fadeIn("fast");
-                //set active
-                $(e.target).addClass("active");
-            })
-        </script>
-    @endif
+
+
     @if(\App\Customer::query()->where("account_id", session("id"))->first() == null && session("id") != null)
         <script>
             $("#book-btn").on("click", function (evt) {
@@ -398,5 +312,17 @@
             console.log(value);
         })
 
+    </script>
+    <script>
+        $(".amount").text({{$obj->price}} + "đ")
+        $("#party_number").on("change", function (evt) {
+            var val = $(this).val();
+            if(isNaN(val) || parseInt(val) < 0) {
+                $(this).val(1);
+            }
+            //count sum
+            {{--let price = {{$obj->price}};--}}
+            {{--$(".amount").text(parseFloat(price) * parseInt(val) + "đ")--}}
+        })
     </script>
 @endsection

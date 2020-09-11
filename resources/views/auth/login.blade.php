@@ -32,6 +32,7 @@
 
         <form method="POST" action="/login">
             @csrf
+            <input type="hidden" name="previous-page" value="{{url()->previous()}}">
             <h1>LOGIN</h1>
             <div class="textbox">
                 <input type="text" name="username" placeholder="username" required>

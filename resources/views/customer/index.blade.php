@@ -248,7 +248,7 @@
     <!-- Date picker script-->
     <script>
         $(function () {
-            var dateFormat = "mm/dd/yy",
+            var dateFormat = "dd-mm-yy",
                 from = $("#from")
                     .datepicker({
                         defaultDate: "+1w",
@@ -257,7 +257,9 @@
                         minDate: 0
                     })
                     .on("change", function () {
+
                         to.datepicker("option", "minDate", getDate(this));
+
                     }),
                 to = $("#to").datepicker({
                     defaultDate: "+1w",
@@ -265,6 +267,7 @@
                     numberOfMonths: 1
                 })
                     .on("change", function () {
+
                         from.datepicker("option", "maxDate", getDate(this));
                     });
 
@@ -341,6 +344,7 @@
             })
         });
     </script>
+    <script src="{{asset("js/dateFormat.js")}}"></script>
 @endsection
 
 
