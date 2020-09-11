@@ -183,6 +183,9 @@
             <h1 class="header">Hướng dẫn viên liên quan</h1>
             <div class="row">
                 <!-- start item -->
+                @if(count($relatedTourGuideId) == 0)
+                    <p></p>
+                @else
                 @foreach($relatedTourGuideId as $id)
                     <div class="col-md-3 col-lg-3 col-sm-6">
                         <div class="box">
@@ -208,7 +211,7 @@
                         </div>
                     </div>
                 @endforeach
-
+                @endif
             </div>
         </div>
 
