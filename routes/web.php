@@ -24,26 +24,25 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['admin.middleware'])->group(function () {
 
 
-});
-
 //todo: put admins routes here when seed some valid admin account
-Route::get('/admin', 'ControllerByAdmin@adminHome');
-Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
+    Route::get('/admin', 'ControllerByAdmin@adminHome');
+    Route::get('/admin/customers', 'ControllerByAdmin@listCustomers');
 
-Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
-Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
-
-
+    Route::get('/admin/tourGuides', 'ControllerByAdmin@listTourGuides');
+    Route::post("/admin/tourGuides/{id}", "ControllerByAdmin@showTourGuideDetail");
 
 
-Route::post("/admin/deActive-tourGuides/{id}", "ControllerByAdmin@deActiveTourGuide");
 
-Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
-Route::post("/admin/new-tourGuide/{id}", "ControllerByAdmin@showNewTourGuideDetail");
-Route::post("/admin/new-tourGuide-contact/{id}", "ControllerByAdmin@sendMailToNewTourGuide");
 
-Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
-Route::post("/admin/transactions/{id}", "ControllerByAdmin@showTransactionDetail");
+    Route::post("/admin/deActive-tourGuides/{id}", "ControllerByAdmin@deActiveTourGuide");
+
+    Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+    Route::post("/admin/new-tourGuide/{id}", "ControllerByAdmin@showNewTourGuideDetail");
+    Route::post("/admin/new-tourGuide-contact/{id}", "ControllerByAdmin@sendMailToNewTourGuide");
+
+    Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+    Route::post("/admin/transactions/{id}", "ControllerByAdmin@showTransactionDetail");
+
 
 
 Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
@@ -54,6 +53,15 @@ Route::get('/admin/pay-accept-transactionDetails', 'ControllerByAdmin@listPayPen
 Route::get('/admin/accept-paid-transactionDetail/{id}', 'ControllerByAdmin@acceptPaidTransactiondetail');
 
 Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
+
+    Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+    Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+
+    Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
+    Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
+});
+
+
 
 //Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
 
@@ -83,24 +91,32 @@ Route::middleware(["tourGuide.middleware"])->group(function () {
 
     Route::get('/tourGuide/edit/{id}', "TourGuideController@edit");
     Route::post('/tourGuide/update/{id}', "TourGuideController@update");
+    Route::get('/tourGuide/edit-info', "TourGuideController@editInfo");
+    Route::get('/tourGuide', "TourGuideController@calender");
+    Route::put('/tourGuide/edit-info', "TourGuideController@submitNewInfo");
+    Route::get('/tourGuide/new-orders', "TourGuideController@showNewOrders");
+    Route::get('/tourGuide/tours', "TourGuideController@showTours");
+    Route::post("/tourGuide/new-orders/accept/{id}", "TourGuideController@acceptOrder");
 });
 
-Route::get('/tourGuide/edit-info', "TourGuideController@editInfo");
-Route::get('/tourGuide', "TourGuideController@calender");
-Route::put('/tourGuide/edit-info', "TourGuideController@submitNewInfo");
-Route::get('/tourGuide/new-orders', "TourGuideController@showNewOrders");
-Route::get('/tourGuide/tours', "TourGuideController@showTours");
+
 
 
 Route::get("/list", "TourGuideController@index");
 
 Route::get("/show/tourGuide/{id}", "TourGuideController@show");
 
-Route::get("/order", "OrderController@orderStatus");
 
-Route::get("/user/edit/{id}", "CustomerController@edit");
-Route::post("/user/update/{id}", "CustomerController@update");
 
+
+//customer middleware
+Route::middleware(["customer.middleware"])->group(function () {
+    Route::get("/customer/order", "OrderController@index");
+    Route::get("/customer/order/{id}", "OrderController@orderStatus");
+    Route::get("/user/edit/{id}", "CustomerController@edit");
+    Route::post("/user/update/{id}", "CustomerController@update");
+    Route::post("/book/{id}", "OrderController@book");
+});
 //Route::get("/test", function () {
 ////    $areas = \App\TourGuideArea::query();
 ////    $firstAreas = $areas->where("area_id", "=", "1")->get();
@@ -120,12 +136,13 @@ Route::post("/user/update/{id}", "CustomerController@update");
 ////    dd($transaction);
 //
 //});
-Route::get("/test/list", function () {
-    return view("customer/list-test");
-});
-Route::post("/book/{id}", "OrderController@book");
+//Route::get("/test/list", function () {
+//    return view("customer/list-test");
+//});
 
-Route::post("/tourGuide/new-orders/accept/{id}", "TourGuideController@acceptOrder");
 
+Route::post("/modal/login", "LoginController@modalLogin");
+Route::post("/modal/register", "RegisterController@modalRegister");
+Route::put("/modal/update/{id}", "CustomerController@modalUpdate");
 
 

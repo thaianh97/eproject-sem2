@@ -84,18 +84,13 @@
                         </div>
                         <table>
                             <tr>
-                                <th>
 
-                                    <label>Check all: <input type="checkbox"
-                                                             name="select-all"
-                                                             id="select-all"></label>
-                                </th>
-                                <th>
-                                    <button class="btn btn-primary">Duyệt</button>
+{{--                                <th>--}}
+{{--                                    <button class="btn btn-primary">Duyệt</button>--}}
 
-                                </th>
+{{--                                </th>--}}
+                                <td colspan="2"></td>
                                 <th>ID</th>
-                                <th>ACC_ID</th>
                                 <th>Full_name</th>
                                 <th>Year_of_birth</th>
                                 <th>Phone</th>
@@ -119,7 +114,7 @@
 
 
                                     <td>{{$item->id}}</td>
-                                    <td>{{$item->account_id}}</td>
+
                                     <td>{{$item->full_name}}</td>
                                     <td>{{$item->year_of_birth}}</td>
                                     <td>{{$item->phone}}</td>

@@ -7,6 +7,7 @@ use App\Customer;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use MongoDB\Driver\Session;
 
 class LoginController extends Controller
@@ -57,14 +58,18 @@ class LoginController extends Controller
         $request->getSession()->put("role", $loginAccount->role);
         //save id to session
         $request->getSession()->put("id", $loginAccount->id);
-        //return view by role: role = 3 for customer| role = 2 for tour Guide | role = 1 for admin
-        if ($loginAccount->role == 1) {
-            return redirect("/admin");
-        } else if ($loginAccount->role == 2) {
-            return redirect("/tourGuide");
-        } else {
-            return redirect("/");
+        $previousUrl = $request->get("previous-page");
+        if($previousUrl == "http://127.0.0.1:8000/register" || $previousUrl == "http://127.0.0.1:8000/login") {
+            if ($loginAccount->role == 1) {
+                return redirect("/admin");
+            } else if ($loginAccount->role == 2) {
+                return redirect("/tourGuide");
+            } else {
+                $request->session()->flash("msg", "đã đăng nhập thành công");
+                return \redirect("/");
+            }
         }
+        return redirect($previousUrl);
     }
 
     public function logoutAdmin()
@@ -90,5 +95,7 @@ class LoginController extends Controller
         \Illuminate\Support\Facades\Session::remove("id");
         return redirect("/");
     }
+
+
 
 }

@@ -13,25 +13,17 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
-    public function orderStatus()
-    {
-        //get status in trasaction detail
-        $booking_step = 0;
-        //current customer
-        if (session("username") == null) {
-            return redirect("/login");
-        }
-        $currentAccount = Account::query()->where("username", "=", session("username"))->first();
-        $currentCustomer = Customer::query()->where("account_id", $currentAccount->id)->first();
-        //read transaction
-        $listTransactions = $currentCustomer->transactions;
-        //fix tạm thg số 9 //todo: tạo view list transaction
-        $chosenTransaction = $listTransactions->first();
-        //get transaction detail
-        $transactionDetail = $chosenTransaction->transactionDetails->first();
-        //get status
-        $booking_step = $transactionDetail->status + 1;
+    public function index() {
+        $currentCustomer = Customer::query()->where("account_id", session("id"))->first();
+        //get list transaction
+        $listTransaction = Transaction::query()->where("customer_id", $currentCustomer->id)->get();
+        return view("customer.list-order")->with("listTransaction", $listTransaction);
+    }
 
+    public function orderStatus($id)
+    {
+        $transactionDetail = TransactionDetail::find($id);
+        $booking_step = $transactionDetail->status + 1;
         return view("customer.booking-status")->with("step", $booking_step);
     }
 
@@ -45,35 +37,26 @@ class OrderController extends Controller
         $data['email'] = $tourGuide->email;
         $data['price'] = $tourGuide->price;
         //get current customer
-        $customers = Customer::query();
-        if (session("username") == null) {
-            return redirect("/login");
-        }
-        $existCustomerQuery = $customers->where("account_id", "=", session("id"));
-        $existCustomer = $existCustomerQuery->first();
-        //todo: check exist customer
+        $currentCustomer = Customer::query()->where("account_id", session("id"))->first();
 
-        if ($existCustomer == null) {
-            return redirect("/user/edit/" . session("id"));
-        }
 
-        $data["customer"] = $existCustomer;
+        $data["customer"] = $currentCustomer;
 //        $checkTransaction = DB::table('transactions')->where('end', '=', $request->get('end'))
 //            ->where('start', '=', $request->get('start'))
 //            ->where('status', '=', 0);
-        $startTime = TimeFormatHelper::formatStringToSqlDate($request->get("start"));
-        $duration = $request->get("duration");
-        $startTimeInSecond = strtotime($startTime);
-        $endTimeInSecond = $startTimeInSecond + $duration * 24 * 60 * 60;
-        $endTime = date('Y-m-d H:i:s', $endTimeInSecond);
-
+        $startTime = $request->get("start");
+        $endTime = $request->get("end");
+        $from = date_create($startTime);
+        $to = date_create($endTime);
+        $duration = date_diff($from, $to, true)->format("%a");
+        $price = $tourGuide->price * $duration;
         //get
         $order = new Transaction();
-        $order->customer_id = $existCustomer->id;
-        $order->province_id = 1; //fix tam //todo: hoan thien
+        $order->customer_id = $currentCustomer->id;
+        $order->province_id = $request->get("area_id");
         $order->party_number = $request->get('party_number');
-        $order->start = $startTime;
-        $order->end = $endTime;
+        $order->start = TimeFormatHelper::formatStringToSqlDate($startTime);
+        $order->end = TimeFormatHelper::formatStringToSqlDate($endTime);
         $order->total_cost = 0;
         $order->status = 0;
         $order->save();
@@ -88,27 +71,25 @@ class OrderController extends Controller
         $orderDetail->transaction_id = $order->id;
         $orderDetail->guide_id = $tourGuide->id;
         $orderDetail->guide_name = $tourGuide->full_name;
-        $orderDetail->start = $startTime;
-        $orderDetail->end = $endTime;
-        $orderDetail->cost = $tourGuide->price * $duration;
+        $orderDetail->start = TimeFormatHelper::formatStringToSqlDate($startTime);
+        $orderDetail->end = TimeFormatHelper::formatStringToSqlDate($endTime);
+        $orderDetail->cost = $price;
         $orderDetail->rate_stars = 0;
         $orderDetail->review = "";
         $orderDetail->status = 1;
         $orderDetail->save();
 
 
-        Mail::send('mail.sendToCustomer', $data, function ($message) use ($existCustomer, $orderDetail) {
-            $message->to($existCustomer->email,
+        Mail::send('mail.sendToCustomer', $data, function ($message) use ($currentCustomer, $orderDetail) {
+            $message->to($currentCustomer->email,
                 'Tutorials Point')->subject('yêu cầu đặt đã được gửi' . $orderDetail->id);
             $message->from('huongdanvien247@gmail.com', 'TConnect');
         });
-        //chuyen trang thai booking
-        $data["booking-step"] = 2;
         Mail::send('mail.sendToTourGuide', $data, function ($message) use ($orderDetail, $tourGuide) {
             $message->to($tourGuide->email,
                 'Tutorials Point')->subject('bạn có một yêu cầu đặt lịch mã' . $orderDetail->id);
             $message->from('huongdanvien247@gmail.com', 'TConnect');
         });
-        return redirect("/order");
+        return redirect("/customer/order");
     }
 }

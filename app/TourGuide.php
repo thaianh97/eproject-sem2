@@ -8,7 +8,7 @@ class TourGuide extends Model
 {
     //
     public function tourGuideAreas() {
-        return $this->hasMany("App\TourGuideArea", "", "id");
+        return $this->hasMany("App\TourGuideArea", "guide_id", "id");
     }
     public function transactionDetails() {
         return $this->hasMany("App\TransactionDetail", "guide_id", "id");

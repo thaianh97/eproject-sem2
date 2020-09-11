@@ -7,6 +7,7 @@ use App\Customer;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class RegisterController extends Controller
 {
@@ -60,9 +61,24 @@ class RegisterController extends Controller
         $newAccount->updated_at = Carbon::now()->addDay(0)->format('Y-m-d H:i:s');
         //save
         $newAccount->save();
-        $request->session()->flash("msg", "Đã đăng ký tài khoản thành công Hãy đăng nhập!");
-        return redirect("/login");
+        //login
+        //save new login session
+        $request->getSession()->put("username", $newAccount->username);
+        $request->getSession()->put("role", $newAccount->role);
+        //save id to session
+        $request->getSession()->put("id", $newAccount->id);
+        //return view by role: role = 3 for customer| role = 2 for tour Guide | role = 1 for admin
+        if ($newAccount->role == 1) {
+            return redirect("/admin");
+        } else if ($newAccount->role == 2) {
+            return redirect("/tourGuide");
+        } else {
+            $request->session()->flash("msg", "đã đăng nhập thành công");
+            return \redirect("/");
+        }
+
     }
+
 
     function generateRandomString($length = 10)
     {

@@ -7,8 +7,9 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- Datedropper jquery plugin -->
-    <script src="{{asset("js/datedropper/datedropper.pro.min.js")}}"></script>
+    <!-- Date picker jquery plugin -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 @endsection
 
@@ -57,10 +58,13 @@
                         <h2 class="selected-filter-title">Bạn Đang Tìm</h2>
 
                         <div class="selected-filter-item">
-                            <p><span class="selected-filter-name">Thời gian:</span> {{$start}} - {{$end}}</p>
+                            <p style="font-size: 12px;"><span class="selected-filter-name">Thời gian:</span> {{$start}}
+                                - {{$end}}</p>
                         </div>
                         <div class="selected-filter-item">
-                            <p><span class="selected-filter-name">Địa Điểm:</span> @if($chosen_area) {{$chosen_area->province}} @endif</p>
+                            <p><span
+                                    class="selected-filter-name">Địa Điểm:</span> @if($chosen_area) {{$chosen_area->province}} @endif
+                            </p>
                         </div>
                     </div>
 
@@ -71,27 +75,29 @@
                             <div class="filter-form-input-wrapper">
                                 <h3 class="filter-form-input-title">Thời Gian</h3>
                                 <label for="start" class="filter-form-label">khởi hành</label>
-                                <input type="text" class="filter-form-date-input" id="start"
-                                       placeholder="Ấn để chọn ngày" name = "start" value="{{$start}}">
+                                <input type="text" class="filter-form-date-input" id="from"
+                                       placeholder="Ấn để chọn ngày" name="start" value="{{$start}}">
 
                                 <label for="end" class="filter-form-label">kết thúc</label>
-                                <input type="text" class="filter-form-date-input" id="end"
-                                       placeholder="Ấn để chọn ngày" name ="end" value="{{$end}}">
+                                <input type="text" class="filter-form-date-input" id="to"
+                                       placeholder="Ấn để chọn ngày" name="end" value="{{$end}}">
                             </div>
 
                             <div class="filter-form-input-wrapper">
                                 <h3 class="filter-form-input-title">Địa Điểm</h3>
-                                <select name="province" id="province-select">
+                                <select name="area_id" id="province-select">
                                     @if($chosen_area != null)
                                         <option value="0">Chọn khu vực...</option>
                                         @foreach(\App\Area::all() as $item)
-                                            <option value="{{$item->id}}" @if($item->id == $chosen_area->id ) selected @endif>{{$item->province}}</option>
+                                            <option value="{{$item->id}}"
+                                                    @if($item->id == $chosen_area->id ) selected @endif>{{$item->province}}</option>
                                         @endforeach
-                                    @endif
+                                    @else
                                         @foreach(\App\Area::all() as $item)
                                             <option value="0">Chọn khu vực...</option>
                                             <option value="{{$item->id}}">{{$item->province}} </option>
                                         @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="filter-form-input-wrapper">
@@ -106,113 +112,35 @@
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 main-contain">
                     <div class="tour-guide-container">
                         @foreach($list as $obj)
-                        <div class="tour-guide-item">
-                            <h2 class="tour-guide-item-name">{{$obj->full_name}}</h2>
-                            <div class="row">
-                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <img src="{{$obj->large_photo}}" alt="" class="img-responsive">
-                                </div>
-                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                    <p>{{$obj->description}}</p>
-                                    <ul class="list-option">
-                                        <li>Lorem ipsum dolor.</li>
-                                        <li>Lorem ipsum dolor sit.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                    <span class="price">{{$obj->price}} VNĐ</span>
-                                    <a href="/show/tourGuide/{{$obj->id}}" class="book-btn">Chọn Hướng Dẫn Viên</a>
+                            <div class="tour-guide-item">
+                                <h2 class="tour-guide-item-name">{{$obj->full_name}}</h2>
+                                <div class="row content-container">
+                                    <div class="tour-guide-item-img col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <img src="{{$obj->large_photo}}" alt="" class="img-responsive">
+                                    </div>
+                                    <div class="tour-guide-item-description col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <p>{{$obj->description}}</p>
+                                        <ul class="list-option">
+                                            <li>Năm sinh: {{$obj->year_of_birth}}</li>
+                                            <li>Giới tính: @if($obj->gender == 1) nam @elseif($obj->gender == 2)
+                                                    Nữ @else Khác @endif</li>
+                                            <li> Địa điểm dẫn tour:
+                                                @foreach((\App\TourGuideArea::query()->where("guide_id", $obj->id)->get()) as $tourGuideArea)
+                                                    {{\App\Area::find($tourGuideArea->area_id)->province}}
+                                                @endforeach
+                                            </li>
+                                        </ul>
+                                        <div class="bottom-content">
+                                            <p class="price"><span class="amount">{{$obj->price}}đ</span> /ngày</p>
+                                            <a href="/show/tourGuide/{{$obj->id}}" class="book-btn">Chọn Hướng Dẫn
+                                                Viên</a>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
 
-{{--                        <div class="tour-guide-item">--}}
-{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
-{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
-{{--                                </div>--}}
-{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
-{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
-{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
-{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
-{{--                                    <ul class="list-option">--}}
-{{--                                        <li>Lorem ipsum dolor.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
-{{--                                    </ul>--}}
-{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
-{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
-{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="tour-guide-item">--}}
-{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
-{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
-{{--                                </div>--}}
-{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
-{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
-{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
-{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
-{{--                                    <ul class="list-option">--}}
-{{--                                        <li>Lorem ipsum dolor.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
-{{--                                    </ul>--}}
-{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
-{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
-{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="tour-guide-item">--}}
-{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
-{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
-{{--                                </div>--}}
-{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
-{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
-{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
-{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
-{{--                                    <ul class="list-option">--}}
-{{--                                        <li>Lorem ipsum dolor.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
-{{--                                    </ul>--}}
-{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
-{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
-{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="tour-guide-item">--}}
-{{--                            <h2 class="tour-guide-item-name">Lưu Huy</h2>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="tour-guide-item-img col-lg-4 col-md-4 col-sm-12 col-xs-12">--}}
-{{--                                    <img src="{{asset("img/tourguide/person.jpg")}}" alt="" class="img-responsive">--}}
-{{--                                </div>--}}
-{{--                                <div class="tour-guide-item-description col-lg-8 col-md-8 col-sm-12 col-xs-12">--}}
-{{--                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequatur--}}
-{{--                                        facere, ipsum nam quae quas reprehenderit sed. Accusantium architecto corporis--}}
-{{--                                        dolorum, earum id nihil, obcaecati perferendis quos sunt tempore vel.</p>--}}
-{{--                                    <ul class="list-option">--}}
-{{--                                        <li>Lorem ipsum dolor.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit.</li>--}}
-{{--                                        <li>Lorem ipsum dolor sit amet.</li>--}}
-{{--                                    </ul>--}}
-{{--                                    <a href="#" class="tourguide-detail-link">Xem chi tiết hướng dẫn viên</a>--}}
-{{--                                    <span class="price">1.200 000 VNĐ</span>--}}
-{{--                                    <a href="#" class="book-btn">Đặt Ngay</a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
                 <!-- END CONTENT -->
@@ -228,20 +156,39 @@
 @section("scripts")
     <script src="{{asset("js/header.js")}}"></script>
 
-    <!-- Date dropper srcipt-->
+    <!-- Date picker script-->
     <script>
-        $('#start').dateDropper({
-            theme: "leaf",
-            format: "d/m/Y",
-            large: true,
-            largeDefault: false,
-        });
+        $(function () {
+            var dateFormat = "mm/dd/yy",
+                from = $("#from")
+                    .datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 1,
+                        minDate: 0
+                    })
+                    .on("change", function () {
+                        to.datepicker("option", "minDate", getDate(this));
+                    }),
+                to = $("#to").datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1
+                })
+                    .on("change", function () {
+                        from.datepicker("option", "maxDate", getDate(this));
+                    });
 
-        $('#end').dateDropper({
-            theme: "leaf",
-            format: "d/m/Y",
-            large: true,
-            largeDefault: false,
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate(dateFormat, element.value);
+                } catch (error) {
+                    date = null;
+                }
+
+                return date;
+            }
         });
     </script>
 @endsection

@@ -97,27 +97,21 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="#">
+
                 {{--                <img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt=""/>--}}
-                <h2>TCONECT</h2>
-            </a>
-            <strong>
-                {{--                <img src="{{asset('img/logo/logosn.png')}}" alt=""/>--}}
-                <h2>TCONECT</h2>
-            </strong>
+                <h2>TCONNECT</h2>
+
+{{--            <strong>--}}
+{{--                --}}{{--                <img src="{{asset('img/logo/logosn.png')}}" alt=""/>--}}
+{{--                <h2>TCONECT</h2>--}}
+{{--            </strong>--}}
         </div>
         <div class="nalika-profile">
             <div class="profile-dtl">
-{{--                <a href="#"><img src="{{\Illuminate\Support\Facades\DB::table('tour_guides')->where('account_id','=',session('id'))->get()->avatar}}" alt=""/></a>--}}
-{{--                <h2>HDV <span class="min-dtn"> {{\Illuminate\Support\Facades\DB::table('tour_guides')->where('account_id','=',session('id'))->get()->full_name}}</span></h2>--}}
+                <a href="#"><img src="{{\App\TourGuide::query()->where('account_id','=',session('id'))->first()->small_photo}}" alt=""/></a>
+                <h2><span class="min-dtn"> {{\App\TourGuide::query()->where('account_id','=',session('id'))->first()->full_name}}</span></h2>
             </div>
-            <div class="profile-social-dtl">
-                <ul class="dtl-social">
-                    <li><a href="#"><i class="icon nalika-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon nalika-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon nalika-linkedin"></i></a></li>
-                </ul>
-            </div>
+
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
