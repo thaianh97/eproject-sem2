@@ -200,18 +200,37 @@ class TourGuideController extends Controller
     }
 
 
-    function showTours(){
+    function showPendingTours(){
+        $data = array();
         $currentAccount = Account::query()->where("username", session("username"))->first();
         $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
+        $today = Carbon::now()->format('Y-m-d');
 
         //get list transaction details of this tour guide
         $listTransactionDetails = $currentTourGuide->transactionDetails->where("status" ,"!=", 1)
             ->where("status" ,"!=", 5)
             ->where("status" ,"!=", 6);
+        $data['today'] = $today;
+        $data['listTransaction'] =$listTransactionDetails;
+
+        return view('tourguide.pending-orders-manager')->with($data);
+
+    }
+    function tourNextStep($id){
+
+        $transDetail_list = TransactionDetail::query();
+        $transDetail = TransactionDetail::find($id);
+        $today = Carbon::now()->day()->format('Y-m-d H:i:s');
 
 
-        return view('tourguide.new-orders')->with("listTransaction", $listTransactionDetails);
 
+        if($transDetail->status == 3){
+
+        }elseif ($transDetail->status == 4){
+
+        }
+
+            return $id;
     }
 
     public function showNewOrders()

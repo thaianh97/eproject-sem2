@@ -18,7 +18,7 @@ class CustomerSeeder extends Seeder
         DB::table('customers')->insert([
             [
                 'id' => 1,
-                'account_id' => 77,
+                'account_id' => 15,
                 'full_name' => 'Mai Hoàng Trang Linh',
                 'phone' => '0979657180',
                 "year_of_birth" => 2001,
@@ -30,7 +30,7 @@ class CustomerSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'account_id' => 78,
+                'account_id' => 16,
                 'full_name' => 'Mai Đức Minh',
                 'phone' => '0939658080',
                 "year_of_birth" => 2001,
@@ -42,7 +42,7 @@ class CustomerSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'account_id' => 79,
+                'account_id' => 17,
                 'full_name' => 'Nguyễn Chí Quang',
                 'phone' => '0962498948',
                 "year_of_birth" => 2001,
@@ -54,7 +54,7 @@ class CustomerSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'account_id' => 80,
+                'account_id' => 18,
                 'full_name' => 'Nguyễn Mai Phương',
                 'phone' => '0967838580',
                 "year_of_birth" => 2001,
@@ -66,7 +66,7 @@ class CustomerSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'account_id' => 81,
+                'account_id' => 19,
                 'full_name' => 'Cao Mai Linh',
                 'phone' => '0973295949',
                 "year_of_birth" => 2001,
@@ -78,7 +78,7 @@ class CustomerSeeder extends Seeder
             ],
             [
                 'id' => 6,
-                'account_id' => 82,
+                'account_id' => 20  ,
                 'full_name' => 'Cao Thanh Tân',
                 'phone' => '0975398949',
                 "year_of_birth" => 2001,

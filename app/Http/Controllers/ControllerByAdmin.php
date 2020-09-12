@@ -365,7 +365,8 @@ class ControllerByAdmin extends Controller
         $tranDetail->status = 3 ;
         $tranDetail->update();
         $tourGuide = TourGuide::find($tranDetail->guide_id);
-        
+        $transaction = Transaction::find($tranDetail->transaction_id);
+        $customer = Customer::find($transaction->customer_id);
         $data = array(
             "name" => $tourGuide->full_name,
             "to" => $tourGuide->email,
@@ -374,6 +375,19 @@ class ControllerByAdmin extends Controller
         Mail::send('mail.cancel.sendToTourGuide-paidTour', $data, function ($message) use ($customer,$tourGuide,$tranDetail) {
 
             $message->to($tourGuide->email, $tourGuide->full_name)->subject('Khách hàng Đã thanh toán tour '.$tranDetail->id);
+            $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+
+        });
+
+        $data = array(
+            'username' => $customer->userName,
+            "name" => $customer->full_name,
+            "to" => $customer->email,
+            "guide_name" => $tourGuide->full_name
+        );
+        Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+
+            $message->to($customer->email, $customer->full_name)->subject('Tour  '.$transaction->id.'của bạn đã được xác nhận thanh toán :');
             $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
 
         });

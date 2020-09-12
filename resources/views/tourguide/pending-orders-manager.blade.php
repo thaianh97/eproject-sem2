@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <h2>New order</h2>
+    <h2>Pending tour</h2>
     <p>Welcome <span class="bread-ntd">{{session("username")}}</span></p>
 
 @endsection
@@ -15,36 +15,62 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
 
-                        <h4>New orders List</h4>
+                        <h4>Pending tour List</h4>
                         {{--                        <div class="add-product">--}}
                         {{--                            <a href="#">Add TourGuide</a>--}}
                         {{--                        </div>--}}
                         <table>
                             <tr>
-                                <th></th>
+
                                 <th>Mã dặt</th>
                                 <th>Tg Bắt đầu</th>
                                 <th>Tg kết thúc</th>
                                 <th>Điểm đến</th>
                                 <th>Sô lượng</th>
                                 <th>Tg gửi yêu cầu</th>
+                                <th>Trạng thái</th>
+                                <td>Tới bước tiếp</td>
                             </tr>
                             @foreach($listTransaction as $item)
                                 <tr>
 
-                                    <td>
-                                        <form action="/tourGuide/new-orders/accept/{{$item->id}}" method="post">
-                                            @csrf
+                                    {{--                                    <td></td>--}}
+                                    {{--                                    <td>--}}
+                                    {{--                                        <form action="/tourGuide/new-orders/accept/{{$item->id}}" method="post">--}}
+                                    {{--                                            @csrf--}}
 
-                                            <input type="submit" class="btn btn-primary" value="Duyệt">
-                                        </form>
-                                    </td>
+                                    {{--                                            <input type="submit" class="btn btn-primary" value="Duyệt">--}}
+                                    {{--                                        </form>--}}
+                                    {{--                                    </td>--}}
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->start}}</td>
                                     <td>{{$item->end}}</td>
                                     <td>{{\App\Area::find($item->transaction->province_id)->province}}</td>
                                     <td>{{$item->transaction->party_number}}</td>
                                     <td>{{$item->transaction->created_at}}</td>
+
+                                    <td>{{ \App\TransactionDetailStatus::find($item->status)->name}}</td>
+
+                                    <td>
+                                        <form action="/tourGuide/tour/nextStep/{{$item->id}}" method="post">
+                                            @csrf
+                                            @if($item->status==2)
+                                                <input type="button" class="btn btn-primary" value="Đợi">
+                                            @elseif($item->status == 3  )
+                                                @if( $item->start == $today)
+
+                                                    <input type="submit" class="btn btn-primary" value="Bắt đầu">
+                                                @else
+                                                    <input type="submit" class="btn btn-primary" value="ĐỢi đi">
+                                                @endif
+                                            @elseif($item->status == 4)
+                                                @if( $item->end == $today)
+                                                    <input type="submit" class="btn btn-primary" value="Hoàn thành">
+                                                @endif
+
+                                            @endif
+                                        </form>
+                                    </td>
                                     <td>
                                         <form action="" method="post">
                                             @csrf
