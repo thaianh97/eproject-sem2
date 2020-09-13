@@ -18,7 +18,7 @@ class LoginController extends Controller
         if (\Illuminate\Support\Facades\Session::has("username")) {
             \Illuminate\Support\Facades\Session::remove("username");
         }
-
+        \Illuminate\Support\Facades\Session::remove("id");
         if (\Illuminate\Support\Facades\Session::has("role")) {
             \Illuminate\Support\Facades\Session::remove("role");
         }

@@ -24,6 +24,9 @@
 @yield("content")
 @yield("footer")
 @yield("scripts")
+<script src="{{asset("js/formatMoney.js")}}">
+
+</script>
 </body>
 
 </html>

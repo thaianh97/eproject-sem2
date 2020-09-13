@@ -1,6 +1,7 @@
 @extends("layout.customer-layout")
 
 @section("vendor")
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -74,11 +75,11 @@
                             @csrf
                             <div class="filter-form-input-wrapper">
                                 <h3 class="filter-form-input-title">Thời Gian</h3>
-                                <label for="start" class="filter-form-label">khởi hành</label>
+                                <label for="from" class="filter-form-label">khởi hành</label>
                                 <input type="text" class="filter-form-date-input" id="from"
                                        placeholder="Ấn để chọn ngày" name="start" value="{{$start}}">
 
-                                <label for="end" class="filter-form-label">kết thúc</label>
+                                <label for="to" class="filter-form-label">kết thúc</label>
                                 <input type="text" class="filter-form-date-input" id="to"
                                        placeholder="Ấn để chọn ngày" name="end" value="{{$end}}">
                             </div>
@@ -131,7 +132,7 @@
                                             </li>
                                         </ul>
                                         <div class="bottom-content">
-                                            <p class="price"><span class="amount">{{$obj->price}}đ</span> /ngày</p>
+                                            <p class="price"><span class="amount money">{{$obj->price}} <span class="vnd">đ</span></span> /ngày</p>
                                             <a href="/show/tourGuide/{{$obj->id}}" class="book-btn">Chọn Hướng Dẫn
                                                 Viên</a>
                                         </div>
@@ -168,7 +169,9 @@
                         minDate: 0
                     })
                     .on("change", function () {
+
                         to.datepicker("option", "minDate", getDate(this));
+
                     }),
                 to = $("#to").datepicker({
                     defaultDate: "+1w",
@@ -176,6 +179,7 @@
                     numberOfMonths: 1
                 })
                     .on("change", function () {
+
                         from.datepicker("option", "maxDate", getDate(this));
                     });
 

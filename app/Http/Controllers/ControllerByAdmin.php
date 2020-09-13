@@ -153,7 +153,7 @@ class ControllerByAdmin extends Controller
         $newTourGuide->card = $acceptTourGuide->card;
         $newTourGuide->mc_gala_dinner = $acceptTourGuide->mc_gala_dinner;
         $newTourGuide->team_building = $acceptTourGuide->team_building;
-        $newTourGuide->status = 2;
+        $newTourGuide->status = 1; //active
         $newTourGuide->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $newTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
         //tính giá

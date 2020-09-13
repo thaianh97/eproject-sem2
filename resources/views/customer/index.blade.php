@@ -17,6 +17,7 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 @endsection
 
 @section("style-sheets")
@@ -80,75 +81,49 @@
             <div id="slider">
                 <div class="owl-carousel owl-theme">
 
-                    <div class="item">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="{{asset("img/tourguide/person.jpg")}}" alt="">
-                            </div>
-                            <div class="box-content">
-                                <h3>name</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, similique?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @foreach(\App\TourGuide::all()->random(4) as $item)
+                        <div class="item">
+                            <div class="box">
+                                <div class="box-img">
+                                    <img src="{{$item->large_photo}}" alt="">
+                                </div>
+                                <div class="box-content">
+                                    <div class="general-info">
+                                        <h3 class="name">{{$item->full_name}}</h3>
+                                        <p class="price"><span class="amount money">{{$item->price}}</span> <span
+                                                class="vnd">đ</span> /ngày</p>
+                                    </div>
+                                    <div class="description-container" id="des">
+                                        <p class="description">{{$item->description}}</p>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            Giới tính:
+                                            @if($item->gender == 1)
+                                                Nam
+                                            @elseif($item->gender == 2)
+                                                Nữ
+                                            @else
+                                                khác
+                                            @endif
+                                        </li>
+                                        <li>Năm Sinh: {{$item->year_of_birth}}</li>
+                                        <li>
+                                            Địa diểm dẫn tour:
+                                            @foreach((\App\TourGuideArea::query()->where("guide_id", $item->id)->get()) as $tourGuideArea)
 
-                    <div class="item">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="{{asset("img/tourguide/tourguide1.jpg")}}" alt="">
-                            </div>
-                            <div class="box-content">
-                                <h3>name</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, similique?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
+                                                {{\App\Area::find($tourGuideArea->area_id)->province}}
+                                            @endforeach
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="box-bottom">
+                                    <a href="/show/tourGuide/{{$item->id}}" class="detail-btn">Xem Chi Tiết</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <div class="item">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="{{asset("img/tourguide/person.jpg")}}" alt="">
-                            </div>
-                            <div class="box-content">
-                                <h3>name</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, similique?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="{{asset("img/tourguide/tourguide1.jpg")}}" alt="">
-                            </div>
-                            <div class="box-content">
-                                <h3>name</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, similique?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="{{asset("img/tourguide/tourguide1.jpg")}}" alt="">
-                            </div>
-                            <div class="box-content">
-                                <h3>name</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, similique?</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -158,15 +133,13 @@
             <h1 class="section-header">Về chúng tôi</h1>
             <div class="line"></div>
             <div class="about-us-content">
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aut
-                    consequatur, dicta enim
-                    eos ex facere id minima numquam, quis, rem repellat tempora! Adipisci fugiat modi natus quasi velit
-                    vero. Dicta est nihil nostrum quam quas. Ab aut dolores illo laboriosam, maxime nesciunt non
-                    numquam,
-                    sit suscipit tempore voluptatum.</p>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda
-                    cupiditate doloremque
-                    nobis provident quos reiciendis, repellendus tenetur ullam veritatis?</p>
+                <p class="text-center"> Chúng tôi nhận thấy rằng: Nhiều người có nhu cầu được đi khám phá thiên nhiên
+                    với tiêu chí bao gồm: “chủ động, tiết kiệm, tự do” Các hướng dẫn viên làm công ăn lương cho các công
+                    ty du lịch thường có xu hướng không được nhận đãi ngộ xứng đáng với công sức bỏ ra Có nhiều người ở
+                    các địa phương có các danh lam, thắm cảnh có vốn hiểu biết rất sâu rộng về các địa danh ở nơi đó
+                    .</p>
+                <p class="text-center">Do đó, chúng tôi, những con người trẻ có cùng đam mê du lịch đã tập hợp với nhau
+                    để xây dựng dự án khởi nghiệp “TConnect”</p>
             </div>
             <div class="about-us-image-container container">
                 <div class="row">
@@ -183,7 +156,7 @@
             </div>
         </div>
         <div id="events">
-            <h1 class="section-header">SỰ KIỆN</h1>
+            <h1 class="section-header">THƯ VIỆN ẢNH</h1>
             <div class="line"></div>
             <div class="container">
                 <div class="owl-carousel owl-theme" id="event-slider">
@@ -248,7 +221,7 @@
     <!-- Date picker script-->
     <script>
         $(function () {
-            var dateFormat = "dd-mm-yy",
+            var dateFormat = "mm/dd/yy",
                 from = $("#from")
                     .datepicker({
                         defaultDate: "+1w",
@@ -345,6 +318,8 @@
         });
     </script>
     <script src="{{asset("js/dateFormat.js")}}"></script>
+    <!-- dot dot -->
+
 @endsection
 
 

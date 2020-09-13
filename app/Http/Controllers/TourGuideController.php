@@ -92,11 +92,14 @@ class TourGuideController extends Controller
                     ])->orWhere([
                         ['start', '>', $from],
                         ['end', '>', $to]
-                    ]);
-                }));
+                    ])->where("status", 3)->orWhere("status", "4")->orWhere("status", 6); //status 3,4,6 ==> in tour or deleted
+                }))->where("status", '=', 1);
         }
         $data['list'] = $tourGuide_list->get();
         $data['areas'] = $areas;
+        //flash filter time
+        $request->session()->flash("filter-start", $data["start"]);
+        $request->session()->flash("filter-end", $data["end"]);
         return view('customer.find-tourguide')
             ->with($data);
     }
@@ -176,6 +179,9 @@ class TourGuideController extends Controller
 
 
         $tourGuide = TourGuide::find($id);
+        if($tourGuide->status == 3) {
+            return redirect()->back();
+        }
         //find related tour Guide
         $listTourGuideArea = $tourGuide->tourGuideAreas;
         $listRelatedAreaID = array();
@@ -191,9 +197,10 @@ class TourGuideController extends Controller
                 }
             }
         }
-
-
-        return view("customer.tourGuide-detail")->with("obj", $tourGuide)->with("relatedTourGuideId", $listRelatedTourGuideId);
+        $data = array();
+        $data["obj"] = $tourGuide;
+        $data["relatedTourGuideId"] = $listRelatedTourGuideId;
+        return view("customer.tourGuide-detail")->with($data);
 
 
     }
@@ -238,6 +245,9 @@ class TourGuideController extends Controller
         $customer = Customer::find($acceptOrder->transaction->customer_id);
 
         //todo: check exprired time and status
+        if($acceptOrder->status == 6 ){
+            return "yêu cầu đã bị hủy";
+        } //cancel
         //chuyển trạng thái order
         $acceptOrder->status = 2; // chờ thanh toán
         $acceptOrder->save();

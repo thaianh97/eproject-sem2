@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $currentCustomer = Customer::query()->where("account_id", session("id"))->first();
         //get list transaction
         $listTransaction = Transaction::query()->where("customer_id", $currentCustomer->id)->get();
@@ -23,8 +24,19 @@ class OrderController extends Controller
     public function orderStatus($id)
     {
         $transactionDetail = TransactionDetail::find($id);
+        $transactionTourGuide = TourGuide::find($transactionDetail->guide_id);
+        $transactionCustomer = Customer::find(Transaction::query()->where("id", $transactionDetail->id)->first()->customer_id);
         $booking_step = $transactionDetail->status + 1;
-        return view("customer.booking-status")->with("step", $booking_step);
+        $data = array();
+        $data["bookingStep"] = $booking_step;
+        $data["customer"] = $transactionCustomer;
+        $data["tourGuide"] = $transactionTourGuide;
+        $data["transactionDetail"] = $transactionDetail;
+        $from = date_create($transactionDetail->start);
+        $to = date_create($transactionDetail->end);
+        $duration = date_diff($from, $to, true)->format("%a");
+        $data["duration"] = $duration;
+        return view("customer.booking-status")->with($data);
     }
 
     public function book(Request $request, $id)
@@ -57,7 +69,7 @@ class OrderController extends Controller
         $order->party_number = $request->get('party_number');
         $order->start = TimeFormatHelper::formatStringToSqlDate($startTime);
         $order->end = TimeFormatHelper::formatStringToSqlDate($endTime);
-        $order->total_cost = 0;
+        $order->total_cost = $price;
         $order->status = 0;
         $order->save();
 
@@ -78,7 +90,6 @@ class OrderController extends Controller
         $orderDetail->review = "";
         $orderDetail->status = 1;
         $orderDetail->save();
-
 
         Mail::send('mail.sendToCustomer', $data, function ($message) use ($currentCustomer, $orderDetail) {
             $message->to($currentCustomer->email,

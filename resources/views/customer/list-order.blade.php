@@ -51,7 +51,7 @@
 
                 <div class="col-md-12">
                     <h1 class="header">Quản lý giao dịch</h1>
-                    <table class="table">
+                    <table class="table table-striped table-hover">
                         <tr class="table-head">
                             <th>Mã giao dịch</th>
                             <th>Ngày đặt</th>
@@ -64,8 +64,9 @@
                             <th>Trạng thái</th>
                         </tr>
                         @foreach($listTransaction as $item)
+
                             <tr class="table-content">
-                                <td><a href="/customer/order/{{$item->id}}">{{$item->id}}</a></td>
+                                <td><a href="/customer/order/{{$item->id}}" class="order-detail-link">{{$item->id}}</a></td>
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->start}}</td>
                                 <td>{{$item->end}}</td>

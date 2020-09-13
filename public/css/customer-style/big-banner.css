@@ -1,6 +1,13 @@
 
 /* RESPONSIVE SLIDE SHOW BANNER */
 
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/playfairdisplay/v21/nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgFE_.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
 
 div.big-banner {
     width: 100%;
@@ -40,11 +47,41 @@ a.join-btn {
     transition: .5s;
 }
 
-a.join-btn:hover {
+a.join-btn:hover, a.join-btn:link, a:visited {
     text-decoration: none;
-    background-color: transparent;
-    border: 2px solid #0B792F;
-    color: black;
 }
+
+div.welcome {
+
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top:50%;
+    transform: translateY(-50%);
+    text-align: center;
+
+}
+
+.welcome-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 57px;
+    font-weight: 400;
+
+    color: #FFF;
+    margin-bottom: 5px;
+    text-shadow: none;
+
+}
+
+.welcome p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: white;
+    position: relative;
+}
+
+
+
 
 

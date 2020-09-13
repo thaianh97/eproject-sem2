@@ -29,13 +29,13 @@
                                 <a href="/user/edit/{{session("id")}}" class="dropdown-item">Chỉnh sửa thông tin</a>
                             </li>
                             <li>
-                                <a href="/customer/order" class="dropdown-item">Trạng Thái giao dịch</a>
+                                <a href="/customer/order" class="dropdown-item">Lịch sử giao dịch</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href=""
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Đăng xuất') }}
                                 </a>
 
                                 <form id="logout-form" action="/logout" method="POST" class="d-none">
@@ -58,7 +58,7 @@
         <div class="menu">
             <div class="menu-item"><a href="/" class="menu-link">Home</a></div>
             <div class="menu-item"><a href="/list" class="menu-link">Tour guides</a></div>
-            <div class="menu-item"><a href="#" class="menu-link">Gallery</a></div>
+            <div class="menu-item"><a href="gallery" class="menu-link">Gallery</a></div>
             <div class="menu-item"><a href="/about" class="menu-link">About</a></div>
             <div class="menu-item"><a href="/contact" class="menu-link">Contact</a></div>
         </div>

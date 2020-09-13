@@ -1,10 +1,17 @@
 .content {
     width: 100%;
+    /*background: #F1F0F1*/
+}
+#booking-status {
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    padding-top: 30px;
 }
 
 .booking-status-container {
-    width: 90%;
-    margin: 50px auto;
+    width: 100%;
+
 }
 
 ul.step-bar {
@@ -15,7 +22,7 @@ ul.step-bar {
 ul.step-bar li.step-item {
     display: inline-block;
     list-style: none;
-    width: 10%;
+    width: 19%;
     position: relative;
 }
 
@@ -63,4 +70,57 @@ li.step-item i.step-status-icon.done {
 li.step-item i.step-status-icon.done::after {
     background-color: blue;
 }
+.transaction-info, .customer-info {
+    padding: 20px;
+}
+#info-container {
 
+    margin-bottom: 20px;
+}
+.customer-info{
+
+}
+.transaction-info {
+
+}
+.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+h2.title {
+    margin-bottom: 20px;
+}
+
+#tourguide-info {
+    margin-bottom: 20px;
+}
+
+
+.col-tour-guide .img {
+    width: 100%;
+}
+
+.purchase-btn {
+    display: inline-block;
+    padding: 12px 10px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #148e14;
+}
+
+.purchase-btn:hover, .purchase-btn:link, .purchase-btn:visited {
+    text-decoration: none;
+}
+
+.purchase-btn:hover {
+    background-color: #148e14;
+    color: #fff;
+    border: 2px solid black;
+}
+.amount {
+    font-weight: bold;
+
+}

@@ -31,3 +31,8 @@ div.line {
     height: 2px;
     margin: 40px auto;
 }
+
+.vnd {
+    text-decoration: underline;
+    font-weight: bold;
+}

@@ -62,7 +62,7 @@ Route::get("/login", "CustomerPageController@login");
 Route::get("/register", "CustomerPageController@register");
 Route::get("/contact", "CustomerPageController@contact");
 Route::get("/find", "TourGuideController@filter");
-
+Route::get("/gallery", "CustomerPageController@gallery");
 
 //Login & register logout for user
 Route::get('/login', 'LoginController@login');
@@ -105,6 +105,7 @@ Route::middleware(["customer.middleware"])->group(function () {
     Route::get("/user/edit/{id}", "CustomerController@edit");
     Route::post("/user/update/{id}", "CustomerController@update");
     Route::post("/book/{id}", "OrderController@book");
+    Route::get("/customer/check-out/{id}","CheckOutController@show");
 });
 //Route::get("/test", function () {
 ////    $areas = \App\TourGuideArea::query();

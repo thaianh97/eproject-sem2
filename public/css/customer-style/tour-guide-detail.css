@@ -244,6 +244,16 @@ a.detail-btn {
     line-height: 35px;
     text-transform: uppercase;
     border: 2px solid black;
+    transition: .5s;
+}
+a.detail-btn:hover, a.detail-btn:link, a.detail-btn:visited {
+    text-decoration: none;
+}
+
+a.detail-btn:hover {
+    background-color: #148e14;
+    color: #fff;
+    border-color: #148e14;
 }
 select {
     display: inline-block;
@@ -308,7 +318,7 @@ a.modal-tab-nav-item:hover, a.modal-tab-nav-item:visited, a.modal-tab-nav-item:l
 .amount {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 34px;
     color: #333;
 }
 

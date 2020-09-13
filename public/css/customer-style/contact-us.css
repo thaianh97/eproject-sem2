@@ -1,0 +1,76 @@
+.btn{
+    background-color:#8E7037;
+    color: white;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+.section-contact {
+    padding-top: 30px;
+    padding-bottom: 65px; }
+@media (max-width: 767px) {
+    .section-contact {
+        padding-top: 0px;
+        padding-bottom: 40px; } }
+.section-contact .contact .text {
+    margin-top: 15px; }
+.section-contact .contact .text h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 28px;
+    color: #232323; }
+@media (max-width: 767px) {
+    .section-contact .contact .text h2 {
+        font-size: 20px; } }
+.section-contact .contact .text p {
+    margin-top: 30px;
+    font-size: 15px;
+    line-height: 1.428em; }
+@media (max-width: 767px) {
+    .section-contact .contact .text p {
+        font-size: 14px;
+        margin-top: 15px; } }
+.section-contact .contact .text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 30px; }
+.section-contact .contact .text ul li {
+    padding: 4px 0; }
+.section-contact .contact .text ul li .fa {
+    color: #8e7037;
+    font-size: 17px;
+    width: 8%; }
+.section-contact .contact .contact-form .field-textarea {
+    padding-top: 7px; }
+.section-contact .contact .contact-form .field-text,
+.section-contact .contact .contact-form .field-textarea {
+    height: 42px;
+    border: 2px solid #232323;
+    width: 100%;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px; }
+.section-contact .contact .contact-form .field-text::placeholder,
+.section-contact .contact .contact-form .field-textarea::placeholder {
+    color: #232323;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif; }
+.section-contact .contact .contact-form .field-text:focus,
+.section-contact .contact .contact-form .field-textarea:focus {
+    border: 2px solid #8E7037; }
+.section-contact .contact .contact-form .field-textarea {
+    resize: none;
+    height: 210px; }
+.section-contact .contact .contact-form .btn {
+    margin-top: 15px;
+    width: 200px;
+    font-size: 16px;
+    height: 42px;
+    width: 200px;
+}
+#submit-contact:hover{
+    background-color: white;
+    color:#8E7037;
+    border: 3px solid #8E7037;
+}
+

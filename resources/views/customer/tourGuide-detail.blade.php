@@ -51,20 +51,23 @@
 
                 <div class="col-lg-3 book-form-container">
                     <div class="price-container">
-                        <p><span class="amount"></span> <span class="price"> /ngày</span></p>
+                        <p><span class="amount money">{{$obj->price}}</span> <span class="vnd">đ</span> <span
+                                class="price"> /ngày</span></p>
                     </div>
                     <form action="/book/{{$obj->id}}" class="book-form" method="post">
                         @csrf
                         <div class="input-wrapper">
                             <label for="start">Ngày khởi hành</label>
                             <input type="text" id="from" name="start" placeholder="ấn để chon ngày" required
-                                   class="date-input" autocomplete="off"/>
+                                   class="date-input" autocomplete="off"
+                                   @if(session("filter-start") != null) value="{{session("filter-start")}}" @endif/>
                         </div>
 
                         <div class="input-wrapper">
                             <label for="start">Ngày kết thúc </label>
                             <input type="text" id="to" name="end" placeholder="ấn để chon ngày" required
-                                   class="date-input" autocomplete="off"/>
+                                   class="date-input" autocomplete="off"
+                                   @if(session("filter-end") != null) value="{{session("filter-end")}}" @endif/>
                         </div>
                         <div class="input-wrapper">
                             <label for="province">Tỉnh đi</label>
@@ -186,31 +189,40 @@
                 @if(count($relatedTourGuideId) == 0)
                     <p></p>
                 @else
-                @foreach($relatedTourGuideId as $id)
-                    <div class="col-md-3 col-lg-3 col-sm-6">
-                        <div class="box">
-                            <div class="box-img">
-                                <img src="{{\App\TourGuide::find($id)->large_photo}}" alt="" class="img-responsive">
-                            </div>
-                            <div class="box-content">
-                                <h3 class="box-name">{{\App\TourGuide::find($id)->full_name}}</h3>
+                    @foreach($relatedTourGuideId as $id)
+                        <div class="col-md-3 col-lg-3 col-sm-6">
+                            <div class="box">
+                                <div class="box-img">
+                                    <img src="{{\App\TourGuide::find($id)->large_photo}}" alt="" class="img-responsive">
+                                </div>
+                                <div class="box-content">
+                                    <h3 class="box-name">{{\App\TourGuide::find($id)->full_name}}</h3>
 
-                                <ul class="box-option">
-                                    <li>Giới tính: {{\App\TourGuide::find($id)->gender}}</li>
-                                    <li>Năm Sinh: {{\App\TourGuide::find($id)->year_of_birth}}</li>
-                                    <li>
-                                        Địa diểm dẫn tour:
-                                        @foreach((\App\TourGuideArea::query()->where("guide_id", $id)->get()) as $tourGuideArea)
+                                    <ul class="box-option">
+                                        <li>
+                                            Giới tính:
+                                            @if(\App\TourGuide::find($id)->gender == 1)
+                                                Nam
+                                            @elseif(\App\TourGuide::find($id)->gender == 2)
+                                                Nữ
+                                            @else
+                                                khác
+                                            @endif
+                                        </li>
+                                        <li>Năm Sinh: {{\App\TourGuide::find($id)->year_of_birth}}</li>
+                                        <li>
+                                            Địa diểm dẫn tour:
+                                            @foreach((\App\TourGuideArea::query()->where("guide_id", $id)->get()) as $tourGuideArea)
 
-                                            {{\App\Area::find($tourGuideArea->area_id)->province}}
-                                        @endforeach
-                                    </li>
-                                </ul>
-                                <a href="/show/tourGuide/{{$id}}" class="detail-btn">Xem chi tiết</a>
+                                                {{\App\Area::find($tourGuideArea->area_id)->province}}
+                                            @endforeach
+                                        </li>
+                                    </ul>
+                                    <a href="/show/tourGuide/{{$id}}" class="detail-btn">Xem chi tiết</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
                 @endif
             </div>
         </div>
@@ -282,7 +294,6 @@
     </script>
 
 
-
     @if(\App\Customer::query()->where("account_id", session("id"))->first() == null && session("id") != null)
         <script>
             $("#book-btn").on("click", function (evt) {
@@ -317,10 +328,9 @@
 
     </script>
     <script>
-        $(".amount").text({{$obj->price}} + "đ")
         $("#party_number").on("change", function (evt) {
             var val = $(this).val();
-            if(isNaN(val) || parseInt(val) < 0) {
+            if (isNaN(val) || parseInt(val) < 0) {
                 $(this).val(1);
             }
             //count sum

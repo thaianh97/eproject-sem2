@@ -13,16 +13,13 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src="{{asset('img/background/Slider-1.jpg')}}" alt="Los Angeles">
+                <img src="{{asset('img/background/Slider-1.jpg')}}" alt="">
             </div>
 
             <div class="item">
-                <img src="{{asset('img/background/Slider-2.jpg')}}" alt="Chicago">
+                <img src="{{asset('img/background/Slider-2.jpg')}}" alt="">
             </div>
 
-            <div class="item">
-                <img src="{{asset('img/background/bg3.jpg')}}" alt="New York">
-            </div>
         </div>
 
         <!-- Left and right controls -->
@@ -34,6 +31,10 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
             <span class="sr-only">Next</span>
         </a>
+    </div>
+    <div class="welcome">
+        <h1 class="welcome-text">Welcome To TConnect</h1>
+        <p>Nơi Kết nối khách du lịch tới gần Việt Nam hơn</p>
     </div>
     <div class="join-btn-container">
         <a href="/register/tourGuide" class="join-btn">Trở Thành Hướng Dẫn Viên Của Chúng Tôi</a>
