@@ -27,10 +27,10 @@
                         <div class="review-tab-pro-inner">
                             <ul id="myTab3" class="tab-review-design">
                                 <li class="active"><a href="#description"><i class="icon nalika-edit"
-                                                                             aria-hidden="true"></i> Infomation Edit</a>
+                                                                             aria-hidden="true"></i>Thông tin</a>
                                 </li>
                                 <li><a href="#reviews"><i class="icon nalika-picture" aria-hidden="true"></i>
-                                        AVATAR</a></li>
+                                        Trạng thái hoạt động</a></li>
                                 {{--                                <li><a href="#INFORMATION"><i class="icon nalika-picture" aria-hidden="true"></i>--}}
                                 {{--                                        Trạng thái nhận tour</a></li>--}}
                             </ul>
@@ -43,30 +43,63 @@
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon">Họ và tên: </span>
+                                                         <span class="input-group-addon"><i class="icon nalika-user"
+                                                                                            aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control"
-                                                               name="full_name" placeholder="Tên đầy đủ" value="{{$tourGuide->full_name}}">
+                                                               name="full_name" placeholder="Tên đầy đủ"
+                                                               value="{{$tourGuide->full_name}}">
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon">Giới tính: </span>
-                                                        <input type="text" class="form-control"
-                                                               name="gender" placeholder="Giới tính" value="{{$tourGuide->gender}}">
+
+                                                        @if(   $tourGuide->gender == 1)
+                                                            <span class="input-group-addon"><i class="fa fa-male"
+                                                                                               aria-hidden="true"></i></span>
+                                                            <span class="form-control">
+                                                           Nam
+                                                        </span>
+
+                                                        @elseif($tourGuide->gender == 2)
+                                                            <span class="input-group-addon"><i class="fa fa-female"
+                                                                                               aria-hidden="true"></i></span>
+                                                            <span class="form-control">
+                                                            Nữ
+                                                        </span>
+
+                                                        @endif
+
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon" ">Số điện thoại:</span>
+                                                        <span class="input-group-addon"><i
+                                                                class="icon nalika-smartphone-call"
+                                                                aria-hidden="true"></i></span>
+
                                                         <input type="text" class="form-control"
-                                                               name="phone" placeholder="Số điện thoại" value="{{$tourGuide->phone}}">
+                                                               name="gender" placeholder="Giới tính"
+                                                               value="{{$tourGuide->phone}}">
                                                     </div>
+                                                    {{--                                                    <div class="input-group mg-b-pro-edt">--}}
+                                                    {{--                                                        <span class="input-group-addon" >Số điện thoại:</span>--}}
+                                                    {{--                                                        <input type="text" class="form-control"--}}
+                                                    {{--                                                               name="phone" placeholder="Số điện thoại"--}}
+                                                    {{--                                                               value="{{$tourGuide->phone}}">--}}
+                                                    {{--                                                    </div>--}}
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon">Năm sinh: </span>
+
+                                                        <span class="input-group-addon"><i class="icon nalika-diamond"
+                                                                                           aria-hidden="true"></i></span>
+
+
                                                         <input type="text" class="form-control"
-                                                               name="year_of_birth" placeholder="Năm sinh" value="{{$tourGuide->year_of_birth}}" >
+                                                               name="year_of_birth" placeholder="Năm sinh"
+                                                               value="{{$tourGuide->year_of_birth}}">
                                                     </div>
 
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon">Email: </span>
+                                                        <span class="input-group-addon"><i class="icon nalika-mail"
+                                                                                           aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control"
-                                                               placeholder="Email"  name="email" value="{{$tourGuide->email}}" >
+                                                               placeholder="Email" name="email"
+                                                               value="{{$tourGuide->email}}">
                                                     </div>
                                                     {{--                                                    <div class="input-group mg-b-pro-edt">--}}
                                                     {{--                                                        <span class="input-group-addon"><i class="icon nalika-like"--}}
@@ -80,16 +113,19 @@
 
                                                     <div class="pro-edt-img">
 
-                                                        <img src="{{$tourGuide->small_photo}}"alt ="" />
+
+                                                        {{--                                                        <img src="https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg"/>--}}
+                                                        {{--                                                          <img src="{{$tourGuide->large_photo}}">--}}
+
+                                                        <img src="{{$tourGuide->small_photo}}" alt=""/>
+
 
                                                     </div>
                                                     <div>
                                                         <button type="button" id="upload_widget"
-                                                                class="btn btn-secondary">
+                                                                class="btn btn-secondary" style="margin-left: 10px ">
                                                             Click to change avatar
                                                         </button>
-
-
                                                     </div>
                                                     <div class="col-md-6 col-sm-6 mt-2 thumbnails">
 
@@ -102,14 +138,16 @@
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-info"
                                                                                            aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Mã HDV" value="{{$tourGuide->id}}">
+
+                                                        <span class="form-control"
+                                                        >{{$tourGuide->id}}</span>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-price-tag"
                                                                                            aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control"
-                                                               name="price" placeholder="Giá" value="{{$tourGuide->price}}">
+                                                               name="price" placeholder="Giá"
+                                                               value="{{$tourGuide->price}}">
                                                     </div>
                                                     {{--                                                    <div class="input-group mg-b-pro-edt">--}}
                                                     {{--                                                        <span class="input-group-addon"><i class="fa fa-usd"--}}
@@ -118,12 +156,17 @@
                                                     {{--                                                               placeholder="Sale Price">--}}
                                                     {{--                                                    </div>--}}
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="icon nalika-credit-cards"
-                                                                                           aria-hidden="true"></i></span>
+                                                        <span class="input-group-addon"><i
+                                                                class="icon nalika-credit-cards"
+                                                                aria-hidden="true"></i></span>
                                                         <select name="card"
                                                                 class="form-control pro-edt-select form-control-primary">
-                                                            <option value="1" {{$tourGuide->card == 1 ?? 'selected'}}>Có thẻ</option>
-                                                            <option value="0" {{$tourGuide->card == 0 ?? 'selected'}}>Không thẻ</option>
+                                                            <option value="1" {{$tourGuide->card == 1 ?? 'selected'}}>Có
+                                                                thẻ
+                                                            </option>
+                                                            <option value="0" {{$tourGuide->card == 0 ?? 'selected'}}>
+                                                                Không thẻ
+                                                            </option>
                                                         </select>
                                                     </div>
 
@@ -132,8 +175,14 @@
                                                                                            aria-hidden="true"></i></span>
                                                         <select name="mc_gala_dinner"
                                                                 class="form-control pro-edt-select form-control-primary">
-                                                            <option value="1" {{$tourGuide->mc_gala_dinner == 1 ?? 'selected'}}>Có làm mc</option>
-                                                            <option value="0" {{$tourGuide->mc_gala_dinner == 0 ?? 'selected'}}>không làm MC</option>
+                                                            <option
+                                                                value="1" {{$tourGuide->mc_gala_dinner == 1 ?? 'selected'}}>
+                                                                Có làm mc
+                                                            </option>
+                                                            <option
+                                                                value="0" {{$tourGuide->mc_gala_dinner == 0 ?? 'selected'}}>
+                                                                không làm MC
+                                                            </option>
                                                         </select>
                                                     </div>
 
@@ -142,14 +191,21 @@
                                                                                            aria-hidden="true"></i></span>
                                                         <select name="team_building"
                                                                 class="form-control pro-edt-select form-control-primary">
-                                                            <option value="1" {{$tourGuide->team_building == 1 ?? 'selected'}}>Có làm team</option>
-                                                            <option value="0" {{$tourGuide->team_building == 0 ?? 'selected'}}>không làm team</option>
+                                                            <option
+                                                                value="1" {{$tourGuide->team_building == 1 ?? 'selected'}}>
+                                                                Có làm team
+                                                            </option>
+                                                            <option
+                                                                value="0" {{$tourGuide->team_building == 0 ?? 'selected'}}>
+                                                                không làm team
+                                                            </option>
                                                         </select>
 
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <textarea class="form-control" rows="16" cols="74"
-                                                                  name="description" placeholder="Description" >{{$tourGuide->description}}</textarea>
+                                                                  name="description"
+                                                                  placeholder="Description">{{$tourGuide->description}}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,25 +229,32 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <label><h1>Trạng thái </h1></label>
-                                                    <div class="row">
+                                                    <form action="/tourGuide/edit-info" method="post">
+                                                        @csrf
+                                                        @method('put')
+                                                        <label><h1>Trạng thái </h1></label>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
 
 
-                                                        <div class="col-lg-4">
+                                                                @if($tourGuide->status == 1)
+                                                                    <button
+                                                                        class=" btn btn-custon-rounded btn-primary btn-lg">
+                                                                        Đang nhận tour
+                                                                    </button>
+                                                                @elseif( $tourGuide->status == 0)
+                                                                    <button
+                                                                        class=" btn btn-custon-rounded btn-danger btn-lg">
+                                                                        Không nhận tour
+                                                                    </button>
 
-                                                            {{--                                                        <button class=" btn btn-custon-rounded btn-primary btn-lg"--}}
-                                                            {{--                                                                value="">Đang nhận tour--}}
-                                                            {{--                                                        </button>--}}
+                                                                @endif
+                                                                <input type="submit" class="btn btn-primary submit-btn"
+                                                                       value="Thay đổi trạng thái">
+                                                            </div>
 
-                                                            <button class=" btn btn-custon-rounded btn-danger btn-lg"
-                                                                    value="">Không nhận tour
-                                                            </button>
-                                                            <input type="submit" class="btn btn-primary submit-btn"
-                                                                   value="Thay đổi trạng thái">
                                                         </div>
-
-
-                                                    </div>
+                                                    </form>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                     <label><h1>Khu vực </h1></label>

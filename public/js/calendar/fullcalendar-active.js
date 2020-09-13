@@ -31,29 +31,26 @@ $(function() {
 
     },
 		events: [
-            {
 
 
-            },
-
-			{
-				title: 'Hà noi',
-				start: YM + '-01',
-                end: YM + '-4',
-				color: '#e91e63'
-			},
-			{
-				title: 'Nam đinh',
-				start: YM + '-08',
-				end: YM + '-10',
-				color: '#59e0c5'
-			},
-            {
-                title: 'hải phòng',
-                start: YM + '-8',
-                end: YM + '-9',
-                color: '#59e0c5'
-            },
+			// {
+			// 	title: 'Hà noi',
+			// 	start: YM + '-01',
+            //     end: YM + '-4',
+			// 	color: '#e91e63'
+			// },
+			// {
+			// 	title: 'Nam đinh',
+			// 	start: YM + '-08',
+			// 	end: YM + '-10',
+			// 	color: '#59e0c5'
+			// },
+            // {
+            //     title: 'hải phòng',
+            //     start: YM + '-8',
+            //     end: YM + '-9',
+            //     color: '#59e0c5'
+            // },
 			// {
 			// 	id: 999,
 			// 	title: 'Hải phòng',

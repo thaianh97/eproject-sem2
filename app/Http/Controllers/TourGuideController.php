@@ -129,11 +129,12 @@ class TourGuideController extends Controller
         $this_tourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
         $thumbnails = $request->get('thumbnails');
+        dd($thumbnails);
         foreach ($thumbnails as $thumbnail) {
             $this_tourGuide->avatar = $thumbnail;
         }
-
         $this_tourGuide->update();
+
         return redirect('/tourGuide');
     }
 
@@ -160,7 +161,14 @@ class TourGuideController extends Controller
 
     function calender()
     {
-        return view('tourguide.tourGuide-home');
+
+        $currentTourGuide = TourGuide::where("account_id", session("id"))->first();
+
+        $transDetails_list =TransactionDetail::query()
+            ->where('guide_id',$currentTourGuide->id)
+            ->where("status", "!=", 6)
+            ->get();
+        return view('tourguide.tourGuide-home')->with("listTransactions", $transDetails_list);
     }
 
     public function index()
@@ -206,18 +214,48 @@ class TourGuideController extends Controller
     }
 
 
-    function showTours(){
+    function showPendingTours(){
+        $data = array();
         $currentAccount = Account::query()->where("username", session("username"))->first();
         $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
+
+        $today = Carbon::now();
+
 
         //get list transaction details of this tour guide
         $listTransactionDetails = $currentTourGuide->transactionDetails->where("status" ,"!=", 1)
             ->where("status" ,"!=", 5)
             ->where("status" ,"!=", 6);
+        $data['today'] = $today;
+        $data['listTransaction'] =$listTransactionDetails;
+
+        return view('tourguide.pending-orders-manager')->with($data);
+
+    }
+    function showTourDetails($id){
+        return $id;
+    }
+
+    function tourNextStep($id){
+
+        $transDetail_list = TransactionDetail::query();
+        $transDetail = TransactionDetail::find($id);
+        $today = Carbon::now();
+       ;
+        $startTime=date_create($transDetail->start);
+        $endTime=date_create($transDetail->end);
+
+        $diff1=date_diff($today,$startTime, true);
+        $diff2=date_diff($today,$endTime, true);
 
 
-        return view('tourguide.new-orders')->with("listTransaction", $listTransactionDetails);
-
+        if($transDetail->status == 3 && $diff1->format("%a") == "0"){
+            $transDetail->status =4;
+        }elseif ($transDetail->status == 4 &&$diff2->format("%a") == "0"){
+            $transDetail->status = 5;
+        }
+        $transDetail->update();
+            return redirect("/tourGuide/tours");
     }
 
     public function showNewOrders()
@@ -263,4 +301,15 @@ class TourGuideController extends Controller
     }
 
 
+    function checkStatus(){
+       $acc_id = session('id');
+       $account = Account::find($acc_id);
+
+       if($account->status == 0){
+           \Illuminate\Support\Facades\Session::remove("username");
+           \Illuminate\Support\Facades\Session::remove("role");
+           \Illuminate\Support\Facades\Session::remove("id");
+           return redirect("/");
+       }
+    }
 }

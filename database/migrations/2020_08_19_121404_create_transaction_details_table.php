@@ -25,7 +25,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->integer('rate_stars');
             $table->string('review');
             $table->double('cost');
-            $table->string('status');// 0 chưa thanh toán // 1 đã thanh toán// -1 hủy
+            $table->string('status');
             $table->timestamps();
         });
     }

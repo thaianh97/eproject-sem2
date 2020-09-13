@@ -44,12 +44,23 @@ Route::middleware(['admin.middleware'])->group(function () {
     Route::post("/admin/transactions/{id}", "ControllerByAdmin@showTransactionDetail");
 
 
+
+Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
+Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
+
+Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
+Route::get('/admin/pay-accept-transactionDetails', 'ControllerByAdmin@listPayPendingTransactions');
+Route::get('/admin/accept-paid-transactionDetail/{id}', 'ControllerByAdmin@acceptPaidTransactiondetail');
+
+Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
+
     Route::get('/admin/new-tourGuide', 'ControllerByAdmin@newTourGuides');
     Route::get('/admin/transactions', 'ControllerByAdmin@listTransactions');
 
     Route::post("/admin/accept/{id}", "ControllerByAdmin@acceptNewTourGuide");
     Route::get('/admin/areas', 'ControllerByAdmin@listAreas');
 });
+
 
 
 //Route::get("/admin/tourGuides/{id}", ["as" => "tourGuides.show", "uses" => "ControllerByAdmin@tourGuidesDetail"]);
@@ -84,8 +95,12 @@ Route::middleware(["tourGuide.middleware"])->group(function () {
     Route::get('/tourGuide', "TourGuideController@calender");
     Route::put('/tourGuide/edit-info', "TourGuideController@submitNewInfo");
     Route::get('/tourGuide/new-orders', "TourGuideController@showNewOrders");
-    Route::get('/tourGuide/tours', "TourGuideController@showTours");
     Route::post("/tourGuide/new-orders/accept/{id}", "TourGuideController@acceptOrder");
+    Route::get('/tourGuide/tours', "TourGuideController@showPendingTours");
+    Route::post("/tourGuide/tour/nextStep/{id}", "TourGuideController@tourNextStep");
+    Route::get("/tourGuide/tour/details/{id}", "TourGuideController@showTourDetails");
+
+
 });
 
 

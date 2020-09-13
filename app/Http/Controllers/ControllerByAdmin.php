@@ -333,26 +333,66 @@ class ControllerByAdmin extends Controller
         $data['chosen_area'] = 0;
         $data['order_by'] = '';
         $areas = DB::table('areas')->get();
-        $transactions_list = Transaction::query();
+        $transactions_list = Transaction::query()->orderBy('created_at');
         // lọc theo areas
-        if ($request->has('chosen_area_id') && $request->get('chosen_area_id') != 0) {
-            $data['chosen_area'] = $request->get('chosen_area_id');
 
-            $transactions_list = $transactions_list->where('province_id', '=', $request->get('chosen_area_id'));
-
-        }
-
-        if ($request->has('order_by') && strlen($request->get('order_by')) > 0) {
-
-            $data['order_by'] = $request->get('order_by');
-            $transactions_list = $transactions_list->orderBy('created_at');
-
-        }
+//        if ($request->has('order_by') && strlen($request->get('order_by')) > 0) {
+//            $data['order_by'] = $request->get('order_by');
+//            $transactions_list = $transactions_list->orderBy('created_at');
+//        }
 
         $data['list'] = $transactions_list->paginate(10);
         $data['areas'] = $areas;
         return view('admin.transactions-manager')
             ->with($data);
+
+
+    }
+
+    function listPayPendingTransactions(Request $request){
+        $data = array();
+        $transactions_list = TransactionDetail::query();
+        $transactions_list = $transactions_list->where('status','=',2);
+        $data['list'] = $transactions_list->paginate(10);
+        return view('admin.pay-pending-transactions')
+            ->with($data);
+
+    }
+
+    function acceptPaidTransactionDetail($id){
+
+        $tranDetail = TransactionDetail::find($id);
+        $tranDetail->status = 3 ;
+        $tranDetail->update();
+        $tourGuide = TourGuide::find($tranDetail->guide_id);
+        $transaction = Transaction::find($tranDetail->transaction_id);
+        $customer = Customer::find($transaction->customer_id);
+        $data = array(
+            "name" => $tourGuide->full_name,
+            "to" => $tourGuide->email,
+        );
+
+        Mail::send('mail.cancel.sendToTourGuide-paidTour', $data, function ($message) use ($customer,$tourGuide,$tranDetail) {
+
+            $message->to($tourGuide->email, $tourGuide->full_name)->subject('Khách hàng Đã thanh toán tour '.$tranDetail->id);
+            $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+
+        });
+
+        $data = array(
+            'username' => $customer->userName,
+            "name" => $customer->full_name,
+            "to" => $customer->email,
+            "guide_name" => $tourGuide->full_name
+        );
+        Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+
+            $message->to($customer->email, $customer->full_name)->subject('Tour  '.$transaction->id.'của bạn đã được xác nhận thanh toán :');
+            $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+
+        });
+
+        return redirect('/admin/pay-accept-transactionDetails');
 
 
     }
