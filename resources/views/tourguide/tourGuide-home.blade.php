@@ -34,6 +34,7 @@
 
             var todayDate = moment().startOf('day');
             var YM = todayDate.format('YYYY-MM');
+
             var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
             var TODAY = todayDate.format('YYYY-MM-DD');
             var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
@@ -63,29 +64,30 @@
 
                 },
                 events: [
+                    // {
+                    //
+                    //
+                    // },
+                    @foreach($listTransactions as $item)
                     {
-
-
+                        title: '{{\App\Area::find(\App\Transaction::find($item->transaction_id)->province_id)->province}}',
+                        start: "{{substr($item->start, 0, 10)}}",
+                        end: "{{date_format(date_add(date_create($item->end),date_interval_create_from_date_string("1 days")),"Y-m-d")}}",
+                        color: 'blue'
                     },
-
-                    {
-                        title: 'Hà noi',
-                        start: YM + '-01',
-                        end: YM + '-4',
-                        color: '#e91e63'
-                    },
-                    {
-                        title: 'ca mau',
-                        start: YM + '-08',
-                        end: YM + '-10',
-                        color: '#59e0c5'
-                    },
-                    {
-                        title: 'hải phòng',
-                        start: YM + '-8',
-                        end: YM + '-9',
-                        color: '#59e0c5'
-                    },
+                    @endforeach
+                    // {
+                    //     title: 'ca mau',
+                    //     start: YM + '-01',
+                    //     end: YM + '-4',
+                    //     color: '#59e0c5'
+                    // },
+                    // {
+                    //     title: 'hải phòng',
+                    //     start: YM + '-8',
+                    //     end: YM + '-9',
+                    //     color: '#59e0c5'
+                    // },
                     // {
                     // 	id: 999,
                     // 	title: 'Hải phòng',

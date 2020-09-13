@@ -158,7 +158,14 @@ class TourGuideController extends Controller
 
     function calender()
     {
-        return view('tourguide.tourGuide-home');
+
+        $currentTourGuide = TourGuide::where("account_id", session("id"))->first();
+
+        $transDetails_list =TransactionDetail::query()
+            ->where('guide_id',$currentTourGuide->id)
+            ->where("status", "!=", 6)
+            ->get();
+        return view('tourguide.tourGuide-home')->with("listTransactions", $transDetails_list);
     }
 
     public function index()
@@ -204,7 +211,9 @@ class TourGuideController extends Controller
         $data = array();
         $currentAccount = Account::query()->where("username", session("username"))->first();
         $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
-        $today = Carbon::now()->format('Y-m-d');
+
+        $today = Carbon::now();
+
 
         //get list transaction details of this tour guide
         $listTransactionDetails = $currentTourGuide->transactionDetails->where("status" ,"!=", 1)
@@ -216,21 +225,30 @@ class TourGuideController extends Controller
         return view('tourguide.pending-orders-manager')->with($data);
 
     }
+    function showTourDetails($id){
+        return $id;
+    }
+
     function tourNextStep($id){
 
         $transDetail_list = TransactionDetail::query();
         $transDetail = TransactionDetail::find($id);
-        $today = Carbon::now()->day()->format('Y-m-d H:i:s');
+        $today = Carbon::now();
+       ;
+        $startTime=date_create($transDetail->start);
+        $endTime=date_create($transDetail->end);
+
+        $diff1=date_diff($today,$startTime, true);
+        $diff2=date_diff($today,$endTime, true);
 
 
-
-        if($transDetail->status == 3){
-
-        }elseif ($transDetail->status == 4){
-
+        if($transDetail->status == 3 && $diff1->format("%a") == "0"){
+            $transDetail->status =4;
+        }elseif ($transDetail->status == 4 &&$diff2->format("%a") == "0"){
+            $transDetail->status = 5;
         }
-
-            return $id;
+        $transDetail->update();
+            return redirect("/tourGuide/tours");
     }
 
     public function showNewOrders()

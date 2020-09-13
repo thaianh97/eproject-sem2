@@ -57,22 +57,22 @@
                                             @if($item->status==2)
                                                 <input type="button" class="btn btn-primary" value="Đợi">
                                             @elseif($item->status == 3  )
-                                                @if( $item->start == $today)
-
+                                                @if( date_diff(date_create($item->start),$today,true)->format("%a") == "0" )
                                                     <input type="submit" class="btn btn-primary" value="Bắt đầu">
                                                 @else
-                                                    <input type="submit" class="btn btn-primary" value="ĐỢi đi">
+                                                    <input type="button" class="btn btn-primary" value="ĐỢi đi">
                                                 @endif
                                             @elseif($item->status == 4)
-                                                @if( $item->end == $today)
+                                                @if(date_diff(date_create($item->end),$today,true)->format("%a") == "0" )
                                                     <input type="submit" class="btn btn-primary" value="Hoàn thành">
+                                                @else
+                                                    <input type="button" class="btn btn-primary" value="ĐỢi đi">
                                                 @endif
-
                                             @endif
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="" method="post">
+                                        <form action="/tourGuide/tour/details/{{$item->id}}" method="get">
                                             @csrf
                                             <a>
                                                 <button data-toggle="tooltip" title="More Info"
@@ -81,15 +81,15 @@
                                                 </button>
                                             </a>
                                         </form>
-                                        <form action="" method="post">
-                                            @csrf
-                                            <a>
-                                                <button data-toggle="tooltip" title="contact"
-                                                        class="pd-setting-ed" type="submit"><i
-                                                        class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </button>
-                                            </a>
-                                        </form>
+    {{--                                        <form action="" method="post">--}}
+    {{--                                            @csrf--}}
+    {{--                                            <a>--}}
+    {{--                                                <button data-toggle="tooltip" title="contact"--}}
+    {{--                                                        class="pd-setting-ed" type="submit"><i--}}
+    {{--                                                        class="fa fa-trash-o" aria-hidden="true"></i>--}}
+    {{--                                                </button>--}}
+    {{--                                            </a>--}}
+    {{--                                        </form>--}}
                                     </td>
                                 </tr>
                             @endforeach

@@ -36,7 +36,7 @@
                                         <form action="/tourGuide/new-orders/accept/{{$item->id}}" method="post">
                                             @csrf
 
-                                            <input type="submit" class="btn btn-primary" value="Duyệt">
+                                            <input type="submit" class="btn btn-primary" value="Nhận">
                                         </form>
                                     </td>
                                     <td>{{$item->id}}</td>
