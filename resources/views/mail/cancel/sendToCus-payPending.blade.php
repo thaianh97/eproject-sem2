@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<p>Hướng dẫn viên  đã không chấp nhận yêu cầu của bạn vui lòng chọn hdv khác</p>
+<p>Hướng dẫn viên {{$tourGuide->full_name}} đã không chấp nhận yêu cầu của bạn. Xin vui lòng chọn hướng dẫn viên khác để đặt lịch.</p>
 </body>
 </html>

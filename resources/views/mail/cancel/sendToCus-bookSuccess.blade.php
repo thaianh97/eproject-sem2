@@ -8,8 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-<p>Hdv {{$guide_name}} không thể thực hiện chuyến đi của bạn, xin lỗi vì sự bất tiện này. </p>
-<p> vui lòng chọn hdv khác hoặc liện hệ hoàn tiền</p>
+<p>Đơn hàng của {{$customer->full_name}} tại {{$province}} từ ngày {{$transactionDetail->start}} đến ngày
+    {{$transactionDetail->end}} đã bị hủy.
+<p>Chúng tôi rất xin lỗi về sự bất tiện này. Xin vui lòng lựa chọn hướng dẫn viên khác hoặc liên hệ tổng đài để được hỗ trợ hoàn lại tiền.
+<p>Xin chân thành cảm ơn!</p>
 </body>
 </html>
 
