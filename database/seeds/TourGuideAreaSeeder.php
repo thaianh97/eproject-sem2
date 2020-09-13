@@ -13,7 +13,9 @@ class TourGuideAreaSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        }
         DB::table('tour_guide_areas')->truncate();
         DB::table('tour_guide_areas')->insert([
             [
@@ -88,6 +90,8 @@ class TourGuideAreaSeeder extends Seeder
             ],
 
         ]);
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        };
     }
 }

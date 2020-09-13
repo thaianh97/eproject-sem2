@@ -13,7 +13,9 @@ class TransactionsSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        }
         DB::table('transactions')->truncate();
         DB::table('transactions')->insert([
             [
@@ -95,6 +97,8 @@ class TransactionsSeeder extends Seeder
 
             ],
         ]);
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        }
     }
 }
