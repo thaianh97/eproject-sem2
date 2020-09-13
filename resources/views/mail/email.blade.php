@@ -339,9 +339,11 @@
                 border-color: #34495e !important;
             }
         }
+
         p.bold {
             font-weight: bold;
         }
+
         p.notice {
             text-transform: uppercase;
             color: red;
@@ -358,7 +360,7 @@
             <div class="content">
 
                 <!-- START CENTERED WHITE CONTAINER -->
-                <span class="preheader">Hồ sơ Hướng Dẫn Viên của bạn đã được duyệt.</span>
+                <span class="preheader">Hồ sơ đăng ký hướng dẫn viên của {{$name}} đã được duyệt.</span>
                 <table class="main">
 
                     <!-- START MAIN CONTENT AREA -->
@@ -367,8 +369,9 @@
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Chúc mừng {{$name}},</p>
-                                        <p>Hồ sơ Hướng Dẫn Viên với tên đăng nhập {{$username}} của bạn đã được duyệt !</p>
+                                        <p>Xin chúc mừng {{$name}},</p>
+                                        <p>Hồ sơ Hướng Dẫn Viên với tên đăng nhập {{$username}} của bạn đã được duyệt
+                                            !</p>
                                         <p>Cảm ơn bạn đã đăng ký dịch vụ của chúng tôi !</p>
                                         <p>Hãy đăng nhập để bắt đầu hành trình của bạn.</p>
                                         <p>Mật khẩu của bạn là dãy ký tự dưới đây.</p>
@@ -381,7 +384,9 @@
                                                     <table border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td><a href="http://127.0.0.1:8000/login" target="_blank">Đăng nhập Ngay</a>
+                                                            <td>
+                                                                <a href="https://eproject-sem2-tconnect.herokuapp.com/login"
+                                                                   target="_blank">Đăng nhập</a>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -391,7 +396,8 @@
                                             </tbody>
                                         </table>
                                         <p>Hoặc dán địa chỉ dưới đây vào trình duyệt của bạn: </p>
-                                        <p><a href="http://127.0.0.1:8000/login">http://127.0.0.1:8000/login</a></p>
+                                        <p><a href="https://eproject-sem2-tconnect.herokuapp.com/login">https://eproject-sem2-tconnect.herokuapp.com/login</a>
+                                        </p>
                                     </td>
                                 </tr>
                             </table>
@@ -411,7 +417,7 @@
                         </tr>
                         <tr>
                             <td class="content-block powered-by">
-                                Powered by <a href="http://localhost:8000/client/home">Hướng Dẫn Viên 427</a>.
+                                Powered by <a href="https://eproject-sem2-tconnect.herokuapp.com/">Hướng Dẫn Viên 247</a>.
                             </td>
                         </tr>
                     </table>
