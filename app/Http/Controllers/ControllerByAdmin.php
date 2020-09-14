@@ -156,18 +156,10 @@ class ControllerByAdmin extends Controller
         $newTourGuide->status = 1; //active
         $newTourGuide->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $newTourGuide->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+
         //tính giá
-        $price = 200000;
-        if($acceptTourGuide->mc_gala_dinner == 1) {
-            $price += 100000;
-        }
-        if($acceptTourGuide->team_buiding == 1) {
-            $price += 140000;
-        }
-        if($acceptTourGuide->card == 1) {
-            $price += 120000;
-        }
-        $newTourGuide->price = $price;
+
+        $newTourGuide->price = $acceptTourGuide->price;
 
         $newTourGuide->save();
         //save area

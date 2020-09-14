@@ -38,6 +38,7 @@ class PendingTourGuideController extends Controller
         $pendingTourGuide->email = $request->get("email");
         $pendingTourGuide->description = $request->get("description");
         $pendingTourGuide->gender = $request->get("gender");
+        $pendingTourGuide->price = $request->get("price");
         //get avatar
         $thumbnails = $request->get('thumbnails');
         //if user doesnt sent img

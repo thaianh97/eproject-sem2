@@ -35,6 +35,7 @@ class NewTourGuideRegisterSeeder extends Seeder
                 'area_id' => 3,
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
+                "price" => 200000
             ],
             [
                 'id'=> 2,
@@ -53,6 +54,7 @@ class NewTourGuideRegisterSeeder extends Seeder
                 'area_id' => 1,
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
+                "price" => 200000,
             ],
         ]);
         if (env('DB_CONNECTION') == 'mysql') {

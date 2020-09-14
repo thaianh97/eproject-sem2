@@ -24,7 +24,7 @@
 
             <div class="col-12 col-md-4 mt-5 mt-md-0 text-md-left">
                 <h1>About us</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, error, libero!</p>
+                <p>Nhóm chúng tôi gồm những thành viên trẻ và nhiệt huyết luôn luôn cố gắng để mang những điều tích cực đến cuộc sống</p>
             </div>
         </div>
         <!-- social links -->

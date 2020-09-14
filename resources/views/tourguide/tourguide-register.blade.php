@@ -40,21 +40,27 @@
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label for="firstName">First Name</label>
                         <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName"
                                required>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label for="lastName">Last Name</label>
                         <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName"
-                               required>
+                               required >
                     </div>
 
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label for="year_of_birth">Năm Sinh: </label>
                         <input type="text" class="form-control" id="year_of_birth" placeholder="Năm Sinh"
                                name="year_of_birth" required>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="price">Giá đi tour một ngày: </label>
+                        <input type="number" class="form-control" id="price" placeholder="Giá"
+                               name="price" required min="0">
                     </div>
 
                 </div>
