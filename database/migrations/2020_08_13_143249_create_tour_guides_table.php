@@ -30,6 +30,7 @@ class CreateTourGuidesTable extends Migration
             $table->boolean('team_building'); // có tổ chức chơi team-building hay ko?
             $table->integer('status'); // 1. Open | 2. Occupied | 3. Stop working
             $table->timestamps();
+
         });
     }
 

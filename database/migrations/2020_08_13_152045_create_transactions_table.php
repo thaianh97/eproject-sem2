@@ -27,6 +27,7 @@ class CreateTransactionsTable extends Migration
             $table->double('total_cost');
             $table->integer('status');// -1 là hủy( detail status = 6 ) // 0 pending( detail status = 1,2,3,4,) // 1 done  ( detail status = 5)
             $table->timestamps();
+
         });
     }
 

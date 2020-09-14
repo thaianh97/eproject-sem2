@@ -27,6 +27,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->double('cost');
             $table->string('status');
             $table->timestamps();
+
         });
     }
 

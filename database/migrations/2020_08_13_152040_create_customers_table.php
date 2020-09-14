@@ -24,6 +24,7 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->integer('status'); // 1. Active | 2. Inactive | 3. Deleted
             $table->timestamps();
+
         });
     }
 

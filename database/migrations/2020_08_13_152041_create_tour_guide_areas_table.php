@@ -20,6 +20,7 @@ class CreateTourGuideAreasTable extends Migration
             $table->unsignedBigInteger('guide_id'); // foreign key -> references to 'id' on tour_guide migration
             $table->foreign('guide_id')->references('id')->on('tour_guides');
             $table->timestamps();
+
         });
     }
 

@@ -21,6 +21,7 @@ class CreateAccountsTable extends Migration
             $table->integer('role'); // 1. Admin | 2. Hdv | 3. User
             $table->integer('status'); // 1. Active | 2. Inactive | 3. Deleted
             $table->timestamps();
+
         });
     }
 
