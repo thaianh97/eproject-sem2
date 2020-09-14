@@ -79,9 +79,9 @@
                     <div class="product-status-wrap">
 
                         <h4>TourGuide List</h4>
-                        <div class="add-product">
-                            <a href="#">Add TourGuide</a>
-                        </div>
+{{--                        <div class="add-product">--}}
+{{--                            <a href="#">Add TourGuide</a>--}}
+{{--                        </div>--}}
                         <table>
                             <tr>
 
