@@ -23,12 +23,13 @@ class TourGuideController extends Controller
     }
 
 
-    public function timeFilter(Request $request,$id){
+    public function timeFilter(Request $request, $id)
+    {
         $data = array();
-        $data['result'] = true ;// hdv có rảnh trong tg start , end hay không
+        $data['result'] = true;// hdv có rảnh trong tg start , end hay không
         $tourGuide_list = TourGuide::query();
         if ($request->has('start') && strlen($request->get('start')) > 0 &&
-            $request->has('end') && strlen($request->get('end')) > 0 ) {
+            $request->has('end') && strlen($request->get('end')) > 0) {
 
             $data['guide_id'] = $id;
             $data['start'] = $request->get('start');
@@ -47,8 +48,8 @@ class TourGuideController extends Controller
                     ]);
                 }));
             $this_guide = $tourGuide_list->find($id);
-            if($this_guide != null){
-                $data['result'] = false ;
+            if ($this_guide != null) {
+                $data['result'] = false;
             }
         }
 
@@ -108,17 +109,21 @@ class TourGuideController extends Controller
 
     function editInfo()
     {
+        $data =array();
         $acc_id = session('id');
         $tourGuide = TourGuide::query()->where("account_id", $acc_id)->first();
-        return view('tourGuide.edit-info')->with('tourGuide', $tourGuide);
+        $list_areas = TourGuideArea::query()->where('guide_id',$tourGuide->id);
+        $data['list_areas'] =$list_areas;
+        $data['tourGuide'] =$tourGuide;
+        return view('tourGuide.edit-info')->with($data);
     }
 
 
-
-    function submitNewInfo(Request $request){
+    function submitNewInfo(Request $request)
+    {
         $acc_id = session('id');
         $tourGuide = TourGuide::query();
-        $this_tourGuide = $tourGuide->where('account_id','=',$acc_id)->first();
+        $this_tourGuide = $tourGuide->where('account_id', '=', $acc_id)->first();
         $this_tourGuide->full_name = $request->get('full_name');
         $this_tourGuide->price = $request->get('price');
         $this_tourGuide->year_of_birth = $request->get('year_of_birth');
@@ -165,8 +170,8 @@ class TourGuideController extends Controller
 
         $currentTourGuide = TourGuide::where("account_id", session("id"))->first();
 
-        $transDetails_list =TransactionDetail::query()
-            ->where('guide_id',$currentTourGuide->id)
+        $transDetails_list = TransactionDetail::query()
+            ->where('guide_id', $currentTourGuide->id)
             ->where("status", "!=", 6)
             ->get();
         return view('tourguide.tourGuide-home')->with("listTransactions", $transDetails_list);
@@ -188,7 +193,7 @@ class TourGuideController extends Controller
 
 
         $tourGuide = TourGuide::find($id);
-        if($tourGuide->status == 3) {
+        if ($tourGuide->status == 3) {
             return redirect()->back();
         }
         //find related tour Guide
@@ -201,7 +206,7 @@ class TourGuideController extends Controller
         foreach ($listRelatedAreaID as $area_id) {
             $listRelatedTourGuideArea = TourGuideArea::query()->where("area_id", $area_id)->get();
             foreach ($listRelatedTourGuideArea as $relatedTourGuideArea) {
-                if($relatedTourGuideArea->guide_id != $id) {
+                if ($relatedTourGuideArea->guide_id != $id) {
                     array_push($listRelatedTourGuideId, $relatedTourGuideArea->guide_id);
                 }
             }
@@ -215,7 +220,8 @@ class TourGuideController extends Controller
     }
 
 
-    function showPendingTours(){
+    function showPendingTours()
+    {
         $data = array();
         $currentAccount = Account::query()->where("username", session("username"))->first();
         $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
@@ -224,39 +230,54 @@ class TourGuideController extends Controller
 
 
         //get list transaction details of this tour guide
-        $listTransactionDetails = $currentTourGuide->transactionDetails->where("status" ,"!=", 1)
-            ->where("status" ,"!=", 5)
-            ->where("status" ,"!=", 6);
+        $listTransactionDetails = $currentTourGuide->transactionDetails->where("status", "!=", 1)
+            ->where("status", "!=", 5)
+            ->where("status", "!=", 6);
         $data['today'] = $today;
-        $data['listTransaction'] =$listTransactionDetails;
+        $data['listTransaction'] = $listTransactionDetails;
 
         return view('tourguide.pending-orders-manager')->with($data);
 
     }
-    function showTourDetails($id){
-        return $id;
+
+    function showTourDetails($id)
+    {
+        $transactionDetail = TransactionDetail::find($id);
+        $transaction = Transaction::find($transactionDetail->transaction_id);
+        $customer = Customer::find($transaction->customer_id);
+        $data = array();
+        if ($transactionDetail->status != 2) {
+            $data["customer"] = $customer;
+        }
+
+
+        $data["transaction"] = $transaction;
+        $data["status"] = $transactionDetail->status;
+
+
+        return view("tourguide.tour-detail-status")->with($data);
     }
 
-    function tourNextStep($id){
+    function tourNextStep($id)
+    {
 
         $transDetail_list = TransactionDetail::query();
         $transDetail = TransactionDetail::find($id);
-        $today = Carbon::now();
-       ;
-        $startTime=date_create($transDetail->start);
-        $endTime=date_create($transDetail->end);
+        $today = Carbon::now();;
+        $startTime = date_create($transDetail->start);
+        $endTime = date_create($transDetail->end);
 
-        $diff1=date_diff($today,$startTime, true);
-        $diff2=date_diff($today,$endTime, true);
+        $diff1 = date_diff($today, $startTime, true);
+        $diff2 = date_diff($today, $endTime, true);
 
 
-        if($transDetail->status == 3 && $diff1->format("%a") == "0"){
-            $transDetail->status =4;
-        }elseif ($transDetail->status == 4 &&$diff2->format("%a") == "0"){
+        if ($transDetail->status == 3 && $diff1->format("%a") == "0") {
+            $transDetail->status = 4;
+        } elseif ($transDetail->status == 4 && $diff2->format("%a") == "0") {
             $transDetail->status = 5;
         }
         $transDetail->update();
-            return redirect("/tourGuide/tours");
+        return redirect("/tourGuide/tours");
     }
 
     public function showNewOrders()
@@ -284,7 +305,7 @@ class TourGuideController extends Controller
         $customer = Customer::find($acceptOrder->transaction->customer_id);
 
         //todo: check exprired time and status
-        if($acceptOrder->status == 6 ){
+        if ($acceptOrder->status == 6) {
             return "yêu cầu đã bị hủy";
         } //cancel
         //chuyển trạng thái order
@@ -305,16 +326,78 @@ class TourGuideController extends Controller
         return redirect("/tourGuide/new-orders");
     }
 
+    function refuseOrder($id)
+    {
+        //get accepted order
+        $acceptOrder = TransactionDetail::find($id);
+        //get current tourGuide
+        $currentAccount = Account::query()->where("username", session("username"))->first();
+        $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
+        //getUser
+        $customer = Customer::find($acceptOrder->transaction->customer_id);
 
-    function checkStatus(){
-       $acc_id = session('id');
-       $account = Account::find($acc_id);
+        //todo: check exprired time and status
+        if ($acceptOrder->status == 6) {
+            return "yêu cầu đã bị hủy";
+        } //cancel
+        //chuyển trạng thái order
+        $acceptOrder->status = 6; // chờ thanh toán
+        $acceptOrder->save();
+        //send mail to user
+        $data = array();
+        $data["tourGuide"] = $currentTourGuide;
 
-       if($account->status == 0){
-           \Illuminate\Support\Facades\Session::remove("username");
-           \Illuminate\Support\Facades\Session::remove("role");
-           \Illuminate\Support\Facades\Session::remove("id");
-           return redirect("/");
-       }
+        Mail::send('mail.order-accepted', $data, function ($message) use ($acceptOrder, $customer) {
+            $message->to($customer->email,
+                'Tutorials Point')->subject('Yêu cầu số ' . $acceptOrder->id . " đã bị hdv từ chối");
+            $message->from('huongdanvien247@gmail.com', 'TConnect');
+        });
+        return redirect("/tourGuide/new-orders");
+
     }
+
+    function tourCancel($id)
+    {
+        //get accepted order
+        $acceptOrder = TransactionDetail::find($id);
+        //get current tourGuide
+        $currentAccount = Account::query()->where("username", session("username"))->first();
+        $currentTourGuide = TourGuide::query()->where("account_id", $currentAccount->id)->first();
+        //getUser
+        $customer = Customer::find($acceptOrder->transaction->customer_id);
+
+        //todo: check exprired time and status
+        if ($acceptOrder->status == 6) {
+            return "yêu cầu đã bị hủy";
+        } //cancel
+        //chuyển trạng thái order
+        $acceptOrder->status = 6; // chờ thanh toán
+        $acceptOrder->save();
+        //send mail to user
+        $data = array();
+        $data["tourGuide"] = $currentTourGuide;
+        Mail::send('mail.order-accepted', $data, function ($message) use ($acceptOrder, $customer) {
+            $message->to($customer->email,
+                'Tutorials Point')->subject('Yêu cầu số ' . $acceptOrder->id . " đã bị hdv huy");
+            $message->from('huongdanvien247@gmail.com', 'TConnect');
+        });
+        return redirect("/tourGuide/tours");
+    }
+
+
+    function changeStatus($id)
+    {
+        $tourGuide = TourGuide::find($id);
+
+        if ($tourGuide->status == 1) {
+            $tourGuide->status = 0;
+        } elseif ($tourGuide->status == 0) {
+            $tourGuide->status = 1;
+        }
+        $tourGuide->update();
+
+        return redirect('/tourGuide/edit-info');
+
+    }
+
 }

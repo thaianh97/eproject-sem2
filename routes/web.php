@@ -91,14 +91,23 @@ Route::middleware(["tourGuide.middleware"])->group(function () {
 
     Route::get('/tourGuide/edit/{id}', "TourGuideController@edit");
     Route::post('/tourGuide/update/{id}', "TourGuideController@update");
+    Route::put('/tourGuide/change-your-status/{id}', "TourGuideController@changeStatus");
+    Route::put('/tourGuide/add-area/{id}', "TourGuideController@update");
     Route::get('/tourGuide/edit-info', "TourGuideController@editInfo");
+
+
     Route::get('/tourGuide', "TourGuideController@calender");
     Route::put('/tourGuide/edit-info', "TourGuideController@submitNewInfo");
     Route::get('/tourGuide/new-orders', "TourGuideController@showNewOrders");
     Route::post("/tourGuide/new-orders/accept/{id}", "TourGuideController@acceptOrder");
+    Route::post("/tourGuide/new-orders/refuse/{id}", "TourGuideController@refuseOrder");
     Route::get('/tourGuide/tours', "TourGuideController@showPendingTours");
     Route::post("/tourGuide/tour/nextStep/{id}", "TourGuideController@tourNextStep");
+    Route::post("/tourGuide/tour/cancel/{id}", "TourGuideController@tourCancel");
     Route::get("/tourGuide/tour/details/{id}", "TourGuideController@showTourDetails");
+
+
+
 
 
 });
@@ -121,6 +130,7 @@ Route::middleware(["customer.middleware"])->group(function () {
     Route::post("/user/update/{id}", "CustomerController@update");
     Route::post("/book/{id}", "OrderController@book");
     Route::get("/customer/check-out/{id}","CheckOutController@show");
+    Route::post("/customer/purchase/{id}", "CheckOutController@purchase");
 });
 //Route::get("/test", function () {
 ////    $areas = \App\TourGuideArea::query();

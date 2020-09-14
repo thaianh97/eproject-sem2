@@ -57,9 +57,9 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <div class="add-product">
-                            <a href="/admin">Add Product</a>
-                        </div>
+{{--                            <div class="add-product">--}}
+{{--                                <a href="/admin">Add Product</a>--}}
+{{--                            </div>--}}
                         <h4>Transactions List</h4>
                         <table>
                             <tr>
@@ -86,10 +86,8 @@
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
                                     <td>
-                                        <a>
-                                            <button type="button"
-                                                    class="btn btn-info ">{{$item->status == 1 ? 'Pending' : 'cancel   ' }}</button>
-                                        </a>
+                                       {{$item->status == 1 ? 'Hoàn thành' : 'Đang thực hiện' }}
+
                                     </td>
 
 

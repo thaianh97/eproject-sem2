@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard V.3 | Nalika - Material Admin Template</title>
+    <title>Tconnect</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -81,10 +81,11 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="{{asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
+    @yield('head')
     <style>
         @yield('styles')
     </style>
-
 
 </head>
 
@@ -108,8 +109,8 @@
         </div>
         <div class="nalika-profile">
             <div class="profile-dtl">
-                <a href="#"><img src="{{\App\TourGuide::query()->where('account_id','=',session('id'))->first()->small_photo}}" alt=""/></a>
-                <h2><span class="min-dtn"> {{\App\TourGuide::query()->where('account_id','=',session('id'))->first()->full_name}}</span></h2>
+                <a href="/tourGuide/edit-info"><img src="{{\App\TourGuide::query()->where('account_id','=',session('id'))->first()->small_photo}}" alt=""/></a>
+                <h2 ><span class="min-dtn"> {{\App\TourGuide::query()->where('account_id','=',session('id'))->first()->full_name}}</span></h2>
             </div>
 
         </div>
@@ -267,7 +268,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="logo-pro">
-                    <a href="index.html"><img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt=""/></a>
+                    <a href="#"><img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt=""/></a>
                 </div>
             </div>
         </div>
@@ -1130,8 +1131,10 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="breadcomb-report">
-                                    <button data-toggle="tooltip" data-placement="left" title="Lock out"
-                                            class="btn"><i class="icon nalika-arrow-next"></i></button>
+                                    <a href="/">
+                                        <button data-toggle="tooltip" data-placement="left" title="Back to website"
+                                                class="btn"><i class="icon nalika-arrow-back"></i></button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
