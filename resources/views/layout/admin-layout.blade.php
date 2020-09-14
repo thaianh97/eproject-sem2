@@ -4,10 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard V.3 | Nalika - Material Admin Template</title>
+    <title>Tconnect</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+    {{--    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>--}}
+
+    {{--    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">--}}
+    {{--    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">--}}
 
 
     {{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--}}
@@ -97,11 +103,11 @@
         <div class="sidebar-header">
             <a href="/admin">
 {{--                <img class="main-logo" src="{{asset('img/logo/logo.png')}}" alt=""/>--}}
-                <h2>TCONECT</h2>
+                <h2>TCONNECT</h2>
             </a>
             <strong>
 {{--                <img src="{{asset('img/logo/logosn.png')}}" alt=""/>--}}
-                <h2>TCONECT</h2>
+                <h2>TCONNECT</h2>
             </strong>
         </div>
         <div class="nalika-profile">
