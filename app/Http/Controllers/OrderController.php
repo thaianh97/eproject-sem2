@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\Area;
 use App\Customer;
 use App\TimeFormatHelper;
 use App\TourGuide;
@@ -23,9 +24,10 @@ class OrderController extends Controller
 
     public function orderStatus($id)
     {
-        $transactionDetail = TransactionDetail::find($id);
+        $transactionDetail = TransactionDetail::where("transaction_id" , $id)->first();
+
         $transactionTourGuide = TourGuide::find($transactionDetail->guide_id);
-        $transactionCustomer = Customer::find(Transaction::query()->where("id", $transactionDetail->id)->first()->customer_id);
+        $transactionCustomer = Customer::find(Transaction::query()->where("id", $transactionDetail->transaction_id)->first()->customer_id);
         $booking_step = $transactionDetail->status + 1;
         $data = array();
         $data["bookingStep"] = $booking_step;
@@ -90,10 +92,12 @@ class OrderController extends Controller
         $orderDetail->review = "";
         $orderDetail->status = 1;
         $orderDetail->save();
-
+        $data["transactionDetail"] = $orderDetail;
+        $data["tourGuide"] = $tourGuide;
+        $data["province"] = Area::find($request->get("area_id"))->province;
         Mail::send('mail.sendToCustomer', $data, function ($message) use ($currentCustomer, $orderDetail) {
             $message->to($currentCustomer->email,
-                'Tutorials Point')->subject('yêu cầu đặt đã được gửi' . $orderDetail->id);
+                'TConnect')->subject('yêu cầu đặt đã được gửi' . $orderDetail->id);
             $message->from('huongdanvien247@gmail.com', 'TConnect');
         });
         Mail::send('mail.sendToTourGuide', $data, function ($message) use ($orderDetail, $tourGuide) {

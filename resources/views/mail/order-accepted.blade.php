@@ -339,6 +339,17 @@
                 border-color: #34495e !important;
             }
         }
+
+        .wrapper {
+            position: relative;
+        }
+        .logo{
+            width: 200px;
+            position: absolute;
+            top: -70px;
+            right: -20px;
+        }
+
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -360,6 +371,7 @@
                                 <tr>
                                     <td>
                                         <p>Xin chúc mừng {{$customer->full_name}},</p>
+                                        <img src="img/logo/tconnect-logo.png" alt="" class="logo">
                                         <p>Đơn hàng đi tour của bạn tại {{$province}} từ ngày {{$transactionDetail->start}}
                                             đến ngày {{$transactionDetail->end}} đã được hướng dẫn viên {{$tourGuide->full_name}}
                                             xác nhận!</p>
@@ -404,7 +416,7 @@
                         </tr>
                         <tr>
                             <td class="content-block powered-by">
-                                Powered by <a href="https://eproject-sem2-tconnect.herokuapp.com/">Hướng Dẫn Viên 247</a>.
+                                Powered by <a href="https://eproject-sem2-tconnect.herokuapp.com/">TConnect</a>.
                             </td>
                         </tr>
                     </table>

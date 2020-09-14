@@ -8,6 +8,7 @@ use App\Customer;
 use App\TimeFormatHelper;
 use App\TourGuide;
 use App\TourGuideArea;
+use App\Transaction;
 use App\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -292,6 +293,10 @@ class TourGuideController extends Controller
         //send mail to user
         $data = array();
         $data["tourGuide"] = $currentTourGuide;
+        $data["customer"] = $customer;
+        $data["province"] = Area::find(Transaction::find($acceptOrder->transaction_id)->province_id)->province;
+        $data["tourGuide"] = $currentTourGuide;
+        $data["transactionDetail"] = $acceptOrder;
         Mail::send('mail.order-accepted', $data, function ($message) use ($acceptOrder, $customer) {
             $message->to($customer->email,
                 'Tutorials Point')->subject('Yêu cầu số ' . $acceptOrder->id . " đã được hdv chấp nhận");

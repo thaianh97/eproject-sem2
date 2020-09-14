@@ -2,23 +2,135 @@
     width: 100%;
     margin-top: 50px;
 }
-.transaction-detail{
-    padding: 12px;
+
+.check-out-container {
+    width: 70%;
+    margin: 0 auto;
+
 }
-.section-title {
-    font-family: inherit;
+
+.transaction-detail {
+    padding: 24px;
+}
+
+.customer-detail {
+    padding: 24px;
+}
+
+.small-title {
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     line-height: 1.1;
     color: #333;
-    font-size: 30px;
+    font-size: 20px;
     text-transform: uppercase;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-div.transaction-box{
+div.transaction-box {
     width: 100%;
 }
+
 div.item {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item .item-img {
+    height: 100%;
+    width: 270px;
 
 }
+
+.item-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.detail {
+    margin-left: 20px;
+    height: 100%;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.customer-detail {
+    margin-top: 10px;
+
+}
+
+.price-container {
+    text-align: right;
+}
+
+.tourguide-name {
+    font-weight: 600;
+    color: #232323;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+}
+
+.customer-name {
+    font-weight: 600;
+    color: #232323;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.amount {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.small-header {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 6px;
+}
+
+form.purchase-form {
+    padding: 24px;
+}
+
+.payment-description {
+    padding: 5px 36px;
+}
+
+input[type="radio"] {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.purchase-btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 7px 10px;
+    background-color: #fff;
+    border: 2px solid black;
+    margin-top: 20px;
+    transition: .5s;
+}
+
+.purchase-btn:hover {
+    background-color: #148e14;
+    color: #fff;
+}
+

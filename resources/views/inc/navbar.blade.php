@@ -53,7 +53,7 @@
             <span id="hamburger-btn"></span>
         </div>
         <div class="brand">
-            <img src="{{asset("img/logo/sky-logo-header.png")}}" alt="" class="img-responsive">
+            <img src="{{asset("img/logo/tconnect-logo.png")}}" alt="" class="img-responsive">
         </div>
         <div class="menu">
             <div class="menu-item"><a href="/" class="menu-link">Home</a></div>

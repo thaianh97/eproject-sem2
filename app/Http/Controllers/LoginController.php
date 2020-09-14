@@ -58,18 +58,14 @@ class LoginController extends Controller
         $request->getSession()->put("role", $loginAccount->role);
         //save id to session
         $request->getSession()->put("id", $loginAccount->id);
-        $previousUrl = $request->get("previous-page");
-        if($previousUrl == "http://127.0.0.1:8000/register" || $previousUrl == "http://127.0.0.1:8000/login") {
-            if ($loginAccount->role == 1) {
-                return redirect("/admin");
-            } else if ($loginAccount->role == 2) {
-                return redirect("/tourGuide");
-            } else {
-                $request->session()->flash("msg", "đã đăng nhập thành công");
-                return \redirect("/");
-            }
+        if ($loginAccount->role == 1) {
+            return redirect("/admin");
+        } else if ($loginAccount->role == 2) {
+            return redirect("/tourGuide");
+        } else {
+            $request->session()->flash("msg", "đã đăng nhập thành công");
+            return redirect("/");
         }
-        return redirect($previousUrl);
     }
 
     public function logoutAdmin()

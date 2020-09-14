@@ -349,6 +349,15 @@
             color: red;
             font-weight: bold;
         }
+        .wrapper {
+            position: relative;
+        }
+        .logo{
+            width: 200px;
+            position: absolute;
+            top: -70px;
+            right: -20px;
+        }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -369,6 +378,7 @@
                                 <tr>
                                     <td>
                                         <p>Xin chào {{$customer->full_name}},</p>
+                                        <img src="img/logo/tconnect-logo.png" alt="" class="logo">
                                         <p>Đơn hàng đặt lịch đi tour của bạn tại {{$province}} từ ngày {{$transactionDetail->start}}
                                             đến ngày {{$transactionDetail->end}} đã bị hủy.
                                         <p>Chúng tôi rất xin lỗi về sự bất tiện này.
