@@ -345,8 +345,6 @@ class ControllerByAdmin extends Controller
         $data['areas'] = $areas;
         return view('admin.transactions-manager')
             ->with($data);
-
-
     }
 
     function listPayPendingTransactions(Request $request){

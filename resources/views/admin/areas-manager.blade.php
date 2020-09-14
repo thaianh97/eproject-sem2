@@ -36,9 +36,9 @@
                                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                 <div class="product-status-wrap">
                                                                     <h4>Areas List</h4>
-                                                                    <div class="add-product">
-                                                                        <a href="/admin/add-product">Add Product</a>
-                                                                    </div>
+{{--                                                                    <div class="add-product">--}}
+{{--                                                                        <a href="/admin/add-product">Add Product</a>--}}
+{{--                                                                    </div>--}}
                                                                     <table>
                                                                         <tr>
 {{--                                                                            <th>--}}

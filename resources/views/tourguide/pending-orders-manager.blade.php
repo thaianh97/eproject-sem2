@@ -29,7 +29,7 @@
                                 <th>Sô lượng</th>
                                 <th>Tg gửi yêu cầu</th>
                                 <th>Trạng thái</th>
-                                <td>Tới bước tiếp</td>
+                                <td>Action</td>
                             </tr>
                             @foreach($listTransaction as $item)
                                 <tr>
@@ -55,18 +55,16 @@
                                         <form action="/tourGuide/tour/nextStep/{{$item->id}}" method="post">
                                             @csrf
                                             @if($item->status==2)
-                                                <input type="button" class="btn btn-primary" value="Đợi">
+
                                             @elseif($item->status == 3  )
                                                 @if( date_diff(date_create($item->start),$today,true)->format("%a") == "0" )
                                                     <input type="submit" class="btn btn-primary" value="Bắt đầu">
-                                                @else
-                                                    <input type="button" class="btn btn-primary" value="ĐỢi đi">
+
                                                 @endif
                                             @elseif($item->status == 4)
                                                 @if(date_diff(date_create($item->end),$today,true)->format("%a") == "0" )
                                                     <input type="submit" class="btn btn-primary" value="Hoàn thành">
-                                                @else
-                                                    <input type="button" class="btn btn-primary" value="ĐỢi đi">
+
                                                 @endif
                                             @endif
                                         </form>
@@ -81,15 +79,18 @@
                                                 </button>
                                             </a>
                                         </form>
-    {{--                                        <form action="" method="post">--}}
-    {{--                                            @csrf--}}
-    {{--                                            <a>--}}
-    {{--                                                <button data-toggle="tooltip" title="contact"--}}
-    {{--                                                        class="pd-setting-ed" type="submit"><i--}}
-    {{--                                                        class="fa fa-trash-o" aria-hidden="true"></i>--}}
-    {{--                                                </button>--}}
-    {{--                                            </a>--}}
-    {{--                                        </form>--}}
+                                        @if($item->status == 2)
+                                            <form action="/tourGuide/tour/cancel/{{$item->id}}" method="post">
+                                                @csrf
+                                                <a>
+                                                    <button data-toggle="tooltip" title="Hủy"
+                                                            class="pd-setting-ed" type="submit"><i
+                                                            class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </button>
+                                                </a>
+                                            </form>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach

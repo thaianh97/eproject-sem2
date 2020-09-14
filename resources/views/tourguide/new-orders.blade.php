@@ -46,19 +46,19 @@
                                     <td>{{$item->transaction->party_number}}</td>
                                     <td>{{$item->transaction->created_at}}</td>
                                     <td>
-                                        <form action="" method="post">
+{{--                                        <form action="" method="post">--}}
+{{--                                            @csrf--}}
+{{--                                            <a>--}}
+{{--                                                <button data-toggle="tooltip" title="More Info"--}}
+{{--                                                        class="pd-setting-ed" type="submit"><i--}}
+{{--                                                        class="fa fa-info-circle" aria-hidden="true"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </a>--}}
+{{--                                        </form>--}}
+                                        <form action="/tourGuide/new-orders/refuse/{{$item->id}}" method="post">
                                             @csrf
                                             <a>
-                                                <button data-toggle="tooltip" title="More Info"
-                                                        class="pd-setting-ed" type="submit"><i
-                                                        class="fa fa-info-circle" aria-hidden="true"></i>
-                                                </button>
-                                            </a>
-                                        </form>
-                                        <form action="" method="post">
-                                            @csrf
-                                            <a>
-                                                <button data-toggle="tooltip" title="contact"
+                                                <button data-toggle="tooltip" title="Từ chối"
                                                         class="pd-setting-ed" type="submit"><i
                                                         class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </button>

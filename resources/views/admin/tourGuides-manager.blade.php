@@ -22,7 +22,7 @@
 
 
                     <div class="product-status-wrap">
-                        <form action="/admin/tourGuides" method="post" id="product_form">
+                        <form action="/admin/tourGuides" method="get" id="product_form">
                             @csrf
                             <div class="form-body">
                                 <div class="row">
@@ -79,14 +79,14 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <h4>Products List</h4>
-                        <div class="add-product">
-                            <a href="/admin">Add Product</a>
-                        </div>
+{{--                        <h4>Products List</h4>--}}
+{{--                        <div class="add-product">--}}
+{{--                            <a href="/admin">Add Product</a>--}}
+{{--                        </div>--}}
                                 <h4>TourGuide List</h4>
-                                <div class="add-product">
-                                    <a href="/admin">Add TourGuide</a>
-                                </div>
+{{--                                <div class="add-product">--}}
+{{--                                    <a href="/admin">Add TourGuide</a>--}}
+{{--                                </div>--}}
                                 <table>
                                     <tr>
                                         {{--                                <th>--}}
@@ -108,7 +108,9 @@
                                         <th>Update_at</th>
                                         <th>Status</th>
                                     </tr>
+
                                     @foreach($list as $item)
+
                                         <tr>
 
                                             {{--                                    <td class="checkbox-toggle">--}}

@@ -57,9 +57,9 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <div class="add-product">
-                            <a href="/admin">Add Product</a>
-                        </div>
+{{--                        <div class="add-product">--}}
+{{--                            <a href="/admin">Add Product</a>--}}
+{{--                        </div>--}}
                         <h4>Transactions List</h4>
                         <table>
                             <tr>

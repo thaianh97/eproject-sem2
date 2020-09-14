@@ -14,7 +14,7 @@
 @section('title')
 
     <h2>Edit your info</h2>
-    <p>Welcome <span class="bread-ntd">tourGuide</span></p>
+    <p>Welcome <span class="bread-ntd">{{session("username")}}</span></p>
 
 @endsection
 @section('content')
@@ -74,7 +74,7 @@
                                                                 aria-hidden="true"></i></span>
 
                                                         <input type="text" class="form-control"
-                                                               name="gender" placeholder="Giới tính"
+                                                               name="phone" placeholder="Giới tính"
                                                                value="{{$tourGuide->phone}}">
                                                     </div>
                                                     {{--                                                    <div class="input-group mg-b-pro-edt">--}}
@@ -139,8 +139,7 @@
                                                         <span class="input-group-addon"><i class="icon nalika-info"
                                                                                            aria-hidden="true"></i></span>
 
-                                                        <span class="form-control"
-                                                        >{{$tourGuide->id}}</span>
+                                                        <span class="form-control">{{$tourGuide->id}}</span>
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-price-tag"
@@ -203,9 +202,12 @@
 
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
-                                                        <textarea class="form-control" rows="16" cols="74"
+                                                        <textarea id="message" class="form-control" rows="16" cols="74"
                                                                   name="description"
                                                                   placeholder="Description">{{$tourGuide->description}}</textarea>
+{{--                                                        <span class="input-group-addon" id="charactersLeft"></span>--}}
+{{--                                                        <div id="lastKey"></div>--}}
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -229,7 +231,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <form action="/tourGuide/edit-info" method="post">
+                                                    <form action="/tourGuide/change-your-status/{{$tourGuide->id}}" method="post">
                                                         @csrf
                                                         @method('put')
                                                         <label><h1>Trạng thái </h1></label>
@@ -249,42 +251,50 @@
                                                                     </button>
 
                                                                 @endif
-                                                                <input type="submit" class="btn btn-primary submit-btn"
+                                                                <input type="submit" class="btn btn-warning"
                                                                        value="Thay đổi trạng thái">
                                                             </div>
 
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <label><h1>Khu vực </h1></label>
-                                                    <div class="row">
+{{--                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">--}}
 
-                                                        <div class="col-lg-6 row-lg-12">
+{{--                                                    <label><h1>Khu vực đang nhận tour</h1></label>--}}
+{{--                                                    @foreach($list_areas as $item)--}}
+{{--                                                        <button type="button"--}}
+{{--                                                                class="btn btn-custon-four btn-success">--}}
+{{--                                                            <i class="fa fa-check adminpro-checked-pro"--}}
+{{--                                                               aria-hidden="true"></i>{{\App\Area::find($item->province_id)->province}}--}}
+{{--                                                        </button>--}}
+{{--                                                    @endforeach--}}
 
+{{--                                                    <form action="/tourGuide/add-area/{id}">--}}
 
-                                                            <button type="button"
-                                                                    class="btn btn-custon-four btn-success">
-                                                                <i class="fa fa-check adminpro-checked-pro"
-                                                                   aria-hidden="true"></i> Hà nôi
-                                                            </button>
-                                                            <button type="button"
-                                                                    class="btn btn-custon-four btn-success">
-                                                                <i class="fa fa-check adminpro-checked-pro"
-                                                                   aria-hidden="true"></i> Hà nôi
-                                                            </button>
+{{--                                                        <div class="row">--}}
 
-                                                            <div>
-                                                                <input type="submit"
-                                                                       class="btn-button-primary-ct submit-btn"
-                                                                       value="Thêm khu vực">
-                                                            </div>
-
-                                                        </div>
+{{--                                                            <div class="col-lg-6 row-lg-12">--}}
 
 
-                                                    </div>
-                                                </div>
+
+
+{{--                                                                <div>--}}
+{{--                                                                    <input type="submit"--}}
+{{--                                                                           class="btn-button-primary-ct submit-btn"--}}
+{{--                                                                           value="Thêm khu vực">--}}
+{{--                                                                </div>--}}
+{{--                                                                <select>--}}
+{{--                                                                    <option>--}}
+
+{{--                                                                    </option>--}}
+{{--                                                                </select>--}}
+{{--                                                            </div>--}}
+
+
+{{--                                                        </div>--}}
+{{--                                                    </form>--}}
+
+{{--                                                </div>--}}
                                             </div>
                                         </div>
 
@@ -401,6 +411,26 @@
                 $('input[data-cloudinary-public-id="' + imgCode + '"]').remove();
             });
         })
+
+        var el;
+
+        function charCount(eve){
+            var textEntered , charDisplay , counter ,lastkey;
+
+            textEntered =document.getElementById('message').value;
+            charDisplay =document.getElementById('charactersLeft');
+            counter =(180 -(textEntered.length));
+            charDisplay.textContent = counter;
+            lastkey = document.getElementById('lastKeyy');
+            lastkey.textContent = 'Last key in ASCII code ;' +e.keyCode;
+        }
+
+        el = document.getElementById('message');
+        el.addEventListener('keyup',charCount,false );
+
+
+
+        document.getElementById('test').innerHTML = 'test done';
 
     </script>
 @endsection
