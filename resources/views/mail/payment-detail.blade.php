@@ -361,6 +361,7 @@
             right: -20px;
         }
     </style>
+    <link rel="stylesheet" href="{{asset("css/customer-style/general.css")}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="">
@@ -372,7 +373,7 @@
 
                 <!-- START CENTERED WHITE CONTAINER -->
                 <span
-                    class="preheader">Đơn Hàng số {{$transaction->id}} đã được thanh toán</span>
+                    class="preheader">Hãy thanh toán giao dịch {{$transaction->id}}.</span>
                 <table class="main">
                     <!-- START MAIN CONTENT AREA -->
                     <tr>
@@ -381,17 +382,18 @@
                                 <tr>
                                     <td>
                                         <p>Xin chào {{$customer->full_name}},</p>
-                                        <img src="img/logo/tconnect-logo.png" alt="" class="logo">
-                                        <p>Đơn Hàng số {{$transaction->id}} đã được thanh toán</p>
-                                        <p>Dưới đây là thông tin của khách hàng bạn sẽ đi tour cùng bạn.</p>
-                                        <ul>
-                                            <li><span class="bold">Họ Và Tên: </span>{{$customer->full_name}}</li>
-                                            <li><span class="bold">Năm Sinh: </span>{{$customer->year_of_birth}}</li>
-                                            <li><span class="bold">Số điện thoại: </span>{{$tourGuide->phone}}</li>
-                                            <li><span class="bold">email: </span>{{$tourGuide->email}}</li>
-                                            <li><span class="bold">Thời gian: </span>{{$transaction->start}} đến {{$transaction->end}}</li>
-                                        </ul>
-                                        <p>Hãy chủ động liên hệ với khách hàng để xác nhận tour</p>
+                                        <p>Hãy Thanh toán giao dịch {{$transaction->id}} bằng cách: </p>
+                                        <p>Chuyển khoản đến: </p>
+                                        <p>Tên tài khoản: <span class="bold">LUU DUC HUY</span></p>
+                                        <p>Số Tài Khoản: <span class="bold">21510002916870</span></p>
+                                        <p>Ngân hàng BIDV chi nhánh Cầu giấy</p>
+                                        <h3>Thông tin giao dịch</h3>
+                                        <p><span class="bold">Mã giao dịch: </span>{{$transaction->id}}</p>
+                                        <p><span class="bold">Địa điểm đi: </span>{{\App\Area::find($transaction->province_id)->province}}</p>
+                                        <p><span class="bold">Thời gian đi: </span>{{substr($transaction->start, 0, 10)}} đến {{substr($transaction->end, 0, 10)}}</p>
+                                        <p><span class="bold">Tồng tiền của giao dịch: {{$transaction->total_cost}} <span class="vnd">đ</span></span></p>
+                                        <p class="notice">Hãy thực hiện chuyển tiền trong vòng 24 giờ để thanh toán hợp đồng của bạn</p>
+                                        <p>Vui lòng liên hệ: +84 333 237 860 để được giải đáp mọi thắc mắc</p>
                                         <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi</p>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>
@@ -442,6 +444,8 @@
         </td>
     </tr>
 </table>
+<script src ={{asset("js/formatMoney.js")}}>
+</script>
 </body>
 </html>
 

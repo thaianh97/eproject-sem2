@@ -372,7 +372,7 @@
 
                 <!-- START CENTERED WHITE CONTAINER -->
                 <span
-                    class="preheader">Hướng dẫn viên {{$tourGuide->full_name}} đã hủy đơn hàng đặt lịch tour của bạn.</span>
+                    class="preheader">Đơn Hàng số {{$transaction->id}} đã được thanh toán</span>
                 <table class="main">
                     <!-- START MAIN CONTENT AREA -->
                     <tr>
