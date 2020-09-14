@@ -65,7 +65,7 @@
                             <div class="box-bottom">
                                 <div class="price-box col-md-6 col-xs-6 col-sm-6">
                                     <p><span class="price">giá ban đầu: </span><span
-                                            class="amount">{{$obj->price}}đ</span><span class="price">/ ngày</span></p>
+                                            class="amount money">{{$obj->price}} </span><span class="vnd"> đ</span><span class="price">/ ngày</span></p>
                                 </div>
                                 <div class="detail-btn-box col-md-6 col-xs-6 col-sm-6">
                                     <a href="/show/tourGuide/{{$obj->id}}" class="detail-btn">Xem chi tiết</a>

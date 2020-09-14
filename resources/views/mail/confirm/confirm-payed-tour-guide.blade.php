@@ -339,10 +339,22 @@
                 border-color: #34495e !important;
             }
         }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        p.notice {
+            text-transform: uppercase;
+            color: red;
+            font-weight: bold;
+        }
+
         .wrapper {
             position: relative;
         }
-        .logo{
+
+        .logo {
             width: 200px;
             position: absolute;
             top: -70px;
@@ -359,7 +371,8 @@
             <div class="content">
 
                 <!-- START CENTERED WHITE CONTAINER -->
-                <span class="preheader">Đơn hàng đặt lịch đi tour của khách hàng {{$customer->full_name}} đã bị hủy.</span>
+                <span
+                    class="preheader">Hướng dẫn viên {{$tourGuide->full_name}} đã hủy đơn hàng đặt lịch tour của bạn.</span>
                 <table class="main">
                     <!-- START MAIN CONTENT AREA -->
                     <tr>
@@ -369,12 +382,26 @@
                                     <td>
                                         <p>Xin chào {{$customer->full_name}},</p>
                                         <img src="img/logo/tconnect-logo.png" alt="" class="logo">
-                                        <p>Thời gian thanh toán giao dịch đi tour của bạn đã hết.
-                                            Giao dịch đi tour của bạn tại {{$province}} từ ngày {{$transactionDetail->start}}
-                                            đến ngày {{$transactionDetail->end}} chưa được thanh toán.</p>
-                                        <p>Vì vậy, hướng dẫn viên {{$tourGuide->full_name}} đã hủy đơn hàng đặt lịch đi tour của bạn.</p>
-                                        <p>Xin vui lòng chọn hướng dẫn viên khác để đặt lịch đi tour.</p>
-                                        <p>Xin chân thành cảm ơn!</p>
+                                        <p>Đơn Hàng số {{$transaction->id}} đã được thanh toán</p>
+                                        <p>Dưới đây là thông tin của hướng dẫn viên sẽ đi tour cùng bạn.</p>
+                                        <ul>
+                                            <li><span class="bold">Họ Và Tên: </span>{{$tourGuide->full_name}}</li>
+                                            <li><span class="bold">Năm Sinh: </span>{{$tourGuide->year_of_birth}}</li>
+                                            <li><span class="bold">Giới Tính: </span>
+                                                @if($tourGuide->gender == 1)
+                                                    nam
+                                                @elseif($tourGuide->gender == 2)
+                                                    nữ
+                                                @else
+                                                    khác
+                                                @endif
+                                            </li>
+                                            <li><span class="bold">Số điện thoại: </span>{{$tourGuide->phone}}</li>
+                                            <li><span class="bold">email: </span>{{$tourGuide->email}}</li>
+                                            <li><span class="bold">Thời gian: </span>{{$transaction->start}} đến {{$transaction->end}}</li>
+                                        </ul>
+                                        <p>Hướng dẫn viên sẽ chủ động liên lạc với bạn để xác nhận về hợp đồng</p>
+                                        <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi</p>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>
                                             <tr>
@@ -411,7 +438,8 @@
                         </tr>
                         <tr>
                             <td class="content-block powered-by">
-                                Powered by <a href="https://eproject-sem2-tconnect.herokuapp.com/">Hướng Dẫn Viên 247</a>.
+                                Powered by <a href="https://eproject-sem2-tconnect.herokuapp.com/">Hướng Dẫn Viên
+                                    247</a>.
                             </td>
                         </tr>
                     </table>
@@ -425,3 +453,6 @@
 </table>
 </body>
 </html>
+
+
+

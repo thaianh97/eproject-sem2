@@ -92,6 +92,10 @@ class TourGuideAreaSeeder extends Seeder
         ]);
         if (env('DB_CONNECTION') == 'mysql') {
             \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
         }
+
+
+
     }
 }

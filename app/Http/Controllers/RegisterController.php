@@ -56,7 +56,6 @@ class RegisterController extends Controller
         //set status = 1 active | 0 non-active
         $newAccount->status = 1;
         //set timestamp
-        //TODO: check time stamp gmt+7
         $newAccount->created_at = Carbon::now()->addDay(0)->format('Y-m-d H:i:s');
         $newAccount->updated_at = Carbon::now()->addDay(0)->format('Y-m-d H:i:s');
         //save

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(AreaSeeder::class);
         $this->call(CustomerSeeder::class);
+
         $this->call(TourGuideImageSeeder::class);
         $this->call(TourGuideSeeder::class);
         $this->call(TourGuideAreaSeeder::class);

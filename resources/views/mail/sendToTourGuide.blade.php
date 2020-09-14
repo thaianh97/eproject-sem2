@@ -339,6 +339,15 @@
                 border-color: #34495e !important;
             }
         }
+        .wrapper {
+            position: relative;
+        }
+        .logo{
+            width: 200px;
+            position: absolute;
+            top: -70px;
+            right: -20px;
+        }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -362,6 +371,7 @@
                                     <td>
                                         {{--<p> chào {{$full_name}} bạn có 1 yêu cầu mới từ khách hàng {{$customer->full_name}}</p>--}}
                                         <p>Xin chào {{$tourGuide->full_name}},</p>
+                                        <img src="img/logo/tconnect-logo.png" alt="" class="logo">
                                         <p>Bạn nhận được yêu cầu đặt lịch đi tour tại {{$province}} từ ngày {{$transactionDetail->start}}
                                             đến ngày {{$transactionDetail->end}} từ khách hàng {{$customer->full_name}}.
                                         <p>Xin vui lòng xác nhận đặt lịch đi tour

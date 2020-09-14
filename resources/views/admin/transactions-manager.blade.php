@@ -86,10 +86,8 @@
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
                                     <td>
-                                        <a>
-                                            <button type="button"
-                                                    class="btn btn-info ">{{$item->status == 1 ? 'Hoàn thành' : 'Đang thực hiện' }}</button>
-                                        </a>
+                                       {{$item->status == 1 ? 'Hoàn thành' : 'Đang thực hiện' }}
+
                                     </td>
 
 

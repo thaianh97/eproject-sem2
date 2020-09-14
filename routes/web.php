@@ -130,6 +130,7 @@ Route::middleware(["customer.middleware"])->group(function () {
     Route::post("/user/update/{id}", "CustomerController@update");
     Route::post("/book/{id}", "OrderController@book");
     Route::get("/customer/check-out/{id}","CheckOutController@show");
+    Route::post("/customer/purchase/{id}", "CheckOutController@purchase");
 });
 //Route::get("/test", function () {
 ////    $areas = \App\TourGuideArea::query();

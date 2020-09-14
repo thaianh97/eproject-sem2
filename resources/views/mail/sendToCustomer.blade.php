@@ -339,6 +339,15 @@
                 border-color: #34495e !important;
             }
         }
+        .wrapper {
+            position: relative;
+        }
+        .logo{
+            width: 200px;
+            position: absolute;
+            top: -70px;
+            right: -20px;
+        }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -360,8 +369,9 @@
                                 <tr>
                                     <td>
                                         <p>Xin chào {{$customer->full_name}},</p>
-                                        <p>Yêu cầu đặt lịch đi tour của bạn tại {{$province}} từ ngày {{$transactionDetail->start}}
-                                            đến ngày {{$transactionDetail->end}} đã đã được gửi đi.
+                                        <img src="img/logo/tconnect-logo.png" alt="" class="logo">
+                                        <p>Yêu cầu đặt lịch đi tour của bạn tại {{$province}} từ ngày {{substr($transactionDetail->start, 0 , 10)}}
+                                            đến ngày {{substr($transactionDetail->end, 0 , 10)}} đã đã được gửi đi.
                                         <p>Xin vui lòng chờ hướng dẫn viên {{$tourGuide->full_name}} xác nhận trong thời
                                             gian sớm nhất.</p>
                                         <p>Xin chân thành cảm ơn!</p>
@@ -399,8 +409,7 @@
                         </tr>
                         <tr>
                             <td class="content-block powered-by">
-                                Powered by <a href="https://eproject-sem2-tconnect.herokuapp.com/">Hướng Dẫn Viên
-                                    247</a>.
+                                Powered by <a href="https://eproject-sem2-tconnect.herokuapp.com/">Tconnect</a>.
                             </td>
                         </tr>
                     </table>

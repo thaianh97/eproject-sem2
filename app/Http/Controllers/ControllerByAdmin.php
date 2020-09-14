@@ -360,33 +360,35 @@ class ControllerByAdmin extends Controller
     function acceptPaidTransactionDetail($id){
 
         $tranDetail = TransactionDetail::find($id);
-        $tranDetail->status = 3 ;
-        $tranDetail->update();
-        $tourGuide = TourGuide::find($tranDetail->guide_id);
         $transaction = Transaction::find($tranDetail->transaction_id);
+        //chuyen trang thai
+        $tranDetail->status = 3;
+        $transaction->status = 1;
+        $tranDetail->updated_at = Carbon::now()->addDays(0)->format('Y-m-d H:i:s');
+        $tranDetail->save();
+        $transaction->save();
+        $tourGuide = TourGuide::find($tranDetail->guide_id);
+
         $customer = Customer::find($transaction->customer_id);
         $data = array(
-            "name" => $tourGuide->full_name,
-            "to" => $tourGuide->email,
+            'customer' => $customer,
+            "transaction" => $transaction,
+            "transactionDetail" => $tranDetail,
+            "tourGuide" => $tourGuide
         );
 
-        Mail::send('mail.cancel.sendToTourGuide-paidTour', $data, function ($message) use ($customer,$tourGuide,$tranDetail) {
+        Mail::send('mail.confirm.confirm-payed-tour-guide', $data, function ($message) use ($customer,$tourGuide,$tranDetail) {
 
             $message->to($tourGuide->email, $tourGuide->full_name)->subject('Khách hàng Đã thanh toán tour '.$tranDetail->id);
-            $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+            $message->from('hdv247@gmail.com', 'TConnect');
 
         });
 
-        $data = array(
-            'username' => $customer->userName,
-            "name" => $customer->full_name,
-            "to" => $customer->email,
-            "guide_name" => $tourGuide->full_name
-        );
-        Mail::send('mail.cancel.sendToCus-payPending', $data, function ($message) use ($customer,$tourGuide,$transaction) {
 
-            $message->to($customer->email, $customer->full_name)->subject('Tour  '.$transaction->id.'của bạn đã được xác nhận thanh toán :');
-            $message->from('hdv247@gmail.com', 'Hướng Dẫn Viên 427');
+        Mail::send('mail.confirm.confirm-payed-customer', $data, function ($message) use ($customer,$tourGuide,$transaction) {
+
+            $message->to($customer->email, $customer->full_name)->subject('Tour  '.$transaction->id.' của bạn đã được xác nhận thanh toán');
+            $message->from('hdv247@gmail.com', 'TConnect');
 
         });
 
