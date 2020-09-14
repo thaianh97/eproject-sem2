@@ -13,7 +13,9 @@ class CustomerSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        }
         DB::table('customers')->truncate();
         DB::table('customers')->insert([
             [
@@ -89,6 +91,8 @@ class CustomerSeeder extends Seeder
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
         ]);
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        }
     }
 }

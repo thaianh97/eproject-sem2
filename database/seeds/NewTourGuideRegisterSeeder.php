@@ -13,7 +13,9 @@ class NewTourGuideRegisterSeeder extends Seeder
      */
     public function run()
     {
-
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        }
         DB::table('new_tour_guide_registers')->truncate();
         DB::table('new_tour_guide_registers')->insert([
             [
@@ -52,8 +54,9 @@ class NewTourGuideRegisterSeeder extends Seeder
                 'created_at' => Carbon::now()->addDays(-7)->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
             ],
-
         ]);
-
+        if (env('DB_CONNECTION') == 'mysql') {
+            \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        }
     }
 }
